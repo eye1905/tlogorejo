@@ -1,91 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Welcome to CodeIgniter HMVC</title>
- 
-    <style type="text/css">
- 
-    ::selection{ background-color: #E13300; color: white; }
-    ::moz-selection{ background-color: #E13300; color: white; }
-    ::webkit-selection{ background-color: #E13300; color: white; }
- 
-    body {
-        background-color: #fff;
-        margin: 40px;
-        font: 13px/20px normal Helvetica, Arial, sans-serif;
-        color: #4F5155;
-    }
- 
-    a {
-        color: #003399;
-        background-color: transparent;
-        font-weight: normal;
-    }
- 
-    h1 {
-        color: #444;
-        background-color: transparent;
-        border-bottom: 1px solid #D0D0D0;
-        font-size: 19px;
-        font-weight: normal;
-        margin: 0 0 14px 0;
-        padding: 14px 15px 10px 15px;
-    }
- 
-    code {
-        font-family: Consolas, Monaco, Courier New, Courier, monospace;
-        font-size: 12px;
-        background-color: #f9f9f9;
-        border: 1px solid #D0D0D0;
-        color: #002166;
-        display: block;
-        margin: 14px 0 14px 0;
-        padding: 12px 10px 12px 10px;
-    }
- 
-    #body{
-        margin: 0 15px 0 15px;
-    }
-     
-    p.footer{
-        text-align: right;
-        font-size: 11px;
-        border-top: 1px solid #D0D0D0;
-        line-height: 32px;
-        padding: 0 10px 0 10px;
-        margin: 20px 0 0 0;
-    }
-     
-    #container{
-        margin: 10px;
-        border: 1px solid #D0D0D0;
-        -webkit-box-shadow: 0 0 8px #D0D0D0;
-    }
-    </style>
-</head>
-<body>
- 
-<div id="container">
-    <h1>Selamat datang di CodeIgniter HMVC Modular Extension!</h1>
- 
-    <div id="body">
-        <p>Selamat Anda Berhasil Membuat HMVC :)</p>
 
-        <code>application/modules/</code>
- 
-        <p>MVC folder dalam satu module</p>
-        <code>
-        application/modules/homepage  <br>
-        application/modules/homepage/controllers<br>
-        application/modules/homepage/models<br>
-        application/modules/homepage/views</code>
- 
-        <p>Silahkan lihat artikel lain tentang CodeIgniter di blog saya <a href="http://kang-cahya.com">www.kang-cahya.com</a>.</p>
-    </div>
- 
-    <p class="footer">Page rendered in <strong>0.0201</strong> seconds</p>
-</div>
- 
-</body>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Tlogorejo Homepage</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="<?php echo base_url('assets/bootstrap4.0/css/bootstrap.min.css') ?>" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="<?php echo base_url('assets/custom/half-slider.css') ?>" rel="stylesheet">
+  </head>
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgba(0, 0, 0, 0.5);">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <img class="my-logo" style="height: 32px; padding: 0;" src="img/logo.jpg">
+        Tlogorejo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Beranda
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Layanan</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Monografi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Berita</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Struktur</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Transparasi Dana</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Dasar Hukum</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <header>
+      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+          <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+          <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner" role="listbox">
+          <!-- Slide One - Set the background image for this slide in the line below -->
+          <div class="carousel-item active" style="background-image: url('http://fauzianooralifa.student.umm.ac.id/wp-content/uploads/sites/20072/2016/06/399681_351110728239526_100000218056361_1541922_720239831_n.jpg')">
+            <div class="carousel-caption d-none d-md-block">
+              <h3>First Slide</h3>
+              <p>This is a description for the first slide.</p>
+            </div>
+          </div>
+          <!-- Slide Two - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('https://wisatabojonegoro.com/wp-content/uploads/2017/05/1-227.jpg')">
+            <div class="carousel-caption d-none d-md-block">
+              <h3>Second Slide</h3>
+              <p>This is a description for the second slide.</p>
+            </div>
+          </div>
+          <!-- Slide Three - Set the background image for this slide in the line below -->
+          <div class="carousel-item" style="background-image: url('http://placehold.it/1900x1080')">
+            <div class="carousel-caption d-none d-md-block">
+              <h3>Third Slide</h3>
+              <p>This is a description for the third slide.</p>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Page Content -->
+    <section class="py-5">
+      <div class="container">
+        <h2>Ready to start Development</h2>
+        <p>The background images for the slider are set directly in the HTML using inline CSS. The rest of the styles for this template are contained within the
+          <code>half-slider.css</code>
+          file.</p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-3 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Copyright &copy; 2018 by Tlogorejo</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="<?php echo base_url('assets/bootstrap4.0/js/jquery-3.2.1.slim.min.js') ?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap4.0/js/popper.min.js') ?>"></script>
+    <script src="<?php echo base_url('assets/bootstrap4.0/js/bootstrap.min.js') ?>"></script>
+  </body>
+
 </html>

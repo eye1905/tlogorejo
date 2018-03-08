@@ -1,0 +1,37 @@
+.btn {
+	border-radius: 0px;
+}
+.btn-shadow {
+	box-shadow: 1px 3px 1px 0px #d3d3d3;
+}
+
+.card {
+	border-radius: 0px;
+	border: none;
+	box-shadow: 1px 1px 1px 1px #e6e6e6;
+}
+
+.card-img-top {
+	border-radius: 0px;
+}
+
+.card-wrapper {
+  position: relative;
+  overflow: hidden;
+}
+
+.card-wrapper:after {
+  content: '';
+  display: block;
+  padding-top: 65%;
+}
+
+.card-wrapper img {
+  width: 100%;
+  height: auto;
+  max-width: none;
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+}

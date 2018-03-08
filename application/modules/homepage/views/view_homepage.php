@@ -14,6 +14,7 @@
     <link href="<?php echo base_url('assets/bootstrap4.0/css/bootstrap.min.css') ?>" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url('assets/custom/half-slider.css') ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/custom/my-styles.css') ?>" rel="stylesheet">
   </head>
   <body>
 
@@ -21,8 +22,8 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgba(0, 0, 0, 0.5);">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img class="my-logo" style="height: 32px; padding: 0;" src="img/logo.jpg">
-        Tlogorejo</a>
+          <img class="my-logo" style="height: 32px; padding: 0;" src="http://lpm.unair.ac.id/new/images/Laporan_Hasil_KKN_BBM_Ke_54/logo_bojonegoro.png">
+        &nbsp;Tlogorejo</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -35,13 +36,13 @@
               </a>
             </li>
             <li class="nav-item">
+              <a class="nav-link" href="#">Berita</a>
+            </li>
+            <li class="nav-item">
               <a class="nav-link" href="#">Layanan</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Monografi</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Berita</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Struktur</a>
@@ -99,19 +100,75 @@
     </header>
 
     <!-- Page Content -->
-    <section class="py-5">
+    <section class="py-5 bg-light" id="content-news">
       <div class="container">
-        <h2>Ready to start Development</h2>
-        <p>The background images for the slider are set directly in the HTML using inline CSS. The rest of the styles for this template are contained within the
-          <code>half-slider.css</code>
-          file.</p>
+        <div class="title-section text-center" style="padding-bottom: 20px;">
+          <h4>Tlogorejo News</h4>
+          <p>Dapatkan informasi terbaru tentang berita dan artikel seputar Desa Tlogorejo, Kabupaten Bojonegoro</p>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="card mb-4">
+              <div class="card-wrapper">
+                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22245%22%20height%3D%22160%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20245%20160%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16203b851fc%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A12pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16203b851fc%22%3E%3Crect%20width%3D%22245%22%20height%3D%22160%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2291.7578125%22%20y%3D%2285.1%22%3E245x160%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">  
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <a href="#" class="btn btn-sm btn-info btn-shadow">Baca Selengkapnya</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="card mb-4">
+              <div class="card-wrapper">
+                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22245%22%20height%3D%22160%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20245%20160%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16203b851fc%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A12pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16203b851fc%22%3E%3Crect%20width%3D%22245%22%20height%3D%22160%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2291.7578125%22%20y%3D%2285.1%22%3E245x160%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">  
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <a href="#" class="btn btn-sm btn-info btn-shadow">Baca Selengkapnya</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-4">
+            <div class="card mb-4">
+              <div class="card-wrapper">
+                <img class="card-img-top" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22245%22%20height%3D%22160%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20245%20160%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_16203b851fc%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A12pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_16203b851fc%22%3E%3Crect%20width%3D%22245%22%20height%3D%22160%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2291.7578125%22%20y%3D%2285.1%22%3E245x160%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Card image cap">  
+              </div>
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <a href="#" class="btn btn-sm btn-info btn-shadow">Baca Selengkapnya</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-section text-center">
+          <a href="#" class="btn btn-sm btn-info btn-shadow">Lihat Selengkapnya</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page Content -->
+    <section class="py-5" id="layanan">
+      <div class="container">
+        <div class="title-section text-center" style="padding-bottom: 20px;">
+          <h4>Layanan</h4>
+          <p>Layanan yang ada di Desa Tlogorejo</p>
+        </div>
       </div>
     </section>
 
     <!-- Footer -->
     <footer class="py-3 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; 2018 by Tlogorejo</p>
+        <span class="text-muted">&copy;2018 by TLOGOREJO</span>
       </div>
       <!-- /.container -->
     </footer>

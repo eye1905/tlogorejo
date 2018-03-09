@@ -11,8 +11,7 @@
     <title>Tlogorejo Homepage</title>
 
     <!-- Bootstrap core CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="<?php echo base_url('assets/bootstrap4.0/css/bootstrap.min.css') ?>" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url('assets/custom/half-slider.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/custom/my-styles.css') ?>" rel="stylesheet">
@@ -68,7 +67,7 @@
         </ol>
         <div class="carousel-inner" role="listbox">
           <!-- Slide One - Set the background image for this slide in the line below -->
-          <div class="carousel-item active" style="background-image: url('http://wowslider.com/carousel-slider-showy-carousel-demo.html')">
+          <div class="carousel-item active" style="background-image: url('http://fauzianooralifa.student.umm.ac.id/wp-content/uploads/sites/20072/2016/06/399681_351110728239526_100000218056361_1541922_720239831_n.jpg')">
             <div class="carousel-caption d-none d-md-block">
               <h3>First Slide</h3>
               <p>This is a description for the first slide.</p>

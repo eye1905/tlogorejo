@@ -22,8 +22,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: rgba(0, 0, 0, 0.5);">
       <div class="container">
         <a class="navbar-brand" href="#">
-          <img class="my-logo" style="height: 32px; padding: 0;" src="http://lpm.unair.ac.id/new/images/Laporan_Hasil_KKN_BBM_Ke_54/logo_bojonegoro.png">
-        &nbsp;Tlogorejo</a>
+          <img class="my-logo" style="height: 32px; padding: 0;" src="<?php echo base_url('assets/img/tlogorejo-dua.png') ?>"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>

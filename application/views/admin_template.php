@@ -124,18 +124,32 @@
         </li>
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links -->
-        <li class="active"><a href="#"><i class="fa fa-home"></i> <span>Beranda</span></a></li>
-        <li><a href="#"><i class="fa fa-calendar"></i> <span>Menu 1</span></a></li>
+        <li class="<?php if($this->uri->uri_string() == 'admin') { echo 'active'; } ?>">
+          <a href="<?php echo base_url(); ?>admin"><i class="fa fa-home"></i><span>Beranda</span></a></li>
+        <li class="<?php if($this->uri->uri_string() == 'admin/homepage') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/homepage"><i class="fa fa-home"></i> <span>Berita</span></a></li>
         <li><a href="#"><i class="fa fa-video-camera"></i> <span>Menu 2</span></a></li>
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Multilevel</span>
+          <a href="#"><i class="fa fa-link"></i> <span>Data Penduduk</span>
           	<span class="pull-right-container">
             	<i class="fa fa-angle-left pull-right"></i>
           	</span>
           </a>
           <ul class="treeview-menu">
-            <li><a href="#">Link in level 2</a></li>
-            <li><a href="#">Link in level 2</a></li>
+            <li><a href="#">Data Keluarga</a></li>
+            <li><a href="#">Data Penduduk</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Referensi</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="<?php if($this->uri->uri_string() == 'admin/c_kota') { echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/c_kota">Data Daerah</a></li>
+            <li class="<?php if($this->uri->uri_string() == 'admin/c_kota') { echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/c_kota">Data Kabupaten</a></li>
           </ul>
         </li>
       </ul>
@@ -145,73 +159,7 @@
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-
-    <!-- Content Header (Page header) -->
-    <!-- <section class="content-header">
-      <h1>
-        Page Header
-        <small>Optional description</small>
-      </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-        <li class="active">Here</li>
-      </ol>
-    </section> -->
-    <section class="content-header">
-      <div class="title-header">
-        <h4>
-          <span class="color-primary bold">1/3</span>&nbsp
-          Choose the model you want
-        </h4>
-      </div>
-    </section>
-
-    <!-- Main content -->
-    <section class="content container-fluid">
-      <div class="box-layout">
-        <div class="row">
-
-          <div class="col-lg-4 col-sm-6 col-xs-12">
-            <div class="small-box bg-aqua">
-              <div class="inner">
-                <span class="fa fa-calendar"></span>
-                <h4 style="font-weight: bold;">Konten 1</h4>
-                <p>Deskripsi konten</p>
-                <a href="" class="btn btn-primary btn-md btn-rounded">Detail</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-sm-6 col-xs-12">
-            <div class="small-box bg-aqua">
-              <div class="inner">
-                <span class="fa fa-video-camera"></span>
-                <h4 style="font-weight: bold;">Konten 2</h4>
-                <p>Deskripsi Konten</p>
-                <a href="" class="btn btn-primary btn-md btn-rounded">Detail</a>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-sm-6 col-xs-12">
-            <div class="small-box bg-aqua">
-              <div class="inner">
-                <span class="fa fa-calendar"></span>
-                <h4 style="font-weight: bold;">Konten 3</h4>
-                <p>Deskripsi Konten</p>
-                <a href="" class="btn btn-primary btn-md btn-rounded">Detail</a>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
+  <?= $contents ?>
 
 </div>
 <!-- ./wrapper -->

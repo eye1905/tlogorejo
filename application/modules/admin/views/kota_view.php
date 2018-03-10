@@ -33,15 +33,16 @@
                       </tr>
                       </thead>
                       <tbody>
-                      <?php $no=1; 
+                      
+                      <?php $no = $this->uri->segment('3') + 1;
                       foreach($aku as $book){?>
                       <tr>
                         <td><center><?php echo $no; ?></center></td>
                         <td><?php echo $book->nama_provinsi;?></td>
                         <td>
                           <center>
-                            <button class="btn btn-warning btn-sm" onclick="edit_book(<?php echo $no;?>)"><i class="glyphicon glyphicon-pencil"></i></button>
-                            <button class="btn btn-danger btn-sm" onclick="delete_book(<?php echo $no;?>)"><i class="glyphicon glyphicon-remove"></i></button>
+                            <button class="btn btn-warning btn-sm" type="button" onclick="edit_provinsi(<?php echo $book->id_provinsi;?>)"><i class="glyphicon glyphicon-pencil"></i></button>
+                            <button class="btn btn-danger btn-sm" onclick="delete_provinsi(<?php echo $no;?>)"><i class="glyphicon glyphicon-remove"></i></button>
                           </center>
                         </td>
                       </tr>
@@ -49,7 +50,7 @@
                       $tambah = $no;
                       }?>
                       <tr>
-                        <td><center><?php echo $tambah; ?></center></td>
+                        <td><center><input type="text" name="id_provinsi" id="id_provinsi" hidden="true"></center></td>
                         <td>
                           <div class="form-group has-feedback" id="for_prov">
                             <div class="col-sm-10">
@@ -60,11 +61,15 @@
                         </td>
                         <td>
                           <center>
-                          <button class="btn btn-success btn-sm" id="plus_provinsi" type="button"><b>Tambah Data</b></button></center>
+                          <button class="btn btn-success btn-sm" id="plus_provinsi" type="button"><b>
+                          Simpan Data</b></button></center>
                         </td>
                       </tr>
                       </tbody>
                     </table>
+                   <!--  <?php 
+                    echo $this->pagination->create_links();
+                    ?> -->
                   </div>
                 </div>
               </div>
@@ -76,10 +81,24 @@
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-    $("#plus_provinsi").click(function(){
-        var formData = {'provinsi': $("#nama_provinsi").val()};
+    
+    });
+
+  $("#plus_provinsi").click(function(){
+        var formData = {'provinsi': $("#nama_provinsi").val(),'id_provinsi': $("#id_provinsi").val()};
+        var url;
+        var id = $("#id_provinsi").val();
+
+        if(id == "")
+        {
+              url = "<?php echo site_url('admin/c_kota/simpan_provinsi')?>";
+        }else
+        {
+            url = "<?php echo site_url('admin/c_kota/update_provinsi')?>";
+        }
+
         $.ajax({
-        url : "<?php echo site_url('admin/c_kota/simpan_provinsi')?>",
+        url : url,
         type: "POST",
         data: formData,
         dataType: "JSON",
@@ -90,13 +109,57 @@
             }else{
               $("#for_prov").addClass("has-error");
               $("#nama_provinsi").attr("placeholder", data).placeholder();
+              $("#nama_provinsi").val(data);
             }
         },
         error: function (jqXHR, textStatus, errorThrown)
-        {
-             $("#nama_provinsi").attr("placeholder", textStatus).placeholder();
+        {    
+            $("#for_prov").addClass("has-error");
+            $("#nama_provinsi").attr("placeholder", textStatus).placeholder();
+            $("#nama_provinsi").val(data);
         }
       });
     });
-  });
+
+   function edit_provinsi(id)
+      {
+        var formData = {'id_provinsi': id};
+
+        $.ajax({
+        url : "<?php echo site_url('admin/c_kota/select_provinsi')?>",
+        type: "POST",
+        data: formData,
+        dataType: "JSON",
+        success: function(data)
+        { 
+          $("#id_provinsi").val(data.id_provinsi);
+          $("#nama_provinsi").val(data.nama_provinsi);
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            console.log(textStatus);
+        }
+      });
+    }
+
+    function delete_provinsi(id)
+      {
+        var formData = {'id_provinsi': id};
+
+        $.ajax({
+        url : "<?php echo site_url('admin/c_kota/delete_provinsi')?>",
+        type: "POST",
+        data: formData,
+        dataType: "JSON",
+        success: function(data)
+        { 
+          document.location.href = "<?php echo base_url(); ?>admin/c_kota";
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            console.log(textStatus);
+        }
+      });
+    }
+
 </script>

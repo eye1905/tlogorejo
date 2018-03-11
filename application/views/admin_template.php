@@ -19,11 +19,8 @@
   <!-- Customize CSS -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/custom/admin-styles.css') ?>">
 
-  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato" />
-
   <!-- Google Font -->
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 
 <body class="hold-transition skin-black sidebar-mini">
@@ -125,8 +122,8 @@
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links -->
         <li class="<?php if($this->uri->uri_string() == 'admin') { echo 'active'; } ?>">
-          <a href="<?php echo base_url(); ?>admin"><i class="fa fa-home"></i><span>Beranda</span></a></li>
-        <li class="<?php if($this->uri->uri_string() == 'admin/homepage') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/homepage"><i class="fa fa-home"></i> <span>Berita</span></a></li>
+          <a href="<?php echo base_url(); ?>admin"><i class="fa fa-dashboard"></i><span>Beranda</span></a></li>
+        <li class="<?php if($this->uri->uri_string() == 'admin/homepage') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/homepage"><i class="fa fa-book"></i> <span>Berita</span></a></li>
         <li><a href="#"><i class="fa fa-video-camera"></i> <span>Menu 2</span></a></li>
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Data Penduduk</span>
@@ -139,17 +136,27 @@
             <li><a href="#">Data Penduduk</a></li>
           </ul>
         </li>
-        <li class="treeview">
+        <li class="treeview
+          <?php 
+            if($this->uri->uri_string() == 'admin/c_kota'){
+              echo 'active';
+            } else if ($this->uri->uri_string() == 'admin/c_kabupaten'){
+              echo 'active';
+            }
+          ?>">
           <a href="#"><i class="fa fa-link"></i> <span>Referensi</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
+            <li class="">
+              <a href="#"><i class="fa fa-link"></i>Jenis Artikel</a>
+            </li>
             <li class="<?php if($this->uri->uri_string() == 'admin/c_kota') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/c_kota">Data Provinsi</a></li>
+              <a href="<?php echo base_url(); ?>admin/c_kota"><i class="fa fa-link"></i>Data Provinsi</a></li>
             <li class="<?php if($this->uri->uri_string() == 'admin/c_kabupaten') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/c_kabupaten">Data Kabupaten</a></li>
+              <a href="<?php echo base_url(); ?>admin/c_kabupaten"><i class="fa fa-link"></i>Data Kabupaten</a></li>
           </ul>
         </li>
       </ul>

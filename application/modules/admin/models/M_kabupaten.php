@@ -1,15 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class M_kota extends CI_Model
+class M_kabupaten extends CI_Model
 {	
 
-	var $table = "propinsi";
+	var $table = "kabupaten";
 
 	public function index($number, $offset)
 	{
 	$this->db->where('status', '1');
-	$this->db->order_by('nama_provinsi', 'asc');
+	$this->db->order_by('nama_kabupaten', 'asc');
 	return $this->db->get($this->table, $number,$offset)->result();
 	}
 
@@ -36,11 +36,20 @@ class M_kota extends CI_Model
 		return $query->row();
 	}
 
+	public function get_provinsi()
+	{
+		$this->db->where('status', '1');
+		$this->db->order_by('nama_provinsi', 'asc');
+		return $this->db->get("propinsi")->result();
+	}
+
+
 	public function kota_update($where, $data)
 	{
 		$this->db->update($this->table, $data, $where);
 		return $this->db->affected_rows();
 	}
+
 	public function jumlah_data()
 	{
 		return $this->db->get('propinsi')->num_rows();

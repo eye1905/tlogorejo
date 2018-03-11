@@ -16,17 +16,60 @@ class C_kota extends MY_Controller {
  		$jumlah_data = $this->M_kota->jumlah_data();
  		$config['base_url'] = base_url().'admin/C_kota/index/';
 		$config['total_rows'] = $jumlah_data;
-		$config['per_page'] = 4;
+
+		$config['per_page'] = 10;
 		$from = $this->uri->segment(3);
 		$this->pagination->initialize($config);	
 
  		$data['aku'] = $this->M_kota->index($config['per_page'],$from);
  		$this->template->load('admin_template', 'kota_view', $data);
     }
+
+    public function reload($value)
+    {
+ 		$jumlah_data = $this->M_kota->jumlah_data();
+		$config['total_rows'] = $jumlah_data;
+		$config['per_page'] = $value;
+
+		if ($value>500) {
+			$config['per_page'] = $jumlah_data;
+		}
+
+		$from = $this->uri->segment(3);
+		$this->pagination->initialize($config);	
+
+ 		$data['aku'] = $this->M_kota->index($config['per_page'],$from);
+ 		$this->template->load('admin_template', 'kota_view', $data);
+    }
+
+    public function view_nama($value)
+    {
+		$config['per_page'] = 100;
+		$from = $this->uri->segment(3);
+		$this->pagination->initialize($config);	
+
+ 		$data['aku'] = $this->M_kota->get_filter($value, $config['per_page'],$from);
+ 		$this->template->load('admin_template', 'kota_view', $data);
+    }
+
+    public function get_value()
+    {
+ 		$viewpage = $this->input->post('page');
+ 		
+ 		echo json_encode($viewpage);
+    }
+
+    public function get_nama()
+    {
+ 		$viewpage = $this->input->post('page');
+ 		
+ 		echo json_encode($viewpage);
+    }
+
     public function simpan_provinsi()
     {
  		$this->form_validation->set_rules('provinsi','Nama Provinsi', 'required');
- 		$data = array('nama_provinsi' => $this->input->post('provinsi'),
+ 		$data = array('nama_provinsi' => strip_tags($this->input->post('provinsi')),
  						'status' => '1',
  						'log_time' => date("Y-m-d h:i:sa")
  						);
@@ -52,7 +95,7 @@ class C_kota extends MY_Controller {
     public function update_provinsi()
     {
  		$this->form_validation->set_rules('provinsi','Nama Provinsi', 'required');
- 		$data = array('nama_provinsi' => $this->input->post('provinsi'),'id_provinsi' => $this->input->post('id_provinsi'));
+ 		$data = array('nama_provinsi' => strip_tags($this->input->post('provinsi')),'id_provinsi' => $this->input->post('id_provinsi'));
 
  		if ($this->form_validation->run() == FALSE){
 				echo json_encode("Jangan Kosongi Kolom");

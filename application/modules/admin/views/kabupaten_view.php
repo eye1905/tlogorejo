@@ -16,7 +16,7 @@
       <div class="col-sm-12 col-md-12">
       <div class="box" style="padding: 20pt">
         <div class="box-header">
-             <center><h3 class="box-title"><b>Data Provinsi</b></h3></center>
+             <center><h3 class="box-title"><b>Data Kabupaten</b></h3></center>
             </div>
               <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                   <div class="row">
@@ -34,7 +34,8 @@
                       <tr role="row">
                         <th class="sorting_asc th" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending" width="10%">
                           <center>No</center></th>
-                        <th class="sorting th" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" width="60%">Nama Provinsi</th>
+                          <th class="sorting th" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" width="40%">Nama Provinsi</th>
+                        <th class="sorting th" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending" width="50%">Nama Kabupaten</th>
                         <th class="sorting th" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Browser: activate to sort column ascending">Aksi</th>
                       </tr>
                       </thead>
@@ -56,11 +57,20 @@
                       $tambah = $no;
                       }?>
                       <tr>
-                        <td><center><input type="text" name="id_provinsi" id="id_provinsi" hidden="true"></center></td>
+                        <td>
+                          <input type="text" name="id_kabupaten" id="id_kabupaten" hidden="true">
+                        </td>
+                        <td>
+                           <div class="form-group has-success has-feedback">
+                            <select class="form-control" id="pilih_provinsi">
+                              <option value="0">--- Pilih Provinsi ---</option>
+                            </select>
+                    </div>
+                        </td>
                         <td>
                           <div class="form-group has-feedback" id="for_prov">
                             <div class="col-sm-10">
-                              <input type="text" class="form-control" id="nama_provinsi" placeholder="Masukan Nama Provinsi">
+                              <input type="text" class="form-control" id="nama_kabupaten" placeholder="Masukan Nama Kabupaten">
                             </div>
                              <label class="col-sm-2 control-label"><p id="error_provinsi"></p></label>
                           </div>
@@ -94,20 +104,23 @@
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-    
+     get_provinsi();
     });
 
   $("#plus_provinsi").click(function(){
-        var formData = {'provinsi': $("#nama_provinsi").val(),'id_provinsi': $("#id_provinsi").val()};
+        var formData = {'kabupaten': $("#nama_kabupaten").val(),
+                        'id_kabupaten': $("#id_provinsi").val(),
+                        'id_provinsi': $("#pilih_provinsi").val()
+                          };
         var url;
-        var id = $("#id_provinsi").val();
+        var id = $("#id_kabupaten").val();
 
         if(id == "")
         {
-              url = "<?php echo site_url('admin/c_kota/simpan_provinsi')?>";
+              url = "<?php echo site_url('admin/c_kota/simpan_kabupaten')?>";
         }else
         {
-            url = "<?php echo site_url('admin/c_kota/update_provinsi')?>";
+            url = "<?php echo site_url('admin/c_kota/update_kabupaten')?>";
         }
 
         $.ajax({
@@ -118,18 +131,18 @@
         success: function(data)
         {
             if (data=='success') {
-                document.location.href = "<?php echo base_url(); ?>admin/c_kota";
+                document.location.href = "<?php echo base_url(); ?>admin/c_kabupaten";
             }else{
               $("#for_prov").addClass("has-error");
-              $("#nama_provinsi").attr("placeholder", data).placeholder();
-              $("#nama_provinsi").val(data);
+              $("#nama_kabupaten").attr("placeholder", data).placeholder();
+              $("#nama_kabupaten").val(data);
             }
         },
         error: function (jqXHR, textStatus, errorThrown)
         {    
             $("#for_prov").addClass("has-error");
-            $("#nama_provinsi").attr("placeholder", textStatus).placeholder();
-            $("#nama_provinsi").val(data);
+            $("#nama_kabupaten").attr("placeholder", textStatus).placeholder();
+            $("#nama_kabupaten").val(data);
         }
       });
     });
@@ -195,23 +208,22 @@
       });
     })
 
-    $( "#cari_nama" ).on( "keydown", function(event) {
-      if(event.which == 13){
-         var formData = {'page': this.value};
-          $.ajax({
-            url : "<?php echo site_url('admin/c_kota/get_nama')?>",
-            type: "POST",
-            data: formData,
-            dataType: "JSON",
-            success: function(data)
-            { 
-              document.location.href = "<?php echo base_url(); ?>admin/c_kota/view_nama/"+data;
-            },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
-                console.log(textStatus);
-            }
-        });
-      }
-    });
+    function get_provinsi() {
+      $.ajax({
+        url : "<?php echo site_url('admin/c_kabupaten/get_provinsi')?>",
+        type: "POST",
+        dataType: "JSON",
+        success: function(data)
+        { 
+            var obj = Object.values(data);
+            $.each(obj, function (index, value) {
+                $("#pilih_provinsi").append('<option value='+value['id_provinsi']+'>'+value['nama_provinsi']+'</option>');
+            });
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            console.log(textStatus);
+        }
+      });
+    }
 </script>

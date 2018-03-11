@@ -147,9 +147,9 @@
           </a>
           <ul class="treeview-menu">
             <li class="<?php if($this->uri->uri_string() == 'admin/c_kota') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/c_kota">Data Daerah</a></li>
-            <li class="<?php if($this->uri->uri_string() == 'admin/c_kota') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/c_kota">Data Kabupaten</a></li>
+              <a href="<?php echo base_url(); ?>admin/c_kota">Data Provinsi</a></li>
+            <li class="<?php if($this->uri->uri_string() == 'admin/c_kabupaten') { echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/c_kabupaten">Data Kabupaten</a></li>
           </ul>
         </li>
       </ul>

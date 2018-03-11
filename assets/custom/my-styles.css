@@ -5,6 +5,16 @@
 	box-shadow: 1px 3px 1px 0px #d3d3d3;
 }
 
+.dropdown-menu {
+  border-radius: 0px;
+  background-color: rgba(0, 0, 0, 0.5);
+  margin-top: 9px;
+  border-top: 2px solid orange;
+}
+.dropdown-item {
+  color: #ffffff;
+}
+
 .card {
 	border-radius: 0px;
 	border: none;

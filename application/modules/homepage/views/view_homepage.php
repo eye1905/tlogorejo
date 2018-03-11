@@ -15,6 +15,8 @@
     <!-- Custom styles for this template -->
     <link href="<?php echo base_url('assets/custom/half-slider.css') ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/custom/my-styles.css') ?>" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="<?php echo base_url('assets/adminlte/font-awesome/css/font-awesome.min.css') ?>">
   </head>
   <body>
 
@@ -37,8 +39,15 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Berita</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Layanan</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                Layanan
+              </a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Link 1</a>
+                <a class="dropdown-item" href="#">Link 2</a>
+                <a class="dropdown-item" href="#">Link 3</a>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Monografi</a>
@@ -67,21 +76,21 @@
         <div class="carousel-inner" role="listbox">
           <!-- Slide One - Set the background image for this slide in the line below -->
           <div class="carousel-item active" style="background-image: url('http://fauzianooralifa.student.umm.ac.id/wp-content/uploads/sites/20072/2016/06/399681_351110728239526_100000218056361_1541922_720239831_n.jpg')">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption">
               <h3>First Slide</h3>
               <p>This is a description for the first slide.</p>
             </div>
           </div>
           <!-- Slide Two - Set the background image for this slide in the line below -->
           <div class="carousel-item" style="background-image: url('https://wisatabojonegoro.com/wp-content/uploads/2017/05/1-227.jpg')">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption">
               <h3>Second Slide</h3>
               <p>This is a description for the second slide.</p>
             </div>
           </div>
           <!-- Slide Three - Set the background image for this slide in the line below -->
           <div class="carousel-item" style="background-image: url('<?php echo base_url('assets/img/mountains1.jpg') ?>')">
-            <div class="carousel-caption d-none d-md-block">
+            <div class="carousel-caption">
               <h3>Third Slide</h3>
               <p>This is a description for the third slide.</p>
             </div>
@@ -102,8 +111,8 @@
     <section class="py-5 bg-light" id="content-news">
       <div class="container">
         <div class="title-section text-center" style="padding-bottom: 20px;">
-          <h4>Tlogorejo News</h4>
-          <p>Dapatkan informasi terbaru tentang berita dan artikel seputar Desa Tlogorejo, Kabupaten Bojonegoro</p>
+          <h3>Tlogorejo News</h3>
+          <p class="text-muted mb-2">Dapatkan informasi terbaru tentang berita dan artikel seputar Desa Tlogorejo, Kabupaten Bojonegoro</p>
         </div>
         <div class="row">
 
@@ -130,36 +139,80 @@
       </div>
     </section>
 
-    <!-- Page Content -->
+    <!-- Page Content Layanan -->
     <section class="py-5" id="layanan">
       <div class="container">
-        <div class="title-section text-center" style="padding-bottom: 20px;">
-          <h4>Layanan</h4>
-          <p>Layanan yang ada di Desa Tlogorejo</p>
+        <div class="row">
+          <div class="col-lg-12 text-center">
+            <h3 class="section-heading">Layanan</h3>
+            <p class="text-muted mb-2">Layanan yang ada di Desa Tlogorejo</p>
+          </div>
         </div>
+      </div>
+      <div class="container">
         <div class="row">
 
-          <?php $data = 7; for($i=1; $i < $data; $i++){ ?>
-            <div class="col-lg-2 col-md-2 col-sm-4 col-xs-6">
-              <div class="thumbnail clearfix">
-                <img src="http://placehold.it/180x200/456" class="img-fluid">
-                <div class="text-center">
-                  <span>Nama Lembaga</span>
-                </div>
-              </div>
+        <?php for($i = 0; $i < 7; $i++){ ?>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <i class="fa fa-4x fa-diamond text-primary mb-3 sr-icons"></i>
+              <h5 class="mb-3">Nama Lembaga</h5>
+              <p class="text-muted mb-0">Our templates are updated regularly so they don't break.</p>
+              <a href="">DETAIL</a>
             </div>
-          <?php } ?>
+          </div>
+        <?php } ?>
 
         </div>
       </div>
     </section>
+    <!-- / Page Content Layanan -->
 
     <!-- Footer -->
-    <footer class="py-3 bg-dark">
+    <footer class="py-3 footer bg-dark">
       <div class="container">
-        <span class="text-muted">&copy;2018 by TLOGOREJO</span>
+        <div class="row">
+          <div class="col-lg-6 h-100 text-center text-lg-left my-auto">
+            <ul class="list-inline mb-2">
+              <li class="list-inline-item">
+                <a href="#" style="color: #6c757d;">About</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#" style="color: #6c757d;">Contact</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#" style="color: #6c757d;">Terms of Use</a>
+              </li>
+              <li class="list-inline-item">&sdot;</li>
+              <li class="list-inline-item">
+                <a href="#" style="color: #6c757d;">Privacy Policy</a>
+              </li>
+            </ul>
+            <p class="text-muted small mb-4 mb-lg-0">&copy; TLOGOREJO 2018. All Rights Reserved.</p>
+          </div>
+          <div class="col-lg-6 h-100 text-center text-lg-right my-auto">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item mr-3">
+                <a href="#">
+                  <i class="fa fa-facebook fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item mr-3">
+                <a href="#">
+                  <i class="fa fa-twitter fa-2x fa-fw"></i>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <i class="fa fa-instagram fa-2x fa-fw"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
-      <!-- /.container -->
     </footer>
 
     <!-- Optional JavaScript -->

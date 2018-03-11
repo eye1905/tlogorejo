@@ -13,7 +13,7 @@
 <div class="content-wrapper">
   <section class="content">
     <div class="box">
-      <div class="box-header">
+      <div class="box-header with-border">
         <center><h3 class="box-title"><b>Data Kabupaten</b></h3></center>
       </div>
       <div class="box-body">

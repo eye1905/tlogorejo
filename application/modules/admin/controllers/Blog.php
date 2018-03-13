@@ -10,7 +10,15 @@ class Blog extends MY_Controller {
 	}
 
 	public function index() {
-		$this->template->load('admin_template', 'blog/blog_post_view');
+		$this->template->load('admin_template', 'blog/blog_index_post_view');
+	}
+
+	public function draft() {
+		$this->template->load('admin_template', 'blog/blog_draft_post_view');
+	}
+
+	public function form() {
+		$this->template->load('admin_template', 'blog/blog_add_post_view');
 	}
 
 	public function kategori() {

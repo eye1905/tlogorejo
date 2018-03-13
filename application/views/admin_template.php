@@ -24,6 +24,23 @@
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+
+  <!-- REQUIRED JS SCRIPTS -->
+  <!-- jQuery 3 -->
+  <script src="<?php echo base_url('assets/adminlte/jquery/dist/jquery.min.js') ?>"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="<?php echo base_url('assets/adminlte/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
+  <!-- AdminLTE App -->
+  <script src="<?php echo base_url('assets/dist/js/adminlte.min.js') ?>"></script>
+  <!-- CK Editor -->
+  <script src="<?php echo base_url('assets/adminlte/ckeditor/ckeditor.js') ?>"></script>
+  <!-- DataTables -->
+  <script src="<?php echo base_url('assets/adminlte/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
+  <script src="<?php echo base_url('assets/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>
+  <!-- Optionally, you can add Slimscroll and FastClick plugins.
+       Both of these plugins are recommended to enhance the
+       user experience. -->
+  <!-- script -->
 </head>
 
 <body class="hold-transition skin-black sidebar-mini">
@@ -133,19 +150,23 @@
           <?php  
             if($this->uri->uri_string() == 'admin/blog'){
               echo 'active';
+            } else if($this->uri->uri_string() == 'admin/blog/draft'){
+              echo 'active';
+            } else if($this->uri->uri_string() == 'admin/blog/form'){
+              echo 'active';
             }
           ?>">
-          <a href="#"><i class="fa fa-link"></i> <span>Blog</span>
+          <a href="#"><i class="fa fa-link"></i> <span>Postingan</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li class="<?php if($this->uri->uri_string() == 'admin/blog') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/blog"><i class="fa fa-link"></i>Posting</a>
+              <a href="<?php echo base_url(); ?>admin/blog"><i class="fa fa-link"></i>Semua <span class="badge">2</span></a>
             </li>
-            <li class="">
-              <a href="#"><i class="fa fa-link"></i>Draft</a>
+            <li class="<?php if($this->uri->uri_string() == 'admin/blog/draft') { echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/blog/draft"><i class="fa fa-link"></i>Draft <span class="badge">1</span></a>
             </li>
           </ul>
         </li>
@@ -202,29 +223,7 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- REQUIRED JS SCRIPTS -->
-
-<!-- jQuery 3 -->
-<script src="<?php echo base_url('assets/adminlte/jquery/dist/jquery.min.js') ?>"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="<?php echo base_url('assets/adminlte/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
-<!-- AdminLTE App -->
-<script src="<?php echo base_url('assets/dist/js/adminlte.min.js') ?>"></script>
-<!-- CK Editor -->
-<script src="<?php echo base_url('assets/adminlte/ckeditor/ckeditor.js') ?>"></script>
-<!-- DataTables -->
-<script src="<?php echo base_url('assets/adminlte/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
-<script src="<?php echo base_url('assets/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>
-<!-- Optionally, you can add Slimscroll and FastClick plugins.
-     Both of these plugins are recommended to enhance the
-     user experience. -->
-     <!-- script -->
 <script type="text/javascript">
- $(function () {
-   CKEDITOR.replace('ckeditor');
- });
-
- $('#example1').DataTable()
  $('#example2').DataTable({
    'paging'      : true,
    'lengthChange': false,

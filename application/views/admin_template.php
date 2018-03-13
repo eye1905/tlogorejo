@@ -15,6 +15,8 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/MyStyle.min.css') ?>">
 
   <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/skins/skin-black.min.css') ?>">
+  <!-- bootstrap wysihtml5 - text editor -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') ?>">
 
   <!-- Customize CSS -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/custom/admin-styles.css') ?>">
@@ -115,7 +117,7 @@
           <div class="sidebar-user">
             <div class="pull-left info">
               <p>Abdul Rozak R</p>
-              <a href="#">Google inc.</a>
+              <a href="#">Super Admin</a>
             </div>
           </div>
         </li>
@@ -124,7 +126,31 @@
         <li class="<?php if($this->uri->uri_string() == 'admin') { echo 'active'; } ?>">
           <a href="<?php echo base_url(); ?>admin"><i class="fa fa-dashboard"></i><span>Beranda</span></a></li>
         <li class="<?php if($this->uri->uri_string() == 'admin/homepage') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/homepage"><i class="fa fa-book"></i> <span>Berita</span></a></li>
-        <li><a href="#"><i class="fa fa-video-camera"></i> <span>Menu 2</span></a></li>
+        
+        <!-- Menu Blog -->
+        <li class="treeview
+          <?php  
+            if($this->uri->uri_string() == 'admin/blog'){
+              echo 'active';
+            }
+          ?>">
+          <a href="#"><i class="fa fa-link"></i> <span>Blog</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="<?php if($this->uri->uri_string() == 'admin/blog') { echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/blog"><i class="fa fa-link"></i>Posting</a>
+            </li>
+            <li class="">
+              <a href="#"><i class="fa fa-link"></i>Draft</a>
+            </li>
+          </ul>
+        </li>
+        <!-- Menu Blog -->
+
+        <!-- Menu Data Penduduk -->
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Data Penduduk</span>
           	<span class="pull-right-container">
@@ -136,11 +162,15 @@
             <li><a href="#">Data Penduduk</a></li>
           </ul>
         </li>
+        <!-- Menu Data Penduduk -->
+
         <li class="treeview
           <?php 
             if($this->uri->uri_string() == 'admin/c_kota'){
               echo 'active';
-            } else if ($this->uri->uri_string() == 'admin/c_kabupaten'){
+            } else if($this->uri->uri_string() == 'admin/c_kabupaten'){
+              echo 'active';
+            } else if($this->uri->uri_string() == 'admin/blog/kategori'){
               echo 'active';
             }
           ?>">
@@ -150,8 +180,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="">
-              <a href="#"><i class="fa fa-link"></i>Jenis Artikel</a>
+            <li class="<?php if($this->uri->uri_string() == 'admin/blog/kategori'){ echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/blog/kategori"><i class="fa fa-link"></i>Kategori Artikel</a>
             </li>
             <li class="<?php if($this->uri->uri_string() == 'admin/c_kota') { echo 'active'; } ?>">
               <a href="<?php echo base_url(); ?>admin/c_kota"><i class="fa fa-link"></i>Data Provinsi</a></li>
@@ -179,9 +209,17 @@
 <script src="<?php echo base_url('assets/adminlte/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
 <!-- AdminLTE App -->
 <script src="<?php echo base_url('assets/dist/js/adminlte.min.js') ?>"></script>
+<!-- CK Editor -->
+<script src="<?php echo base_url('assets/adminlte/ckeditor/ckeditor.js') ?>"></script>
 
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
+     <!-- script -->
+<script type="text/javascript">
+ $(function () {
+   CKEDITOR.replace('ckeditor');
+ });
+</script>
 </body>
 </html>

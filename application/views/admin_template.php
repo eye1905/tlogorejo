@@ -17,7 +17,8 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/skins/skin-black.min.css') ?>">
   <!-- bootstrap wysihtml5 - text editor -->
   <link rel="stylesheet" href="<?php echo base_url('assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') ?>">
-
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?php echo base_url('assets/adminlte/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>">
   <!-- Customize CSS -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/custom/admin-styles.css') ?>">
 
@@ -32,7 +33,7 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index.html" class="logo">
+    <a href="index.html" class="logo hidden-xs">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>J</b>'</span>
       <!-- logo for regular state and mobile devices -->
@@ -211,7 +212,9 @@
 <script src="<?php echo base_url('assets/dist/js/adminlte.min.js') ?>"></script>
 <!-- CK Editor -->
 <script src="<?php echo base_url('assets/adminlte/ckeditor/ckeditor.js') ?>"></script>
-
+<!-- DataTables -->
+<script src="<?php echo base_url('assets/adminlte/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
+<script src="<?php echo base_url('assets/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
@@ -219,6 +222,16 @@
 <script type="text/javascript">
  $(function () {
    CKEDITOR.replace('ckeditor');
+ });
+
+ $('#example1').DataTable()
+ $('#example2').DataTable({
+   'paging'      : true,
+   'lengthChange': false,
+   'searching'   : false,
+   'ordering'    : true,
+   'info'        : true,
+   'autoWidth'   : false
  });
 </script>
 </body>

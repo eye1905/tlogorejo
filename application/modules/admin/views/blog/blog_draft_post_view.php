@@ -29,7 +29,7 @@
                     <th width="5%" class="text-center">
                       <button class="btn btn-sm btn-default"><input type="checkbox" name=""></button>
                     </th>
-                    <th>
+                    <th width="70%">
                       <div class="pull-left">
                         <div class="btn-group">
                           <a href="#" class="btn btn-sm btn-default">Publikasikan</a>

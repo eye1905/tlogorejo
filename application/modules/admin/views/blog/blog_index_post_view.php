@@ -51,29 +51,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td class="text-center"><input type="checkbox" name=""></td>
-                    <td class="text-primary">
-                      <span>Launching Web Desa Terbaru Desa Tlogorejo Bojonegoro</span><br>
-                      <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i> Edit</a>
-                      <a href="#" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>
-                    </td>
-                    <td class="text-warning"><em>Draft</em></td>
-                    <td class="text-primary">Abdul Rozak Romadhoni</td>
-                    <td>13/03/2018</td>
-                  </tr>
-
-                  <tr>
-                    <td class="text-center"><input type="checkbox" name=""></td>
-                    <td class="text-primary">
-                      <span>Demo Web Desa Tlogorejo Bojonegoro</span><br>
-                      <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i> Edit</a>
-                      <a href="#" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>
-                    </td>
-                    <td class="text-warning"><em>Publikasi</em></td>
-                    <td class="text-primary">Abdul Rozak Romadhoni</td>
-                    <td>13/03/2018</td>
-                  </tr>
+                  <!-- DataTable ServerSide -->
                 </tbody>
               </table>
             </div>
@@ -90,11 +68,34 @@
 <!-- /.content-wrapper -->
 
 <script type="text/javascript">
-  $('#example1').DataTable({
-   'order': [ 1, 'asc' ],
-   'aoColumnDefs' : [{
-       'bSortable': false, 
-       'aTargets': [ 0, 2, 3, 4 ]
-     }]
-  });
+    var table;
+    $(document).ready(function() {
+ 
+        //datatables
+        table = $('#example1').DataTable({ 
+ 
+            "processing": true, 
+            "serverSide": true, 
+            "order": [],
+            "aoColumnDefs": [{
+              'bSortable': false,
+              'aTargets': [ 0, 2, 3, 4 ]
+            }],
+             
+            "ajax": {
+                "url": "<?php echo site_url('admin/blog/get_data_blog')?>",
+                "type": "POST"
+            },
+ 
+             
+            "columnDefs": [
+            { 
+                "targets": [ 0 ], 
+                "orderable": false, 
+            },
+            ],
+ 
+        });
+ 
+    });
 </script>

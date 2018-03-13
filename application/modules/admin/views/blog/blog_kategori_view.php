@@ -14,10 +14,10 @@
     <div class="box">
       <div class="box-body">
         <div class="table-responsive">
-          <table class="table table-borderde table-hovered" id="example1">
-            <thead>
+          <table class="table table-hovered" id="example1">
+            <thead class="bg-shadow bg-primary">
               <tr>
-                <th>No</th>
+                <th width="5%">No</th>
                 <th>Deskripsi</th>
                 <th>Aksi</th>
               </tr>

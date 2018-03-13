@@ -13,7 +13,24 @@
     <!-- Default box -->
     <div class="box">
       <div class="box-body">
-        Kategori
+        <div class="table-responsive">
+          <table class="table table-borderde table-hovered" id="example1">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Deskripsi</th>
+                <th>Aksi</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
       <!-- /.box-body -->
     </div>

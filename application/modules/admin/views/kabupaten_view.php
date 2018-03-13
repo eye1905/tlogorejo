@@ -1,8 +1,4 @@
 <style type="text/css">
-  .btn{
-    border:none;
-    color: white;
-  }
   .th{
     text-align: center;
   }
@@ -74,8 +70,8 @@
                   </td>
                   <td>
                     <center>
-                    <button class="btn btn-success btn-sm" id="plus_provinsi" type="button"><b>
-                    Simpan Data</b></button></center>
+                    <button class="btn btn-success btn-sm" id="plus_provinsi" type="button">
+                    Simpan Data</button></center>
                   </td>
                 </tr>
               </tbody>

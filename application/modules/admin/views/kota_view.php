@@ -1,8 +1,4 @@
 <style type="text/css">
-  .btn{
-    border:none;
-    color: white;
-  }
   .th{
     text-align: center;
   }
@@ -45,8 +41,8 @@
                 <td><?php echo $book->nama_provinsi;?></td>
                 <td>
                   <center>
-                    <button class="btn btn-warning btn-sm" type="button" onclick="edit_provinsi(<?php echo $book->id_provinsi;?>)"><i class="glyphicon glyphicon-pencil"></i></button>
-                    <button class="btn btn-danger btn-sm" onclick="delete_provinsi(<?php echo $no;?>)"><i class="glyphicon glyphicon-remove"></i></button>
+                    <button class="btn btn-warning btn-sm" type="button" onclick="edit_provinsi(<?php echo $book->id_provinsi;?>)"><i class="fa fa-edit"></i></button>
+                    <button class="btn btn-danger btn-sm" onclick="delete_provinsi(<?php echo $no;?>)"><i class="fa fa-trash"></i></button>
                   </center>
                 </td>
               </tr>
@@ -65,8 +61,8 @@
                 </td>
                 <td>
                   <center>
-                  <button class="btn btn-success btn-sm" id="plus_provinsi" type="button"><b>
-                  Simpan Data</b></button></center>
+                  <button class="btn btn-success btn-sm" id="plus_provinsi" type="button">
+                  Simpan Data</button></center>
                 </td>
               </tr>
               </tbody>

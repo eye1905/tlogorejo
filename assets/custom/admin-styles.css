@@ -126,24 +126,45 @@
 	color: #0093E1;
 }
 
+/* Background */
+.bg-dark {
+	background-color: #333333;
+	color: #FFFFFF;
+}
+.bg-shadow {
+	box-shadow: 1px 3px 3px 1px #bfbfbf;
+}
+
 /* Button */
 .btn {
-	color: #000;
-	background-color: #FFF;
+	/*color: #000;*/
+	/*background-color: #FFF;*/
+	box-shadow: 1px 1px 1px 1px #bfbfbf;
 }
 .btn-rounded {
 	border-radius: 50px;
 	padding-left: 20px;
 	padding-right: 20px;
 }
+.btn-success {
+	border-color: #00a65a;
+}
+.btn-warning {
+	border-color: #f39c12;
+}
+.btn-danger {
+	border-color: #dd4b39;
+}
 .btn-primary {
-	background-color: transparent;
+	background-color: #0093E1;
+	border-color: #0093E1;
 	/*border: 2px solid #0093E1;*/
 }
+
 .btn-primary:hover,
 .btn-primary:focus {
-	border-color: #0093E1;
-	background-color: #0093E1;
+	border-color: #337ab7;
+	background-color: #337ab7;
 }
 
 .box-layout {
@@ -152,6 +173,15 @@
 
 .table-responsive {
 	border: none;
+}
+.table > thead > tr > th {
+	border-bottom: 0px !important;
+	margin-bottom: 3px;
+	text-align: center;
+	/*box-shadow: 1px 2px 2px 1px #bfbfbf;*/
+}
+.table > tbody > tr > td {
+	border-top: 0px !important;
 }
 
 @media (max-width: 576px) {

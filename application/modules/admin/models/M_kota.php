@@ -10,7 +10,7 @@ class M_kota extends CI_Model
 	{
 	$this->db->where('status', '1');
 	$this->db->order_by('nama_provinsi', 'asc');
-	return $this->db->get($this->table, $number,$offset)->result();
+	return $this->db->get($this->table, $number,$offset)->result_array();
 	}
 
 	public function get_filter($value ,$number, $offset)

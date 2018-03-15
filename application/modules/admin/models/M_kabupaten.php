@@ -6,11 +6,11 @@ class M_kabupaten extends CI_Model
 
 	var $table = "kabupaten";
 
-	public function index($number, $offset)
+	public function index()
 	{
 	$this->db->where('status', '1');
 	$this->db->order_by('nama_kabupaten', 'asc');
-	return $this->db->get($this->table, $number,$offset)->result();
+	return $this->db->get($this->table)->result_array();
 	}
 
 	public function get_filter($value ,$number, $offset)
@@ -23,7 +23,7 @@ class M_kabupaten extends CI_Model
 
 	public function tambah($data)
 	{
-		$insert = $this->db->insert('propinsi', $data);
+		$insert = $this->db->insert($this->table, $data);
 		return $insert;
 	}
 

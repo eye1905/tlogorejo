@@ -207,8 +207,12 @@
             </li>
             <li class="<?php if($this->uri->uri_string() == 'admin/c_kota') { echo 'active'; } ?>">
               <a href="<?php echo base_url(); ?>admin/c_kota"><i class="fa fa-link"></i>Data Provinsi</a></li>
+              
             <li class="<?php if($this->uri->uri_string() == 'admin/c_kabupaten') { echo 'active'; } ?>">
               <a href="<?php echo base_url(); ?>admin/c_kabupaten"><i class="fa fa-link"></i>Data Kabupaten</a></li>
+
+            <li class="<?php if($this->uri->uri_string() == 'admin/c_kecamatan') { echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/c_kecamatan"><i class="fa fa-link"></i>Data Kecamatan</a></li>
           </ul>
         </li>
       </ul>

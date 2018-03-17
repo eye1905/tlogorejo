@@ -3,4 +3,6 @@
 /* load the MX_Loader class */
 require APPPATH."third_party/MX/Controller.php";
 
-class MY_Controller extends MX_Controller {}
+class MY_Controller extends MX_Controller {
+	
+}

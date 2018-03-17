@@ -78,3 +78,57 @@ class CI_Model {
 	}
 
 }
+
+class Model_Utama extends CI_Model
+{	
+
+	public $table, $primary_key , $like, $order_by;
+
+	public function index($number, $offset)
+	{
+	$this->db->where('status', '1');
+	$this->db->order_by($this->order_by, 'asc');
+	return $this->db->get($this->table, $number, $offset)->result();
+	}
+
+	public function get_filter($value)
+	{
+	$this->db->where('status', '1');
+	$this->db->like($this->like, $value);
+	return $this->db->get($this->table)->result();
+	}
+
+	public function tambah_data($data)
+	{
+		$insert = $this->db->insert($this->table, $data);
+		return $insert;
+	}
+
+	public function get_by_id($ide)
+	{
+		$this->db->from($this->table);
+		$this->db->where($this->primary_key, $ide);
+		$query = $this->db->get();
+
+		return $query->row();
+	}
+
+	public function get_data_list()
+	{
+		$this->db->where('status', '1');
+		$this->db->order_by($this->order_by, 'asc');
+		return $this->db->get($this->table)->result();
+	}
+
+
+	public function update($where, $data)
+	{
+		$this->db->update($this->table, $data, $where);
+		return $this->db->affected_rows();
+	}
+
+	public function jumlah_data()
+	{
+		return $this->db->get($this->table)->num_rows();
+	}
+}

@@ -1,11 +1,12 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  
-class C_kabupaten extends MY_Controller {
+class C_kecamatan extends MY_Controller {
  	
  		function __construct() {
 		    parent::__construct();
 		    $this->load->model("M_kabupaten");
 		    $this->load->model("M_kota");
+		    $this->load->model("M_kecamatan");
 		    $this->load->library('form_validation');
 		    $this->load->library('pagination');
 		    $this->load->database();
@@ -26,7 +27,7 @@ class C_kabupaten extends MY_Controller {
 
 		$data['provinsi'] = $this->M_kota->index($config['per_page'],$from);
 		$data['kabupaten'] = $this->M_kabupaten->index();
- 		$this->template->load('admin_template', 'kabupaten_view', $data);
+ 		$this->template->load('admin_template', 'kecamatan_view', $data);
     }
 
     public function get_provinsi()
@@ -121,13 +122,13 @@ class C_kabupaten extends MY_Controller {
 
 		$data['provinsi'] = $this->M_kota->get_data_list();
 		$data['kabupaten'] = $this->M_kabupaten->index($config['per_page'], $from);
- 		$this->template->load('admin_template', 'kabupaten_view', $data);
+ 		$this->template->load('admin_template', 'kecamatan_view', $data);
     }
 
     public function view_nama($value)
     {
 		$data['provinsi'] = $this->M_kota->get_data_list();
 		$data['kabupaten'] = $this->M_kabupaten->get_filter($value);
- 		$this->template->load('admin_template', 'kabupaten_view', $data);
+ 		$this->template->load('admin_template', 'kecamatan_view', $data);
     }
 }

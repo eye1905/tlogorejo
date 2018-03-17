@@ -9,26 +9,24 @@ class C_kota extends MY_Controller {
 		    $this->load->library('pagination');
 		    $this->load->database();
 		    $this->load->helper(array('url'));
+		    ini_set('display_errors', 0);
 		}
 
     public function index()
     {
  		$jumlah_data = $this->M_kota->jumlah_data();
  		$config['base_url'] = base_url().'admin/C_kota/index/';
-		$config['total_rows'] = $jumlah_data;
 
 		$config['per_page'] = 10;
 		$from = $this->uri->segment(3);
 		$this->pagination->initialize($config);	
 
- 		$data['aku'] = $this->M_kota->index($config['per_page'],$from);
+ 		$data['provinsi'] = $this->M_kota->index($config['per_page'], $from);
  		$this->template->load('admin_template', 'kota_view', $data);
     }
 
     public function reload($value)
     {
- 		$jumlah_data = $this->M_kota->jumlah_data();
-		$config['total_rows'] = $jumlah_data;
 		$config['per_page'] = $value;
 
 		if ($value>500) {
@@ -38,28 +36,17 @@ class C_kota extends MY_Controller {
 		$from = $this->uri->segment(3);
 		$this->pagination->initialize($config);	
 
- 		$data['aku'] = $this->M_kota->index($config['per_page'],$from);
+		$data['provinsi'] = $this->M_kota->index($config['per_page'], $from);
  		$this->template->load('admin_template', 'kota_view', $data);
     }
 
     public function view_nama($value)
     {
-		$config['per_page'] = 100;
-		$from = $this->uri->segment(3);
-		$this->pagination->initialize($config);	
-
- 		$data['aku'] = $this->M_kota->get_filter($value, $config['per_page'],$from);
+ 		$data['provinsi'] = $this->M_kota->get_filter($value);
  		$this->template->load('admin_template', 'kota_view', $data);
     }
-
+    
     public function get_value()
-    {
- 		$viewpage = $this->input->post('page');
- 		
- 		echo json_encode($viewpage);
-    }
-
-    public function get_nama()
     {
  		$viewpage = $this->input->post('page');
  		
@@ -75,7 +62,7 @@ class C_kota extends MY_Controller {
  						);
 
  		if ($this->form_validation->run() == FALSE){
-				echo json_encode("Jangan Kosongi Kolom");
+				echo json_encode("Jangan Kosongi Kolom !");
 			}else{
 				$insert = $this->M_kota->tambah($data);
 				if ($insert) {
@@ -95,12 +82,15 @@ class C_kota extends MY_Controller {
     public function update_provinsi()
     {
  		$this->form_validation->set_rules('provinsi','Nama Provinsi', 'required');
- 		$data = array('nama_provinsi' => strip_tags($this->input->post('provinsi')),'id_provinsi' => $this->input->post('id_provinsi'));
+ 		$data = array('nama_provinsi' => strip_tags($this->input->post('provinsi')),
+ 						'id_provinsi' => strip_tags($this->input->post('id_provinsi')),
+ 						'log_time' => date("Y-m-d h:i:sa")
+ 					);
 
  		if ($this->form_validation->run() == FALSE){
 				echo json_encode("Jangan Kosongi Kolom");
 			}else{
-				$insert = $this->M_kota->kota_update(array('id_provinsi' => $this->input->post('id_provinsi')), $data);				
+				$insert = $this->M_kota->update(array('id_provinsi' => $this->input->post('id_provinsi')), $data);				
  				echo json_encode("success");
         }
     }
@@ -111,7 +101,8 @@ class C_kota extends MY_Controller {
  						'status' => '0',
  						'log_time' => date("Y-m-d h:i:sa")
  						);
- 		$insert = $this->M_kota->kota_update(array('id_provinsi' => $this->input->post('id_provinsi')), $data);				
+
+ 		$insert = $this->M_kota->update(array('id_provinsi' => $this->input->post('id_provinsi')), $data);				
  		
  		echo json_encode("success");
     }

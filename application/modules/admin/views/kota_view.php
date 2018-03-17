@@ -23,10 +23,6 @@
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <!-- 
-              example1 untuk full feature data 
-              example2 untuk simple feature data 
-            -->
             <div class="table-responsive">
               <table id="example2" class="table table-hover" role="grid" aria-describedby="example2_info">
                 <thead class="bg-shadow bg-primary">
@@ -38,15 +34,16 @@
                 </thead>
                 <tbody>
                 
-                <?php $no = $this->uri->segment('3') + 1;
-                foreach($aku as $book){?>
+                <?php 
+                $no = $this->uri->segment('3') + 1;
+                foreach($provinsi as $book){?>
                 <tr>
                   <td><center><?php echo $no; ?></center></td>
                   <td><?php echo $book->nama_provinsi;?></td>
                   <td>
                     <center>
                       <button class="btn btn-warning btn-sm" type="button" onclick="edit_provinsi(<?php echo $book->id_provinsi;?>)"><i class="fa fa-edit"></i></button>
-                      <button class="btn btn-danger btn-sm" onclick="delete_provinsi(<?php echo $no;?>)"><i class="fa fa-trash"></i></button>
+                      <button class="btn btn-danger btn-sm" onclick="delete_provinsi(<?php echo $book->id_provinsi;?>)"><i class="fa fa-trash"></i></button>
                     </center>
                   </td>
                 </tr>
@@ -98,10 +95,6 @@
 
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
-  $(document).ready(function() {
-    
-    });
-
   $("#plus_provinsi").click(function(){
         var formData = {'provinsi': $("#nama_provinsi").val(),'id_provinsi': $("#id_provinsi").val()};
         var url;
@@ -204,7 +197,7 @@
       if(event.which == 13){
          var formData = {'page': this.value};
           $.ajax({
-            url : "<?php echo site_url('admin/c_kota/get_nama')?>",
+            url : "<?php echo site_url('admin/c_kota/get_value')?>",
             type: "POST",
             data: formData,
             dataType: "JSON",

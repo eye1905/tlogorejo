@@ -16,7 +16,6 @@ class C_kecamatan extends MY_Controller {
 
     public function index()
     {
- 		error_reporting(0);
  		$jumlah_data = $this->M_kabupaten->jumlah_data();
  		$config['base_url'] = base_url().'admin/C_kabupaten/index/';
 		$config['total_rows'] = $jumlah_data;
@@ -25,7 +24,8 @@ class C_kecamatan extends MY_Controller {
 		$from = $this->uri->segment(3);
 		$this->pagination->initialize($config);
 
-		$data['provinsi'] = $this->M_kota->index($config['per_page'],$from);
+
+		$data['provinsi'] = $this->M_kota->get_data_list();
 		$data['kabupaten'] = $this->M_kabupaten->index();
  		$this->template->load('admin_template', 'kecamatan_view', $data);
     }
@@ -65,10 +65,11 @@ class C_kecamatan extends MY_Controller {
 
      public function select_kabupaten()
     {
- 		$id = $this->input->post('id_kabupaten');
- 		$data = $this->M_kabupaten->get_by_id($id);
+ 		$id = $this->input->post('id_provinsi');
+ 		$data = $this->M_kabupaten->get_by_id_provinsi($id);
 
 		echo json_encode($data);
+
     }
 
      public function update()

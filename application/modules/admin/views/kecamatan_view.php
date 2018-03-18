@@ -10,13 +10,21 @@
   <section class="content">
     <div class="box">
       <div class="box-header with-border">
-        <center><h3 class="box-title"><b>Data Kabupaten</b></h3></center>
+        <center><h3 class="box-title"><b>Data Kecamatan</b></h3></center>
       </div>
       <div class="box-body">
         <div class="row">
-          <div class="col-sm-3">
-            <div class="input-group">
-               <span class="input-group-addon" style="background-color: #337ab7; color: #fff;"><i class="glyphicon glyphicon-search"></i></span>
+          <?php //print_r($provinsi);?>
+          <div class="col-sm-4" style="margin-left: 10pt">
+               <select class="form-control" id="pilih_provinsi" name="pilih_provinsi">
+                <?php foreach ($provinsi as $value){
+                  echo "<option value='$value->id_provinsi'>$value->nama_provinsi</option>";
+                }?>
+                </select>
+          </div>
+          <div class="col-sm-4 pull-right" style="margin-right: 10pt">
+               <div class="input-group">
+                <span class="input-group-addon" style="background-color: #337ab7; color: #fff;"><i class="glyphicon glyphicon-search"></i></span>
               <input type="text" class="form-control" id="cari_nama" placeholder="Ketikan Nama" name="cari_nama">
             </div>
           </div>
@@ -28,8 +36,8 @@
                 <thead class="bg-shadow bg-primary">
                   <tr>
                     <th width="5%">No</th>
-                    <th>Nama Provinsi</th>
-                    <th>Nama Kabupaten</th>
+                    <th>Nama Kabuaten</th>
+                    <th>Nama Kecamatan</th>
                     <th>Aksi</th>
                   </tr>
                 </thead>
@@ -75,8 +83,8 @@
                     </td>
                     <td>
                        <div class="form-group has-success has-feedback">
-                          <select class="form-control" id="pilih_provinsi" name="pilih_provinsi">
-                            <option>--- Pilih Provinsi ---</option>
+                          <select class="form-control" id="pilih_kabupaten" name="pilih_kabupaten">
+                            <option>--- Pilih Kabupaten ---</option>
                           </select>
                         </div>
                     </td>
@@ -125,27 +133,8 @@
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
       $(document).ready(function() {
-     get_provinsi(); 
+      get_kabupaten();
     });
-
-    function get_provinsi() {
-      $.ajax({
-        url : "<?php echo site_url('admin/c_kabupaten/get_provinsi')?>",
-        type: "POST",
-        dataType: "JSON",
-        success: function(data)
-        { 
-            var obj = Object.values(data);
-            $.each(obj, function (index, value) {
-                $("#pilih_provinsi").append('<option value='+value['ideprov']+'>'+value['namaprov']+'</option>');
-            });
-        },
-        error: function (jqXHR, textStatus, errorThrown)
-        {
-            console.log(textStatus);
-        }
-      });
-    }
 
     $("#plus_kabupaten").click(function(){
         var formData = {'pilih_provinsi': $("#pilih_provinsi").val(),'nama_kabupaten': $("#nama_kabupaten").val(),'id_kabupaten': $("#id_kabupaten").val()};
@@ -186,20 +175,39 @@
     });
 
 
-   function edit_kabupaten(id)
+     function get_kabupaten()
       {
-        var formData = {'id_kabupaten': id};
+        var formData = {'id_provinsi': $("#pilih_provinsi").val()};
 
         $.ajax({
-        url : "<?php echo site_url('admin/c_kabupaten/select_kabupaten')?>",
+        url : "<?php echo site_url('admin/c_kecamatan/select_kabupaten')?>",
         type: "POST",
         data: formData,
         dataType: "JSON",
         success: function(data)
         { 
-          $("#id_kabupaten").val(data.id_kabupaten);
-          $("#nama_kabupaten").val(data.nama_kabupaten);
-          $("#pilih_provinsi").val(data.id_provinsi);
+          var obj = Object.values(data);
+           console.log(data);
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            console.log(textStatus);
+        }
+      });
+    }
+
+   function edit_kabupaten(id)
+      {
+        var formData = {'id_kabupaten': id};
+
+        $.ajax({
+        url : "<?php echo site_url('admin/c_kecamatan/index')?>",
+        type: "POST",
+        data: formData,
+        dataType: "JSON",
+        success: function(data)
+        { 
+
         },
         error: function (jqXHR, textStatus, errorThrown)
         {

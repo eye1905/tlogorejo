@@ -11,4 +11,12 @@ class M_kabupaten extends Model_Utama
 		$this->order_by = "nama_kabupaten";
 	}
 	
+	public function get_by_id_provinsi($id)
+	{
+		$this->db->from($this->table);
+		$this->db->where("id_provinsi", $id);
+		$query = $this->db->get();
+
+		return $query->row_array();
+	}
 }

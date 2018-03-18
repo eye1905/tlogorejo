@@ -192,7 +192,11 @@
               echo 'active';
             } else if($this->uri->uri_string() == 'admin/c_kabupaten'){
               echo 'active';
-            } else if($this->uri->uri_string() == 'admin/blog/kategori'){
+            }
+              else if($this->uri->uri_string() == 'admin/c_kecamatan'){
+              echo 'active';
+            }
+             else if($this->uri->uri_string() == 'admin/blog/kategori'){
               echo 'active';
             }
           ?>">

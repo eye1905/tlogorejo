@@ -12,26 +12,30 @@
       <div class="box-body">
         <div class="row">
           <div class="col-md-12">
-            <form class="form-horizontal">
+            <form class="form-horizontal" action="<?php echo base_url('admin/blog/save') ?>" method="post" enctype="multipart/form-data">
               <div class="form-group">
-                <label for="artikel_judul" class="col-md-1 control-label">Entri</label>
+                <label class="col-md-1 control-label">Entri</label>
                 <div class="col-md-10">
-                  <input type="text" class="form-control" placeholder="Judul postingan">
+                  <input type="hidden" class="form-control" name="artikel_author" value="Abdul Rozak R.">
+                  <input type="text" class="form-control" name="artikel_judul" placeholder="Judul postingan">
                 </div>
               </div>
 
               <div class="form-group">
                 <label for="exampleInputFile" class="col-md-1 control-label">Gambar</label>
-                <div class="col-md-10 col-offset-1">
-                  <input type="file" id="exampleInputFile">
-                  <p class="help-block">Example block-level help text here.</p>
+                <div class="col-md-10">
+                  <input type="file" id="exampleInputFile" name="artikel_image">
+                  <hr>
+                  <?php foreach($kategori as $row) { ?>
+                    <label class="radio-inline"><input type="radio" name="artikel_kategori" value="<?php echo $row->kategori_id ?>"><?php echo $row->kategori_nama ?></label>
+                  <?php } ?>
                 </div>
               </div>
 
               <div class="form-group">
                 <label class="col-md-1 hidden-sm"></label>
                 <div class="col-md-10">
-                  <textarea id="ckeditor" name="ckeditor" rows="10" cols="80">
+                  <textarea id="ckeditor" name="artikel_isi" rows="10" cols="80">
                     This is my textarea to be replaced with <b>CKEditor</b>.
                   </textarea>                  
                 </div>
@@ -44,9 +48,9 @@
                     <span class="text-bold">Abdul Rozak Romadhoni</span>
                   </label>
                   &nbsp;&nbsp;
-                  <button class="btn btn-sm btn-primary">Publikasikan</button>
+                  <button type="submit" class="btn btn-sm btn-primary">Publikasikan</button>
                   &nbsp;&nbsp;
-                  <button class="btn btn-sm btn-default">Simpan</button>
+                  <!-- <button class="btn btn-sm btn-default">Simpan</button> -->
                 </div>
               </div>
 

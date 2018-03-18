@@ -2,12 +2,14 @@
  
 class Homepage extends MY_Controller {
 
-		function __construct() {
-		    parent::__construct();
-		}
+	function __construct() {
+	    parent::__construct();
+	    $this->load->model('M_blog');
+	}
  
     public function index()
     {
-       $this->load->view('view_homepage');
+    	$data['artikel'] = $this->M_blog->get_data();
+       	$this->load->view('homepage_template', $data);
     }
 }

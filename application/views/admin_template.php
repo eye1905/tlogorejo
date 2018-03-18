@@ -54,7 +54,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>J</b>'</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>Jack's</b></span>
+      <span class="logo-lg"><b>Dashboard</b></span>
     </a>
 
     <!-- Header Navbar -->
@@ -150,9 +150,9 @@
           <?php  
             if($this->uri->uri_string() == 'admin/blog'){
               echo 'active';
-            } else if($this->uri->uri_string() == 'admin/blog/draft'){
-              echo 'active';
             } else if($this->uri->uri_string() == 'admin/blog/form'){
+              echo 'active';
+            } else if($this->uri->uri_string() == 'admin/blog/edit'){
               echo 'active';
             }
           ?>">
@@ -163,10 +163,10 @@
           </a>
           <ul class="treeview-menu">
             <li class="<?php if($this->uri->uri_string() == 'admin/blog') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/blog"><i class="fa fa-link"></i>Semua <span class="badge">2</span></a>
+              <a href="<?php echo base_url(); ?>admin/blog"><i class="fa fa-link"></i> Artikel</a>
             </li>
-            <li class="<?php if($this->uri->uri_string() == 'admin/blog/draft') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/blog/draft"><i class="fa fa-link"></i>Draft <span class="badge">1</span></a>
+            <li>
+              <a href="#"><i class="fa fa-link"></i> Komentar</a>
             </li>
           </ul>
         </li>
@@ -175,9 +175,9 @@
         <!-- Menu Data Penduduk -->
         <li class="treeview">
           <a href="#"><i class="fa fa-link"></i> <span>Data Penduduk</span>
-          	<span class="pull-right-container">
-            	<i class="fa fa-angle-left pull-right"></i>
-          	</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
           </a>
           <ul class="treeview-menu">
             <li><a href="#">Data Keluarga</a></li>
@@ -192,11 +192,7 @@
               echo 'active';
             } else if($this->uri->uri_string() == 'admin/c_kabupaten'){
               echo 'active';
-            }
-              else if($this->uri->uri_string() == 'admin/c_kecamatan'){
-              echo 'active';
-            }
-             else if($this->uri->uri_string() == 'admin/blog/kategori'){
+            } else if($this->uri->uri_string() == 'admin/blog/kategori'){
               echo 'active';
             }
           ?>">
@@ -211,12 +207,8 @@
             </li>
             <li class="<?php if($this->uri->uri_string() == 'admin/c_kota') { echo 'active'; } ?>">
               <a href="<?php echo base_url(); ?>admin/c_kota"><i class="fa fa-link"></i>Data Provinsi</a></li>
-              
             <li class="<?php if($this->uri->uri_string() == 'admin/c_kabupaten') { echo 'active'; } ?>">
               <a href="<?php echo base_url(); ?>admin/c_kabupaten"><i class="fa fa-link"></i>Data Kabupaten</a></li>
-
-            <li class="<?php if($this->uri->uri_string() == 'admin/c_kecamatan') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/c_kecamatan"><i class="fa fa-link"></i>Data Kecamatan</a></li>
           </ul>
         </li>
       </ul>

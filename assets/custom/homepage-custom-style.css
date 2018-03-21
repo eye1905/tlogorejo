@@ -1,3 +1,9 @@
+.btn-rounded {
+  border-radius: 2em;
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
 #logo img {
   height: 34px;
   width: auto;

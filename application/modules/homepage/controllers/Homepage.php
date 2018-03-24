@@ -6,6 +6,6 @@
 class Homepage extends MY_Controller {
 
 	public function index() {
-		$this->template->load('homepage_template', 'home/home_view');
+		$this->template->load('homepage_template', 'homepage/homepage_view');
 	}
 }

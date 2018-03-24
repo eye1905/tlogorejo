@@ -53,7 +53,8 @@
 
       <nav id="nav-menu-container">
         <ul class="nav-menu">
-          <li><a href="<?php echo base_url('homepage') ?>">Home</a></li>
+        <?php $url = $this->uri->uri_string(); if(($url == 'homepage') || ($url == '')){ ?>
+          <li><a href="#intro">Beranda</a></li>
           <li><a href="#featured-berita">Berita</a></li>
           <li><a href="#lembaga">Lembaga</a></li>
           <li><a href="#services">Layanan</a></li>
@@ -61,6 +62,17 @@
           <li><a href="#team">Struktur</a></li>
           <li><a href="#team">Transparasi Dana</a></li>
           <li><a href="#team">Dasa Hukum</a></li>
+        <?php } else if(($url == 'berita')){ ?>
+          <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li>
+          <?php foreach($kategori as $row){ ?>
+          <li><a href="#"><?php echo $row->kategori_nama ?></a></li>
+          <?php } ?>
+        <?php } else { ?>
+          <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li>
+          <?php foreach($kategori as $row){ ?>
+          <li><a href="#"><?php echo $row->kategori_nama ?></a></li>
+          <?php } ?>
+        <?php } ?>
         </ul>
       </nav><!-- #nav-menu-container -->
     </div>

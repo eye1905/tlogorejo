@@ -1,7 +1,13 @@
+.btn-flat {
+  border-radius: 0;
+}
+.form-control {
+  border-radius: 0;
+}
 .btn-rounded {
   border-radius: 2em;
-  padding-left: 2em;
-  padding-right: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 #logo img {
@@ -88,4 +94,16 @@
   background: #0093e1;
   bottom: 0;
   left: calc(50% - 20px);
+}
+
+#wrapper-content {
+  margin: 2vh 0 2vh 0;
+}
+
+.card {
+    /* Add shadows to create the "card" effect */
+    box-shadow: 0 4px 8px 0px rgba(0,0,0,0.2);
+    border-radius: 0px;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
 }

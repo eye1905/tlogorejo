@@ -13,7 +13,7 @@ class Homepage extends MY_Controller {
 	}
 
 	public function index() {
-		$data['struktur'] = $this->M_struktur->index();
+		$data['struktur'] = $this->M_struktur->get_data_list();
 		$this->template->load('homepage_template', 'homepage/homepage_view', $data);
 	}
 }

@@ -86,14 +86,12 @@ class Model_Utama extends CI_Model
 
 	public function index($number, $offset)
 	{
-	$this->db->where('status', '1');
 	$this->db->order_by($this->order_by, 'asc');
 	return $this->db->get($this->table, $number, $offset)->result();
 	}
 
 	public function get_filter($value)
 	{
-	$this->db->where('status', '1');
 	$this->db->like($this->like, $value);
 	return $this->db->get($this->table)->result();
 	}
@@ -115,9 +113,15 @@ class Model_Utama extends CI_Model
 
 	public function get_data_list()
 	{
-		$this->db->where('status', '1');
+		$this->db->where("soft_delete", "1");
 		$this->db->order_by($this->order_by, 'asc');
 		return $this->db->get($this->table)->result();
+	}
+
+	public function get_row()
+	{
+		$this->db->order_by($this->order_by, 'asc');
+		return $this->db->get($this->table)->row_array();
 	}
 
 
@@ -131,4 +135,5 @@ class Model_Utama extends CI_Model
 	{
 		return $this->db->get($this->table)->num_rows();
 	}
+
 }

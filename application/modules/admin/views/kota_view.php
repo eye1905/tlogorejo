@@ -1,6 +1,6 @@
 <style type="text/css">
   .th{
-    text-align: center;
+    text-align: center !important;
   }
   .table{
     margin-top: 10pt;
@@ -10,69 +10,66 @@
   <section class="content">
     <div class="box">
       <div class="box-header with-border">
-        <center><h3 class="box-title"><b>Data Provinsi</b></h3></center>
+        <center><h3 class="box-title"><b>Data Wilayah</b></h3></center>
       </div>
       <div class="box-body">
         <div class="row">
-          <div class="col-sm-4">
-            <div class="input-group">
-              <span class="input-group-addon" style="background-color: #337ab7; color: #fff;"><i class="glyphicon glyphicon-search"></i></span>
+          <div class="col-sm-3" style="margin-left: 10pt">
+               <select class="form-control" id="pilih_provinsi" name="pilih_provinsi">
+                <?php foreach ($provinsi as $value){
+                  echo "<option value='$value->id'>PROVINSI $value->name</option>";
+                }?>
+                </select>
+          </div>
+          <div class="col-sm-3" style="margin-left: 10pt">
+               <select class="form-control" id="pilih_kabupaten" name="pilih_kabupaten">
+                
+                </select>
+          </div>
+          <div class="col-sm-4 pull-right" style="margin-right: 10pt">
+               <div class="input-group">
+                <span class="input-group-addon" style="background-color: #337ab7; color: #fff;"><i class="glyphicon glyphicon-search"></i></span>
               <input type="text" class="form-control" id="cari_nama" placeholder="Ketikan Nama" name="cari_nama">
             </div>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <div class="table-responsive">
+            <div class="table-responsive" id="tabel">
               <table id="example2" class="table table-hover" role="grid" aria-describedby="example2_info">
                 <thead class="bg-shadow bg-primary">
                   <tr>
-                    <th width="5%">No</th>
-                    <th>Nama Provinsi</th>
-                    <th>Aksi</th>
+                    <th width="10%">No</th>
+                    <th>Nama Kecamatan</th>
+                    <th>Nama Desa</th>
                   </tr>
                 </thead>
                 <tbody>
-                
-                <?php 
-                $no = $this->uri->segment('3') + 1;
-                foreach($provinsi as $book){?>
-                <tr>
-                  <td><center><?php echo $no; ?></center></td>
-                  <td><?php echo $book->nama_provinsi;?></td>
-                  <td>
-                    <center>
-                      <button class="btn btn-warning btn-sm" type="button" onclick="edit_provinsi(<?php echo $book->id_provinsi;?>)"><i class="fa fa-edit"></i></button>
-                      <button class="btn btn-danger btn-sm" onclick="delete_provinsi(<?php echo $book->id_provinsi;?>)"><i class="fa fa-trash"></i></button>
-                    </center>
-                  </td>
-                </tr>
-                <?php $no++;
-                $tambah = $no;
-                }?>
-                <tr>
-                  <td><center><input type="text" name="id_provinsi" id="id_provinsi" hidden="true"></center></td>
-                  <td>
-                    <div class="form-group has-feedback" id="for_prov">
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="nama_provinsi" placeholder="Masukan Nama Provinsi">
-                      </div>
-                       <label class="col-sm-2 control-label"><p id="error_provinsi"></p></label>
-                    </div>
-                  </td>
-                  <td>
-                    <center>
-                    <button class="btn btn-success btn-sm" id="plus_provinsi" type="button"><i class="fa fa-save"></i> Simpan Data</button>
-                    </center>
-                  </td>
-                </tr>
+                  <?php 
+                  
+                  $no = 0;
+                  foreach ($kecamatan as $key) {$no++;?>
+                    <tr>
+                      <td><?php echo $no; ?></td>
+                      <td width="50%"><?php echo "KECAMATAN ".$key->name; ?></td>
+                      <td>
+                        <?php
+                        foreach ($desa as $key2) {
+                            if ($key->id==$key2->district_id) {
+                                echo "- ".$key2->name."</br>";
+                            }
+                        }
+                        ?>
+                      </td>
+                    </tr>
+                 <?php }?>                   
                 </tbody>
               </table>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-4">
+          <div class="col-sm-3">
             <div class="form-group has-success has-feedback">
               <select class="form-control" id="pilih">
                 <option value="10">Pilih Tampilkan Data</option>
@@ -95,121 +92,72 @@
 
 <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
-  $("#plus_provinsi").click(function(){
-        var formData = {'provinsi': $("#nama_provinsi").val(),'id_provinsi': $("#id_provinsi").val()};
-        var url;
-        var id = $("#id_provinsi").val();
+    $(document).ready(function() {
+      get_kabupaten();
+    });
 
-        if(id == "")
-        {
-              url = "<?php echo site_url('admin/c_kota/simpan_provinsi')?>";
-        }else
-        {
-            url = "<?php echo site_url('admin/c_kota/update_provinsi')?>";
-        }
+    function get_kabupaten() {
+       var formData = {'pilih_provinsi': $("#pilih_provinsi").val()};
 
-        $.ajax({
-        url : url,
+      $.ajax({
+        url : "<?php echo site_url('admin/c_kota/get_kabupaten')?>",
         type: "POST",
         data: formData,
         dataType: "JSON",
         success: function(data)
-        {
-            if (data=='success') {
-                document.location.href = "<?php echo base_url(); ?>admin/c_kota";
-            }else{
-              $("#for_prov").addClass("has-error");
-              $("#nama_provinsi").attr("placeholder", data).placeholder();
-              $("#nama_provinsi").val(data);
-            }
+        { 
+            var obj = Object.values(data);
+            $.each(obj, function (index, value) {
+                $("#pilih_kabupaten").append('<option value='+value['id']+'>'+value['name']+'</option>');
+            });
         },
         error: function (jqXHR, textStatus, errorThrown)
-        {    
-            $("#for_prov").addClass("has-error");
-            $("#nama_provinsi").attr("placeholder", textStatus).placeholder();
-            $("#nama_provinsi").val(data);
+        {
+            console.log(textStatus);
+        }
+      });
+    }
+
+
+    $("#pilih_provinsi").on('change', function() {
+      var formData = {'pilih_provinsi': $("#pilih_provinsi").val()};
+
+      $.ajax({
+        url : "<?php echo site_url('admin/c_kota/get_kabupaten')?>",
+        type: "POST",
+        data: formData,
+        dataType: "JSON",
+        success: function(data)
+        { 
+            $('#pilih_kabupaten').empty();
+            var obj = Object.values(data);
+            $.each(obj, function (index, value) {
+                $("#pilih_kabupaten").append('<option value='+value['id']+'>'+value['name']+'</option>');
+            });
+        },
+        error: function (jqXHR, textStatus, errorThrown)
+        {
+            console.log(textStatus);
         }
       });
     });
 
+    $("#pilih_kabupaten").on('change', function() {
+      var formData = {'pilih_kabupaten': $("#pilih_kabupaten").val()};
 
-   function edit_provinsi(id)
-      {
-        var formData = {'id_provinsi': id};
-
-        $.ajax({
-        url : "<?php echo site_url('admin/c_kota/select_provinsi')?>",
+      $.ajax({
+        url : "<?php echo site_url('admin/c_kota/get_kecamatan')?>",
         type: "POST",
         data: formData,
         dataType: "JSON",
         success: function(data)
         { 
-          $("#id_provinsi").val(data.id_provinsi);
-          $("#nama_provinsi").val(data.nama_provinsi);
+           $("#tabel").html(html);
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
             console.log(textStatus);
         }
       });
-    }
-
-    function delete_provinsi(id)
-      {
-        var formData = {'id_provinsi': id};
-
-        $.ajax({
-        url : "<?php echo site_url('admin/c_kota/delete_provinsi')?>",
-        type: "POST",
-        data: formData,
-        dataType: "JSON",
-        success: function(data)
-        { 
-          document.location.href = "<?php echo base_url(); ?>admin/c_kota";
-        },
-        error: function (jqXHR, textStatus, errorThrown)
-        {
-            console.log(textStatus);
-        }
-      });
-    }
-
-    $("#pilih").on('change', function() {
-        var formData = {'page': this.value};
-
-        $.ajax({
-        url : "<?php echo site_url('admin/c_kota/get_value')?>",
-        type: "POST",
-        data: formData,
-        dataType: "JSON",
-        success: function(data)
-        { 
-          document.location.href = "<?php echo base_url(); ?>admin/c_kota/reload/"+data;
-        },
-        error: function (jqXHR, textStatus, errorThrown)
-        {
-            console.log(textStatus);
-        }
-      });
-    })
-
-    $( "#cari_nama" ).on( "keydown", function(event) {
-      if(event.which == 13){
-         var formData = {'page': this.value};
-          $.ajax({
-            url : "<?php echo site_url('admin/c_kota/get_value')?>",
-            type: "POST",
-            data: formData,
-            dataType: "JSON",
-            success: function(data)
-            { 
-              document.location.href = "<?php echo base_url(); ?>admin/c_kota/view_nama/"+data;
-            },
-            error: function (jqXHR, textStatus, errorThrown)
-            {
-                console.log(textStatus);
-            }
-        });
-      }
     });
 </script>

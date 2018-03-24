@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
  
-class C_kota extends MY_Controller {
+class C_struktur extends MY_Controller {
  	
  		function __construct() {
 		    parent::__construct();

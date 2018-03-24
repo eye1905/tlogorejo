@@ -144,6 +144,26 @@
         <li class="<?php if($this->uri->uri_string() == 'admin') { echo 'active'; } ?>">
           <a href="<?php echo base_url(); ?>admin"><i class="fa fa-dashboard"></i><span>Beranda</span></a></li>
         <li class="<?php if($this->uri->uri_string() == 'admin/homepage') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/homepage"><i class="fa fa-book"></i> <span>Berita</span></a></li>
+        <li class="treeview
+          <?php  
+            if($this->uri->uri_string() == 'admin/C_struktur'){
+              echo 'active';
+            } else if($this->uri->uri_string() == 'admin/C_role_struktur'){
+              echo 'active';
+            }
+          ?>">
+        <a href="#"><i class="fa fa-link"></i> <span>Struktur</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+          <ul class="treeview-menu">
+            <li class="<?php if($this->uri->uri_string() == 'admin/C_struktur'){ echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/C_struktur"><i class="fa fa-link"></i>Struktur Organisasi</a>
+            </li>
+            <li class="<?php if($this->uri->uri_string() == 'admin/C_role_struktur') { echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/C_role_struktur"><i class="fa fa-link"></i>Role Struktur</a></li>
+          </ul>            
+        </li>
         
         <!-- Menu Blog -->
         <li class="treeview
@@ -192,9 +212,14 @@
               echo 'active';
             } else if($this->uri->uri_string() == 'admin/c_kabupaten'){
               echo 'active';
-            } else if($this->uri->uri_string() == 'admin/blog/kategori'){
+            }
+            else if($this->uri->uri_string() == 'admin/c_kecamatan'){
               echo 'active';
             }
+             else if($this->uri->uri_string() == 'admin/blog/kategori'){
+              echo 'active';
+            }
+
           ?>">
           <a href="#"><i class="fa fa-link"></i> <span>Referensi</span>
             <span class="pull-right-container">
@@ -206,9 +231,7 @@
               <a href="<?php echo base_url(); ?>admin/blog/kategori"><i class="fa fa-link"></i>Kategori Artikel</a>
             </li>
             <li class="<?php if($this->uri->uri_string() == 'admin/c_kota') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/c_kota"><i class="fa fa-link"></i>Data Provinsi</a></li>
-            <li class="<?php if($this->uri->uri_string() == 'admin/c_kabupaten') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/c_kabupaten"><i class="fa fa-link"></i>Data Kabupaten</a></li>
+              <a href="<?php echo base_url(); ?>admin/c_kota"><i class="fa fa-link"></i>Data Wilayah</a></li>
           </ul>
         </li>
       </ul>

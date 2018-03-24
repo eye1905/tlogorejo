@@ -86,6 +86,7 @@ class Model_Utama extends CI_Model
 
 	public function index($number, $offset)
 	{
+	$this->db->where("soft_delete", "1");	
 	$this->db->order_by($this->order_by, 'asc');
 	return $this->db->get($this->table, $number, $offset)->result();
 	}

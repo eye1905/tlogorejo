@@ -60,8 +60,8 @@
           <li><a href="#services">Layanan</a></li>
           <li><a href="#portfolio">Monografi</a></li>
           <li><a href="#team">Struktur</a></li>
-          <li><a href="#team">Transparasi Dana</a></li>
-          <li><a href="#team">Dasa Hukum</a></li>
+          <li><a href="#dana">Transparasi Dana</a></li>
+          <li><a href="#hukum">Dasa Hukum</a></li>
         <?php } else if(($url == 'berita')){ ?>
           <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li>
           <?php foreach($kategori as $row){ ?>

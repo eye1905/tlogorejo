@@ -5,7 +5,15 @@
 */
 class Homepage extends MY_Controller {
 
+
+	function __construct() {
+		    parent::__construct();
+		    $this->load->model("M_struktur");
+		    ini_set('display_errors', 0);
+	}
+
 	public function index() {
-		$this->template->load('homepage_template', 'homepage/homepage_view');
+		$data['struktur'] = $this->M_struktur->index();
+		$this->template->load('homepage_template', 'homepage/homepage_view', $data);
 	}
 }

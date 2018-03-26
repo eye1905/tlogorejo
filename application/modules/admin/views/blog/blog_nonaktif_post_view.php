@@ -2,7 +2,7 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      <small><i class="fa fa-pencil"></i> Semua postingan</small>
+      <small><i class="fa fa-trash"></i> Recycle bin</small>
     </h1>
   </section>
   <!-- Main content -->
@@ -14,8 +14,7 @@
           <div class="col-md-12">
             <div class="pull-left">
               <div class="btn-group">
-                <a href="<?php echo site_url('admin/blog/form') ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Entri Baru</a>
-                <a href="<?php echo site_url('admin/blog/recycle_bin') ?>" class="btn btn-sm btn-default"><i class="fa fa-trash"></i> Recycle Bin</a>
+                <a href="<?php echo site_url('admin/blog') ?>" class="btn btn-sm btn-default"><i class="fa fa-chevron-left"></i> Kembali</a>
               </div>
             </div>
             <br>
@@ -23,7 +22,7 @@
           </div>
           <div class="col-md-12">
             <div class="table-responsive">
-              <form action="<?php echo base_url('admin/blog/multiple_delete') ?>" method="post">
+              <form action="<?php echo base_url('admin/blog/multiple_restore') ?>" method="post">
                 <table class="table table-hover" id="example1">
                   <thead>
                     <tr>
@@ -33,7 +32,7 @@
                       <th>
                         <div class="pull-left">
                           <div class="btn-group">
-                            <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-trash"></i></button>
+                            <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-check-circle"></i></button>
                             <a href="#" class="btn btn-sm btn-default disabled">Publikasikan</a>
                             <a href="#" class="btn btn-sm btn-default disabled">Draft</a>
                           </div>
@@ -81,7 +80,7 @@
               "url": "<?php echo site_url('admin/blog/get_data_artikel')?>",
               "type": "POST",
               "data": {
-                'soft_delete': '1'
+                'soft_delete': '0'
               }
           },
 

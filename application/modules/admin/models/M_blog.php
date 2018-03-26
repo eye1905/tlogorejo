@@ -19,10 +19,11 @@ class M_blog extends CI_Model {
 	);
 	var $order = array('artikel_judul' => 'asc');
 	
-	private function _get_datatables_query()
+	function _get_datatables_query($soft_del)
     {
          
         $this->db->from($this->table);
+        $this->db->where('artikel_soft_delete', $soft_del);
  
         $i = 0;
      
@@ -58,16 +59,16 @@ class M_blog extends CI_Model {
         }
     }
 	 
-    function get_datatables() {
-        $this->_get_datatables_query();
+    function get_datatables($soft_del) {
+        $this->_get_datatables_query($soft_del);
         if($_POST['length'] != -1)
         $this->db->limit($_POST['length'], $_POST['start']);
         $query = $this->db->get();
         return $query->result();
     }
  
-    function count_filtered() {
-        $this->_get_datatables_query();
+    function count_filtered($soft_del) {
+        $this->_get_datatables_query($soft_del);
         $query = $this->db->get();
         return $query->num_rows();
     }
@@ -105,26 +106,58 @@ class M_blog extends CI_Model {
         $this->db->delete($table);
     }
 
+    function get_artikel_by_id($table, $where) {
+        return $this->db->get_where($table, $where)->result();
+    }
+
     // Multi Delete
-    function multi_delete_data()
-    {
+    function multi_delete_data() {
         $this->form_validation->set_rules('id[]','id[]','required');
         if ($this->form_validation->run() == FALSE){
-            $this->session->set_flashdata('error','Gagal menyimpan data');
-            redirect('admin/blog');
+            echo "
+                <script>
+                    alert('Gagal menghapus artikel!');
+                    window.location.href='".base_url('admin/blog')."';
+                </script>";
         } else {
             $del = $this->input->post('id');
             for ($i=0; $i < count($del) ; $i++) { 
+                // $this->db->where('artikel_id', $del[$i]);
+                // $this->db->delete($this->table);
+                $data = array('artikel_soft_delete' => 0, 'artikel_log_time' => date('Y-m-d H:i:s'));
                 $this->db->where('artikel_id', $del[$i]);
-                $this->db->delete($this->table);
+                $this->db->update($this->table, $data);
             }
-            $this->session->set_flashdata('sukses','<strong>'.count($del).'</strong> Data sukses dinonaktifkan');
-            redirect('admin/blog');
+            echo "
+                <script>
+                    alert('Sukses menghapus artikel!');
+                    window.location.href='".base_url('admin/blog')."';
+                </script>";
         }
     }
 
-    function get_artikel_by_id($table, $where)
-    {
-        return $this->db->get_where($table, $where)->result();
+    function multi_restore_data() {
+        $this->form_validation->set_rules('id[]','id[]','required');
+        if ($this->form_validation->run() == FALSE){
+            echo "
+                <script>
+                    alert('Gagal memulihkan artikel!');
+                    window.location.href='".base_url('admin/blog/recycle_bin')."';
+                </script>";
+        } else {
+            $del = $this->input->post('id');
+            for ($i=0; $i < count($del) ; $i++) { 
+                // $this->db->where('artikel_id', $del[$i]);
+                // $this->db->delete($this->table);
+                $data = array('artikel_soft_delete' => 1, 'artikel_log_time' => date('Y-m-d H:i:s'));
+                $this->db->where('artikel_id', $del[$i]);
+                $this->db->update($this->table, $data);
+            }
+            echo "
+                <script>
+                    alert('Sukses memulihkan artikel!');
+                    window.location.href='".base_url('admin/blog/recycle_bin')."';
+                </script>";
+        }
     }
 }

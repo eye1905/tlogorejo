@@ -26,10 +26,12 @@
 
               <div class="form-group">
                 <label for="exampleInputFile" class="col-md-1 control-label">Gambar</label>
-                <div class="col-md-10 col-offset-1">
+                <div class="col-md-10">
                   <input type="file" id="exampleInputFile" name="artikel_image">
-                  <p class="help-block">Example block-level help text here.</p>
-                  <a href="#modal-default" data-toggle="modal" class="btn btn-sm btn-default"><i class="fa fa-eye"></i> Dialog Ganti Preview Gambar</a>
+                  <hr>
+                  <?php foreach($kategori as $kat) { ?>
+                    <label class="radio-inline"><input type="radio" name="artikel_kategori" value="<?php echo $kat->kategori_id ?>"><?php echo $kat->kategori_nama ?></label>
+                  <?php } ?>
                 </div>
               </div>
 
@@ -49,7 +51,7 @@
                     <span class="text-bold">Abdul Rozak Romadhoni</span>
                   </label>
                   &nbsp;&nbsp;
-                  <button type="submit" class="btn btn-sm btn-primary">Publikasikan</button>
+                  <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
                   &nbsp;&nbsp;
                   <!-- <button class="btn btn-sm btn-default">Simpan</button> -->
                 </div>

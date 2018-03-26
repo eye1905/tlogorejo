@@ -170,6 +170,8 @@
               echo 'active';
             } else if($this->uri->uri_string() == 'admin/blog/edit'){
               echo 'active';
+            } else if($this->uri->uri_string() == 'admin/blog/recycle_bin'){
+              echo 'active';
             }
           ?>">
           <a href="#"><i class="fa fa-link"></i> <span>Postingan</span>

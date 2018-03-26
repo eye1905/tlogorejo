@@ -144,8 +144,8 @@
 .btn {
 	/*color: #000;*/
 	/*background-color: #FFF;*/
-	border-radius: 2px;
-	box-shadow: 1px 1px 1px 1px #bfbfbf;
+	border-radius: 1px;
+	box-shadow: 1px 1px 1px 0px #bfbfbf;
 }
 .btn-rounded {
 	border-radius: 50px;

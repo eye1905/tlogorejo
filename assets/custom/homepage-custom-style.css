@@ -1,3 +1,30 @@
+/* Media Object */
+.media .media-heading {
+  margin-bottom: 0.2em;
+}
+.media .media-body h5 {
+  font-size: 16px;
+  font-weight: 500;
+}
+.media .media-body {
+  margin-left: 0.8em;
+}
+.media .media-body p {
+  margin-bottom: 0.6em;
+  font-size: 14px;
+}
+.media .media-body a {
+  margin-bottom: 1em;
+}
+.media .media-body .admin {
+  color: red;
+}
+.media .media-left a > img {
+  border-radius: 100%;
+  width: 64px;
+  height: auto;  
+}
+
 .btn-flat {
   border-radius: 0;
 }

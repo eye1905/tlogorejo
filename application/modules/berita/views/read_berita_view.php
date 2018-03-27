@@ -62,6 +62,39 @@
                               </div>
                             </form>
                           </div>
+                          <hr>
+
+                          <div class="table-responsive">
+                            <div class="pull-left">
+                              <!-- Comment -->
+                              <div class="media">
+                                <div class="media-left">
+                                  <a href="#">
+                                    <img class="media-object" src="<?php echo base_url('assets/img/default_profil.svg') ?>" alt="...">
+                                  </a>
+                                </div>
+                                <div class="media-body">
+                                  <h5 class="media-heading">Abdul Rozak</h5>
+                                  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.</p>
+
+                                  <!-- reply -->
+                                  <div class="media">
+                                    <div class="media-left">
+                                      <a href="#">
+                                        <img class="media-object" src="<?php echo base_url('assets/img/default_profil.svg') ?>" alt="...">
+                                      </a>
+                                    </div>
+                                    <div class="media-body">
+                                      <h5 class="media-heading admin">Admin</h5>
+                                      <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.</p>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>  
+                          </div>
+
                         </div>
                       </div>
 

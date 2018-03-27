@@ -64,13 +64,21 @@
           <li><a href="#hukum">Dasa Hukum</a></li>
         <?php } else if(($url == 'berita')){ ?>
           <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li>
-          <?php foreach($kategori as $row){ ?>
-          <li><a href="#"><?php echo $row->kategori_nama ?></a></li>
+          <?php if(!empty($kategori)){ ?>
+            <?php foreach($kategori as $row){ ?>
+            <li><a href="#"><?php echo $row->kategori_nama ?></a></li>
+            <?php } ?>
+          <?php } else { ?>
+            <li><a href="#">Tidak Ada Menu</a></li>
           <?php } ?>
         <?php } else { ?>
           <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li>
-          <?php foreach($kategori as $row){ ?>
-          <li><a href="#"><?php echo $row->kategori_nama ?></a></li>
+          <?php if(!empty($kategori)){ ?>
+            <?php foreach($kategori as $row){ ?>
+            <li><a href="#"><?php echo $row->kategori_nama ?></a></li>
+            <?php } ?>
+          <?php } else { ?>
+            <li><a href="#">Tidak Ada Menu</a></li>
           <?php } ?>
         <?php } ?>
         </ul>

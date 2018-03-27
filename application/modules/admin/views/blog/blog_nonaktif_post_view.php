@@ -14,7 +14,7 @@
           <div class="col-md-12">
             <div class="pull-left">
               <div class="btn-group">
-                <a href="<?php echo site_url('admin/blog') ?>" class="btn btn-sm btn-default"><i class="fa fa-chevron-left"></i> Kembali</a>
+                <a href="<?php echo site_url('admin/C_blog') ?>" class="btn btn-sm btn-default"><i class="fa fa-chevron-left"></i> Kembali</a>
               </div>
             </div>
             <br>
@@ -22,7 +22,7 @@
           </div>
           <div class="col-md-12">
             <div class="table-responsive">
-              <form action="<?php echo base_url('admin/blog/multiple_restore') ?>" method="post">
+              <form action="<?php echo base_url('admin/C_blog/multiple_restore') ?>" method="post">
                 <table class="table table-hover" id="example1">
                   <thead>
                     <tr>
@@ -77,7 +77,7 @@
           }],
            
           "ajax": {
-              "url": "<?php echo site_url('admin/blog/get_data_artikel')?>",
+              "url": "<?php echo site_url('admin/C_blog/get_data_artikel')?>",
               "type": "POST",
               "data": {
                 'soft_delete': '0'

@@ -14,8 +14,8 @@
           <div class="col-md-12">
             <div class="pull-left">
               <div class="btn-group">
-                <a href="<?php echo site_url('admin/blog/form') ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Entri Baru</a>
-                <a href="<?php echo site_url('admin/blog/recycle_bin') ?>" class="btn btn-sm btn-default"><i class="fa fa-trash"></i> Recycle Bin</a>
+                <a href="<?php echo site_url('admin/C_blog/form') ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Entri Baru</a>
+                <a href="<?php echo site_url('admin/C_blog/recycle_bin') ?>" class="btn btn-sm btn-default"><i class="fa fa-trash"></i> Recycle Bin</a>
               </div>
             </div>
             <br>
@@ -23,7 +23,7 @@
           </div>
           <div class="col-md-12">
             <div class="table-responsive">
-              <form action="<?php echo base_url('admin/blog/multiple_delete') ?>" method="post">
+              <form action="<?php echo base_url('admin/C_blog/multiple_delete') ?>" method="post">
                 <table class="table table-hover" id="example1">
                   <thead>
                     <tr>
@@ -78,7 +78,7 @@
           }],
            
           "ajax": {
-              "url": "<?php echo site_url('admin/blog/get_data_artikel')?>",
+              "url": "<?php echo site_url('admin/C_blog/get_data_artikel')?>",
               "type": "POST",
               "data": {
                 'soft_delete': '1'

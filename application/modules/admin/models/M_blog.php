@@ -117,7 +117,7 @@ class M_blog extends CI_Model {
             echo "
                 <script>
                     alert('Gagal menghapus artikel!');
-                    window.location.href='".base_url('admin/blog')."';
+                    window.location.href='".base_url('admin/C_blog')."';
                 </script>";
         } else {
             $del = $this->input->post('id');
@@ -131,7 +131,7 @@ class M_blog extends CI_Model {
             echo "
                 <script>
                     alert('Sukses menghapus artikel!');
-                    window.location.href='".base_url('admin/blog')."';
+                    window.location.href='".base_url('admin/C_blog')."';
                 </script>";
         }
     }
@@ -142,7 +142,7 @@ class M_blog extends CI_Model {
             echo "
                 <script>
                     alert('Gagal memulihkan artikel!');
-                    window.location.href='".base_url('admin/blog/recycle_bin')."';
+                    window.location.href='".base_url('admin/C_blog/recycle_bin')."';
                 </script>";
         } else {
             $del = $this->input->post('id');
@@ -156,7 +156,7 @@ class M_blog extends CI_Model {
             echo "
                 <script>
                     alert('Sukses memulihkan artikel!');
-                    window.location.href='".base_url('admin/blog/recycle_bin')."';
+                    window.location.href='".base_url('admin/C_blog/recycle_bin')."';
                 </script>";
         }
     }

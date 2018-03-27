@@ -164,13 +164,13 @@
         <!-- Menu Blog -->
         <li class="treeview
           <?php  
-            if($this->uri->uri_string() == 'admin/blog'){
+            if($this->uri->uri_string() == 'admin/C_blog'){
               echo 'active';
-            } else if($this->uri->uri_string() == 'admin/blog/form'){
+            } else if($this->uri->uri_string() == 'admin/C_blog/form'){
               echo 'active';
-            } else if($this->uri->uri_string() == 'admin/blog/edit'){
+            } else if($this->uri->uri_string() == 'admin/C_blog/edit'){
               echo 'active';
-            } else if($this->uri->uri_string() == 'admin/blog/recycle_bin'){
+            } else if($this->uri->uri_string() == 'admin/C_blog/recycle_bin'){
               echo 'active';
             }
           ?>">
@@ -180,8 +180,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="<?php if($this->uri->uri_string() == 'admin/blog') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/blog"><i class="fa fa-link"></i> Artikel</a>
+            <li class="<?php if($this->uri->uri_string() == 'admin/C_blog') { echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/C_blog"><i class="fa fa-link"></i> Artikel</a>
             </li>
             <li>
               <a href="#"><i class="fa fa-link"></i> Komentar</a>

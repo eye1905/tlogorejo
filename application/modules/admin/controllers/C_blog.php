@@ -3,7 +3,7 @@
 /**
 * 
 */
-class Blog extends MY_Controller {
+class C_blog extends MY_Controller {
 
 	function __construct() {
     	parent::__construct();
@@ -54,11 +54,11 @@ class Blog extends MY_Controller {
 
             $row[] = '<div class="text-center"><input type="checkbox" name="id[]" value="'.$field->artikel_id.'"></div>';
             $row[] = '<span class="text-primary">'.$field->artikel_judul.'</span><br>
-                      <a href="'.base_url('admin/blog/edit?id='.$field->artikel_id).'" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i> Edit</a>
+                      <a href="'.base_url('admin/C_blog/edit?id='.$field->artikel_id).'" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i> Edit</a>
                       '.($field->artikel_soft_delete != 1 ? 
-                        '<a name="id" href="'.base_url('admin/blog/restore?id='.$field->artikel_id).'" class="btn btn-xs btn-success"><i class="fa fa-refresh"></i> Restore</a>' 
+                        '<a name="id" href="'.base_url('admin/C_blog/restore?id='.$field->artikel_id).'" class="btn btn-xs btn-success"><i class="fa fa-refresh"></i> Restore</a>' 
                         :
-                        '<a name="id" href="'.base_url('admin/blog/delete?id='.$field->artikel_id).'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>').'
+                        '<a name="id" href="'.base_url('admin/C_blog/delete?id='.$field->artikel_id).'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>').'
                       ';
 
                       // <a name="id" href="'.base_url('admin/blog/delete?id='.$field->artikel_id).'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>';
@@ -115,17 +115,17 @@ class Blog extends MY_Controller {
                 echo "
                 	<script>
                 		alert('Sukses menyimpan artikel!');
-                		window.location.href='".base_url('admin/blog')."';
+                		window.location.href='".base_url('admin/C_blog')."';
                 	</script>";
             }else{
-	            redirect('admin/blog');
+	            redirect('admin/C_blog');
 	        }
                       
         }else{
         	echo "
         		<script>
         			alert('Gagal menambahkan artikel!');
-        			window.location.href='".base_url('admin/blog/form')."';
+        			window.location.href='".base_url('admin/C_blog/form')."';
         		</script>";
         }
     }
@@ -164,12 +164,12 @@ class Blog extends MY_Controller {
                 echo "
                 	<script>
                 		alert('Sukses menyimpan artikel!');
-                		window.location.href='".base_url('admin/blog')."';
+                		window.location.href='".base_url('admin/C_blog')."';
                 	</script>";
                 // redirect('admin/blog');
 	        }
 	        else{
-	            redirect('admin/blog');
+	            redirect('admin/C_blog');
 	        }
                       
         }
@@ -177,7 +177,7 @@ class Blog extends MY_Controller {
         	echo "
     		<script>
     			alert('Gagal memperbarui artikel!');
-    			window.location.href='".base_url('admin/blog/form')."';
+    			window.location.href='".base_url('admin/C_blog/form')."';
     		</script>";
             // redirect('admin/blog/form');
         }
@@ -200,7 +200,7 @@ class Blog extends MY_Controller {
     	echo "
     		<script>
     			alert('Sukses mengperbarui artikel!');
-    			window.location.href='".base_url('admin/blog')."';
+    			window.location.href='".base_url('admin/C_blog')."';
     		</script>";
     	// redirect('admin/blog');
     }
@@ -225,7 +225,7 @@ class Blog extends MY_Controller {
         echo "
             <script>
                 alert('Sukses memulihkan artikel!');
-                window.location.href='".base_url('admin/blog/recycle_bin')."';
+                window.location.href='".base_url('admin/C_blog/recycle_bin')."';
             </script>";
     }
 
@@ -236,7 +236,7 @@ class Blog extends MY_Controller {
     	echo "
     		<script>
     			alert('Sukses menghapus artikel!');
-    			window.location.href='".base_url('admin/blog')."';
+    			window.location.href='".base_url('admin/C_blog')."';
     		</script>";
     	// redirect('admin/blog');
     }

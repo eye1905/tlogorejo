@@ -148,6 +148,8 @@
           <?php  
             if($this->uri->uri_string() == 'admin/C_struktur'){
               echo 'active';
+            }else if($this->uri->uri_string() == 'admin/C_list_struktur'){
+               echo 'active';
             }
           ?>">
         <a href="#"><i class="fa fa-link"></i> <span>Struktur</span>
@@ -157,6 +159,9 @@
           <ul class="treeview-menu">
             <li class="<?php if($this->uri->uri_string() == 'admin/C_struktur'){ echo 'active'; } ?>">
               <a href="<?php echo base_url(); ?>admin/C_struktur"><i class="fa fa-link"></i>Struktur Organisasi</a>
+            </li>
+             <li class="<?php if($this->uri->uri_string() == 'admin/C_list_struktur'){ echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/C_list_struktur"><i class="fa fa-link"></i>List Struktur</a>
             </li>
           </ul>            
         </li>

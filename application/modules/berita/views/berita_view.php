@@ -15,7 +15,13 @@
 
         <div class="row">
           <div class="col-md-8" style="margin: 1vh 0 1vh 0;">
-            <?php for($i=0; $i < 5; $i++) { ?>
+          <?php if(!empty($berita)){ ?>
+            <?php 
+            function limit_words($string, $word_limit){
+              $words = explode(" ", $string);
+              return implode(" ", array_splice($words, 0, $word_limit));
+            }
+            foreach($berita as $row) { ?>
             <div class="list-berita" style="margin: 0 0 3vh 0;">
               <div class="row">
                 <div class="col-md-12">
@@ -23,22 +29,24 @@
                     <div class="container">
                       <h5>
                         <a href="#">
-                          Hello World Hello World Hello World
+                          <?php echo $row->artikel_judul ?>
                         </a>
                       </h5>
                       <div class="row">
                         <div class="col-md-4">
-                          <img src="<?php echo base_url('assets/img/berita/sample.jpg') ?>" class="thumbnail" alt="..." style="width: 100%; margin-bottom: 1vh;">
+                          <img src="<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>" class="thumbnail" alt="..." style="width: 100%; margin-bottom: 1vh;">
                         </div>
                         <div class="col-md-8">
-                          <p>Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World...</p>
-                          <a href="<?php echo base_url('berita/read/'.$i++) ?>" class="btn btn-sm btn-primary btn-rounded">Baca Selengkapnya <i class="fa fa-chevron-right"></i></a>
+                          <div class="artikel-isi">
+                            <?php echo limit_words($row->artikel_isi, 22); echo "..."; ?>
+                          </div>
+                          <a href="<?php echo base_url('berita/read/'.$row->artikel_id) ?>" class="btn btn-sm btn-primary btn-rounded">Baca Selengkapnya <i class="fa fa-chevron-right"></i></a>
                         </div>
                       </div>
                       <div class="row">
                         <div class="col-md-12">
                           <div class="pull-right">
-                            <small class="text-muted">21 Maret 2018 | Admin</small>
+                            <small class="text-muted"><?php echo $row->artikel_tanggal ?> | <?php echo $row->artikel_author ?></small>
                           </div>
                         </div>
                       </div>
@@ -48,6 +56,9 @@
               </div>
             </div>
             <?php } ?>
+          <?php } else { ?>
+          <p>Artikel Kosong</p>
+          <?php } ?>
           </div>
           <div class="col-md-4" style="margin: 1vh 0 1vh 0;">
             <div class="list-sidebar">

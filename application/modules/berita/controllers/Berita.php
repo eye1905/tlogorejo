@@ -8,10 +8,12 @@ class Berita extends MY_Controller {
 	function __construct() {
     	parent::__construct();
     	$this->load->model('admin/M_kategori');
+    	$this->load->model('M_berita');
 	}
 
 	public function index() {
 		$data['kategori'] = $this->M_kategori->get_data();
+		$data['berita'] = $this->M_berita->get_data();
 		$this->template->load('homepage_template', 'berita_view', $data);
 	}
 

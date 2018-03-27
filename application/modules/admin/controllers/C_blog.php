@@ -80,7 +80,7 @@ class C_blog extends MY_Controller {
     }
 
     function save() {
-    	$config['upload_path'] = './assets/img/upload'; //path folder
+    	$config['upload_path'] = './assets/img/berita'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
         $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
  
@@ -131,7 +131,7 @@ class C_blog extends MY_Controller {
     }
 
     function change_banner() {
-    	$config['upload_path'] = './assets/img/upload'; //path folder
+    	$config['upload_path'] = './assets/img/berita'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
         $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
  

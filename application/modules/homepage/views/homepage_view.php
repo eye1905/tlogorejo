@@ -85,7 +85,24 @@
     <!--==========================
       Featured Berita Section
     ============================-->
-    <section id="featured-berita" style="border-top: 4px solid #0093e1;">
+    <section id="featured-berita">
+      <div class="container-fluid" style="margin-bottom: 6vh;">
+        <div class="row">
+          <div id="breaking-news-container">
+            <div id="breaking-news-colour" class="slideup animated">
+              
+            </div>  
+            <span class="breaking-news-title delay-animated slidein">
+              <strong>BREAKING</strong>
+            </span> 
+              <a class="breaking-news-headline delay-animated2 fadein marquee">
+                <?php for($i=0; $i<2; $i++){ ?>
+                | Kecelakaan Beruntun di Bojonegoro, Seorang Pemotor Meninggal Dunia di TKP 
+                <?php } ?>
+              </a>
+          </div> 
+        </div>
+      </div>  
       <div class="container">
         <div class="row">
 
@@ -111,7 +128,7 @@
           </div>
 
         </div>
-        <div class="row">
+        <div class="row" style="margin-top: 6vh;">
           <div class="col-md-12">
             <div class="container text-center" style="margin-bottom: 20px;">
               <a href="<?php echo base_url('berita') ?>" class="btn btn-md btn-primary btn-rounded" style="padding-right: 2em; padding-left: 2em;">Selengkapnya</a>
@@ -173,7 +190,7 @@
     <!--==========================
       Call To Action Section
     ============================-->
-    <section id="call-to-action" class="wow fadeIn" style="background: url('<?php echo base_url('assets') ?>/img/bg.jpg') fixed center center">
+    <section id="call-to-action" class="wow fadeIn" style="background: url('<?php echo base_url('assets/img/bg2.jpg') ?>') fixed center center; background-size: cover; ">
       <div class="container text-center">
         <h3>Call To Action</h3>
         <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>

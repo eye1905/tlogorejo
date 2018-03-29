@@ -66,7 +66,7 @@
           <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li>
           <?php if(!empty($kategori)){ ?>
             <?php foreach($kategori as $row){ ?>
-            <li><a href="#"><?php echo $row->kategori_nama ?></a></li>
+            <li><a href="<?php echo site_url('berita/category/'.$row->kategori_slug) ?>"><?php echo $row->kategori_nama ?></a></li>
             <?php } ?>
           <?php } else { ?>
             <li><a href="#">Tidak Ada Menu</a></li>
@@ -75,7 +75,7 @@
           <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li>
           <?php if(!empty($kategori)){ ?>
             <?php foreach($kategori as $row){ ?>
-            <li><a href="#"><?php echo $row->kategori_nama ?></a></li>
+            <li><a href="<?php echo site_url('berita/category/'.$row->kategori_slug) ?>"><?php echo $row->kategori_nama ?></a></li>
             <?php } ?>
           <?php } else { ?>
             <li><a href="#">Tidak Ada Menu</a></li>

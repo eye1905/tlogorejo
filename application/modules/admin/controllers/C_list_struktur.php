@@ -14,7 +14,7 @@ class C_list_struktur extends MY_Controller {
 
     public function index()
     {
- 		$data['struktur'] = $this->M_struktur->index();
+ 		$data['struktur'] = $this->M_struktur->get_data_list();
  		$this->template->load('admin_template', 'list_struktur', $data);
     }
 

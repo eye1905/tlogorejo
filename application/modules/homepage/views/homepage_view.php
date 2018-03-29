@@ -265,7 +265,7 @@ var myDiagram =
 // the template we defined earlier
 myDiagram.nodeTemplate =
   $(go.Node, "Horizontal",
-    { background: "#4169E1" },
+    { background: "#00bfff" },
     $(go.Picture,
       { margin: 10, width: 60, height: 80, background: "white" },
       new go.Binding("source")),
@@ -287,7 +287,7 @@ model.nodeDataArray =
   { key: "<?php echo $value->id; ?>", 
     parent: "<?php echo $value->id_role; ?>", 
     name: "<?php echo $value->Jabatan; ?> \n\n <?php echo $value->nama; ?>",    
-    source: "<?php echo $value->foto; ?>" },
+    source: "<?php echo base_url().'/uploads/thumbnails/'.$value->foto; ?>" },
     <?php } ?>
 ];
 myDiagram.model = model;

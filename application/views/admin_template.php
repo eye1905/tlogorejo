@@ -216,7 +216,24 @@
             } else if($this->uri->uri_string() == 'admin/c_kabupaten'){
               echo 'active';
             }
-            else if($this->uri->uri_string() == 'admin/c_kecamatan'){
+          ?>">
+          <a href="#"><i class="fa fa-link"></i> <span>Dana Desa</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li class="<?php if($this->uri->uri_string() == 'admin/C_dana'){ echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/C_dana"><i class="fa fa-link"></i>Dana Desa</a>
+            </li>
+            <li class="<?php if($this->uri->uri_string() == 'admin/C_sumber') { echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/C_sumber"><i class="fa fa-link"></i>Sumber Dana</a></li>
+          </ul>
+        </li>
+        
+        <li class="treeview
+          <?php 
+            if($this->uri->uri_string() == 'admin/c_kota'){
               echo 'active';
             }
              else if($this->uri->uri_string() == 'admin/blog/kategori'){

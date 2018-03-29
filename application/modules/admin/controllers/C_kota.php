@@ -21,6 +21,7 @@ class C_kota extends MY_Controller {
 
  		$data['provinsi'] = $this->M_daerah->index();
  		$data['kabupaten'] = $this->M_daerah->get_kabupaten();
+ 		
  		$data['kecamatan'] = $this->M_daerah->get_kecamatan($config['per_page'], $from);
  		$data['desa'] = $this->M_daerah->get_desa();
  		$this->template->load('admin_template', 'kota_view', $data);

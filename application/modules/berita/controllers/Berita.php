@@ -12,19 +12,26 @@ class Berita extends MY_Controller {
 	}
 
 	public function index() {
-		$data['kategori'] = $this->M_kategori->get_data();
-		// $data['berita'] = $this->M_berita->get_data();
+		$data['kategori'] = $this->M_kategori->get_kategori();
 		$data['berita'] = $this->M_berita->get_artikel();
 		$this->template->load('homepage_template', 'berita_view', $data);
 	}
 
 	public function read($slug = NULL) {
-		$data['kategori'] = $this->M_kategori->get_data();
-		// $data['berita'] = $this->M_berita->get_artikel_by_id($id);
+		$data['kategori'] = $this->M_kategori->get_kategori();
 		$data['berita'] = $this->M_berita->get_artikel($slug);
 		if (empty($data['berita'])) {
 			show_404();
 		}
 		$this->template->load('homepage_template', 'read_berita_view', $data);
+	}
+
+	public function category($slug = NULL) {
+		$data['kategori'] = $this->M_kategori->get_kategori();
+		$data['berita_kategori'] = $this->M_berita->get_artikel_by_kategori($slug);
+		if (empty($data['berita_kategori'])) {
+			show_404();
+		}
+		$this->template->load('homepage_template', 'berita_kategori_view', $data);
 	}
 }

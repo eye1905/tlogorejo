@@ -43,7 +43,7 @@
                               <small>Tag : </small>
                             </div>
                             <div class="pull-right">
-                              <small class="text-muted"><?php echo $row->artikel_tanggal ?> | <?php echo $row->artikel_author ?></small>
+                              <small class="text-muted font-italic"><?php echo $row->artikel_tanggal ?> | <?php echo $row->artikel_author ?></small>
                             </div>
                           </div>                          
                         </div>

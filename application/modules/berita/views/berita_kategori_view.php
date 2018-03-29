@@ -3,7 +3,7 @@
     <!--==========================
       Call To Action Section
     ============================-->
-    <section id="call-to-action" class="wow fadeIn" style="background: url('<?php echo base_url('assets/img/bg2.jpg') ?>') fixed center center; background-size: cover; ">
+    <section id="call-to-action" class="wow fadeIn" style="background: url('<?php echo base_url('assets') ?>/img/bg.jpg') fixed center center">
       <div class="container text-center" style="margin-top: 10vh;">
         <h3>Berita Tlogorejo</h3>
         <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -15,13 +15,13 @@
 
         <div class="row">
           <div class="col-md-8" style="margin: 1vh 0 1vh 0;">
-          <?php if(!empty($berita)){ ?>
+          <?php if(!empty($berita_kategori)){ ?>
             <?php 
             function limit_words($string, $word_limit){
               $words = explode(" ", $string);
               return implode(" ", array_splice($words, 0, $word_limit));
             }
-            foreach($berita as $row) { ?>
+            foreach($berita_kategori as $row) { ?>
             <div class="list-berita" style="margin: 0 0 3vh 0;">
               <div class="row">
                 <div class="col-md-12">

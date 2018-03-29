@@ -17,7 +17,7 @@
                 <label class="col-md-1 control-label">Entri</label>
                 <div class="col-md-10">
                   <input type="hidden" class="form-control" name="artikel_author" value="Abdul Rozak R.">
-                  <input type="text" class="form-control" name="artikel_judul" placeholder="Judul postingan">
+                  <input type="text" class="form-control" name="artikel_judul" placeholder="Judul postingan" autocomplete="off">
                 </div>
               </div>
 

@@ -20,7 +20,7 @@
                 <div class="col-md-10">
                   <input type="hidden" class="form-control" name="artikel_id" value="<?php echo $row->artikel_id ?>">
                   <input type="hidden" class="form-control" name="artikel_author" value="Abdul Rozak R.">
-                  <input type="text" class="form-control" name="artikel_judul" value="<?php echo $row->artikel_judul ?>" placeholder="Judul postingan">
+                  <input type="text" class="form-control" name="artikel_judul" value="<?php echo $row->artikel_judul ?>" placeholder="Judul postingan" autocomplete="off">
                 </div>
               </div>
 
@@ -32,7 +32,7 @@
                   <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-default">Ganti Banner</button>
                   <hr>
                   <?php foreach($kategori as $kat) { ?>
-                    <label class="radio-inline"><input type="radio" name="artikel_kategori" value="<?php echo $kat->kategori_id ?>"><?php echo $kat->kategori_nama ?></label>
+                    <label class="radio-inline"><input type="radio" name="artikel_kategori" value="<?php echo $kat->kategori_slug ?>"><?php echo $kat->kategori_nama ?></label>
                   <?php } ?>
                 </div>
               </div>

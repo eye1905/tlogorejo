@@ -3,7 +3,7 @@
     <!--==========================
       Call To Action Section
     ============================-->
-    <section id="call-to-action" class="wow fadeIn" style="background: url('<?php echo base_url('assets') ?>/img/bg.jpg') fixed center center">
+    <section id="call-to-action" class="wow fadeIn" style="background: url('<?php echo base_url('assets') ?>/img/bg2.jpg') fixed center center; background-size: cover;">
       <div class="container text-center" style="margin-top: 10vh;">
         <h3>Berita Tlogorejo</h3>
         <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
@@ -51,7 +51,10 @@
                       <hr>
                       <div class="row">
                         <div class="col-md-12">
-                          <div class="comment-artikel">
+                          <?php if($row->artikel_komentar == FALSE){ ?>
+                          <div class="alert alert-warning"><i class="fa fa-ban"></i><em> Komentar dinonaktifkan!</em></div>
+                          <?php } else { ?>
+                          <div class="form-komentar">
                             <form>
                               <div class="form-group">
                                 <input type="text" name="" class="form-control" placeholder="Masukan Nama" disabled>
@@ -65,8 +68,7 @@
                             </form>
                           </div>
                           <hr>
-
-                          <div class="table-responsive">
+                          <div class="list-komentar">
                             <div class="pull-left">
                               <!-- Comment -->
                               <div class="media">
@@ -96,6 +98,7 @@
                               </div>
                             </div>  
                           </div>
+                          <?php } ?>
 
                         </div>
                       </div>

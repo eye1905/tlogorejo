@@ -128,7 +128,7 @@
           </div>
 
         </div>
-        <div class="row" style="margin-top: 6vh;">
+        <div class="row" style="margin-top: 3vh;">
           <div class="col-md-12">
             <div class="container text-center" style="margin-bottom: 20px;">
               <a href="<?php echo base_url('berita') ?>" class="btn btn-md btn-primary btn-rounded" style="padding-right: 2em; padding-left: 2em;">Selengkapnya</a>
@@ -145,7 +145,7 @@
       <div class="container">
 
         <header class="section-header wow fadeInUp">
-          <h3>Services</h3>
+          <h3>Layanan</h3>
           <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus, ad pro quaestio laboramus. Ei ubique vivendum pro. At ius nisl accusam lorenta zanos paradigno tridexa panatarel.</p>
         </header>
 
@@ -205,7 +205,7 @@
       <div class="container">
 
         <header class="section-header">
-          <h3>Our Clients</h3>
+          <h3>Lembaga</h3>
         </header>
 
         <div class="owl-carousel clients-carousel">

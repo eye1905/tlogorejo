@@ -45,7 +45,7 @@
     <div class="container-fluid">
 
       <div id="logo" class="pull-left">
-        <a href="#intro"><img src="<?php echo base_url('assets')?>/img/tlogorejo-dua.png" alt="" title="" />
+        <a href="<?php echo site_url('homepage') ?>"><img src="<?php echo base_url('assets')?>/img/tlogorejo-dua.png" alt="" title="" />
         </a>
         <!-- Uncomment below if you prefer to use an image logo -->
          <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a> -->
@@ -56,14 +56,14 @@
         <?php $url = $this->uri->uri_string(); if(($url == 'homepage') || ($url == '')){ ?>
           <li><a href="#intro">Beranda</a></li>
           <li><a href="#featured-berita">Berita</a></li>
-          <li><a href="#lembaga">Lembaga</a></li>
+          <li><a href="#clients">Lembaga</a></li>
           <li><a href="#services">Layanan</a></li>
           <li><a href="#portfolio">Monografi</a></li>
           <li><a href="#team">Struktur</a></li>
           <li><a href="#dana">Transparasi Dana</a></li>
           <li><a href="#hukum">Dasa Hukum</a></li>
         <?php } else if(($url == 'berita')){ ?>
-          <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li>
+          <!-- <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li> -->
           <?php if(!empty($kategori)){ ?>
             <?php foreach($kategori as $row){ ?>
             <li><a href="<?php echo site_url('berita/category/'.$row->kategori_slug) ?>"><?php echo $row->kategori_nama ?></a></li>
@@ -72,7 +72,7 @@
             <li><a href="#">Tidak Ada Menu</a></li>
           <?php } ?>
         <?php } else { ?>
-          <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li>
+          <!-- <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li> -->
           <?php if(!empty($kategori)){ ?>
             <?php foreach($kategori as $row){ ?>
             <li><a href="<?php echo site_url('berita/category/'.$row->kategori_slug) ?>"><?php echo $row->kategori_nama ?></a></li>

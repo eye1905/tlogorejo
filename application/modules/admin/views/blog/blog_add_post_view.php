@@ -12,7 +12,7 @@
       <div class="box-body">
         <div class="row">
           <div class="col-md-12">
-            <form class="form-horizontal" action="<?php echo base_url('admin/blog/save') ?>" method="post" enctype="multipart/form-data">
+            <form class="form-horizontal" action="<?php echo base_url('admin/c_blog/save') ?>" method="post" enctype="multipart/form-data">
               <div class="form-group">
                 <label class="col-md-1 control-label">Entri</label>
                 <div class="col-md-10">

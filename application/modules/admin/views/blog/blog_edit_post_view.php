@@ -14,7 +14,7 @@
         <div class="row">
           <div class="col-md-12">
             <?php foreach($artikel as $row){ ?>
-            <form class="form-horizontal" action="<?php echo base_url('admin/blog/update') ?>" method="post" enctype="multipart/form-data">
+            <form class="form-horizontal" action="<?php echo base_url('admin/c_blog/update') ?>" method="post" enctype="multipart/form-data">
               <div class="form-group">
                 <label class="col-md-1 control-label">Entri</label>
                 <div class="col-md-10">
@@ -28,6 +28,8 @@
                 <label for="exampleInputFile" class="col-md-1 control-label">Gambar</label>
                 <div class="col-md-10">
                   <input type="file" id="exampleInputFile" name="artikel_image">
+                  <br>
+                  <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-default">Ganti Banner</button>
                   <hr>
                   <?php foreach($kategori as $kat) { ?>
                     <label class="radio-inline"><input type="radio" name="artikel_kategori" value="<?php echo $kat->kategori_id ?>"><?php echo $kat->kategori_nama ?></label>
@@ -68,10 +70,10 @@
                   <div class="modal-body">
                     <div class="row">
                       <div class="col-md-6 col-sm-6">
-                        <img src="<?php echo base_url("assets/img/upload/$row->artikel_image") ?>" class="img-thumbnail">
+                        <img src="<?php echo base_url("assets/img/berita/$row->artikel_image") ?>" class="img-thumbnail">
                       </div>
                       <div class="col-md-6 col-sm-6">
-                        <form action="<?php echo base_url('admin/blog/change_banner') ?>" method="post" enctype="multipart/form-data">
+                        <form action="<?php echo base_url('admin/c_blog/change_banner') ?>" method="post" enctype="multipart/form-data">
                           <div class="form-group">
                             <input type="hidden" name="artikel_id" value="<?php echo $row->artikel_id ?>">
                             <input type="file" name="artikel_image">

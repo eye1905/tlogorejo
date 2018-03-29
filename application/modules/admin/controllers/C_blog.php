@@ -7,6 +7,7 @@ class C_blog extends MY_Controller {
 
 	function __construct() {
     	parent::__construct();
+        $this->load->helper('url');
         $this->load->helper('date');
     	$this->load->library('upload');
     	$this->load->model('M_blog');
@@ -100,14 +101,17 @@ class C_blog extends MY_Controller {
                 $this->load->library('image_lib', $config);
                 $this->image_lib->resize();
 
+                $slug = url_title($this->input->post('artikel_judul'), 'dash', TRUE);
+
                 $data = array(
                 	'artikel_judul' => $this->input->post('artikel_judul'),
+                    'artikel_slug' => $slug,
                 	'artikel_isi' => $this->input->post('artikel_isi'),
                 	'artikel_tanggal' => date('d/m/Y'),
                 	'artikel_image' => $gbr['file_name'],
                 	'artikel_author' => 'Admin',
                 	'artikel_kategori' => $this->input->post('artikel_kategori'),
-                	'artikel_status' => 0,
+                	'artikel_status' => 1,
                 	'artikel_log_time' => date('Y-m-d H:i:s'),
                 );
 
@@ -184,8 +188,11 @@ class C_blog extends MY_Controller {
     }
 
     function update() {
+        $slug = url_title($this->input->post('artikel_judul'), 'dash', TRUE);
+
     	$data = array(
-    		'artikel_judul' => $this->input->post('artikel_judul'),
+            'artikel_judul' => $this->input->post('artikel_judul'),
+    		'artikel_slug' => $slug,
     		'artikel_isi' => $this->input->post('artikel_isi'),
             'artikel_author' => 'Admin',
             'artikel_kategori' => $this->input->post('artikel_kategori'),

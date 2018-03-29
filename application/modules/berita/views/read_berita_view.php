@@ -20,12 +20,13 @@
                 <div class="col-md-12">
                   <div class="card">
                     <div class="container">
-
+                    <?php if(!empty($berita)){ ?>
+                      <?php foreach($berita as $row){ ?>
                       <div class="row">
                         <div class="col-md-12">
                           <div class="title-artikel">
                             <h3>
-                              <a href="#">Hello World Hello World Hello World</a>
+                              <a href="#"><?php echo $row->artikel_judul ?></a>
                             </h3>
                           </div>
                           <div class="body-artikel">
@@ -33,7 +34,8 @@
                               <img src="<?php echo base_url('assets/img/berita/sample.jpg') ?>" class="thumbnail" alt="..." style="width: 100%; margin-bottom: 1vh;">
                             </div>
                             <div class="content-artikel">
-                              <p>Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World Hello World...</p>
+                              <br>
+                              <?php echo $row->artikel_isi ?>
                             </div>
                           </div>
                           <div class="footer-artikel">
@@ -41,7 +43,7 @@
                               <small>Tag : </small>
                             </div>
                             <div class="pull-right">
-                              <small class="text-muted">21 Maret 2018 | Admin</small>
+                              <small class="text-muted"><?php echo $row->artikel_tanggal ?> | <?php echo $row->artikel_author ?></small>
                             </div>
                           </div>                          
                         </div>
@@ -97,6 +99,11 @@
 
                         </div>
                       </div>
+                      <?php } ?>
+                    <?php } else { ?>
+                      <!-- Jika Kosong -->
+                      <?php echo 'Kosong' ?>
+                    <?php } ?>
 
                     </div>
                   </div>

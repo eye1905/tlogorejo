@@ -40,7 +40,7 @@
                           <div class="artikel-isi">
                             <?php echo limit_words($row->artikel_isi, 22); echo "..."; ?>
                           </div>
-                          <a href="<?php echo base_url('berita/read/'.$row->artikel_id) ?>" class="btn btn-sm btn-primary btn-rounded">Baca Selengkapnya <i class="fa fa-chevron-right"></i></a>
+                          <a href="<?php echo site_url('berita/read/'.$row->artikel_slug) ?>" class="btn btn-sm btn-primary btn-rounded">Baca Selengkapnya <i class="fa fa-chevron-right"></i></a>
                         </div>
                       </div>
                       <div class="row">

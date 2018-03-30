@@ -1,3 +1,9 @@
+<?php
+if ($this->session->userdata('masuk') == TRUE) {
+          $url = $base_url;
+          redirect($url);
+        }
+ ?>
 <!DOCTYPE html>
 <html>
 <head>

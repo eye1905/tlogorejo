@@ -14,8 +14,6 @@
             <?php echo validation_errors(); ?>
             <?php echo $this->session->keep_flashdata('msg') ?>
             <div class="pull-left">
-              <div class="btn-group">
-                <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-default"><i class="fa fa-plus"></i> Tambah User</button>
                 <a href="#" class="btn btn-sm btn-default"><i class="fa fa-trash"></i> Recycle Bin</a>
               </div>
             </div>

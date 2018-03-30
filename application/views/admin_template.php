@@ -146,10 +146,11 @@ if ($this->session->userdata('masuk') == TRUE) {
           </div>
         </li>
         <li class="header">MENU</li>
-        <!-- Optionally, you can add icons to the links -->
         <li class="<?php if($this->uri->uri_string() == 'admin') { echo 'active'; } ?>">
           <a href="<?php echo base_url(); ?>admin"><i class="fa fa-dashboard"></i><span>Beranda</span></a></li>
-        <li class="<?php if($this->uri->uri_string() == 'admin/homepage') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/homepage"><i class="fa fa-book"></i> <span>Berita</span></a></li>
+        <li class="<?php if($this->uri->uri_string() == 'admin') { echo 'active'; } ?>">
+          <a href="<?php echo base_url(); ?>admin/C_slider"><i class="fa fa-dashboard"></i><span>Slider</span></a></li>
+        <li class="<?php if($this->uri->uri_string() == 'admin/C_slider') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/homepage"><i class="fa fa-book"></i> <span>Berita</span></a></li>
         <li class="<?php if($this->uri->uri_string() == 'admin/C_user') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/C_user"><i class="fa fa-user"></i> <span>User</span></a></li>
         <li class="treeview
           <?php  
@@ -218,9 +219,9 @@ if ($this->session->userdata('masuk') == TRUE) {
 
         <li class="treeview
           <?php 
-            if($this->uri->uri_string() == 'admin/c_kota'){
+            if($this->uri->uri_string() == 'admin/C_dana'){
               echo 'active';
-            } else if($this->uri->uri_string() == 'admin/c_kabupaten'){
+            } else if($this->uri->uri_string() == 'admin/C_sumber'){
               echo 'active';
             }
           ?>">
@@ -231,7 +232,7 @@ if ($this->session->userdata('masuk') == TRUE) {
           </a>
           <ul class="treeview-menu">
             <li class="<?php if($this->uri->uri_string() == 'admin/C_dana'){ echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/C_dana"><i class="fa fa-link"></i>Dana Desa</a>
+              <a href="<?php echo base_url(); ?>admin/C_dana"><i class="fa fa-link"></i>Dana Masuk</a>
             </li>
             <li class="<?php if($this->uri->uri_string() == 'admin/C_sumber') { echo 'active'; } ?>">
               <a href="<?php echo base_url(); ?>admin/C_sumber"><i class="fa fa-link"></i>Sumber Dana</a></li>

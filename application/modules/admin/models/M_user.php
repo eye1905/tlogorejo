@@ -4,13 +4,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 /**
 * 
 */
-class M_user extends CI_Model {
+class M_user extends Model_Utama {
 
-	var $table = 'users';
+		function __construct() {
+		parent::__construct();
+		$this->table = "users";
+		$this->primary_key = "id_user";
+		$this->like = "user_nama";
+		$this->order_by = "user_id";
+		}
 	
 	// Read
 	function get_data($status) {
-		$query = $this->db->query("SELECT * FROM $this->table WHERE user_status = '$status'");
+		$query = $this->db->query("SELECT * FROM $this->table WHERE user_soft_delete = '$status'");
 		return $query->result();
 	}
 

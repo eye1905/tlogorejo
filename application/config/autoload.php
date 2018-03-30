@@ -76,7 +76,7 @@ $autoload['libraries'] = array('database', 'session', 'xmlrpc','ciparser','templ
 |	$autoload['drivers'] = array('cache');
 */
 
-$autoload['drivers'] = array('session');
+$autoload['drivers'] = array();
 
 
 /*

@@ -41,7 +41,7 @@ class C_blog extends MY_Controller {
 		$this->template->load('admin_template', 'blog/blog_kategori_view');
 	}
 
-	function get_data_artikel() {
+	public function get_data_artikel() {
         $soft_del = $this->input->post('soft_delete'); // Kondisi tidak terhapus
         $list = $this->M_blog->get_datatables($soft_del);
         $data = array();
@@ -91,13 +91,13 @@ class C_blog extends MY_Controller {
                 $gbr = $this->upload->data();
                 //Compress Image
                 $config['image_library']='gd2';
-                $config['source_image']='./assets/img/upload'.$gbr['file_name'];
+                $config['source_image']= FCPATH.'/assets/img/upload'.$gbr['file_name'];
                 $config['create_thumb']= FALSE;
                 $config['maintain_ratio']= FALSE;
                 $config['quality']= '60%';
                 // $config['width']= 710;
                 $config['height']= 420;
-                $config['new_image']= './assets/img/upload'.$gbr['file_name'];
+                $config['new_image']= FCPATH.'/assets/img/upload'.$gbr['file_name'];
                 $this->load->library('image_lib', $config);
                 $this->image_lib->resize();
 
@@ -204,11 +204,13 @@ class C_blog extends MY_Controller {
     	);
 
     	$this->M_blog->update_data('artikel_post', $where, $data);
-    	echo "
-    		<script>
-    			alert('Sukses mengperbarui artikel!');
-    			window.location.href='".base_url('admin/C_blog')."';
-    		</script>";
+        $this->session->set_flashdata('msg', 'Sukses');
+        redirect('admin/C_blog');
+    	// echo "
+    	// 	<script>
+    	// 		alert('Sukses mengperbarui artikel!');
+    	// 		window.location.href='".base_url('admin/C_blog')."';
+    	// 	</script>";
     	// redirect('admin/blog');
     }
 

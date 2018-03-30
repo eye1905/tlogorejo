@@ -144,6 +144,7 @@
         <li class="<?php if($this->uri->uri_string() == 'admin') { echo 'active'; } ?>">
           <a href="<?php echo base_url(); ?>admin"><i class="fa fa-dashboard"></i><span>Beranda</span></a></li>
         <li class="<?php if($this->uri->uri_string() == 'admin/homepage') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/homepage"><i class="fa fa-book"></i> <span>Berita</span></a></li>
+        <li class="<?php if($this->uri->uri_string() == 'admin/C_user') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/C_user"><i class="fa fa-user"></i> <span>User</span></a></li>
         <li class="treeview
           <?php  
             if($this->uri->uri_string() == 'admin/C_struktur'){

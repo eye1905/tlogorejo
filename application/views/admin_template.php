@@ -147,10 +147,15 @@ if ($this->session->userdata('masuk') == TRUE) {
         </li>
         <li class="header">MENU</li>
         <li class="<?php if($this->uri->uri_string() == 'admin') { echo 'active'; } ?>">
-          <a href="<?php echo base_url(); ?>admin"><i class="fa fa-dashboard"></i><span>Beranda</span></a></li>
-        <li class="<?php if($this->uri->uri_string() == 'admin') { echo 'active'; } ?>">
-          <a href="<?php echo base_url(); ?>admin/C_slider"><i class="fa fa-dashboard"></i><span>Slider</span></a></li>
-        <li class="<?php if($this->uri->uri_string() == 'admin/C_slider') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/homepage"><i class="fa fa-book"></i> <span>Berita</span></a></li>
+          <a href="<?php echo base_url(); ?>admin"><i class="fa fa-dashboard"></i><span>Beranda</span></a>
+        </li>
+        <li class="<?php if($this->uri->uri_string() == 'admin/C_slider') { echo 'active'; } ?>">
+          <a href="<?php echo base_url(); ?>admin/C_slider"><i class="fa fa-book"></i><span>Slider</span></a>
+        </li>
+        <!-- Menu Lembaga -->
+        <li class="<?php if($this->uri->uri_string() == 'admin/C_lembaga') { echo 'active'; } ?>">
+          <a href="<?php echo base_url(); ?>admin/C_lembaga"><i class="fa fa-link"></i><span>Lembaga</span></a>
+        </li>
         <li class="<?php if($this->uri->uri_string() == 'admin/C_user') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/C_user"><i class="fa fa-user"></i> <span>User</span></a></li>
         <li class="treeview
           <?php  

@@ -16,7 +16,7 @@ class M_user extends Model_Utama {
 	
 	// Read
 	function get_data($status) {
-		$query = $this->db->query("SELECT * FROM $this->table WHERE user_soft_delete = '$status'");
+		$query = $this->db->query("SELECT * FROM $this->table WHERE user_status = '$status'");
 		return $query->result();
 	}
 

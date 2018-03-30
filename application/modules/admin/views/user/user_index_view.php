@@ -11,9 +11,9 @@
       <div class="col-md-12">
         <div class="box">
           <div class="box-body">
-            <?php echo validation_errors(); ?>
-            <?php echo $this->session->keep_flashdata('msg') ?>
             <div class="pull-left">
+              <div class="btn-group">
+                <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-adduser"><i class="fa fa-plus"></i> Tambah User</button>
                 <a href="#" class="btn btn-sm btn-default"><i class="fa fa-trash"></i> Recycle Bin</a>
               </div>
             </div>
@@ -33,15 +33,15 @@
                           <th width="5%" class="text-center">
                             <button class="btn btn-sm btn-default" type="button"><input type="checkbox" name="id[]" onchange="checkAll(this)"></button>
                           </th>
-                          <th>
+                          <th width="60%">
                             <div class="pull-left">
                               <div class="btn-group">
                                 <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-trash"></i></button>
                               </div>
                             </div>
                           </th>
-                          <th width="50%">Password</th>
-                          <th class="text-center" width="15%">Status</th>
+                          <th>Password</th>
+                          <th class="text-center" width="10%">Status</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -51,11 +51,11 @@
                           <td class="text-center"><input type="checkbox" name="id[]"></td>
                           <td>
                             <span class="text-primary"><?php echo $row1->user_nama ?></span><br>
-                            <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+                            <a href="#" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modal-edituser"><i class="fa fa-pencil"></i> Edit</a>
                             <a href="#" class="btn btn-xs btn-danger"><i class="fa fa-lock"></i> Lock</a>
-                            <a href="#" class="btn btn-xs btn-info"><i class="fa fa-eye"></i> Lihat</a>
+                            <a href="#" class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal-detailuser"><i class="fa fa-eye"></i> Lihat</a>
                           </td>
-                          <td><?php echo $row1->user_password ?></td>
+                          <td class="text-muted"><?php echo $row1->user_password ?></td>
                           <td class="text-center">
                             <?php if($row1->user_status == TRUE) { ?>
                             <span class="badge">Unlock</span>
@@ -114,7 +114,7 @@
                           <td>
                             <span class="text-primary"><?php echo $row2->user_nama ?></span><br>
                             <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                            <a href="#" class="btn btn-xs btn-danger"><i class="fa fa-lock"></i> Lock</a>
+                            <a href="#" class="btn btn-xs btn-success"><i class="fa fa-unlock"></i> Lock</a>
                             <a href="#" class="btn btn-xs btn-info"><i class="fa fa-eye"></i> Lihat</a>
                           </td>
                           <td>########################################</td>
@@ -139,7 +139,7 @@
       </div>
     </div>
 
-    <div class="modal fade" id="modal-default">
+    <div class="modal fade" id="modal-adduser">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -177,6 +177,50 @@
         <!-- /.modal-content -->
       </div>
       <!-- /.modal-dialog -->
+    </div>
+
+    <div class="modal fade" id="modal-edituser">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Edit User</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modal-detailuser">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Detail User</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
     </div>
 
   </section>

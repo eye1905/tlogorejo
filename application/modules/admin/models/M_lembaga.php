@@ -33,4 +33,9 @@ class M_lembaga extends CI_Model {
 	    $this->db->where($where);
 	    $this->db->delete($table);
 	}
+
+	function get_lembaga_by_id($lembaga_id, $status) {
+		$query = $this->db->query("SELECT * FROM $this->table WHERE lembaga_id = '$lembaga_id' AND lembaga_soft_delete = '$status'");
+		return $query->result();
+	}
 }

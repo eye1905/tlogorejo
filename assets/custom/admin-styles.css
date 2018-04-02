@@ -140,6 +140,45 @@
 	border-radius: 0px;
 }
 
+/* Color */
+.primary {
+	color: #FFF !important;
+	background-color: #0093E1 !important;
+}
+.success {
+	background-color: #00a65a !important;
+	color: #FFF !important;
+}
+.warning {
+	background-color: #f39c12 !important;
+	color: #FFF !important;
+}
+.danger {
+	background-color: #dd4b39 !important;
+	color: #FFF !important;
+}
+
+/* Button Action Bar */
+.btn-action-bar {
+	padding:4px 10px 4px 10px !important;
+}
+.btn-action-bar a:hover {
+	color: #d9d9d9 !important;
+}
+.btn-action-bar-item {
+	display: inline-block;
+	line-height: 34px;
+	/*padding-top: 4px !important;
+	padding-bottom: 4px !important;*/
+	padding: 6px 9px 6px 9px !important;
+	border-radius: 100% !important;
+	width: 34px;
+	height: 34px;
+	box-shadow: 1px 1px 1px 1px #bfbfbf;
+	text-align: center;
+}
+
+
 /* Button */
 .btn {
 	/*color: #000;*/

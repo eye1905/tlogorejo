@@ -19,6 +19,10 @@ class C_lembaga extends MY_Controller {
 		$this->template->load('admin_template', 'lembaga/lembaga_index_view', $data);
 	}
 
+	function edit($id) {
+		$data['lembaga_by_id'] = $this->M_lembaga->get_lembaga_by_id($id, 0);
+	}
+
 	function save() {
 		$this->form_validation->set_rules('lembaga_nama', 'Nama Lembaga', 'required');
 		$this->form_validation->set_rules('lembaga_deskripsi', 'Deskripsi', 'required');

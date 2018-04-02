@@ -13,15 +13,15 @@
           <!-- <div class="box-body">
             <div class="pull-left">
               <div class="btn-group">
-                <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-adduser"><i class="fa fa-pencil"></i> Tambah Lembaga</button>
+                <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#modal-add"><i class="fa fa-pencil"></i> Tambah Lembaga</button>
               </div>
             </div>
           </div> -->
-          <div class="nav-tabs-custom" style="margin-top: 0.4vh;">
+          <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
+              <li class="btn-action-bar"><a href="" data-target="#modal-add" data-toggle="modal" class="btn-action-bar-item primary"><i class="fa fa-plus"></i></a></li>
               <li class="active"><a href="#user-unlock" data-toggle="tab"><i class="fa fa-check"></i> Ditampilkan</a></li>
               <li><a href="#user-lock" data-toggle="tab"><i class="fa fa-trash"></i> Recycle Bin</a></li>
-              <li><a href="#" class="btn" data-toggle="modal" data-target="#modal-add" style="box-shadow: 1px 1px 1px 0px #bfbfbf; background-color: #0093E1; color: #FFF; border-radius: 100%;"><i class="fa fa-plus"></i></a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="user-unlock">

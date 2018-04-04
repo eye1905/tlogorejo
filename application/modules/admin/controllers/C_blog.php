@@ -56,13 +56,12 @@ class C_blog extends MY_Controller {
             $row[] = '<div class="text-center"><input type="checkbox" name="id[]" value="'.$field->artikel_id.'"></div>';
             $row[] = '<span class="text-primary">'.$field->artikel_judul.'</span><br>
                       <a href="'.base_url('admin/C_blog/edit?id='.$field->artikel_id).'" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i> Edit</a>
-                      '.($field->artikel_soft_delete != 1 ? 
+                      '.($field->artikel_soft_delete != FALSE ? 
                         '<a name="id" href="'.base_url('admin/C_blog/restore?id='.$field->artikel_id).'" class="btn btn-xs btn-success"><i class="fa fa-refresh"></i> Restore</a>' 
                         :
                         '<a name="id" href="'.base_url('admin/C_blog/delete?id='.$field->artikel_id).'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>').'
                       ';
 
-                      // <a name="id" href="'.base_url('admin/blog/delete?id='.$field->artikel_id).'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>';
             $row[] = '<em class="text-warning">'.($field->artikel_status != 1 ? 'Draft' : 'Publikasi').'</em>';
             $row[] = '<span class="text-primary">'.$field->artikel_author.'</span>';
             $row[] = $field->artikel_tanggal;
@@ -111,7 +110,8 @@ class C_blog extends MY_Controller {
                 	'artikel_image' => $gbr['file_name'],
                 	'artikel_author' => 'Admin',
                 	'artikel_kategori' => $this->input->post('artikel_kategori'),
-                	'artikel_status' => 1,
+                    'artikel_status' => 1,
+                	'artikel_soft_delete' => FALSE,
                 	'artikel_log_time' => date('Y-m-d H:i:s'),
                 );
 
@@ -196,6 +196,7 @@ class C_blog extends MY_Controller {
     		'artikel_isi' => $this->input->post('artikel_isi'),
             'artikel_author' => 'Admin',
             'artikel_kategori' => $this->input->post('artikel_kategori'),
+            'artikel_soft_delete' => FALSE,
             'artikel_log_time' => date('Y-m-d H:i:s'),
     	);
 
@@ -215,19 +216,19 @@ class C_blog extends MY_Controller {
     }
 
     function delete() {
-        $data = array('artikel_soft_delete' => 0, 'artikel_log_time' => date('Y-m-d H:i:s'));
+        $data = array('artikel_soft_delete' => TRUE, 'artikel_log_time' => date('Y-m-d H:i:s'));
         $where = array('artikel_id' => $this->input->get('id'));
 
         $this->M_blog->update_data('artikel_post', $where, $data);
         echo "
             <script>
                 alert('Sukses menghapus artikel!');
-                window.location.href='".base_url('admin/blog')."';
+                window.location.href='".base_url('admin/C_blog')."';
             </script>";
     }
 
     function restore() {
-        $data = array('artikel_soft_delete' => 1, 'artikel_log_time' => date('Y-m-d H:i:s'));
+        $data = array('artikel_soft_delete' => FALSE, 'artikel_log_time' => date('Y-m-d H:i:s'));
         $where = array('artikel_id' => $this->input->get('id'));
 
         $this->M_blog->update_data('artikel_post', $where, $data);

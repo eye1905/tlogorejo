@@ -80,7 +80,7 @@ class C_blog extends MY_Controller {
     }
 
     function save() {
-    	$config['upload_path'] = './assets/img/berita'; //path folder
+    	$config['upload_path'] = FCPATH.'/assets/img/berita'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
         $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
  
@@ -135,7 +135,7 @@ class C_blog extends MY_Controller {
     }
 
     function change_banner() {
-    	$config['upload_path'] = './assets/img/berita'; //path folder
+    	$config['upload_path'] = FCPATH.'/assets/img/berita'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
         $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
  
@@ -145,13 +145,13 @@ class C_blog extends MY_Controller {
                 $gbr = $this->upload->data();
                 //Compress Image
                 $config['image_library']='gd2';
-                $config['source_image']='./assets/img/upload'.$gbr['file_name'];
+                $config['source_image']=FCPATH.'/assets/img/upload'.$gbr['file_name'];
                 $config['create_thumb']= FALSE;
                 $config['maintain_ratio']= FALSE;
                 $config['quality']= '60%';
                 // $config['width']= 710;
                 $config['height']= 420;
-                $config['new_image']= './assets/img/upload'.$gbr['file_name'];
+                $config['new_image']= FCPATH.'/assets/img/upload'.$gbr['file_name'];
                 $this->load->library('image_lib', $config);
                 $this->image_lib->resize();
 
@@ -167,7 +167,7 @@ class C_blog extends MY_Controller {
                 $this->M_blog->update_data('artikel_post', $where, $data);
                 echo "
                 	<script>
-                		alert('Sukses menyimpan artikel!');
+                		alert('Sukses menyimpan gambar!');
                 		window.location.href='".base_url('admin/C_blog')."';
                 	</script>";
                 // redirect('admin/blog');
@@ -180,7 +180,7 @@ class C_blog extends MY_Controller {
         else{
         	echo "
     		<script>
-    			alert('Gagal memperbarui artikel!');
+    			alert('Gagal memperbarui gambar!');
     			window.location.href='".base_url('admin/C_blog/form')."';
     		</script>";
             // redirect('admin/blog/form');

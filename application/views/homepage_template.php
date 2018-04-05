@@ -7,6 +7,13 @@
   <meta content="" name="keywords">
   <meta content="" name="description">
 
+  <!-- Meta -->
+  <meta property="og:url"           content="<?php echo base_url($this->uri->uri_string()) ?>" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="Your Website Title" />
+  <meta property="og:description"   content="Your description" />
+  <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
+
   <!-- Favicons -->
   <link href="<?php echo base_url('assets')?>/img/favicon.png" rel="icon">
   <link href="<?php echo base_url('assets')?>/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -180,6 +187,16 @@
 
   <!-- Template Main Javascript File -->
   <script src="<?php echo base_url('assets')?>/js/main.js"></script>
+
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/id_ID/sdk.js#xfbml=1&version=v2.12';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
 
 </body>
 </html>

@@ -2,7 +2,7 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      <small><i class="fa fa-key"></i> User Akses</small>
+      <small><i class="fa fa-tags"></i> List Kategori</small>
     </h1>
   </section>
   <!-- Main content -->
@@ -99,7 +99,7 @@
                             <span class="text-primary"><?php echo $row->kategori_nama ?></span><br>
                             <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Edit</a>
                             <a href="<?php echo base_url('admin/C_kategori/restore?id='.$row->kategori_id) ?>" class="btn btn-xs btn-success"><i class="fa fa-refresh"></i> Restore</a>
-                            <a href="#" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus Permanent</a>
+                            <a href="#" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i> Hapus Permanent</a>
                           </td>
                           <td class="text-center">
                             <?php if($row->kategori_soft_delete !== TRUE) { ?>

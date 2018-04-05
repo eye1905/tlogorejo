@@ -2,7 +2,7 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      <small><i class="fa fa-key"></i> User Akses</small>
+      <small><i class="fa fa-users"></i> User Akses</small>
     </h1>
   </section>
   <!-- Main content -->

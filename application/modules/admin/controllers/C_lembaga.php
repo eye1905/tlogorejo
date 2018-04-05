@@ -7,14 +7,13 @@ class C_lembaga extends MY_Controller {
 	
 	function __construct() {
 		parent::__construct();
-		// $this->load->helper('url');
+		$this->load->helper('url');
 		$this->load->helper('date');
 		$this->load->library('upload');
 		$this->load->library('form_validation');
 		$this->load->library('session');
-		// $this->load->library(array('form_validation', 'session', 'upload'));
-		$this->load->model('M_lembaga');
 		date_default_timezone_set('Asia/Jakarta');
+		$this->load->model('M_lembaga');
 	}
 
 	function index() {

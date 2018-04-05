@@ -260,8 +260,8 @@ if ($this->session->userdata('masuk') == TRUE) {
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="<?php if($this->uri->uri_string() == 'admin/blog/kategori'){ echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/blog/kategori"><i class="fa fa-link"></i>Kategori Artikel</a>
+            <li class="<?php if($this->uri->uri_string() == 'admin/C_kategori'){ echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/C_kategori"><i class="fa fa-link"></i>Kategori Artikel</a>
             </li>
             <li class="<?php if($this->uri->uri_string() == 'admin/c_kota') { echo 'active'; } ?>">
               <a href="<?php echo base_url(); ?>admin/c_kota"><i class="fa fa-link"></i>Data Wilayah</a></li>

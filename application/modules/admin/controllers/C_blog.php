@@ -25,7 +25,7 @@ class C_blog extends MY_Controller {
 
 	// form add
 	public function form() {
-		$data['kategori'] = $this->M_kategori->get_data();
+		$data['kategori'] = $this->M_kategori->get_data(FALSE);
 		$this->template->load('admin_template', 'blog/blog_add_post_view', $data);
 	}
 
@@ -33,7 +33,7 @@ class C_blog extends MY_Controller {
 	public function edit() {
 		$where = array('artikel_id' => $this->input->get('id'));
 		$data['artikel'] = $this->M_blog->get_artikel_by_id('artikel_post', $where);
-        $data['kategori'] = $this->M_kategori->get_data();
+        $data['kategori'] = $this->M_kategori->get_data(FALSE);
 		$this->template->load('admin_template', 'blog/blog_edit_post_view', $data);
 	}
 

@@ -13,8 +13,8 @@
           <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
               <li class="btn-action-bar"><a href="" data-target="#modal-add" data-toggle="modal" class="btn-action-bar-item primary"><i class="fa fa-plus"></i></a></li>
-              <li class="active"><a href="#user-unlock" data-toggle="tab"><i class="fa fa-unlock"></i> User Aktif</a></li>
-              <li><a href="#user-lock" data-toggle="tab"><i class="fa fa-lock"></i> Nonaktif</a></li>
+              <li class="active"><a href="#user-unlock" data-toggle="tab"><i class="fa fa-tags"></i> List kategori</a></li>
+              <li><a href="#user-lock" data-toggle="tab"><i class="fa fa-trash"></i> Recycle Bin</a></li>
             </ul>
             <div class="tab-content">
               <div class="tab-pane active" id="user-unlock">
@@ -26,51 +26,43 @@
                           <th width="5%" class="text-center">
                             <button class="btn btn-sm btn-default" type="button"><input type="checkbox" name="id[]" onchange="checkAll(this)"></button>
                           </th>
-                          <th width="60%">
+                          <th>
                             <div class="pull-left">
                               <div class="btn-group">
                                 <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-trash"></i></button>
                               </div>
                             </div>
                           </th>
-                          <th>Password</th>
-                          <th class="text-center" width="10%">Status</th>
+                          <th class="text-center" width="15%">Status</th>
                         </tr>
                       </thead>
                       <tbody>
-                      <?php if(!empty($user_unlock)) { ?>
-                        <?php foreach ($user_unlock as $row1) { ?>
+                      <?php if(!empty($kategori)) { ?>
+                        <?php foreach ($kategori as $row) { ?>
                         <tr>
                           <td class="text-center"><input type="checkbox" name="id[]"></td>
                           <td>
-                            <span class="text-primary"><?php echo $row1->user_nama ?></span><br>
-                            <a href="#" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modal-edituser"><i class="fa fa-pencil"></i> Edit</a>
-                            <a href="#" class="btn btn-xs btn-danger"><i class="fa fa-lock"></i> Lock</a>
-                            <a href="#" class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal-detailuser"><i class="fa fa-eye"></i> Lihat</a>
+                            <span class="text-primary"><?php echo $row->kategori_nama ?></span><br>
+                            <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+                            <a href="<?php echo base_url('admin/C_kategori/delete?id='.$row->kategori_id) ?>" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>
                           </td>
-                          <td class="text-muted"><?php echo $row1->user_password ?></td>
                           <td class="text-center">
-                            <?php if($row1->user_status == TRUE) { ?>
-                            <span class="badge">Unlock</span>
+                            <?php if($row->kategori_soft_delete !== TRUE) { ?>
+                            <span class="badge">Aktif</span>
                             <?php } else { ?>
-                            <span class="badge">Lock</span>
+                            <span class="badge">Nonaktif</span>
                             <?php } ?>
                           </td>
-                        </tr> 
+                        </tr>
                         <?php } ?>
                       <?php } ?>
                         <tr>
-                          <form action="<?php echo site_url('admin/C_user/save') ?>" method="post">
+                          <form action="<?php echo base_url('admin/C_kategori/save') ?>" method="post">
                           <td></td>
                           <td>
-                            <input type="text" name="user_nama" class="form-control" placeholder="Nama Pengguna" style="width: 100%; margin-bottom: 1vh;"><br>
-                            <input type="text" name="user_id" class="form-control" placeholder="User Id" style="width: 100%;">
+                            <input type="text" name="kategori_nama" class="form-control" style="width: 100%;">
                           </td>
-                          <td>
-                            <input type="password" name="user_password" class="form-control" placeholder="Password" style="width: 100%; margin-bottom: 1vh;"><br>
-                            <input type="password" name="user_confirm_password" class="form-control" placeholder="Confirm Password" style="width: 100%;">
-                          </td>
-                          <td class="text-center"><button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-save"></i> Simpan</button></td>
+                          <td class="text-center"><button class="btn btn-sm btn-primary"><i class="fa fa-save"></i> Simpan</button></td>
                           </form>
                         </tr>
                       </tbody>
@@ -95,30 +87,28 @@
                               </div>
                             </div>
                           </th>
-                          <th width="50%">Password</th>
                           <th class="text-center" width="15%">Status</th>
                         </tr>
                       </thead>
                       <tbody>
-                      <?php if(!empty($user_lock)) { ?>
-                        <?php foreach ($user_lock as $row2) { ?>
+                      <?php if(!empty($kategori_nonaktif)) { ?>
+                        <?php foreach ($kategori_nonaktif as $row) { ?>
                         <tr>
                           <td class="text-center"><input type="checkbox" name="id[]"></td>
                           <td>
-                            <span class="text-primary"><?php echo $row2->user_nama ?></span><br>
+                            <span class="text-primary"><?php echo $row->kategori_nama ?></span><br>
                             <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                            <a href="#" class="btn btn-xs btn-success"><i class="fa fa-unlock"></i> Unlock</a>
-                            <a href="#" class="btn btn-xs btn-info"><i class="fa fa-eye"></i> Lihat</a>
+                            <a href="<?php echo base_url('admin/C_kategori/restore?id='.$row->kategori_id) ?>" class="btn btn-xs btn-success"><i class="fa fa-refresh"></i> Restore</a>
+                            <a href="#" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus Permanent</a>
                           </td>
-                          <td>########################################</td>
                           <td class="text-center">
-                            <?php if($row2->user_status == TRUE) { ?>
-                            <span class="badge">Unlock</span>
+                            <?php if($row->kategori_soft_delete !== TRUE) { ?>
+                            <span class="badge">Aktif</span>
                             <?php } else { ?>
-                            <span class="badge">Lock</span>
+                            <span class="badge">Nonaktif</span>
                             <?php } ?>
                           </td>
-                        </tr> 
+                        </tr>
                         <?php } ?>
                       <?php } ?>
                       </tbody>

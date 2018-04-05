@@ -46,12 +46,8 @@
                       <div class="row">
                         <div class="col-md-12">
                           <div class="pull-right">
-                            <!-- <?php echo base_url($this->uri->uri_string()).'/'.$row->artikel_slug ?> URL share -->
-                            <div class="fb-like" 
-                              data-href="https://www.facebook.com" 
-                              data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true">
-                            </div>
-                            <br>
+                            <!-- <?php echo base_url($this->uri->uri_string()) ?> URL share -->
+                            <div class="fb-share-button" data-href="http://www.facebook.com/abdulrozak.ramadhoni" data-layout="button_count" data-size="small" data-mobile-iframe="true"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2Fplugins%2F&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Bagikan</a></div><br>
                             <small class="text-muted font-italic"><?php echo $row->artikel_tanggal ?> | <?php echo $row->artikel_author ?></small>
                           </div>
                         </div>

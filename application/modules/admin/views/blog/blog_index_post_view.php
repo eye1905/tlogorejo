@@ -81,7 +81,7 @@
               "url": "<?php echo site_url('admin/C_blog/get_data_artikel')?>",
               "type": "POST",
               "data": {
-                'soft_delete': '1'
+                'soft_delete': '0'
               }
           },
 

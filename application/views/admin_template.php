@@ -156,7 +156,7 @@ if ($this->session->userdata('masuk') == TRUE) {
         <li class="<?php if($this->uri->uri_string() == 'admin/C_lembaga') { echo 'active'; } ?>">
           <a href="<?php echo base_url(); ?>admin/C_lembaga"><i class="fa fa-link"></i><span>Lembaga</span></a>
         </li>
-        <li class="<?php if($this->uri->uri_string() == 'admin/C_user') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/C_user"><i class="fa fa-user"></i> <span>User</span></a></li>
+        <li class="<?php if($this->uri->uri_string() == 'admin/C_user') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/C_user"><i class="fa fa-users"></i> <span>Hak Akses</span></a></li>
         <li class="treeview
           <?php  
             if($this->uri->uri_string() == 'admin/C_struktur'){
@@ -246,10 +246,10 @@ if ($this->session->userdata('masuk') == TRUE) {
         
         <li class="treeview
           <?php 
-            if($this->uri->uri_string() == 'admin/c_kota'){
+            if($this->uri->uri_string() == 'admin/C_kota'){
               echo 'active';
             }
-             else if($this->uri->uri_string() == 'admin/blog/kategori'){
+             else if($this->uri->uri_string() == 'admin/C_kategori'){
               echo 'active';
             }
 
@@ -260,8 +260,8 @@ if ($this->session->userdata('masuk') == TRUE) {
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="<?php if($this->uri->uri_string() == 'admin/blog/kategori'){ echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/blog/kategori"><i class="fa fa-link"></i>Kategori Artikel</a>
+            <li class="<?php if($this->uri->uri_string() == 'admin/C_kategori'){ echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/C_kategori"><i class="fa fa-link"></i>Kategori Artikel</a>
             </li>
             <li class="<?php if($this->uri->uri_string() == 'admin/c_kota') { echo 'active'; } ?>">
               <a href="<?php echo base_url(); ?>admin/c_kota"><i class="fa fa-link"></i>Data Wilayah</a></li>

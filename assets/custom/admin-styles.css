@@ -160,7 +160,7 @@
 
 /* Button Action Bar */
 .btn-action-bar {
-	padding:4px 10px 4px 10px !important;
+	padding:4px 10px 4px 20px !important;
 }
 .btn-action-bar a:hover {
 	color: #d9d9d9 !important;
@@ -254,6 +254,12 @@
 }
 
 /* Tab */
+.nav-tabs {
+	border-bottom: none;
+}
+.nav-tabs-custom {
+	margin-top: 1em;
+}
 .nav-tabs-custom > .nav-tabs > li {
 	border-top: none;
 	border-bottom: 3px solid transparent;

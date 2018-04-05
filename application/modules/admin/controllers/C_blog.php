@@ -25,7 +25,7 @@ class C_blog extends MY_Controller {
 
 	// form add
 	public function form() {
-		$data['kategori'] = $this->M_kategori->get_data();
+		$data['kategori'] = $this->M_kategori->get_data(FALSE);
 		$this->template->load('admin_template', 'blog/blog_add_post_view', $data);
 	}
 
@@ -33,7 +33,7 @@ class C_blog extends MY_Controller {
 	public function edit() {
 		$where = array('artikel_id' => $this->input->get('id'));
 		$data['artikel'] = $this->M_blog->get_artikel_by_id('artikel_post', $where);
-        $data['kategori'] = $this->M_kategori->get_data();
+        $data['kategori'] = $this->M_kategori->get_data(FALSE);
 		$this->template->load('admin_template', 'blog/blog_edit_post_view', $data);
 	}
 
@@ -56,13 +56,12 @@ class C_blog extends MY_Controller {
             $row[] = '<div class="text-center"><input type="checkbox" name="id[]" value="'.$field->artikel_id.'"></div>';
             $row[] = '<span class="text-primary">'.$field->artikel_judul.'</span><br>
                       <a href="'.base_url('admin/C_blog/edit?id='.$field->artikel_id).'" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i> Edit</a>
-                      '.($field->artikel_soft_delete != 1 ? 
+                      '.($field->artikel_soft_delete != FALSE ? 
                         '<a name="id" href="'.base_url('admin/C_blog/restore?id='.$field->artikel_id).'" class="btn btn-xs btn-success"><i class="fa fa-refresh"></i> Restore</a>' 
                         :
                         '<a name="id" href="'.base_url('admin/C_blog/delete?id='.$field->artikel_id).'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>').'
                       ';
 
-                      // <a name="id" href="'.base_url('admin/blog/delete?id='.$field->artikel_id).'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>';
             $row[] = '<em class="text-warning">'.($field->artikel_status != 1 ? 'Draft' : 'Publikasi').'</em>';
             $row[] = '<span class="text-primary">'.$field->artikel_author.'</span>';
             $row[] = $field->artikel_tanggal;
@@ -81,7 +80,7 @@ class C_blog extends MY_Controller {
     }
 
     function save() {
-    	$config['upload_path'] = './assets/img/berita'; //path folder
+    	$config['upload_path'] = FCPATH.'/assets/img/berita'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
         $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
  
@@ -111,7 +110,8 @@ class C_blog extends MY_Controller {
                 	'artikel_image' => $gbr['file_name'],
                 	'artikel_author' => 'Admin',
                 	'artikel_kategori' => $this->input->post('artikel_kategori'),
-                	'artikel_status' => 1,
+                    'artikel_status' => 1,
+                	'artikel_soft_delete' => FALSE,
                 	'artikel_log_time' => date('Y-m-d H:i:s'),
                 );
 
@@ -135,7 +135,7 @@ class C_blog extends MY_Controller {
     }
 
     function change_banner() {
-    	$config['upload_path'] = './assets/img/berita'; //path folder
+    	$config['upload_path'] = FCPATH.'/assets/img/berita'; //path folder
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
         $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
  
@@ -145,13 +145,13 @@ class C_blog extends MY_Controller {
                 $gbr = $this->upload->data();
                 //Compress Image
                 $config['image_library']='gd2';
-                $config['source_image']='./assets/img/upload'.$gbr['file_name'];
+                $config['source_image']=FCPATH.'/assets/img/upload'.$gbr['file_name'];
                 $config['create_thumb']= FALSE;
                 $config['maintain_ratio']= FALSE;
                 $config['quality']= '60%';
                 // $config['width']= 710;
                 $config['height']= 420;
-                $config['new_image']= './assets/img/upload'.$gbr['file_name'];
+                $config['new_image']= FCPATH.'/assets/img/upload'.$gbr['file_name'];
                 $this->load->library('image_lib', $config);
                 $this->image_lib->resize();
 
@@ -167,7 +167,7 @@ class C_blog extends MY_Controller {
                 $this->M_blog->update_data('artikel_post', $where, $data);
                 echo "
                 	<script>
-                		alert('Sukses menyimpan artikel!');
+                		alert('Sukses menyimpan gambar!');
                 		window.location.href='".base_url('admin/C_blog')."';
                 	</script>";
                 // redirect('admin/blog');
@@ -180,7 +180,7 @@ class C_blog extends MY_Controller {
         else{
         	echo "
     		<script>
-    			alert('Gagal memperbarui artikel!');
+    			alert('Gagal memperbarui gambar!');
     			window.location.href='".base_url('admin/C_blog/form')."';
     		</script>";
             // redirect('admin/blog/form');
@@ -196,6 +196,7 @@ class C_blog extends MY_Controller {
     		'artikel_isi' => $this->input->post('artikel_isi'),
             'artikel_author' => 'Admin',
             'artikel_kategori' => $this->input->post('artikel_kategori'),
+            'artikel_soft_delete' => FALSE,
             'artikel_log_time' => date('Y-m-d H:i:s'),
     	);
 
@@ -215,19 +216,19 @@ class C_blog extends MY_Controller {
     }
 
     function delete() {
-        $data = array('artikel_soft_delete' => 0, 'artikel_log_time' => date('Y-m-d H:i:s'));
+        $data = array('artikel_soft_delete' => TRUE, 'artikel_log_time' => date('Y-m-d H:i:s'));
         $where = array('artikel_id' => $this->input->get('id'));
 
         $this->M_blog->update_data('artikel_post', $where, $data);
         echo "
             <script>
                 alert('Sukses menghapus artikel!');
-                window.location.href='".base_url('admin/blog')."';
+                window.location.href='".base_url('admin/C_blog')."';
             </script>";
     }
 
     function restore() {
-        $data = array('artikel_soft_delete' => 1, 'artikel_log_time' => date('Y-m-d H:i:s'));
+        $data = array('artikel_soft_delete' => FALSE, 'artikel_log_time' => date('Y-m-d H:i:s'));
         $where = array('artikel_id' => $this->input->get('id'));
 
         $this->M_blog->update_data('artikel_post', $where, $data);

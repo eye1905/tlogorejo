@@ -70,7 +70,7 @@
                   <div class="modal-body">
                     <div class="row">
                       <div class="col-md-6 col-sm-6">
-                        <img src="<?php echo base_url("assets/img/berita/$row->artikel_image") ?>" class="img-thumbnail">
+                        <img src="<?php echo base_url("assets/img/berita/".$row->artikel_image) ?>" class="img-thumbnail">
                       </div>
                       <div class="col-md-6 col-sm-6">
                         <form action="<?php echo base_url('admin/c_blog/change_banner') ?>" method="post" enctype="multipart/form-data">

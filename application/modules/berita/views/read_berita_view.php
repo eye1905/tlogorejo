@@ -19,7 +19,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="card">
-                    <div class="container">
+                    <div class="container">                    
                     <?php if(!empty($berita)){ ?>
                       <?php foreach($berita as $row){ ?>
                       <div class="row">
@@ -40,10 +40,16 @@
                           </div>
                           <div class="footer-artikel">
                             <div class="pull-left">
-                              <small>Tag : </small>
+                              <!-- <?php echo base_url($this->uri->uri_string()) ?> URL share -->
+                              <!-- Your like & share button code -->
+                              <div class="fb-like" 
+                                data-href="<?php echo base_url($this->uri->uri_string()) ?>" 
+                                data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true">
+                              </div>
                             </div>
                             <div class="pull-right">
-                              <small class="text-muted font-italic"><?php echo $row->artikel_tanggal ?> | <?php echo $row->artikel_author ?></small>
+                              <br>
+                              <small class="badge font-italic" style="background-color: #4267b2; color: #fff; font-weight: 600;"><?php echo $row->artikel_tanggal ?> | <?php echo $row->artikel_author ?></small>
                             </div>
                           </div>                          
                         </div>
@@ -51,10 +57,13 @@
                       <hr>
                       <div class="row">
                         <div class="col-md-12">
+
                           <?php if($row->artikel_komentar == FALSE){ ?>
                           <div class="alert alert-warning"><i class="fa fa-ban"></i><em> Komentar dinonaktifkan!</em></div>
                           <?php } else { ?>
-                          <div class="form-komentar">
+                          <div class="fb-comments" data-href="https://www.facebook.com/abdulrozak.ramadhoni#configurator" data-numposts="5" data-width="100%"></div>
+
+                          <!-- <div class="form-komentar">
                             <form>
                               <div class="form-group">
                                 <input type="text" name="" class="form-control" placeholder="Masukan Nama" disabled>
@@ -67,25 +76,24 @@
                               </div>
                             </form>
                           </div>
-                          <hr>
-                          <div class="list-komentar">
+                          <hr> -->
+                          <!-- <div class="list-komentar">
                             <div class="pull-left">
-                              <!-- Comment -->
+                              
                               <div class="media">
                                 <div class="media-left">
                                   <a href="#">
-                                    <img class="media-object" src="<?php echo base_url('assets/img/default_profil.svg') ?>" alt="...">
+                                    <img class="media-object" src="" alt="...">
                                   </a>
                                 </div>
                                 <div class="media-body">
                                   <h5 class="media-heading">Abdul Rozak</h5>
                                   <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo.</p>
 
-                                  <!-- reply -->
                                   <div class="media">
                                     <div class="media-left">
                                       <a href="#">
-                                        <img class="media-object" src="<?php echo base_url('assets/img/default_profil.svg') ?>" alt="...">
+                                        <img class="media-object" src="" alt="...">
                                       </a>
                                     </div>
                                     <div class="media-body">
@@ -97,9 +105,8 @@
                                 </div>
                               </div>
                             </div>  
-                          </div>
+                          </div> -->
                           <?php } ?>
-
                         </div>
                       </div>
                       <?php } ?>

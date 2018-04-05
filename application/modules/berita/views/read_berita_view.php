@@ -43,7 +43,7 @@
                               <!-- <?php echo base_url($this->uri->uri_string()) ?> URL share -->
                               <!-- Your like & share button code -->
                               <div class="fb-like" 
-                                data-href="<?php echo base_url($this->uri->uri_string()) ?>" 
+                                data-href="https://www.facebook.com" 
                                 data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true">
                               </div>
                             </div>

@@ -15,6 +15,7 @@ class C_list_struktur extends MY_Controller {
     public function index()
     {
  		$data['struktur'] = $this->M_struktur->get_data_list();
+
  		$this->template->load('admin_template', 'list_struktur', $data);
     }
 
@@ -24,7 +25,7 @@ class C_list_struktur extends MY_Controller {
  		$this->form_validation->set_rules('Jabatan', 'Jabatan', 'required');
  		$this->form_validation->set_rules('child', 'Parent Id', 'required');
 
- 		$config['upload_path']          = FCPATH.'/uploads/';
+ 		$config['upload_path']          = FCPATH.'/assets/img/struktur/';
         $config['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|JPEG|PNG';
         $config['max_size']  = 10048;
  		$nama_foto = date("D/m/Y h:i:sa");
@@ -39,15 +40,15 @@ class C_list_struktur extends MY_Controller {
         {
         	if ($this->upload->do_upload('file')){
         		$config2['image_library'] = 'gd2';
-                $config2['source_image'] = FCPATH.'/uploads/'.$this->upload->file_name;
-                $config2['new_image'] = FCPATH.'/uploads/thumbnails/'.$this->upload->file_name;
+                $config2['source_image'] = FCPATH.'/assets/img/struktur/'.$this->upload->file_name;
+                $config2['new_image'] = FCPATH.'/assets/img/struktur/thumbnails/'.$this->upload->file_name;
                 $config2['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|JPEG|PNG';
                 $config2['width'] = 272;
                 $config2['height'] = 409;
                 $this->image_lib->initialize($config2);
 
                 if ($this->image_lib->resize()){
-                	$hapus = unlink(FCPATH.'/uploads/'.$this->upload->file_name);
+                	$hapus = unlink(FCPATH.'/assets/img/struktur/'.$this->upload->file_name);
 
                 	if ($hapus) {
                 		$data = array('Jabatan' => $this->input->post("Jabatan"),
@@ -85,13 +86,17 @@ class C_list_struktur extends MY_Controller {
  		$this->form_validation->set_rules('Jabatan', 'Jabatan', 'required');
  		$this->form_validation->set_rules('child', 'Parent Id', 'required');
 
- 		$config['upload_path']          = FCPATH.'/uploads/';
+        $config['remove_spaces'] = FALSE;
+        $path = base_url().'/assets/img/struktur/';
+ 		$config['upload_path']   = $path;
         $config['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|JPEG|PNG';
         $config['max_size']  = 10048;
  		$nama_foto = date("D/m/Y h:i:sa");
  		$config['file_name'] = $nama_foto;
  		$this->upload->initialize($config);
+        $this->load->library('upload', $config);
 
+        
  		if ($this->form_validation->run() == FALSE)
         {
             echo json_encode(validation_errors());
@@ -102,15 +107,15 @@ class C_list_struktur extends MY_Controller {
         	if ($this->input->post("foto") != null) {
         			if ($this->upload->do_upload('file')){
 			        		$config2['image_library'] = 'gd2';
-			                $config2['source_image'] = FCPATH.'/uploads/'.$this->upload->file_name;
-			                $config2['new_image'] = FCPATH.'/uploads/thumbnails/'.$this->upload->file_name;
+			                $config2['source_image'] = $path.$this->upload->file_name;
+			                $config2['new_image'] = $path.'thumbnails/'.$this->upload->file_name;
 			                $config2['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|JPEG|PNG';
 			                $config2['width'] = 272;
 			                $config2['height'] = 409;
 			                $this->image_lib->initialize($config2);
 
 			                if ($this->image_lib->resize()){
-			                	$hapus = unlink(FCPATH.'/uploads/'.$this->upload->file_name);
+			                	$hapus = unlink($path.$this->upload->file_name);
 
 			                	if ($hapus) {
 			                		$data = array('Jabatan' => $this->input->post("Jabatan"),
@@ -125,7 +130,7 @@ class C_list_struktur extends MY_Controller {
 
 						           if ($update) {
 						           		if ($this->input->post("file_asli") != null) {
-						           			$delete = unlink(FCPATH.'/uploads/thumbnails/'.$this->input->post("file_asli"));
+						           			$delete = unlink($path.'thumbnails/'.$this->input->post("file_asli"));
 						           		}
 										echo json_encode("success");
 										}

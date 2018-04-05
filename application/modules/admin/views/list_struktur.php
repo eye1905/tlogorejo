@@ -40,7 +40,9 @@
                   </tr>
                 </thead>
                 <tbody>
-                <?php foreach ($struktur as $key => $value) {?>
+                <?php 
+                print_r(base_url()."assets/img/struktur/");
+                foreach ($struktur as $value) {?>
                 <tr>
                   <td><?= $value->id; ?></td>
                   <td><?= $value->Jabatan; ?></td>
@@ -50,7 +52,7 @@
                   <td><center><button class="btn btn-sm btn-primary" onclick="edit_data(<?php echo $value->id;?>)">Update</button>
                     <button class="btn btn-sm btn-danger" onclick="hapus_data(<?php echo $value->id;?>)">Delete</button></center></td>
                 </tr> 
-                <?php $sisa = $no+1;} ?>
+                <?php } ?>
                   <tr>
                   <td><center><?php echo $sisa; ?><input type="hidden" id="id_jabat" value="0" /></center></td>
                   <td>
@@ -189,9 +191,10 @@
           if (data=="success") {
             document.location.href = "<?php echo site_url('admin/C_list_struktur')?>";
           } else{
-            $("#form_jabatan").addClass("has-error");
+            alert(data);
+            /*$("#form_jabatan").addClass("has-error");
             $("#form_nama").addClass("has-error");
-            $("#form_child").addClass("has-error");
+            $("#form_child").addClass("has-error");*/
           }
         },
         error: function (jqXHR, textStatus, errorThrown)

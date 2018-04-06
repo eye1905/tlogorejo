@@ -52,7 +52,7 @@
     <div class="container-fluid">
 
       <div id="logo" class="pull-left">
-        <a href="<?php echo site_url('homepage') ?>"><img src="<?php echo base_url('assets')?>/img/tlogorejo-dua.png" alt="" title="" />
+        <a href="<?php echo site_url('homepage') ?>"><img src="<?php echo base_url('assets')?>/img/tlogorejo-logo.png" alt="" title="" />
         </a>
         <!-- Uncomment below if you prefer to use an image logo -->
          <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a> -->

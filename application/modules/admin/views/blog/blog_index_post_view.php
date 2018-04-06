@@ -12,6 +12,8 @@
       <div class="box-body">
         <div class="row">
           <div class="col-md-12">
+            <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?></p>
+            
             <div class="pull-left">
               <div class="btn-group">
                 <a href="<?php echo site_url('admin/C_blog/form') ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Entri Baru</a>

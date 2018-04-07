@@ -24,10 +24,10 @@ class C_slider extends MY_Controller {
  		$this->form_validation->set_rules('Deskripsi', 'Deskripsi', 'required');
  		$this->form_validation->set_rules('foto', 'Foto', 'required');
 
- 		$config['upload_path']          = FCPATH.'/uploads/';
-        $config['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|JPEG|PNG';
+ 		$config['upload_path']          = FCPATH.'/assets/img/slider/';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg|JPG|GIF|PNG|JPEG';
         $config['max_size']  = 5000;
- 		$nama_foto = date("D/m/Y h:i:sa");
+ 		$nama_foto = time().$_FILES["file"]['name'];
  		$config['file_name'] = $nama_foto;
  		$this->upload->initialize($config);
 
@@ -39,15 +39,15 @@ class C_slider extends MY_Controller {
         {
         	if ($this->upload->do_upload('file')){
         		$config2['image_library'] = 'gd2';
-                $config2['source_image'] = FCPATH.'/uploads/'.$this->upload->file_name;
-                $config2['new_image'] = FCPATH.'/uploads/thumbnails/'.$this->upload->file_name;
+                $config2['source_image'] = FCPATH.'/assets/img/slider/'.$this->upload->file_name;
+                $config2['new_image'] = FCPATH.'/assets/img/slider/thumbnails/'.$this->upload->file_name;
                 $config2['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|JPEG|PNG';
                 $config2['width'] = 3366;
                 $config2['height'] = 1500;
                 $this->image_lib->initialize($config2);
 
                 if ($this->image_lib->resize()){
-                	$hapus = unlink(FCPATH.'/uploads/'.$this->upload->file_name);
+                	$hapus = unlink(FCPATH.'/assets/img/slider/'.$this->upload->file_name);
 
                 	if ($hapus) {
                 		$data = array('judul' => $this->input->post("Judul"),
@@ -83,11 +83,12 @@ class C_slider extends MY_Controller {
     	$this->form_validation->set_rules('Judul', 'Judul', 'required');
         $this->form_validation->set_rules('Deskripsi', 'Deskripsi', 'required');
 
- 		$config['upload_path']          = FCPATH.'/uploads/';
-        $config['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|JPEG|PNG';
-        $config['max_size']  = 10048;
- 		$nama_foto = date("D/m/Y h:i:sa");
- 		$config['file_name'] = $nama_foto;
+ 		
+        $config['upload_path']          = FCPATH.'/assets/img/slider/';
+        $config['allowed_types']        = 'gif|jpg|png|jpeg|JPG|GIF|PNG|JPEG';
+        $config['max_size']  = 5000;
+        $nama_foto = time().$_FILES["file"]['name'];
+        $config['file_name'] = $nama_foto;
  		$this->upload->initialize($config);
 
  		if ($this->form_validation->run() == FALSE)
@@ -100,15 +101,15 @@ class C_slider extends MY_Controller {
         	if ($this->input->post("foto") != null) {
         			if ($this->upload->do_upload('file')){
 			        		$config2['image_library'] = 'gd2';
-			                $config2['source_image'] = FCPATH.'/uploads/'.$this->upload->file_name;
-			                $config2['new_image'] = FCPATH.'/uploads/thumbnails/'.$this->upload->file_name;
-			                $config2['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|JPEG|PNG';
-			                $config2['width'] = 3366;
-			                $config2['height'] = 1500;
+                            $config2['source_image'] = FCPATH.'/assets/img/slider/'.$this->upload->file_name;
+                            $config2['new_image'] = FCPATH.'/assets/img/slider/thumbnails/'.$this->upload->file_name;
+                            $config2['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|JPEG|PNG';
+                            $config2['width'] = 3366;
+                            $config2['height'] = 1500;
 			                $this->image_lib->initialize($config2);
 
 			                if ($this->image_lib->resize()){
-			                	$hapus = unlink(FCPATH.'/uploads/'.$this->upload->file_name);
+			                	$hapus = unlink(FCPATH.'/assets/img/slider/'.$this->upload->file_name);
 
 			                	if ($hapus) {
 			                		$data = array('judul' => $this->input->post("Judul"),
@@ -123,7 +124,7 @@ class C_slider extends MY_Controller {
 
 						           if ($update) {
 						           		if ($this->input->post("file_asli") != null) {
-						           			$delete = unlink(FCPATH.'/uploads/thumbnails/'.$this->input->post("file_asli"));
+						           			$delete = unlink(FCPATH.'/assets/img/slider/thumbnails/'.$this->input->post("file_asli"));
 						           		}
 										echo json_encode("success");
 										}
@@ -160,7 +161,7 @@ class C_slider extends MY_Controller {
     public function select_foto($Id)
     {
     	$foto = $this->M_slider->get_by_id($Id);
-    	$url =  base_url().'uploads/thumbnails/'.$foto->foto;
+    	$url =  base_url().'assets/img/slider/thumbnails/'.$foto->foto;
     	echo json_encode($url);
     }
 

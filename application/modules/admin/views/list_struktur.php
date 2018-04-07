@@ -41,7 +41,6 @@
                 </thead>
                 <tbody>
                 <?php 
-                print_r(base_url()."assets/img/struktur/");
                 foreach ($struktur as $value) {?>
                 <tr>
                   <td><?= $value->id; ?></td>
@@ -191,15 +190,14 @@
           if (data=="success") {
             document.location.href = "<?php echo site_url('admin/C_list_struktur')?>";
           } else{
-            alert(data);
-            /*$("#form_jabatan").addClass("has-error");
+            $("#form_jabatan").addClass("has-error");
             $("#form_nama").addClass("has-error");
-            $("#form_child").addClass("has-error");*/
+            $("#form_child").addClass("has-error");
           }
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
-            alert(textStatus);
+            alert(errorThrown);
         }
       });
     });

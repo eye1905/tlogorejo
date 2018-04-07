@@ -25,59 +25,66 @@ class C_list_struktur extends MY_Controller {
  		$this->form_validation->set_rules('Jabatan', 'Jabatan', 'required');
  		$this->form_validation->set_rules('child', 'Parent Id', 'required');
 
- 		$config['upload_path']          = FCPATH.'/assets/img/struktur/';
-        $config['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|JPEG|PNG';
-        $config['max_size']  = 10048;
- 		$nama_foto = date("D/m/Y h:i:sa");
- 		$config['file_name'] = $nama_foto;
- 		$this->upload->initialize($config);
+            if ($this->form_validation->run() == FALSE)
+                {
+                    echo json_encode(validation_errors());
+                }
+                else
+                {
+ 		        $config['upload_path']          = FCPATH.'/assets/img/uploads';
+                $config['allowed_types']        = 'gif|jpg|png|jpeg|JPG|GIF|PNG|JPEG';
+                $config['max_size']             = 2048;
+                $config['max_width']            = 1024;
+                $config['max_height']           = 768;
+                $new_name = time().$_FILES["file"]['name'];
+                $config['file_name'] = $new_name; 
 
- 		if ($this->form_validation->run() == FALSE)
-        {
-            echo json_encode(validation_errors());
-        }
-        else
-        {
-        	if ($this->upload->do_upload('file')){
-        		$config2['image_library'] = 'gd2';
-                $config2['source_image'] = FCPATH.'/assets/img/struktur/'.$this->upload->file_name;
-                $config2['new_image'] = FCPATH.'/assets/img/struktur/thumbnails/'.$this->upload->file_name;
-                $config2['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|JPEG|PNG';
-                $config2['width'] = 272;
-                $config2['height'] = 409;
-                $this->image_lib->initialize($config2);
+                $this->upload->initialize($config);
 
-                if ($this->image_lib->resize()){
-                	$hapus = unlink(FCPATH.'/assets/img/struktur/'.$this->upload->file_name);
+                    if ( ! $this->upload->do_upload('file'))
+                    {
+                            $error = array('error' => $this->upload->display_errors());
+                            echo json_encode($error);
+                    }
+                    else
+                    {
+                            $config2['image_library'] = 'gd2';
+                            $config2['source_image'] = FCPATH.'/assets/img/uploads/'.$this->upload->file_name;
+                            $config2['new_image'] = FCPATH.'/assets/img/uploads/thumbnails/'.$this->upload->file_name;
+                            $config2['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|JPEG|PNG';
+                            $config2['width'] = 272;
+                            $config2['height'] = 409;
+                            $nama_foto = date("D/m/Y h:i:sa");
+                            $config2['file_name'] = $nama_foto;
 
-                	if ($hapus) {
-                		$data = array('Jabatan' => $this->input->post("Jabatan"),
-            				'nama' => $this->input->post("Nama"),
-            				'foto' => $this->upload->file_name,
-            				'id_role' => $this->input->post("child"),
-            				'soft_delete' => "1",
-            				'log_time' =>  date("Y-m-d h:i:sa")
-            				);
+                            $this->image_lib->initialize($config2);
 
-		            	$this->M_struktur->tambah_data($data);
+                            if ($this->image_lib->resize()){
+                                $hapus = unlink(FCPATH.'/assets/img/uploads/thumbnails/'.$this->upload->file_name);
 
-	                	echo json_encode("success"); 
-                	}else{
-                		echo json_encode("tak ada data !");
-                	}
-              	}else{
-	              	$status = "error";
-		            $msg = $this->image_lib->display_errors('', '');
-		            echo json_encode($msg);  
-              	}        		
-	        }
-	        else{
-	        	$status = "error";
-	            $msg = $this->upload->display_errors();
-	            echo json_encode($msg);
-	        }
-        }
-    }
+                                if ($hapus) {
+                                    $data = array('Jabatan' => $this->input->post("Jabatan"),
+                                        'nama' => $this->input->post("Nama"),
+                                        'foto' => $this->upload->file_name,
+                                        'id_role' => $this->input->post("child"),
+                                        'soft_delete' => "1",
+                                        'log_time' =>  date("Y-m-d h:i:sa")
+                                        );
+
+                                    $this->M_struktur->tambah_data($data);
+
+                                    echo json_encode("success"); 
+                                }else{
+                                    echo json_encode("tak ada data !");
+                                }
+                            }else{
+                                $status = "error";
+                                $msg = $this->image_lib->display_errors('', '');
+                                echo json_encode($msg);  
+                            }               
+                    }
+                }
+     }
 
     public function update()
     {
@@ -86,16 +93,14 @@ class C_list_struktur extends MY_Controller {
  		$this->form_validation->set_rules('Jabatan', 'Jabatan', 'required');
  		$this->form_validation->set_rules('child', 'Parent Id', 'required');
 
-        $config['remove_spaces'] = FALSE;
-        $path = base_url().'/assets/img/struktur/';
- 		$config['upload_path']   = $path;
-        $config['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|JPEG|PNG';
-        $config['max_size']  = 10048;
- 		$nama_foto = date("D/m/Y h:i:sa");
- 		$config['file_name'] = $nama_foto;
- 		$this->upload->initialize($config);
-        $this->load->library('upload', $config);
-
+                $config['upload_path']          = FCPATH.'/assets/img/uploads/';
+                $config['allowed_types']        = 'gif|jpg|png|jpeg|JPG|GIF|PNG|JPEG';
+                $config['max_size']             = 2048;
+                $config['max_width']            = 1024;
+                $config['max_height']           = 768;
+                $new_name = time().$_FILES["file"]['name'];
+                $config['file_name'] = $new_name; 
+                $this->upload->initialize($config);
         
  		if ($this->form_validation->run() == FALSE)
         {
@@ -107,15 +112,15 @@ class C_list_struktur extends MY_Controller {
         	if ($this->input->post("foto") != null) {
         			if ($this->upload->do_upload('file')){
 			        		$config2['image_library'] = 'gd2';
-			                $config2['source_image'] = $path.$this->upload->file_name;
-			                $config2['new_image'] = $path.'thumbnails/'.$this->upload->file_name;
+			                $config2['source_image'] = FCPATH.'/assets/img/uploads/'.$this->upload->file_name;
+			                $config2['new_image'] = FCPATH.'/assets/img/uploads/thumbnails/'.$this->upload->file_name;
 			                $config2['allowed_types'] = 'gif|jpg|png|jpeg|GIF|JPG|JPEG|PNG';
 			                $config2['width'] = 272;
 			                $config2['height'] = 409;
 			                $this->image_lib->initialize($config2);
 
 			                if ($this->image_lib->resize()){
-			                	$hapus = unlink($path.$this->upload->file_name);
+			                	$hapus = unlink(FCPATH.'/assets/img/uploads/'.$this->upload->file_name);
 
 			                	if ($hapus) {
 			                		$data = array('Jabatan' => $this->input->post("Jabatan"),
@@ -135,7 +140,22 @@ class C_list_struktur extends MY_Controller {
 										echo json_encode("success");
 										}
 			                	}else{
-			                		echo json_encode("tak ada data !");
+			                		$data = array('Jabatan' => $this->input->post("Jabatan"),
+                                        'nama' => $this->input->post("Nama"),
+                                        'id_role' => $this->input->post("child"),
+                                        'foto' => $this->upload->file_name,
+                                        'soft_delete' => "1",
+                                        'log_time' =>  date("Y-m-d h:i:sa")
+                                        );
+
+                                    $update = $this->M_struktur->update(array('id' => $this->input->post("ide")), $data);
+
+                                   if ($update) {
+                                        if ($this->input->post("file_asli") != null) {
+                                            $delete = unlink($path.'thumbnails/'.$this->input->post("file_asli"));
+                                        }
+                                        echo json_encode("success");
+                                        }
 			                	}
 			              	}else{
 				              	$status = "error";
@@ -168,7 +188,7 @@ class C_list_struktur extends MY_Controller {
     public function select_foto($Id)
     {
     	$foto = $this->M_struktur->get_by_id($Id);
-    	$url =  base_url().'uploads/thumbnails/'.$foto->foto;
+    	$url =  base_url().'assets/img/uploads/thumbnails/'.$foto->foto;
     	echo json_encode($url);
     }
 

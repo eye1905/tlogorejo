@@ -15,8 +15,8 @@ class C_user extends MY_Controller {
 	}
 
 	public function index() {
-		$data['user_unlock'] = $this->M_user->get_data(1);
-		$data['user_lock'] = $this->M_user->get_data(0);
+		$data['user_lock'] = $this->M_user->get_data(1);
+		$data['user_unlock'] = $this->M_user->get_data(0);
 		$this->template->load('admin_template', 'user/user_index_view', $data);
 	}
 

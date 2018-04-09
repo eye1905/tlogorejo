@@ -11,8 +11,7 @@ class M_login extends CI_Model
 		$query = $this->db->query("
 			SELECT * FROM users 
 			WHERE user_id = '$user_id' 
-			AND user_password = md5('$user_password') 
-			AND user_status = '1' 
+			AND user_password = md5('$user_password')  
 			AND user_soft_delete = '0'"
 		);
 		return $query;

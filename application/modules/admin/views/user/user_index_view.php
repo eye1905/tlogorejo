@@ -50,7 +50,7 @@
                           </td>
                           <td class="text-muted"><?php echo $row1->user_password ?></td>
                           <td class="text-center">
-                            <?php if($row1->user_status == TRUE) { ?>
+                            <?php if($row1->user_soft_delete == TRUE) { ?>
                             <span class="badge">Unlock</span>
                             <?php } else { ?>
                             <span class="badge">Lock</span>
@@ -112,7 +112,7 @@
                           </td>
                           <td>########################################</td>
                           <td class="text-center">
-                            <?php if($row2->user_status == TRUE) { ?>
+                            <?php if($row2->user_soft_delete == TRUE) { ?>
                             <span class="badge">Unlock</span>
                             <?php } else { ?>
                             <span class="badge">Lock</span>

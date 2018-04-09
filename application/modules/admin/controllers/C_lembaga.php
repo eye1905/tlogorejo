@@ -76,6 +76,7 @@ class C_lembaga extends MY_Controller {
 
 		if ($this->form_validation->run() == FALSE) {
 			$error = validation_errors();
+			$this->session->set_flashdata('message', 'Hello Flashdata!');
 			echo "
 				<script>
 					alert('Gagal menyimpan!');

@@ -1,9 +1,3 @@
-<?php
-if ($this->session->userdata('masuk') == TRUE) {
-          $url = $base_url;
-          redirect($url);
-        }
- ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -103,7 +97,7 @@ if ($this->session->userdata('masuk') == TRUE) {
               <!-- The user image in the navbar-->
               <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg') ?>" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs" style="color: #0093E1; font-weight: bold;">Abdul Rozak</span>
+              <span class="hidden-xs" style="color: #0093E1; font-weight: bold;"><?php echo $this->session->userdata('ses_nama') ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -111,7 +105,7 @@ if ($this->session->userdata('masuk') == TRUE) {
                 <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
 
                 <p>
-                  Abdul Rozak
+                  <?php echo $this->session->userdata('ses_id') ?>
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -121,7 +115,7 @@ if ($this->session->userdata('masuk') == TRUE) {
                   <a href="#" class="btn btn-primary btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-primary btn-flat">Sign out</a>
+                  <a href="<?php echo base_url('admin/logout') ?>" class="btn btn-primary btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -140,8 +134,8 @@ if ($this->session->userdata('masuk') == TRUE) {
         <li class="header">
           <div class="sidebar-user">
             <div class="pull-left info">
-              <p>Abdul Rozak R</p>
-              <a href="#">Super Admin</a>
+              <p><?php echo $this->session->userdata('ses_nama') ?></p>
+              <a href="#"><?php echo $this->session->userdata('ses_akses') ?></a>
             </div>
           </div>
         </li>

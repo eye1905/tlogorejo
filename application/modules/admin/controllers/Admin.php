@@ -2,13 +2,14 @@
  
 class Admin extends MY_Controller {
  	
- 		function __construct() {
-		    parent::__construct();
-		    if ($this->session->userdata('masuk') != TRUE) {
-		    $url = $base_url;
-		    redirect($url);
-		    }
-		}
+	function __construct() {
+		parent::__construct();
+		//validasi jika user belum login
+	    if($this->session->userdata('loged_in') != TRUE){
+            $url = base_url();
+            redirect($url);
+	    }
+	}
 
     public function index()
     {
@@ -21,5 +22,11 @@ class Admin extends MY_Controller {
  		
  		$data['aku'] = "Siapa Saja Yang Mau Makan nasi !";
  		$this->template->load('admin_template', 'dashboard_view', $data);
+    }
+
+	function logout(){
+        $this->session->sess_destroy();
+        $url = base_url('');
+        redirect($url);
     }
 }

@@ -51,9 +51,9 @@
                           <td class="text-muted"><?php echo $row1->user_password ?></td>
                           <td class="text-center">
                             <?php if($row1->user_soft_delete == TRUE) { ?>
-                            <span class="badge">Unlock</span>
+                            <span class="badge danger">Lock</span>
                             <?php } else { ?>
-                            <span class="badge">Lock</span>
+                            <span class="badge success">Unlock</span>
                             <?php } ?>
                           </td>
                         </tr> 
@@ -113,9 +113,9 @@
                           <td>########################################</td>
                           <td class="text-center">
                             <?php if($row2->user_soft_delete == TRUE) { ?>
-                            <span class="badge">Unlock</span>
+                            <span class="badge danger">Lock</span>
                             <?php } else { ?>
-                            <span class="badge">Lock</span>
+                            <span class="badge success">Unlock</span>
                             <?php } ?>
                           </td>
                         </tr> 

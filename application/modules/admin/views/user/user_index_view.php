@@ -45,7 +45,7 @@
                           <td>
                             <span class="text-primary"><?php echo $row1->user_nama ?></span><br>
                             <a href="#" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modal-edituser"><i class="fa fa-pencil"></i> Edit</a>
-                            <a href="#" class="btn btn-xs btn-danger"><i class="fa fa-lock"></i> Lock</a>
+                            <a href="<?php echo base_url('admin/C_user/lock?id='.$row1->user_id) ?>" class="btn btn-xs btn-danger"><i class="fa fa-lock"></i> Lock</a>
                             <a href="#" class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal-detailuser"><i class="fa fa-eye"></i> Lihat</a>
                           </td>
                           <td class="text-muted"><?php echo $row1->user_password ?></td>
@@ -107,7 +107,7 @@
                           <td>
                             <span class="text-primary"><?php echo $row2->user_nama ?></span><br>
                             <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                            <a href="#" class="btn btn-xs btn-success"><i class="fa fa-unlock"></i> Unlock</a>
+                            <a href="<?php echo base_url('admin/C_user/unlock?id='.$row2->user_id) ?>" class="btn btn-xs btn-success"><i class="fa fa-unlock"></i> Unlock</a>
                             <a href="#" class="btn btn-xs btn-info"><i class="fa fa-eye"></i> Lihat</a>
                           </td>
                           <td>########################################</td>

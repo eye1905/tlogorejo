@@ -10,6 +10,12 @@ class C_kota extends MY_Controller {
 		    $this->load->database();
 		    $this->load->helper(array('url'));
 		    ini_set('display_errors', 0);
+
+		    //validasi jika user belum login
+		   	if($this->session->userdata('loged_in') != TRUE){
+		        $url = base_url();
+		        redirect($url);
+		    }
 		}
 
     public function index()

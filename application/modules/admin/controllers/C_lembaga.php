@@ -14,6 +14,12 @@ class C_lembaga extends MY_Controller {
 		$this->load->library('session');
 		date_default_timezone_set('Asia/Jakarta');
 		$this->load->model('M_lembaga');
+
+		//validasi jika user belum login
+			if($this->session->userdata('loged_in') != TRUE){
+		     $url = base_url();
+		     redirect($url);
+		}
 	}
 
 	function index() {

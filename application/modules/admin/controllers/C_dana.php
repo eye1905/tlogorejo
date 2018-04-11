@@ -7,6 +7,12 @@ class C_dana extends MY_Controller {
 		    $this->load->model('M_sumber_dana');
 		    $this->load->library('form_validation');
 		    ini_set('display_errors', 0);
+
+            //validasi jika user belum login
+            if($this->session->userdata('loged_in') != TRUE){
+                $url = base_url();
+                redirect($url);
+            }
 		}
 
     public function index()

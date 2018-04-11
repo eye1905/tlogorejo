@@ -10,6 +10,12 @@ class C_list_struktur extends MY_Controller {
 		    $this->load->library('form_validation');
 		    $this->load->library('image_lib');
 		    ini_set('display_errors', 0);
+
+            //validasi jika user belum login
+                if($this->session->userdata('loged_in') != TRUE){
+                 $url = base_url();
+                 redirect($url);
+            }
 		}
 
     public function index()

@@ -7,6 +7,12 @@ class C_role_struktur extends MY_Controller {
 		    $this->load->model('M_role_struktur');
 		    $this->load->library('form_validation');
 		    ini_set('display_errors', 0);
+
+            //validasi jika user belum login
+                if($this->session->userdata('loged_in') != TRUE){
+                 $url = base_url();
+                 redirect($url);
+            }
 		}
 
     public function index()

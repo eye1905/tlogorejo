@@ -13,6 +13,12 @@ class C_blog extends MY_Controller {
     	$this->load->model('M_blog');
     	$this->load->model('M_kategori');
         date_default_timezone_set('Asia/Jakarta');
+
+        //validasi jika user belum login
+        if($this->session->userdata('loged_in') != TRUE){
+            $url = base_url();
+            redirect($url);
+        }
 	}
 
 	public function index() {

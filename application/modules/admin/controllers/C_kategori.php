@@ -15,6 +15,12 @@ class C_kategori extends MY_Controller {
 		date_default_timezone_set('Asia/Jakarta');
 
 		$this->load->model('M_kategori');
+
+		//validasi jika user belum login
+	    if($this->session->userdata('loged_in') != TRUE){
+            $url = base_url();
+            redirect($url);
+	    }
 	}
 
 	function index() {

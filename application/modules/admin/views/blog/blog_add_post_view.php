@@ -45,7 +45,7 @@
                 <label class="col-md-1 control-label hidden-sm"></label>
                 <div class="col-md-10 col-offset-1">
                   <label class="control-label" style="font-weight: normal;">Memposting sebagai&nbsp;&nbsp;
-                    <span class="text-bold">Abdul Rozak Romadhoni</span>
+                    <span class="text-bold"><?php echo $this->session->userdata('ses_nama') ?></span>
                   </label>
                   &nbsp;&nbsp;
                   <button type="submit" class="btn btn-sm btn-primary">Publikasikan</button>

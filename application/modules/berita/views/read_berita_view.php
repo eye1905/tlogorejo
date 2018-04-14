@@ -31,7 +31,7 @@
                           </div>
                           <div class="body-artikel">
                             <div class="thumb col-md-8" style="margin: 0 auto;">
-                              <img src="<?php echo base_url('assets/img/berita/sample.jpg') ?>" class="thumbnail" alt="..." style="width: 100%; margin-bottom: 1vh;">
+                              <img src="<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>" class="thumbnail" alt="..." style="width: 100%; margin-bottom: 1vh;">
                             </div>
                             <div class="content-artikel">
                               <br>

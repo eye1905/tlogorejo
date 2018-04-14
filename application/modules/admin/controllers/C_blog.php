@@ -114,7 +114,7 @@ class C_blog extends MY_Controller {
                 	'artikel_isi' => $this->input->post('artikel_isi'),
                 	'artikel_tanggal' => date('d/m/Y'),
                 	'artikel_image' => $gbr['file_name'],
-                	'artikel_author' => 'Admin',
+                	'artikel_author' => $this->session->userdata('ses_nama'),
                 	'artikel_kategori' => $this->input->post('artikel_kategori'),
                     'artikel_status' => 1,
                 	'artikel_soft_delete' => FALSE,

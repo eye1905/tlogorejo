@@ -32,7 +32,11 @@
                   <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-default">Ganti Banner</button>
                   <hr>
                   <?php foreach($kategori as $kat) { ?>
-                    <label class="radio-inline"><input type="radio" name="artikel_kategori" value="<?php echo $kat->kategori_slug ?>"><?php echo $kat->kategori_nama ?></label>
+                    <label class="radio-inline">
+                      <input type="radio" name="artikel_kategori" value="<?php echo $kat->kategori_id ?>"
+                      <?php if($row->artikel_kategori == $kat->kategori_id){ echo 'checked'; } ?>
+                      ><?php echo $kat->kategori_nama ?>
+                    </label>
                   <?php } ?>
                 </div>
               </div>
@@ -50,7 +54,7 @@
                 <label class="col-md-1 control-label hidden-sm"></label>
                 <div class="col-md-10 col-offset-1">
                   <label class="control-label" style="font-weight: normal;">Memposting sebagai&nbsp;&nbsp;
-                    <span class="text-bold">Abdul Rozak Romadhoni</span>
+                    <span class="text-bold"><?php echo $this->session->userdata('ses_nama') ?></span>
                   </label>
                   &nbsp;&nbsp;
                   <button type="submit" class="btn btn-sm btn-primary">Simpan</button>

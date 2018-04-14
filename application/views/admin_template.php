@@ -141,38 +141,9 @@
         </li>
         <li class="header">MENU</li>
         <li class="<?php if($this->uri->uri_string() == 'admin') { echo 'active'; } ?>">
-          <a href="<?php echo base_url(); ?>admin"><i class="fa fa-dashboard"></i><span>Beranda</span></a>
+          <a href="<?php echo base_url(); ?>admin"><i class="fa fa-home"></i> <span>Beranda</span></a>
         </li>
-        <li class="<?php if($this->uri->uri_string() == 'admin/C_slider') { echo 'active'; } ?>">
-          <a href="<?php echo base_url(); ?>admin/C_slider"><i class="fa fa-book"></i><span>Slider</span></a>
-        </li>
-        <!-- Menu Lembaga -->
-        <li class="<?php if($this->uri->uri_string() == 'admin/C_lembaga') { echo 'active'; } ?>">
-          <a href="<?php echo base_url(); ?>admin/C_lembaga"><i class="fa fa-link"></i><span>Lembaga</span></a>
-        </li>
-        <li class="<?php if($this->uri->uri_string() == 'admin/C_user') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/C_user"><i class="fa fa-users"></i> <span>Hak Akses</span></a></li>
-        <li class="treeview
-          <?php  
-            if($this->uri->uri_string() == 'admin/C_struktur'){
-              echo 'active';
-            }else if($this->uri->uri_string() == 'admin/C_list_struktur'){
-               echo 'active';
-            }
-          ?>">
-        <a href="#"><i class="fa fa-link"></i> <span>Struktur</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span></a>
-          <ul class="treeview-menu">
-            <li class="<?php if($this->uri->uri_string() == 'admin/C_struktur'){ echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/C_struktur"><i class="fa fa-link"></i>Struktur Organisasi</a>
-            </li>
-             <li class="<?php if($this->uri->uri_string() == 'admin/C_list_struktur'){ echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/C_list_struktur"><i class="fa fa-link"></i>List Struktur</a>
-            </li>
-          </ul>            
-        </li>
-        
+
         <!-- Menu Blog -->
         <li class="treeview
           <?php  
@@ -186,25 +157,67 @@
               echo 'active';
             }
           ?>">
-          <a href="#"><i class="fa fa-link"></i> <span>Postingan</span>
+          <a href="#"><i class="fa fa-newspaper-o"></i> <span>Berita</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li class="<?php if($this->uri->uri_string() == 'admin/C_blog') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/C_blog"><i class="fa fa-link"></i> Artikel</a>
+              <a href="<?php echo base_url(); ?>admin/C_blog"><i class="fa fa-circle-o"></i> Artikel</a>
             </li>
             <li>
-              <a href="#"><i class="fa fa-link"></i> Komentar</a>
+              <a href="#"><i class="fa fa-comment"></i> Komentar</a>
             </li>
           </ul>
         </li>
         <!-- Menu Blog -->
 
+        <li class="<?php if($this->uri->uri_string() == 'admin/C_slider') { echo 'active'; } ?>">
+          <a href="<?php echo base_url(); ?>admin/C_slider"><i class="fa fa-picture-o"></i> <span>Slider</span></a>
+        </li>
+        <!-- Menu Lembaga -->
+        <li class="<?php if($this->uri->uri_string() == 'admin/C_lembaga') { echo 'active'; } ?>">
+          <a href="<?php echo base_url(); ?>admin/C_lembaga"><i class="fa fa-circle-o"></i> <span>Lembaga</span></a>
+        </li>
+        <li class="treeview
+          <?php  
+            if($this->uri->uri_string() == 'admin/C_struktur'){
+              echo 'active';
+            }else if($this->uri->uri_string() == 'admin/C_list_struktur'){
+               echo 'active';
+            }
+          ?>">
+        <a href="#"><i class="fa fa-sitemap"></i> <span>Struktur</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span></a>
+          <ul class="treeview-menu">
+            <li class="<?php if($this->uri->uri_string() == 'admin/C_struktur'){ echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/C_struktur"><i class="fa fa-circle-o"></i>Struktur Organisasi</a>
+            </li>
+             <li class="<?php if($this->uri->uri_string() == 'admin/C_list_struktur'){ echo 'active'; } ?>">
+              <a href="<?php echo base_url(); ?>admin/C_list_struktur"><i class="fa fa-circle-o"></i>List Struktur</a>
+            </li>
+          </ul>            
+        </li>
+
+        <!-- <li class="treeview">
+          <a href="#"><i class="fa fa-link"></i> <span>Homepage</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="#"><i class="fa fa-link"></i> Slider</a></li>
+            <li><a href="#"><i class="fa fa-link"></i> Lembaga</a></li>
+            <li><a href="#"><i class="fa fa-link"></i> Struktur</a></li>
+          </ul>
+        </li> -->
+
         <!-- Menu Data Penduduk -->
         <li class="treeview">
-          <a href="#"><i class="fa fa-link"></i> <span>Data Penduduk</span>
+          <a href="#"><i class="fa fa-group"></i> <span>Data Penduduk</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -224,17 +237,17 @@
               echo 'active';
             }
           ?>">
-          <a href="#"><i class="fa fa-link"></i> <span>Dana Desa</span>
+          <a href="#"><i class="fa fa-bank"></i> <span>Dana Desa</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li class="<?php if($this->uri->uri_string() == 'admin/C_dana'){ echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/C_dana"><i class="fa fa-link"></i>Dana Masuk</a>
+              <a href="<?php echo base_url(); ?>admin/C_dana"><i class="fa fa-circle-o"></i>Dana Masuk</a>
             </li>
             <li class="<?php if($this->uri->uri_string() == 'admin/C_sumber') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/C_sumber"><i class="fa fa-link"></i>Sumber Dana</a></li>
+              <a href="<?php echo base_url(); ?>admin/C_sumber"><i class="fa fa-circle-o"></i>Sumber Dana</a></li>
           </ul>
         </li>
         
@@ -248,19 +261,21 @@
             }
 
           ?>">
-          <a href="#"><i class="fa fa-link"></i> <span>Referensi</span>
+          <a href="#"><i class="fa fa-gears"></i> <span>Referensi</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
           </a>
           <ul class="treeview-menu">
             <li class="<?php if($this->uri->uri_string() == 'admin/C_kategori'){ echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/C_kategori"><i class="fa fa-link"></i>Kategori Artikel</a>
+              <a href="<?php echo base_url(); ?>admin/C_kategori"><i class="fa fa-circle-o"></i>Kategori Artikel</a>
             </li>
             <li class="<?php if($this->uri->uri_string() == 'admin/c_kota') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/c_kota"><i class="fa fa-link"></i>Data Wilayah</a></li>
+              <a href="<?php echo base_url(); ?>admin/c_kota"><i class="fa fa-circle-o"></i>Data Wilayah</a></li>
           </ul>
         </li>
+
+        <li class="<?php if($this->uri->uri_string() == 'admin/C_user') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/C_user"><i class="fa fa-user"></i> <span>Manajemen User</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -269,6 +284,14 @@
 
   <!-- Content Wrapper. Contains page content -->
   <?= $contents ?>
+
+  <footer class="main-footer">
+      <div class="pull-right hidden-xs">
+        <span class="text-muted"></strong>Page rendered in <strong>{elapsed_time}</strong> seconds. </span>
+        <!-- <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?> -->
+      </div>
+      <strong>Copyright &copy; 2018 <a href="https://adminlte.io">Tlogorejo</a>
+    </footer>
 
 </div>
 <!-- ./wrapper -->

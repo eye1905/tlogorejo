@@ -160,7 +160,7 @@
         <div class="owl-carousel clients-carousel">
         <?php foreach($lembaga as $row): ?>
           <a href="<?php echo site_url('lembaga/r/'.$row->lembaga_slug) ?>" class="text-center">
-            <img src="<?php echo base_url('assets/img/lembaga/'.$row->lembaga_gambar)?>" alt="" style="height: 128px; width: auto;"><?php echo $row->lembaga_nama ?>
+            <img src="<?php echo base_url('assets/img/lembaga/'.$row->lembaga_gambar)?>" alt="" style="height: 86px; width: auto;"><?php echo $row->lembaga_nama ?>
           </a>
         <?php endforeach; ?>
         </div>

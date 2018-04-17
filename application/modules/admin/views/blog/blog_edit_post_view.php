@@ -27,10 +27,8 @@
               <div class="form-group">
                 <label for="exampleInputFile" class="col-md-1 control-label">Gambar</label>
                 <div class="col-md-10">
-                  <input type="file" id="exampleInputFile" name="artikel_image">
-                  <br>
                   <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-default">Ganti Banner</button>
-                  <hr>
+                  <br>
                   <?php foreach($kategori as $kat) { ?>
                     <label class="radio-inline">
                       <input type="radio" name="artikel_kategori" value="<?php echo $kat->kategori_id ?>"

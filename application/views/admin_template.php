@@ -286,15 +286,16 @@
   <?= $contents ?>
 
   <footer class="main-footer">
-      <div class="pull-right hidden-xs">
-        <span class="text-muted"></strong>Page rendered in <strong>{elapsed_time}</strong> seconds. </span>
-        <!-- <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?> -->
-      </div>
-      <strong>Copyright &copy; 2018 <a href="https://adminlte.io">Tlogorejo</a>
-    </footer>
+    <div class="pull-right hidden-xs">
+      <span class="text-muted"></strong>Page rendered in <strong>{elapsed_time}</strong> seconds. </span>
+      <!-- <?php echo  (ENVIRONMENT === 'development') ?  'CodeIgniter Version <strong>' . CI_VERSION . '</strong>' : '' ?> -->
+    </div>
+    <strong>Copyright &copy; 2018 <a href="https://adminlte.io">Tlogorejo</a>
+  </footer>
 
 </div>
 <!-- ./wrapper -->
 
 </body>
+
 </html>

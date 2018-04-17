@@ -66,6 +66,10 @@ class C_blog extends MY_Controller {
                         '<a name="id" href="'.base_url('admin/C_blog/restore?id='.$field->artikel_id).'" class="btn btn-xs btn-success"><i class="fa fa-refresh"></i> Restore</a>' 
                         :
                         '<a name="id" href="'.base_url('admin/C_blog/delete?id='.$field->artikel_id).'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>').'
+                      '.($field->artikel_status != FALSE ? 
+                        '<a name="id" href="'.base_url('admin/C_blog/draft?id='.$field->artikel_id).'" class="btn btn-xs btn-default">Draft <i class="fa fa-tag"></i></a>' 
+                        :
+                        '<a name="id" href="'.base_url('admin/C_blog/publikasi?id='.$field->artikel_id).'" class="btn btn-xs btn-default">Publikasi <i class="fa fa-tag"></i></a>').'
                       ';
 
             $row[] = '<em class="text-warning">'.($field->artikel_status != 1 ? 'Draft' : 'Publikasi').'</em>';
@@ -243,6 +247,22 @@ class C_blog extends MY_Controller {
                 alert('Sukses memulihkan artikel!');
                 window.location.href='".base_url('admin/C_blog/recycle_bin')."';
             </script>";
+    }
+
+    function draft() {
+        $data = array('artikel_status' => FALSE, 'artikel_log_time' => date('Y-m-d H:i:s'));
+        $where = array('artikel_id' => $this->input->get('id'));
+
+        $this->M_blog->update_data('artikel_post', $where, $data);
+        redirect('admin/C_blog');
+    }
+
+    function publikasi() {
+        $data = array('artikel_status' => TRUE, 'artikel_log_time' => date('Y-m-d H:i:s'));
+        $where = array('artikel_id' => $this->input->get('id'));
+
+        $this->M_blog->update_data('artikel_post', $where, $data);
+        redirect('admin/C_blog');
     }
 
     function delete_permannent() 

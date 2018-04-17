@@ -196,38 +196,27 @@ class C_lembaga extends MY_Controller {
         }
     }
 
-	function update() {
-		$this->form_validation->set_rules('lembaga_nama', 'Nama Lembaga');
-		$this->form_validation->set_rules('lembaga_deskripsi', 'Deskripsi');
-		if ($this->form_validation->run() == FALSE) {
-			echo "
-				<script>
-					alert('Gagal mengperbarui artikel!');
-					window.location.href='".base_url('admin/C_lembaga')."';
-				</script>";
-		}
-		else {
-			$slug = url_title($this->input->post('lembaga_nama'), 'dash', TRUE);
-			
-			$data = array(
-				'lembaga_nama' => $this->input->post('lembaga_nama'),
-				'lembaga_slug' => $slug,
-				'lembaga_deskripsi' => $this->input->post('lembaga_deskripsi'),
-				'lembaga_log_time' => date('Y-m-d H:i:s')
-			);
+    function update() {
+        $slug = url_title($this->input->post('lembaga_nama'), 'dash', TRUE);
 
-			$where = array(
-				'lembaga_id' => $this->input->post('lembaga_id')
-			);
+    	$data = array(
+            'lembaga_nama' => $this->input->post('lembaga_nama'),
+    		'lembaga_slug' => $slug,
+    		'lembaga_deskripsi' => $this->input->post('lembaga_deskripsi'),
+            'lembaga_log_time' => date('Y-m-d H:i:s'),
+    	);
 
-			$this->M_lembaga->update_data('lembaga', $where, $data);
-			echo "
-				<script>
-					alert('Sukses mengperbarui data!');
-					window.location.href='".base_url('admin/C_lembaga')."';
-				</script>";
-		}	
-	}
+    	$where = array(
+    		'lembaga_id' => $this->input->post('lembaga_id')
+    	);
+
+    	$this->M_lembaga->update_data('lembaga', $where, $data);
+    	echo "
+    		<script>
+    			alert('Sukses mengperbarui artikel!');
+    			window.location.href='".base_url('admin/C_lembaga')."';
+    		</script>";
+    }
 
 	function delete() {
 	    $data = array('lembaga_soft_delete' => TRUE, 'lembaga_log_time' => date('Y-m-d H:i:s'));

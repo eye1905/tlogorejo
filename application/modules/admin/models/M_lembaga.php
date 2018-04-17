@@ -108,4 +108,14 @@ class M_lembaga extends CI_Model {
 	function get_lembaga_by_id($table, $where) {
 	    return $this->db->get_where($table, $where)->result();
 	}
+
+    function get_lembaga_by_slug($slug = FALSE) {
+        if($slug === FALSE) {
+            $query = $this->db->query("SELECT * FROM lembaga WHERE lembaga_soft_delete = 0");
+            return $query->result();
+        }
+
+        $query = $this->db->get_where('lembaga', array('lembaga_slug' => $slug,  'lembaga_soft_delete' => FALSE));
+        return $query->result();
+    }
 }

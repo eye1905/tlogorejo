@@ -215,14 +215,11 @@ class C_blog extends MY_Controller {
     	);
 
     	$this->M_blog->update_data('artikel_post', $where, $data);
-        $this->session->set_flashdata('msg', 'Sukses');
-        redirect('admin/C_blog');
-    	// echo "
-    	// 	<script>
-    	// 		alert('Sukses mengperbarui artikel!');
-    	// 		window.location.href='".base_url('admin/C_blog')."';
-    	// 	</script>";
-    	// redirect('admin/blog');
+    	echo "
+    		<script>
+    			alert('Sukses mengperbarui artikel!');
+    			window.location.href='".base_url('admin/C_blog')."';
+    		</script>";
     }
 
     function delete() {

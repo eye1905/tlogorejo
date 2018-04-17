@@ -57,7 +57,7 @@
                             <?php } else { ?>
                             <a href="<?php echo base_url('admin/C_lembaga/delete?id='.$row->lembaga_id) ?>" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>
                             <?php } ?>
-                            <a href="<?php echo base_url('admin/C_lembaga/detail?id='.$row->lembaga_id) ?>" class="btn btn-xs btn-info"><i class="fa fa-eye"></i> Lihat</a>
+                            <!-- <a href="<?php echo base_url('admin/C_lembaga/detail?id='.$row->lembaga_id) ?>" class="btn btn-xs btn-info"><i class="fa fa-eye"></i> Lihat</a> -->
                           </td>
                           <td class="text-muted"><?php echo $row->lembaga_deskripsi ?></td>
                           <td class="text-center">
@@ -109,7 +109,7 @@
                             <?php } else { ?>
                             <a href="<?php echo base_url('admin/C_lembaga/delete?id='.$row->lembaga_id) ?>" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>
                             <?php } ?>
-                            <a href="<?php echo base_url('admin/C_lembaga/detail?id='.$row->lembaga_id) ?>" class="btn btn-xs btn-info"><i class="fa fa-eye"></i> Lihat</a>
+                            <!-- <a href="<?php echo base_url('admin/C_lembaga/detail?id='.$row->lembaga_id) ?>" class="btn btn-xs btn-info"><i class="fa fa-eye"></i> Lihat</a> -->
                           </td>
                           <td class="text-muted"><?php echo $row->lembaga_deskripsi ?></td>
                           <td class="text-center">

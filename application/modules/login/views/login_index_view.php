@@ -30,10 +30,10 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="<?php echo base_url() ?>"><b>Admin</b></a>
+    <a href="<?php echo base_url() ?>"><b>Login</b></a>
   </div>
   <!-- /.login-logo -->
-  <div class="login-box-body">
+  <div class="login-box-body" style="box-shadow: 1px 1px 1px 1px #bfbfbf;">
     <p class="login-box-msg">Sign in to start your session</p>
 
     <form action="<?php echo site_url('login/auth') ?>" method="post">

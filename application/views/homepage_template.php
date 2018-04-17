@@ -15,8 +15,8 @@
   <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
 
   <!-- Favicons -->
-  <link href="<?php echo base_url('assets')?>/img/favicon.png" rel="icon">
-  <link href="<?php echo base_url('assets')?>/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link rel="icon" href="<?php echo base_url('assets/img/favicon.png')?>" type="image/x-icon" />
+  <!-- <link rel="icon" href="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png" type="image/x-icon" /> -->
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
@@ -52,7 +52,7 @@
     <div class="container-fluid">
 
       <div id="logo" class="pull-left">
-        <a href="<?php echo site_url('homepage') ?>"><img src="<?php echo base_url('assets')?>/img/tlogorejo-logo.png" alt="" title="" />
+        <a href="<?php echo site_url('homepage') ?>"><img src="<?php echo base_url('assets')?>/img/logo.png" alt="" title="" />
         </a>
         <!-- Uncomment below if you prefer to use an image logo -->
          <!-- <a href="#intro"><img src="img/logo.png" alt="" title="" /></a> -->

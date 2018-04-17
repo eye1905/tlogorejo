@@ -143,6 +143,59 @@ class C_lembaga extends MY_Controller {
 		}
 	}
 
+    function change_banner() {
+    	$config['upload_path'] = FCPATH.'/assets/img/lembaga'; //path folder
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+        $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
+ 
+        $this->upload->initialize($config);
+        if(!empty($_FILES['lembaga_gambar']['name'])){
+            if ($this->upload->do_upload('lembaga_gambar')){
+                $gbr = $this->upload->data();
+                //Compress Image
+                $config['image_library']='gd2';
+                $config['source_image']=FCPATH.'/assets/img/upload'.$gbr['file_name'];
+                $config['create_thumb']= FALSE;
+                $config['maintain_ratio']= FALSE;
+                $config['quality']= '60%';
+                $config['width']= 710;
+                $config['height']= 420;
+                $config['new_image']= FCPATH.'/assets/img/upload'.$gbr['file_name'];
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
+
+                $data = array(
+                	'lembaga_gambar' => $gbr['file_name'],
+                	'lembaga_log_time' => date('Y-m-d H:i:s'),
+                );
+
+                $where = array(
+                	'lembaga_id' => $this->input->post('lembaga_id')
+                );
+
+                $this->M_lembaga->update_data('lembaga', $where, $data);
+                echo "
+                	<script>
+                		alert('Sukses menyimpan gambar!');
+                		window.location.href='".base_url('admin/C_lembaga')."';
+                	</script>";
+                // redirect('admin/blog');
+	        }
+	        else{
+	            redirect('admin/C_lembaga');
+	        }
+                      
+        }
+        else{
+        	echo "
+    		<script>
+    			alert('Gagal memperbarui gambar!');
+    			window.location.href='".base_url('admin/C_lembaga/form')."';
+    		</script>";
+            // redirect('admin/blog/form');
+        }
+    }
+
 	function update() {
 		$this->form_validation->set_rules('lembaga_nama', 'Nama Lembaga');
 		$this->form_validation->set_rules('lembaga_deskripsi', 'Deskripsi');

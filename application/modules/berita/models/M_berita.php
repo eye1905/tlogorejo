@@ -42,4 +42,9 @@ class M_berita extends CI_Model
 			");
 		return $query->result();
 	}
+
+	function get_artikel_limit($limit) {
+		$query = $this->db->query("SELECT * FROM artikel_post WHERE artikel_status = 1 AND artikel_soft_delete = 0 ORDER BY artikel_tanggal ASC LIMIT $limit");
+		return $query->result();
+	}
 }

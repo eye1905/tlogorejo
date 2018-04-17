@@ -63,28 +63,19 @@
       </div>  
       <div class="container">
         <div class="row">
-
-          <div class="col-lg-4 box example1" style="background: url('<?php echo base_url('assets')?>/img/berita/1.jpg')">
-            <div class="bg-opacity">
-              <h4 class="title"><a href="">Lorem Ipsum Delino</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident </p>
-            </div>
+        <?php 
+          function limit_words($string, $word_limit){
+              $words = explode(" ", $string);
+              return implode(" ", array_splice($words, 0, $word_limit));
+          }
+        foreach($berita as $row): ?>
+        <div class="col-lg-4 box example1" style="background: url('<?php echo base_url('assets')?>/img/berita/1.jpg')">
+          <div class="bg-opacity">
+            <h4 class="title"><a href=""><?php echo limit_words($row->artikel_judul, 5) ?> ...</a></h4>
+            <p class="description"><?php echo limit_words($row->artikel_isi, 10)?> ...</p>
           </div>
-
-          <div class="col-lg-4 box box example1" style="background: url('<?php echo base_url('assets')?>/img/berita/2.jpg')">
-            <div class="bg-opacity">
-              <h4 class="title"><a href="">Dolor Sitema</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 box example1" style="background: url('<?php echo base_url('assets')?>/img/berita/1.jpg')">
-            <div class="bg-opacity">
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-            </div>
-          </div>
-
+        </div>
+        <?php endforeach; ?>
         </div>
         <div class="row" style="margin-top: 3vh;">
           <div class="col-md-12">
@@ -167,14 +158,11 @@
         </header>
 
         <div class="owl-carousel clients-carousel">
-          <img src="<?php echo base_url('assets')?>/img/lembaga/client-1.png" alt="">
-          <img src="<?php echo base_url('assets')?>/img/lembaga/client-2.png" alt="">
-          <img src="<?php echo base_url('assets')?>/img/lembaga/client-3.png" alt="">
-          <img src="<?php echo base_url('assets')?>/img/lembaga/client-4.png" alt="">
-          <img src="<?php echo base_url('assets')?>/img/lembaga/client-5.png" alt="">
-          <img src="<?php echo base_url('assets')?>/img/lembaga/client-6.png" alt="">
-          <img src="<?php echo base_url('assets')?>/img/lembaga/client-7.png" alt="">
-          <img src="<?php echo base_url('assets')?>/img/lembaga/client-8.png" alt="">
+        <?php foreach($lembaga as $row): ?>
+          <a href="<?php echo site_url('lembaga/r/'.$row->lembaga_slug) ?>" class="text-center">
+            <img src="<?php echo base_url('assets/img/lembaga/'.$row->lembaga_gambar)?>" alt="" style="height: 128px; width: auto;"><?php echo $row->lembaga_nama ?>
+          </a>
+        <?php endforeach; ?>
         </div>
 
       </div>

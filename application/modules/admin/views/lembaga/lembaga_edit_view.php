@@ -26,7 +26,7 @@
               <div class="form-group">
                 <label for="exampleInputFile" class="col-md-1 control-label">Gambar</label>
                 <div class="col-md-10">
-                  <input type="file" id="exampleInputFile" name="lembaga_gambar">
+                  <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-default">Ganti Banner</button>
                 </div>
               </div>
 
@@ -48,6 +48,41 @@
 
             </form>
             <?php endforeach; ?>
+
+            <div class="modal fade" id="modal-default">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Form Ganti Foto</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row">
+                      <div class="col-md-6 col-sm-6">
+                        <img src="<?php echo base_url("assets/img/lembaga/".$row->lembaga_gambar) ?>" class="img-thumbnail">
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <form action="<?php echo base_url('admin/C_lembaga/change_banner') ?>" method="post" enctype="multipart/form-data">
+                          <div class="form-group">
+                            <input type="hidden" name="lembaga_id" value="<?php echo $row->lembaga_id ?>">
+                            <input type="file" name="lembaga_gambar">
+                          </div>
+                          <div class="form-group">
+                            <button class="btn btn-sm btn-primary">Simpan Foto</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+                <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+            </div>
           </div>
         </div>
       </div>

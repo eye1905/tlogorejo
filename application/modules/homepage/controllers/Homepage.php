@@ -18,7 +18,7 @@ class Homepage extends MY_Controller {
 	public function index() {
 		$data['struktur'] = $this->M_struktur->get_data_list();
 		$data['slider'] = $this->M_slider->get_data_list();
-		$data['berita'] = $this->M_berita->get_artikel_limit(3);
+		$data['berita'] = $this->M_berita->get_artikel_limit(6);
 		$data['lembaga'] = $this->M_lembaga->get_data(0);
 		$this->template->load('homepage_template', 'homepage/homepage_view', $data);
 	}

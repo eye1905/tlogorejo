@@ -11,6 +11,7 @@ class Lembaga extends MY_Controller
 	}
 
 	function r($slug = NULL) {
+		$data['navigasi'] = $this->M_lembaga->get_data(0);
 		$data['lembaga'] = $this->M_lembaga->get_lembaga_by_slug($slug);
 		if (empty($data['lembaga'])) {
 			$this->template->load('homepage_template', 'lembaga_read_view', $data);	

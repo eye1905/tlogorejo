@@ -1,7 +1,7 @@
   <!--==========================
     Intro Section
   ============================-->
-  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
   <section id="intro">
       <div class="w3-content w3-display-container" style="margin-top: 60pt; margin-left: 10pt; margin-right: 10pt">
@@ -25,6 +25,54 @@
 <button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
 
 </div>
+  </section> -->
+
+  <section id="intro">
+    <div class="intro-container">
+      <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
+
+        <ol class="carousel-indicators"></ol>
+
+        <div class="carousel-inner" role="listbox">
+
+          <div class="carousel-item active">
+            <div class="carousel-background"><img src="<?php echo base_url('assets/img/carousel/1.jpg') ?>" alt=""></div>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2>Welcome to Website Desa Tlogorejo</h2>
+                <p>Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut.</p>
+                <!-- <a href="#featured-services" class="btn-get-started scrollto">Get Started</a> -->
+              </div>
+            </div>
+          </div>
+
+          <?php foreach ($slider as $key => $value) { ?>
+          <div class="carousel-item">
+            <div class="carousel-background"><img src="<?php echo base_url('assets')?>/img/slider/thumbnails/<?php echo $value->foto; ?>" alt=""></div>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2><?php echo $value->judul; ?></h2>
+                <p><?php echo $value->deskripsi; ?></p>
+                <a href="#featured-services" class="btn-get-started scrollto">Selengkapnya</a>
+              </div>
+            </div>
+          </div>
+          <?php } ?>
+
+        </div>
+
+        <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+
+        <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+
+      </div>
+    </div>
   </section><!-- #intro -->
 
   <main id="main">
@@ -32,8 +80,8 @@
     <!--==========================
       Featured Berita Section
     ============================-->
-    <section id="featured-berita">
-      <div class="container-fluid" style="margin-bottom: 6vh;">
+    <section id="featured-berita" style="background-color: #f2f2f2;">
+      <div class="container-fluid" style="margin-bottom: 10vh;">
         <div class="row">
           <div id="breaking-news-container">
             <div id="breaking-news-colour" class="slideup animated">
@@ -61,7 +109,7 @@
         <div class="col-lg-4 box example1" style="background: url('<?php echo base_url('assets')?>/img/berita/1.jpg')">
           <div class="bg-opacity">
             <h4 class="title"><a href=""><?php echo limit_words($row->artikel_judul, 5) ?> ...</a></h4>
-            <p class="description"><?php echo limit_words($row->artikel_isi, 10)?> ...</p>
+            <p class="description"><?php echo limit_words($row->artikel_isi, 10)?></p>
           </div>
         </div>
         <?php endforeach; ?>

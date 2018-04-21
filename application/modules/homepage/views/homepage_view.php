@@ -34,7 +34,7 @@
         <div class="carousel-inner" role="listbox">
 
           <div class="carousel-item active">
-            <div class="carousel-background"><img src="img/intro-carousel/2.jpg" alt=""></div>
+            <div class="carousel-background"><img src="<?php echo base_url('assets/img/carousel/1.jpg') ?>" alt=""></div>
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2>Welcome to Website Desa Tlogorejo</h2>

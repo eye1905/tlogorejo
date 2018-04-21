@@ -58,7 +58,7 @@
                       <div class="row">
                         <div class="col-md-12">
 
-                          <?php if($row->artikel_komentar == FALSE){ ?>
+                          <?php if(TRUE){ ?>
                           <div class="alert alert-warning"><i class="fa fa-ban"></i><em> Komentar dinonaktifkan!</em></div>
                           <?php } else { ?>
                           <div class="fb-comments" data-href="https://www.facebook.com/abdulrozak.ramadhoni#configurator" data-numposts="5" data-width="100%"></div>

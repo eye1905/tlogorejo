@@ -78,8 +78,8 @@
     <!--==========================
       Featured Berita Section
     ============================-->
-    <section id="featured-berita">
-      <div class="container-fluid" style="margin-bottom: 6vh;">
+    <section id="featured-berita" style="background-color: #f2f2f2;">
+      <div class="container-fluid" style="margin-bottom: 10vh;">
         <div class="row">
           <div id="breaking-news-container">
             <div id="breaking-news-colour" class="slideup animated">
@@ -107,7 +107,7 @@
         <div class="col-lg-4 box example1" style="background: url('<?php echo base_url('assets')?>/img/berita/1.jpg')">
           <div class="bg-opacity">
             <h4 class="title"><a href=""><?php echo limit_words($row->artikel_judul, 5) ?> ...</a></h4>
-            <p class="description"><?php echo limit_words($row->artikel_isi, 10)?> ...</p>
+            <p class="description"><?php echo limit_words($row->artikel_isi, 10)?></p>
           </div>
         </div>
         <?php endforeach; ?>

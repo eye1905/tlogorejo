@@ -70,11 +70,55 @@
 
                   <div class="card">
                     <div class="container">
-                      <form>
-                        <div class="form-group">
-                          <input type="" name="" class="form-control" style="border-radius: 0;">
+                      <div style="width: 100%; height: auto; padding: 6px 4px 6px 4px; border-bottom: 2px solid #bfbfbf;">
+                        <h5 style="margin-bottom: 0; text-align: center;">ARTIKEL TERBARU</h5>
+                      </div>
+                      <div class="media" style="margin-bottom: 5px;">
+                        <div class="media-left">
+                          <img src="https://www.w3schools.com/bootstrap/img_avatar1.png" class="media-object" style="width:60px">
                         </div>
-                      </form>
+                        <div class="media-body">
+                          <a href=""><p>Kecelakaan Beruntun di Bojonegoro, Seorang Pemotor ...</p></a>
+                        </div>
+                      </div>
+                      <div class="media" style="margin-bottom: 5px;">
+                        <div class="media-left">
+                          <img src="https://www.w3schools.com/bootstrap/img_avatar1.png" class="media-object" style="width:60px">
+                        </div>
+                        <div class="media-body">
+                          <a href=""><p>Voluptatum deleniti atque corrupti quos dolores et quas molestias ...</p></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 20px;">
+                <div class="col-md-12">
+
+                  <div class="card">
+                    <div class="container">
+                      <div style="width: 100%; height: auto; padding: 6px 4px 6px 4px; border-bottom: 2px solid #bfbfbf;">
+                        <h5 style="margin-bottom: 0; text-align: center;">ARTIKEL TERBARU</h5>
+                      </div>
+                      <div class="media" style="margin-bottom: 5px;">
+                        <div class="media-left">
+                          <img src="https://www.w3schools.com/bootstrap/img_avatar1.png" class="media-object" style="width:60px">
+                        </div>
+                        <div class="media-body">
+                          <a href=""><p>Kecelakaan Beruntun di Bojonegoro, Seorang Pemotor ...</p></a>
+                        </div>
+                      </div>
+                      <div class="media" style="margin-bottom: 5px;">
+                        <div class="media-left">
+                          <img src="https://www.w3schools.com/bootstrap/img_avatar1.png" class="media-object" style="width:60px">
+                        </div>
+                        <div class="media-body">
+                          <a href=""><p>Voluptatum deleniti atque corrupti quos dolores et quas molestias ...</p></a>
+                        </div>
+                      </div>
                     </div>
                   </div>
 

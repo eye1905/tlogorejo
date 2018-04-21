@@ -76,8 +76,12 @@
             <li><a href="<?php echo site_url('berita/category/'.$row->kategori_slug) ?>"><?php echo $row->kategori_nama ?></a></li>
             <?php } ?>
           <?php } else { ?>
-            <li><a href="#">Tidak Ada Menu</a></li>
+            <li><a href="#"></a></li>
           <?php } ?>
+        <?php } else if($this->uri->segment(1) == 'lembaga'){ ?>
+          <?php foreach($navigasi as $row): ?>
+          <li><a href="<?php echo site_url('lembaga/r/'.$row->lembaga_slug) ?>"><?php echo $row->lembaga_nama ?></a></li>
+          <?php endforeach; ?>
         <?php } else { ?>
           <!-- <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li> -->
           <?php if(!empty($kategori)){ ?>
@@ -85,7 +89,7 @@
             <li><a href="<?php echo site_url('berita/category/'.$row->kategori_slug) ?>"><?php echo $row->kategori_nama ?></a></li>
             <?php } ?>
           <?php } else { ?>
-            <li><a href="#">Tidak Ada Menu</a></li>
+            <li><a href="#"></a></li>
           <?php } ?>
         <?php } ?>
         </ul>

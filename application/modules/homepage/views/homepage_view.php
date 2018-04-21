@@ -1,41 +1,28 @@
   <!--==========================
     Intro Section
   ============================-->
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
   <section id="intro">
-    <div class="intro-container">
-      <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
-        <div class="carousel-inner" role="listbox">
-
-          <div class="carousel-item active">
-            <?php
-            foreach ($slider as $key => $value) {
-            ?>
-            <div class="carousel-background">
-              <img src="<?php echo base_url()?>assets/img/slider/thumbnails/<?php echo $value->foto; ?>" alt=""></div>
-            <div class="carousel-container">
-              <div class="carousel-content">
-                <h2><?php echo $value->judul; ?></h2>
-                <p><?php echo $value->deskripsi; ?></p>
-                <a href="#featured-berita" class="btn-get-started scrollto">Get Started</a>
-              </div>
-            </div>
-            <?php }?>
-          </div>
+      <div class="w3-content w3-display-container" style="margin-top: 60pt; margin-left: 45pt">
+      
+      <?php
+      foreach ($slider as $key => $value) {
+      ?>
+      <center>
+      <div class="w3-display-container mySlides">
+        <img src="<?php echo base_url('assets')?>/img/slider/thumbnails/<?php echo $value->foto; ?>" style="width:150%">
+        <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-white" style="opacity: 0.9; color: black" >
+          <?php echo $value->deskripsi; ?>
         </div>
-        </div>
-
-        <a class="carousel-control-prev" href="#introCarousel" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon ion-chevron-left" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-
-        <a class="carousel-control-next" href="#introCarousel" role="button" data-slide="next">
-          <span class="carousel-control-next-icon ion-chevron-right" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
-
       </div>
-    </div>
+    </center>
+    <?php } ?>
+  </div>
+<button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
+<button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
+
+</div>
   </section><!-- #intro -->
 
   <main id="main">
@@ -196,6 +183,41 @@
 
 <script src="<?php echo base_url(); ?>assets/go-debug.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.8.15/go-debug.js"></script>
+<script type="text/javascript">
+ var slideIndex = 1;
+showDivs(slideIndex);
+
+function plusDivs(n) {
+  showDivs(slideIndex += n);
+}
+
+function showDivs(n) {
+  var i;
+  var x = document.getElementsByClassName("mySlides");
+  if (n > x.length) {slideIndex = 1}    
+  if (n < 1) {slideIndex = x.length}
+  for (i = 0; i < x.length; i++) {
+     x[i].style.display = "none";  
+  }
+  x[slideIndex-1].style.display = "block";  
+}
+
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides");
+    for (i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 4000); // Change image every 2 seconds
+}
+
+</script>
 <script type="text/javascript">
 var $ = go.GraphObject.make;
 

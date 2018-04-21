@@ -66,7 +66,7 @@ class C_list_struktur extends MY_Controller {
                             $this->image_lib->initialize($config2);
 
                             if ($this->image_lib->resize()){
-                                $hapus = unlink(FCPATH.'/assets/img/uploads/thumbnails/'.$this->upload->file_name);
+                                $hapus = unlink(FCPATH.'/assets/img/uploads/'.$this->upload->file_name);
 
                                 if ($hapus) {
                                     $data = array('Jabatan' => $this->input->post("Jabatan"),
@@ -127,7 +127,7 @@ class C_list_struktur extends MY_Controller {
 
 			                if ($this->image_lib->resize()){
 			                	$hapus = unlink(FCPATH.'/assets/img/uploads/'.$this->upload->file_name);
-
+                                
 			                	if ($hapus) {
 			                		$data = array('Jabatan' => $this->input->post("Jabatan"),
 			            				'nama' => $this->input->post("Nama"),

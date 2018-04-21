@@ -25,11 +25,13 @@
                 <tbody> 
                   <?php 
                   $no = 0;
-                  foreach ($sumber as $key => $value) {$no++; ?>
+                  foreach ($dana as $key => $value) {$no++; ?>
                     <tr>
                       <td><center><?php echo $no; ?></center></td>
-                      <td><center><?php echo $value->nama_sumber; ?></center></td>
-                      <td><center><?php echo $value->log_time; ?></center></td>
+                      <td><center><?php echo $value->jumlah; ?></center></td>
+                      <td><center><?php echo $value->id_user; ?></center></td>
+                      <td><center><?php echo $value->keterangan; ?></center></td>
+                      <td><?php echo $value->keterangan; ?></td>
                       <td>
                         <center><button class="btn btn-info" onclick="edit_role(<?= $value->id_sumber; ?>)">Update</button> 
                         <button class="btn btn-danger" onclick="delete_role(<?= $value->id_sumber; ?>)"">Delete</button></center>
@@ -40,10 +42,38 @@
                     <td><center><?php echo $sisa; ?><input type="hidden" id="id_role" value="0" /></center></td>
                     <td>
                       <div class="form-group has-feedback" id="form_nama">
-                      <input type="text"  class="form-control" id="Nama" placeholder="Masukan Sumber Dana" />
+                      <select class="form-control" id="sumberdana">
+                        <?php
+                      foreach ($sumber as $key => $value) {;
+                      ?>
+                        <option value="<?php echo $value->id; ?>"><?php echo $value->nama_sumber; ?></option>
+                      <?php } ?>
+                      </select>
                       </div>
                       </td>
-                    <td></td>
+                      <td>
+                        <div class="form-group has-feedback" id="form_nama">
+                          <input type="text" name="nominal" class="form-control">
+                        </div>
+                      </td>
+                    <td>
+                       <div class="form-group has-feedback" id="form_nama">
+                      <select class="form-control" id="nama_struktur">
+                        <?php
+                      foreach ($stuktur as $key => $value) {;
+                      ?>
+                        <option value="<?php echo $value->id; ?>"><?php echo $value->nama; ?></option>
+                      <?php } ?>
+                      </select>
+                      </div>
+                    </td>
+                    <td>
+                      <div class="form-group has-feedback" id="form_nama">
+                        <textarea class="form-control" id="keterangandana">
+                          
+                        </textarea>
+                      </div>
+                    </td>
                     <td><center><button class="btn btn-success" id="Simpan">Simpan</button></center></td> 
                     </tr>                 
                 </tbody>

@@ -4,18 +4,20 @@
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
   <section id="intro">
-      <div class="w3-content w3-display-container" style="margin-top: 60pt; margin-left: 45pt">
+      <div class="w3-content w3-display-container" style="margin-top: 60pt; margin-left: 10pt; margin-right: 10pt">
       
       <?php
       foreach ($slider as $key => $value) {
       ?>
       <center>
-      <div class="w3-display-container mySlides">
-        <img src="<?php echo base_url('assets')?>/img/slider/thumbnails/<?php echo $value->foto; ?>" style="width:150%">
-        <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-white" style="opacity: 0.9; color: black" >
-          <?php echo $value->deskripsi; ?>
+      <div class="col-lg-12 text-center">
+          <div class="w3-display-container mySlides">
+        <img src="<?php echo base_url('assets')?>/img/slider/thumbnails/<?php echo $value->foto; ?>" class="img-responsive" style="width:160%; margin-right: 20pt">
+        <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-white" style="opacity: 0.8;" >
+          <p style="color: black;"><?php echo $value->deskripsi; ?></p>
         </div>
       </div>
+        </div>
     </center>
     <?php } ?>
   </div>
@@ -123,6 +125,21 @@
       </div>
     </section><!-- #services -->
 
+     <section id="dana">
+      <div class="container">
+
+        <header class="section-header wow fadeInUp">
+          <h3>INFORMASI DANA DESA</h3>
+          <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus, ad pro quaestio laboramus. Ei ubique vivendum pro. At ius nisl accusam lorenta zanos paradigno tridexa panatarel.</p>
+        </header>
+
+        <div class="row">
+
+        </div>
+
+      </div>
+    </section>
+
     <!--==========================
       Call To Action Section
     ============================-->
@@ -214,7 +231,7 @@ function carousel() {
     myIndex++;
     if (myIndex > x.length) {myIndex = 1}    
     x[myIndex-1].style.display = "block";  
-    setTimeout(carousel, 4000); // Change image every 2 seconds
+    setTimeout(carousel, 6000); // Change image every 2 seconds
 }
 
 </script>

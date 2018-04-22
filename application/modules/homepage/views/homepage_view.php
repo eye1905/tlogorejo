@@ -53,7 +53,7 @@
               <div class="carousel-content">
                 <h2><?php echo $value->judul; ?></h2>
                 <p><?php echo $value->deskripsi; ?></p>
-                <a href="#featured-services" class="btn-get-started scrollto">Selengkapnya</a>
+                <!-- <a href="#featured-services" class="btn-get-started scrollto">Selengkapnya</a> -->
               </div>
             </div>
           </div>
@@ -127,7 +127,7 @@
     <!--==========================
       Services Section
     ============================-->
-    <section id="services">
+    <!-- <section id="services">
       <div class="container">
 
         <header class="section-header wow fadeInUp">
@@ -171,23 +171,22 @@
         </div>
 
       </div>
-    </section><!-- #services -->
-
+    </section>--> 
+    <br><br>
      <section id="dana">
       <div class="container">
 
         <header class="section-header wow fadeInUp">
-          <h3>INFORMASI DANA DESA</h3>
-          <p>Laudem latine persequeris id sed, ex fabulas delectus quo. No vel partiendo abhorreant vituperatoribus, ad pro quaestio laboramus. Ei ubique vivendum pro. At ius nisl accusam lorenta zanos paradigno tridexa panatarel.</p>
+          <h3>INFORMASI DANA DESA TAHUN 2018</h3>
         </header>
 
         <div class="row">
-
+           <canvas id="densityChart" width="600" height="400"></canvas>
         </div>
 
       </div>
     </section>
-
+    <br>
     <!--==========================
       Call To Action Section
     ============================-->
@@ -227,12 +226,11 @@
       <div class="container">
         <div class="section-header wow fadeInUp">
           <h3>Struktur Organisasi Desa Tlogorejo</h3>
-          <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque</p>
         </div>
         <div class="box-body">
         <div class="row">
           <div class="col-sm-12">
-            <div id="myDiagramDiv" style="width:100%; height:600px; background-color: #fff;">
+            <div id="myDiagramDiv" style="width:120%; height:600px; background-color: #fff; margin-left: -50pt">
               
             </div>
           </div>
@@ -324,4 +322,46 @@ model.nodeDataArray =
     <?php } ?>
 ];
 myDiagram.model = model;
+</script>
+<script src="<?php echo base_url() ?>/assets/Chart/Chart.min.js"></script>
+<script type="text/javascript">
+var densityCanvas = document.getElementById("densityChart");
+
+Chart.defaults.global.defaultFontFamily = "Lato";
+Chart.defaults.global.defaultFontSize = 18;
+
+var pendapatan = {
+  label: 'Pendapatan Perbulan / Rupiah',
+  data: [90000000, 100000000, 100000000, 90000000, 100000000, 100000000, 100000000, 80000000],
+  backgroundColor: 'blue',
+};
+
+var pengeluaran = {
+  label: 'Pengeluaran Perbulan / Rupiah',
+  data: [75000000, 75000000, 75000000, 75000000, 75000000, 75000000, 75000000, 75000000],
+  backgroundColor: 'red',
+};
+
+var saldo = {
+  label: 'Saldo Akhir Bulan / Rupiah',
+  data: [25000000, 25000000, 25000000, 25000000, 25000000, 25000000, 25000000, 25000000],
+  backgroundColor: 'yellow',
+};
+
+var chartOptions = {
+   scales: {
+    xAxes: [{
+      barPercentage: 1,
+      categoryPercentage: 0.9
+    }]}
+};
+var barChart = new Chart(densityCanvas, {
+  type: 'bar',
+  data: {
+    labels: ["Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember"],
+    datasets: [pendapatan, pengeluaran, saldo]
+  },
+  options: chartOptions
+});
+
 </script>

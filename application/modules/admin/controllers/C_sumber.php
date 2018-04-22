@@ -29,16 +29,17 @@ class C_sumber extends MY_Controller {
         {
             echo json_encode(strip_tags(validation_errors()));
         }
+        elseif ($this->input->post("Nama") ==  "The Nama Sumber Dana field is required.") {
+            echo json_encode(strip_tags(validation_errors()));
+        }
         else
         {
             $select = $this->M_sumber_dana->get_by_field($this->input->post("Nama"));
             if (count($select) >0 ) {
             	echo json_encode("Nama Sudah Ada !");
             } else{
-            	$data = array('nama_sumber' => $this->input->post("Nama"),
-            				'soft_delete' => "1",
-            				'log_time' =>  date("Y-m-d h:i:sa")
-            				);
+
+            	$data = array('nama_sumber' => $this->input->post("Nama"));
 
 	            $this->M_sumber_dana->tambah_data($data);
 
@@ -56,11 +57,7 @@ class C_sumber extends MY_Controller {
 
 	public function delete_sumber($id)
 	{
-		$data = array('soft_delete' => "0",
-            			'log_time' =>  date("Y-m-d h:i:sa")
-            			);
-
-		$update = $this->M_sumber_dana->update(array('id_sumber' => $id), $data);
+		$update = $this->M_sumber_dana->delete(array('id_sumber' => $id), $data);
 		if ($update) {
 			echo json_encode("success");
 		}
@@ -74,12 +71,12 @@ class C_sumber extends MY_Controller {
         {
             echo json_encode(validation_errors());
         }
+         elseif ($this->input->post("Nama") ==  "The Nama Sumber Dana field is required.") {
+            echo json_encode(strip_tags(validation_errors()));
+        }
         else
         {
-            	$data = array('nama_sumber' => $this->input->post("Nama"),
-            				'soft_delete' => "1",
-            				'log_time' =>  date("Y-m-d h:i:sa")
-            				);
+            	$data = array('nama_sumber' => $this->input->post("Nama"));
 
 	            $update = $this->M_sumber_dana->update(array('id_sumber' => $this->input->post("Id")), $data);
 

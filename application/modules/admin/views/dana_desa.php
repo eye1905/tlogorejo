@@ -28,32 +28,45 @@
                   foreach ($dana as $key => $value) {$no++; ?>
                     <tr>
                       <td><center><?php echo $no; ?></center></td>
-                      <td><center><?php echo $value->jumlah; ?></center></td>
-                      <td><center><?php echo $value->id_user; ?></center></td>
-                      <td><center><?php echo $value->keterangan; ?></center></td>
+                      <td><center><?php 
+                        foreach ($sumber as $key => $value2) {
+                                if ($value->id_sumberdana==$value2->id_sumber) {
+                                    echo $value2->nama_sumber;
+                                }
+                          } ?></center>
+                      </td>
+                      <td><center><?php echo $this->rupiah->rupiah_kurs($value->jumlah); ?></center></td>
+                      <td>
+                        <center><?php 
+                        foreach ($stuktur as $key => $value2) {
+                                if ($value->id_user==$value2->id) {
+                                    echo $value2->nama;
+                                }
+                          } ?></center>
+                      </td>
                       <td><?php echo $value->keterangan; ?></td>
                       <td>
-                        <center><button class="btn btn-info" onclick="edit_role(<?= $value->id_sumber; ?>)">Update</button> 
-                        <button class="btn btn-danger" onclick="delete_role(<?= $value->id_sumber; ?>)"">Delete</button></center>
+                        <center><button class="btn btn-info" onclick="edit_role(<?= $value->id; ?>)">Update</button> 
+                        <button class="btn btn-danger" onclick="delete_role(<?= $value->id; ?>)"">Delete</button></center>
                       </td>
                     </tr>
                   <?php $sisa = $no+1;}?>
                     <tr>
-                    <td><center><?php echo $sisa; ?><input type="hidden" id="id_role" value="0" /></center></td>
+                    <td><center><?php echo $sisa; ?><input type="hidden" id="id_dana" value="0" /></center></td>
                     <td>
                       <div class="form-group has-feedback" id="form_nama">
                       <select class="form-control" id="sumberdana">
                         <?php
                       foreach ($sumber as $key => $value) {;
                       ?>
-                        <option value="<?php echo $value->id; ?>"><?php echo $value->nama_sumber; ?></option>
+                        <option value="<?php echo $value->id_sumber; ?>"><?php echo $value->nama_sumber; ?></option>
                       <?php } ?>
                       </select>
                       </div>
                       </td>
                       <td>
                         <div class="form-group has-feedback" id="form_nama">
-                          <input type="text" name="nominal" class="form-control">
+                          <input type="text" name="nominal" id="nominal" class="form-control" placeholder="Masukan Jumlah Dana">
                         </div>
                       </td>
                     <td>
@@ -69,9 +82,7 @@
                     </td>
                     <td>
                       <div class="form-group has-feedback" id="form_nama">
-                        <textarea class="form-control" id="keterangandana">
-                          
-                        </textarea>
+                        <textarea class="form-control" id="keterangandana"></textarea>
                       </div>
                     </td>
                     <td><center><button class="btn btn-success" id="Simpan">Simpan</button></center></td> 
@@ -103,16 +114,16 @@
     } ); 
 
 $("#Simpan").on('click', function() {
-      var formData = {'Nama': $("#Nama").val(), 'Id': $("#id_role").val()};
+      var formData = {'sumberdana': $("#sumberdana").val(), 'nominal': $("#nominal").val(), 'nama_struktur': $("#nama_struktur").val(), 'keterangandana': $("#keterangandana").val(), 'id_dana': $("#id_dana").val()};
 
       var url;
-      if($("#id_role").val() == "0")
+      if($("#id_dana").val() == "0")
       {
-          url = "<?php echo site_url('admin/C_sumber/save')?>";
+          url = "<?php echo site_url('admin/C_dana/save')?>";
       }
       else
       {
-        url = "<?php echo site_url('admin/C_sumber/update')?>";
+        url = "<?php echo site_url('admin/C_dana/update')?>";
       }
 
       $.ajax({
@@ -123,10 +134,9 @@ $("#Simpan").on('click', function() {
         success: function(data)
         { 
           if (data=="success") {
-            document.location.href = "<?php echo site_url('admin/C_sumber')?>";
+            document.location.href = "<?php echo site_url('admin/C_dana')?>";
           } else{
             $("#form_nama").addClass("has-error");
-            $("#Nama").val(data);            
           }
         },
         error: function (jqXHR, textStatus, errorThrown)
@@ -139,13 +149,16 @@ $("#Simpan").on('click', function() {
  function edit_role(id)
     {
       $.ajax({
-        url : "<?php echo site_url('admin/C_sumber/select_sumber')?>/" + id,
+        url : "<?php echo site_url('admin/C_dana/select_dana')?>/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
         {
-          $("#id_role").val(data.id_sumber);
-          $("#Nama").val(data.nama_sumber);
+          $("#id_dana").val(data.id);
+          $("#sumberdana").val(data.id_sumberdana);
+          $("#nama_struktur").val(data.id_user);
+          $("#nominal").val(data.jumlah);
+          $("#keterangandana").val(data.keterangan);
         },
         error: function (jqXHR, textStatus, errorThrown)
         {
@@ -157,12 +170,12 @@ $("#Simpan").on('click', function() {
   function delete_role(id)
     {
       $.ajax({
-        url : "<?php echo site_url('admin/C_sumber/delete_sumber')?>/" + id,
+        url : "<?php echo site_url('admin/C_dana/delete_dana')?>/" + id,
         type: "GET",
         dataType: "JSON",
         success: function(data)
         {
-          document.location.href = "<?php echo site_url('admin/C_sumber')?>";
+          document.location.href = "<?php echo site_url('admin/C_dana')?>";
         },
         error: function (jqXHR, textStatus, errorThrown)
         {

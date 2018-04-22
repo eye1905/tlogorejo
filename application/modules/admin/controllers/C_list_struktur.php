@@ -72,9 +72,7 @@ class C_list_struktur extends MY_Controller {
                                     $data = array('Jabatan' => $this->input->post("Jabatan"),
                                         'nama' => $this->input->post("Nama"),
                                         'foto' => $this->upload->file_name,
-                                        'id_role' => $this->input->post("child"),
-                                        'soft_delete' => "1",
-                                        'log_time' =>  date("Y-m-d h:i:sa")
+                                        'id_role' => $this->input->post("child")
                                         );
 
                                     $this->M_struktur->tambah_data($data);
@@ -132,9 +130,7 @@ class C_list_struktur extends MY_Controller {
 			                		$data = array('Jabatan' => $this->input->post("Jabatan"),
 			            				'nama' => $this->input->post("Nama"),
 			            				'id_role' => $this->input->post("child"),
-			            				'foto' => $this->upload->file_name,
-			            				'soft_delete' => "1",
-			            				'log_time' =>  date("Y-m-d h:i:sa")
+			            				'foto' => $this->upload->file_name
 			            				);
 
 							        $update = $this->M_struktur->update(array('id' => $this->input->post("ide")), $data);
@@ -149,9 +145,7 @@ class C_list_struktur extends MY_Controller {
 			                		$data = array('Jabatan' => $this->input->post("Jabatan"),
                                         'nama' => $this->input->post("Nama"),
                                         'id_role' => $this->input->post("child"),
-                                        'foto' => $this->upload->file_name,
-                                        'soft_delete' => "1",
-                                        'log_time' =>  date("Y-m-d h:i:sa")
+                                        'foto' => $this->upload->file_name
                                         );
 
                                     $update = $this->M_struktur->update(array('id' => $this->input->post("ide")), $data);
@@ -177,9 +171,7 @@ class C_list_struktur extends MY_Controller {
         	}else{
         		$data = array('Jabatan' => $this->input->post("Jabatan"),
             				'nama' => $this->input->post("Nama"),
-            				'id_role' => $this->input->post("child"),
-            				'soft_delete' => "1",
-            				'log_time' =>  date("Y-m-d h:i:sa")
+            				'id_role' => $this->input->post("child")
             				);
 
 		        $update = $this->M_struktur->update(array('id' => $this->input->post("ide")), $data);
@@ -207,10 +199,7 @@ class C_list_struktur extends MY_Controller {
 
     public function delete_data($id)
     {
-    	$data = array('soft_delete' => "0",
-            			'log_time' =>  date("Y-m-d h:i:sa"));
-
-		        $update = $this->M_struktur->update(array('id' => $id), $data);
+		      $update = $this->M_struktur->delete(array('id' => $id), $data);
 	           if ($update) {
 					echo json_encode("success");
 				}

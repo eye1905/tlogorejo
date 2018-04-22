@@ -27,16 +27,13 @@
 
   <!-- REQUIRED JS SCRIPTS -->
   <!-- jQuery 3 -->
-  <script src="<?php echo base_url() ?>assets/adminlte/jquery/dist/jquery.min.js"></script>
-  <!-- Bootstrap 3.3.7 -->
-  <script src="<?php echo base_url() ?>assets/adminlte/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="<?php echo base_url() ?>assets/dist/js/adminlte.min.js"></script>
-  <!-- CK Editor -->
-  <script src="<?php echo base_url() ?>assets/adminlte/ckeditor/ckeditor.js"></script>
-  <!-- DataTables -->
-  <script src="<?php echo base_url() ?>assets/adminlte/datatables.net/js/jquery.dataTables.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+  <meta property="og:url"           content="<?php echo base_url($this->uri->uri_string()) ?>" />
+  <meta property="og:type"          content="website" />
+  <meta property="og:title"         content="Desa Tlogorejo" />
+  <meta property="og:description"   content="Informasi Website Desa Tlogorejo Terupdate" />
+  <meta property="og:image"         content="<?php echo base_url('assets/img/favicon.png')?>" />
+  <link rel="icon" type="image/png" href="<?php echo base_url('assets')?>/img/logone.png"/>
   <!-- Optionally, you can add Slimscroll and FastClick plugins.
        Both of these plugins are recommended to enhance the
        user experience. -->
@@ -50,7 +47,7 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="index.html" class="logo hidden-xs">
+    <a href="<?php echo base_url()?>admin" class="logo hidden-xs">
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>J</b>'</span>
       <!-- logo for regular state and mobile devices -->
@@ -67,8 +64,7 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Notifications Menu -->
-          <li class="dropdown notifications-menu">
-            <!-- Menu toggle button -->
+         <!--  <li class="dropdown notifications-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
               <span class="label label-warning">10</span>
@@ -76,19 +72,17 @@
             <ul class="dropdown-menu">
               <li class="header">You have 10 notifications</li>
               <li>
-                <!-- Inner Menu: contains the notifications -->
                 <ul class="menu">
-                  <li><!-- start notification -->
+                  <li>
                     <a href="#">
                       <i class="fa fa-users text-aqua"></i> 5 new members joined today
                     </a>
                   </li>
-                  <!-- end notification -->
                 </ul>
               </li>
               <li class="footer"><a href="#">View all</a></li>
             </ul>
-          </li>
+          </li> -->
 
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
@@ -261,7 +255,7 @@
             }
 
           ?>">
-          <a href="#"><i class="fa fa-gears"></i> <span>Referensi</span>
+          <a href="#"><i class="fa fa-search"></i> <span>Referensi</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
@@ -276,6 +270,7 @@
         </li>
 
         <li class="<?php if($this->uri->uri_string() == 'admin/C_user') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/C_user"><i class="fa fa-user"></i> <span>Manajemen User</span></a></li>
+        <li class="<?php if($this->uri->uri_string() == 'admin/C_setting') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/C_setting"><i class="fa fa-gears"></i> <span>Setting</span></a></li>
       </ul>
       <!-- /.sidebar-menu -->
     </section>
@@ -297,5 +292,14 @@
 <!-- ./wrapper -->
 
 </body>
-
+  <script src="<?php echo base_url() ?>assets/adminlte/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="<?php echo base_url() ?>assets/adminlte/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="<?php echo base_url() ?>assets/dist/js/adminlte.min.js"></script>
+  <!-- CK Editor -->
+  <script src="<?php echo base_url() ?>assets/adminlte/ckeditor/ckeditor.js"></script>
+  <!-- DataTables -->
+  <script src="<?php echo base_url() ?>assets/adminlte/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 </html>

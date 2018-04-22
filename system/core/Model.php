@@ -93,7 +93,16 @@ class Model_Utama extends CI_Model
 
 	public function tambah_data($data)
 	{
-		$insert = $this->db->insert($this->table, $data);
+		$a_data = [];
+
+		foreach ($data as $key => $value) {
+			 $a_data[$key] = $value;
+		}
+
+		$a_data['soft_delete'] = "1";
+		$a_data['log_time'] = date("Y-m-d h:i:sa");
+
+		$insert = $this->db->insert($this->table, $a_data);
 		return $insert;
 	}
 
@@ -122,7 +131,31 @@ class Model_Utama extends CI_Model
 
 	public function update($where, $data)
 	{
-		$this->db->update($this->table, $data, $where);
+		$a_data = [];
+		
+		foreach ($data as $key => $value) {
+			 $a_data[$key] = $value;
+		}
+
+		$a_data['soft_delete'] = "1";
+		$a_data['log_time'] = date("Y-m-d h:i:sa");
+
+		$this->db->update($this->table, $a_data, $where);
+		return $this->db->affected_rows();
+	}
+
+	public function delete($where, $data)
+	{
+		$a_data = [];
+		
+		foreach ($data as $key => $value) {
+			 $a_data[$key] = $value;
+		}
+
+		$a_data['soft_delete'] = "0";
+		$a_data['log_time'] = date("Y-m-d h:i:sa");
+
+		$this->db->update($this->table, $a_data, $where);
 		return $this->db->affected_rows();
 	}
 

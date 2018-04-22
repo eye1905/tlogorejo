@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Berita Tlogorejo</title>
+  <title>Desa Tlogorejo</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
@@ -10,12 +10,11 @@
   <!-- Meta -->
   <meta property="og:url"           content="<?php echo base_url($this->uri->uri_string()) ?>" />
   <meta property="og:type"          content="website" />
-  <meta property="og:title"         content="Your Website Title" />
-  <meta property="og:description"   content="Your description" />
-  <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
-
+  <meta property="og:title"         content="Desa Tlogorejo" />
+  <meta property="og:description"   content="Informasi Website Desa Tlogorejo Terupdate" />
+  <meta property="og:image"         content="<?php echo base_url('assets/img/favicon.png')?>" />
+  <link rel="icon" type="image/png" href="<?php echo base_url('assets')?>/img/logone.png"/>
   <!-- Favicons -->
-  <link rel="icon" href="<?php echo base_url('assets/img/favicon.png')?>" type="image/x-icon" />
   <!-- <link rel="icon" href="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png" type="image/x-icon" /> -->
 
   <!-- Google Fonts -->
@@ -64,10 +63,10 @@
           <li><a href="#intro">Beranda</a></li>
           <li><a href="#featured-berita">Berita</a></li>
           <li><a href="#clients">Lembaga</a></li>
-          <li><a href="#services">Layanan</a></li>
+          <!-- <li><a href="#services">Layanan</a></li> -->
           <li><a href="#portfolio">Monografi</a></li>
-          <li><a href="#team">Struktur</a></li>
           <li><a href="#dana">Transparasi Dana</a></li>
+          <li><a href="#team">Struktur</a></li>
           <li><a href="#hukum">Dasa Hukum</a></li>
         <?php } else if(($url == 'berita')){ ?>
           <!-- <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li> -->
@@ -115,11 +114,38 @@
           <div class="col-lg-4 col-md-6 footer-links">
             <h4>Useful Links</h4>
             <ul>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Home</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">About us</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Services</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="ion-ios-arrow-right"></i> <a href="#">Privacy policy</a></li>
+              <?php $url = $this->uri->uri_string(); if(($url == 'homepage') || ($url == '')){ ?>
+          <li><a href="#intro">Beranda</a></li>
+          <li><a href="#featured-berita">Berita</a></li>
+          <li><a href="#clients">Lembaga</a></li>
+          <!-- <li><a href="#services">Layanan</a></li> -->
+          <li><a href="#portfolio">Monografi</a></li>
+          <li><a href="#dana">Transparasi Dana</a></li>
+          <li><a href="#team">Struktur</a></li>
+          <li><a href="#hukum">Dasa Hukum</a></li>
+        <?php } else if(($url == 'berita')){ ?>
+          <!-- <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li> -->
+          <?php if(!empty($kategori)){ ?>
+            <?php foreach($kategori as $row){ ?>
+            <li><a href="<?php echo site_url('berita/category/'.$row->kategori_slug) ?>"><?php echo $row->kategori_nama ?></a></li>
+            <?php } ?>
+          <?php } else { ?>
+            <li><a href="#"></a></li>
+          <?php } ?>
+        <?php } else if($this->uri->segment(1) == 'lembaga'){ ?>
+          <?php foreach($navigasi as $row): ?>
+          <li><a href="<?php echo site_url('lembaga/r/'.$row->lembaga_slug) ?>"><?php echo $row->lembaga_nama ?></a></li>
+          <?php endforeach; ?>
+        <?php } else { ?>
+          <!-- <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li> -->
+          <?php if(!empty($kategori)){ ?>
+            <?php foreach($kategori as $row){ ?>
+            <li><a href="<?php echo site_url('berita/category/'.$row->kategori_slug) ?>"><?php echo $row->kategori_nama ?></a></li>
+            <?php } ?>
+          <?php } else { ?>
+            <li><a href="#"></a></li>
+          <?php } ?>
+        <?php } ?>
             </ul>
           </div>
 
@@ -154,7 +180,6 @@
               2018 &copy; Copyright <strong>Tlogorejo</strong>. All Rights Reserved
             </div>
             <div class="credits">
-              Re-design by Abdul Rozak Romadhoni<br><br>
               <!--
                 All the links in the footer should remain intact.
                 You can delete the links only if you purchased the pro version.

@@ -27,7 +27,10 @@ class C_dana extends MY_Controller {
 
     public function save()
     {
- 		$this->form_validation->set_rules('Nama', 'Nama Sumber Dana', 'required');
+ 		$this->form_validation->set_rules('sumberdana', 'Nama Sumber Dana', 'required');
+        $this->form_validation->set_rules('nominal', 'Nominal', 'required');
+        $this->form_validation->set_rules('nama_struktur', 'Nama Strukutr', 'required');
+        $this->form_validation->set_rules('keterangandana', 'keterangan', 'required');
 
  		if ($this->form_validation->run() == FALSE)
         {
@@ -35,36 +38,28 @@ class C_dana extends MY_Controller {
         }
         else
         {
-            $select = $this->M_sumber_dana->get_by_field($this->input->post("Nama"));
-            if (count($select) >0 ) {
-            	echo json_encode("Nama Sudah Ada !");
-            } else{
-            	$data = array('nama_sumber' => $this->input->post("Nama"),
-            				'soft_delete' => "1",
-            				'log_time' =>  date("Y-m-d h:i:sa")
-            				);
+            $data = array('id_sumberdana' => strip_tags($this->input->post("sumberdana")),
+                            'id_user' => strip_tags($this->input->post("nama_struktur")),
+                            'jumlah' => strip_tags($this->input->post("nominal")),
+                            'keterangan' => strip_tags($this->input->post("keterangandana"))
+                            );
+                
+                $this->M_dana->tambah_data($data);
 
-	            $this->M_sumber_dana->tambah_data($data);
-
-	            echo json_encode("success");
-            }
+                echo json_encode("success");
         }
 	}
 
-	public function select_sumber($id)
+	public function select_dana($id)
 	{
-		$data = $this->M_sumber_dana->get_by_id($id);
+		$data = $this->M_dana->get_by_id($id);
 
 		echo json_encode($data);
 	}
 
-	public function delete_sumber($id)
+	public function delete_dana($id)
 	{
-		$data = array('soft_delete' => "0",
-            			'log_time' =>  date("Y-m-d h:i:sa")
-            			);
-
-		$update = $this->M_sumber_dana->update(array('id_sumber' => $id), $data);
+		$update = $this->M_dana->delete(array('id' => $id), $data);
 		if ($update) {
 			echo json_encode("success");
 		}
@@ -72,7 +67,10 @@ class C_dana extends MY_Controller {
 
 	 public function update()
     {
- 		$this->form_validation->set_rules('Nama', 'Nama Prioritas', 'required');
+ 		$this->form_validation->set_rules('sumberdana', 'Nama Sumber Dana', 'required');
+        $this->form_validation->set_rules('nominal', 'Nominal', 'required');
+        $this->form_validation->set_rules('nama_struktur', 'Nama Strukutr', 'required');
+        $this->form_validation->set_rules('keterangandana', 'keterangan', 'required');
 
  		if ($this->form_validation->run() == FALSE)
         {
@@ -80,12 +78,13 @@ class C_dana extends MY_Controller {
         }
         else
         {
-            	$data = array('nama_sumber' => $this->input->post("Nama"),
-            				'soft_delete' => "1",
-            				'log_time' =>  date("Y-m-d h:i:sa")
-            				);
+            	$data = array('id_sumberdana' => strip_tags($this->input->post("sumberdana")),
+                            'id_user' => strip_tags($this->input->post("nama_struktur")),
+                            'jumlah' => strip_tags($this->input->post("nominal")),
+                            'keterangan' => strip_tags($this->input->post("keterangandana"))
+                            );
 
-	            $update = $this->M_sumber_dana->update(array('id_sumber' => $this->input->post("Id")), $data);
+	            $update = $this->M_dana->update(array('id' => strip_tags($this->input->post("id_dana"))), $data);
 
 	           if ($update) {
 					echo json_encode("success");

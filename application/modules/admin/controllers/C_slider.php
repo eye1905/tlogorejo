@@ -58,9 +58,7 @@ class C_slider extends MY_Controller {
                 	if ($hapus) {
                 		$data = array('judul' => $this->input->post("Judul"),
             				'deskripsi' => $this->input->post("Deskripsi"),
-            				'foto' => $this->upload->file_name,
-            				'soft_delete' => "1",
-            				'log_time' =>  date("Y-m-d h:i:sa")
+            				'foto' => $this->upload->file_name
             				);
 
 		            	$this->M_slider->tambah_data($data);
@@ -120,9 +118,7 @@ class C_slider extends MY_Controller {
 			                	if ($hapus) {
 			                		$data = array('judul' => $this->input->post("Judul"),
                                                     'deskripsi' => $this->input->post("Deskripsi"),
-                                                    'foto' => $this->upload->file_name,
-                                                    'soft_delete' => "1",
-                                                    'log_time' =>  date("Y-m-d h:i:sa")
+                                                    'foto' => $this->upload->file_name
                                                     );
 
 
@@ -150,9 +146,7 @@ class C_slider extends MY_Controller {
 		        }	
         	}else{
             	$data = array('judul' => $this->input->post("Judul"),
-                            'deskripsi' => $this->input->post("Deskripsi"),
-                            'soft_delete' => "1",
-                            'log_time' =>  date("Y-m-d h:i:sa")
+                            'deskripsi' => $this->input->post("Deskripsi")
                             );
 
 		        $update = $this->M_slider->update(array('id_slider' => $this->input->post("ide")), $data);
@@ -180,10 +174,7 @@ class C_slider extends MY_Controller {
 
     public function delete_data($id)
     {
-    	$data = array('soft_delete' => "0",
-            			'log_time' =>  date("Y-m-d h:i:sa"));
-
-		        $update = $this->M_slider->update(array('id_slider' => $id), $data);
+		        $update = $this->M_slider->delete(array('id_slider' => $id), $data);
 	           if ($update) {
 					echo json_encode("success");
 				}

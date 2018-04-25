@@ -230,9 +230,11 @@
         <div class="box-body">
         <div class="row">
           <div class="col-sm-12">
-            <div id="myDiagramDiv" style="width:120%; height:600px; background-color: #fff; margin-left: -50pt">
+
+            <p class="text-center">Masih dalam perbaikan</p>
+            <!-- <div id="myDiagramDiv" style="width:120%; height:600px; background-color: #fff; margin-left: -50pt">
               
-            </div>
+            </div> -->
           </div>
         </div>
         </div>

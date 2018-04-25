@@ -12,7 +12,7 @@
   <meta property="og:type"          content="website" />
   <meta property="og:title"         content="Desa Tlogorejo" />
   <meta property="og:description"   content="Informasi Website Desa Tlogorejo Terupdate" />
-  <meta property="og:image"         content="<?php echo base_url('assets/img/favicon.png')?>" />
+  <meta property="og:image"         content="<?php echo base_url('assets/img/logone.png')?>" />
   <link rel="icon" type="image/png" href="<?php echo base_url('assets')?>/img/logone.png"/>
   <!-- Favicons -->
   <!-- <link rel="icon" href="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png" type="image/x-icon" /> -->

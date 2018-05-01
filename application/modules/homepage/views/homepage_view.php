@@ -325,12 +325,12 @@ model.nodeDataArray =
 ];
 myDiagram.model = model;
 </script>
-<script src="<?php echo base_url() ?>/assets/Chart/Chart.min.js"></script>
+<script src="<?php echo base_url() ?>/assets/chart/Chart.min.js"></script>
 <script type="text/javascript">
 var densityCanvas = document.getElementById("densityChart");
 
-Chart.defaults.global.defaultFontFamily = "Lato";
-Chart.defaults.global.defaultFontSize = 18;
+Chart.defaults.global.defaultFontFamily = "Open Sans";
+Chart.defaults.global.defaultFontSize = 14;
 
 var pendapatan = {
   label: 'Pendapatan Perbulan / Rupiah',

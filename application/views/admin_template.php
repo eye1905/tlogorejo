@@ -26,6 +26,16 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <!-- REQUIRED JS SCRIPTS -->
+  <script src="<?php echo base_url() ?>assets/adminlte/jquery/dist/jquery.min.js"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="<?php echo base_url() ?>assets/adminlte/bootstrap/dist/js/bootstrap.min.js"></script>
+  <!-- AdminLTE App -->
+  <script src="<?php echo base_url() ?>assets/dist/js/adminlte.min.js"></script>
+  <!-- CK Editor -->
+  <script src="<?php echo base_url() ?>assets/adminlte/ckeditor/ckeditor.js"></script>
+  <!-- DataTables -->
+  <script src="<?php echo base_url() ?>assets/adminlte/datatables.net/js/jquery.dataTables.min.js"></script>
+  <script src="<?php echo base_url() ?>assets/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
   <!-- jQuery 3 -->
 
   <meta property="og:url"           content="<?php echo base_url($this->uri->uri_string()) ?>" />
@@ -292,14 +302,4 @@
 <!-- ./wrapper -->
 
 </body>
-  <script src="<?php echo base_url() ?>assets/adminlte/jquery/dist/jquery.min.js"></script>
-  <!-- Bootstrap 3.3.7 -->
-  <script src="<?php echo base_url() ?>assets/adminlte/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="<?php echo base_url() ?>assets/dist/js/adminlte.min.js"></script>
-  <!-- CK Editor -->
-  <script src="<?php echo base_url() ?>assets/adminlte/ckeditor/ckeditor.js"></script>
-  <!-- DataTables -->
-  <script src="<?php echo base_url() ?>assets/adminlte/datatables.net/js/jquery.dataTables.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
 </html>

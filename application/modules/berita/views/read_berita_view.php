@@ -138,7 +138,7 @@
                           <img src="<?php echo base_url('assets/blank_example.jpg') ?>" class="media-object" style="width:140px">
                         </div>
                         <div class="media-body">
-                          <a href=""><p>Kecelakaan Beruntun di Bojonegoro, Seorang</p></a>
+                          <a href=""><p style="font-size: 16px;">Kecelakaan Beruntun di Bojonegoro, Seorang</p></a>
                           <p>Bojonegoro Kota - Kecelakaan beruntun yang mengakibatkan korban jiwa terjadi di Jalan Ahmad Yani</p>
                           <div class="desc" style="font-size: 14px;">
                             <small style="font-weight: bold;">Desa Tlogorejo</small>

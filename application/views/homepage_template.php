@@ -42,6 +42,26 @@
   ======================================================= -->
 </head>
 
+<style type="text/css">
+  .card .card-title {
+    color: #FFF; 
+    border-bottom: 2px solid #007bff; 
+    text-transform: uppercase;
+  }
+  .card .card-title span {
+    padding: 3px 15px 3px 15px; 
+    background-color: #007bff;
+  }
+  .card .card-body {
+    padding: 0px;
+  }
+
+  /* Helper */
+  .grey {
+    color: #b3b3b3;
+  }
+</style>
+
 <body>
 
   <!--==========================

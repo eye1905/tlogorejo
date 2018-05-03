@@ -24,17 +24,19 @@
                       <?php foreach($berita as $row){ ?>
                       <div class="row">
                         <div class="col-md-12">
-                          <div class="title-artikel">
-                            <h3>
-                              <a href="#"><?php echo $row->artikel_judul ?></a>
-                            </h3>
+                          <div class="title-artikel" style="color: #000;">
+                            <h3><?php echo $row->artikel_judul ?></h3>
+                            <div class="desc" style="font-size: 16px;">
+                              <small>Penulis </small>
+                              <small style="font-weight: bold;">Desa Tlogorejo</small>
+                              <small class="grey">- 3 Mei 2018</small>
+                            </div>
                           </div>
                           <div class="body-artikel">
                             <div class="thumb col-md-8" style="margin: 0 auto;">
                               <img src="<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>" class="thumbnail" alt="..." style="width: 100%; margin-bottom: 1vh;">
                             </div>
-                            <div class="content-artikel">
-                              <br>
+                            <div class="content-artikel" style="color: #000;">
                               <?php echo $row->artikel_isi ?>
                             </div>
                           </div>
@@ -116,6 +118,36 @@
                     <?php } ?>
 
                     </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row" style="margin-bottom: 20px;">
+              <div class="col-md-12">
+                <div class="card">
+                  <div class="card-title" style="color: #FFF; border-bottom: 2px solid #007bff; text-transform: uppercase;">
+                    <span style="padding: 3px 10px 3px 10px; background-color: #007bff;">Berita Terkait</span>
+                  </div>
+                  <div class="card-body" style="padding: 0px; color: #000;">
+                    <div class="container">
+                      <?php for($i=0; $i<3; $i++){ ?>
+                      <div class="media" style="margin-bottom: 5px;">
+                        <div class="media-left">
+                          <img src="<?php echo base_url('assets/blank_example.jpg') ?>" class="media-object" style="width:140px">
+                        </div>
+                        <div class="media-body">
+                          <a href=""><p>Kecelakaan Beruntun di Bojonegoro, Seorang</p></a>
+                          <p>Bojonegoro Kota - Kecelakaan beruntun yang mengakibatkan korban jiwa terjadi di Jalan Ahmad Yani</p>
+                          <div class="desc" style="font-size: 14px;">
+                            <small style="font-weight: bold;">Desa Tlogorejo</small>
+                            <small class="grey">- 3 Mei 2018</small>
+                          </div>
+                        </div>
+                      </div>
+                      <?php } ?>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -125,6 +157,7 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="card">
+
                     <div class="container">
                       <div class="pull-left">
                         <a href="#"><span class="fa-2x fa fa-chevron-left"></span></a>
@@ -141,17 +174,36 @@
           </div>
           <div class="col-md-4" style="margin: 1vh 0 1vh 0;">
             <div class="list-sidebar">
-              <div class="row">
-                <div class="col-md-12">
 
+              <div class="row" style="margin-bottom: 20px;">
+                <div class="col-md-12">
                   <div class="card">
-                    <div class="container">
-                      Berita Terkait
+                    <div class="card-title" style="color: #FFF; border-bottom: 2px solid #007bff; text-transform: uppercase;">
+                      <span style="padding: 3px 10px 3px 10px; background-color: #007bff;">Kabar Tlogorejo Terbaru</span>
+                    </div>
+                    <div class="card-body" style="padding: 0px; color: #000;">
+                      <div class="container">
+                        <?php for($i=0; $i<3; $i++){ ?>
+                        <div class="media" style="margin-bottom: 5px;">
+                          <div class="media-left">
+                            <img src="<?php echo base_url('assets/blank_example.jpg') ?>" class="media-object" style="width:100px">
+                          </div>
+                          <div class="media-body">
+                            <a href=""><p>Kecelakaan Beruntun di Bojonegoro, Seorang</p></a>
+                            <div class="desc" style="font-size: 14px;">
+                              <small style="font-weight: bold;">Desa Tlogorejo</small>
+                              <small class="grey">- 3 Mei 2018</small>
+                            </div>
+                          </div>
+                        </div>
+                        <?php } ?>
+                      </div>
                     </div>
                   </div>
-
                 </div>
               </div>
+
+              <?php $this->load->view('list_sidebar') ?>
             </div> 
           </div>
         </div>

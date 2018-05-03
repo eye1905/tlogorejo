@@ -37,7 +37,7 @@
                           <img src="<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>" class="thumbnail" alt="..." style="width: 100%; margin-bottom: 1vh;">
                         </div>
                         <div class="col-md-8">
-                          <div class="artikel-isi">
+                          <div class="artikel-isi" style="color: #000;">
                             <?php echo limit_words($row->artikel_isi, 22); echo "..."; ?>
                           </div>
                           <a href="<?php echo site_url('berita/read/'.$row->artikel_slug) ?>" class="btn btn-sm btn-primary btn-rounded">Baca Selengkapnya <i class="fa fa-chevron-right"></i></a>
@@ -62,21 +62,7 @@
           </div>
           <div class="col-md-4" style="margin: 1vh 0 1vh 0;">
             <div class="list-sidebar">
-              <div class="row">
-                <div class="col-md-12">
-
-                  <div class="card">
-                    <div class="container">
-                      <form>
-                        <div class="form-group">
-                          <input type="" name="" class="form-control" style="border-radius: 0;">
-                        </div>
-                      </form>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
+              <?php $this->load->view('list_sidebar') ?>
             </div> 
           </div>
         </div>

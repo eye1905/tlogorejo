@@ -57,6 +57,28 @@ class C_kategori extends MY_Controller {
 		}
 	}
 
+	function update() {
+        $slug = url_title($this->input->post('kategori_nama'), 'dash', TRUE);
+
+    	$data = array(
+            'kategori_nama' => $this->input->post('kategori_nama'),
+    		'kategori_slug' => $slug,
+            'kategori_soft_delete' => FALSE,
+            'kategori_log_time' => date('Y-m-d H:i:s'),
+    	);
+
+    	$where = array(
+    		'kategori_id' => $this->input->post('kategori_id')
+    	);
+
+    	$this->M_kategori->update_data('artikel_kategori', $where, $data);
+    	echo "
+    		<script>
+    			alert('Sukses mengperbarui data!');
+    			window.location.href='".base_url('admin/C_kategori')."';
+    		</script>";
+    }
+
 	function delete() {
 	    $data = array('kategori_soft_delete' => TRUE, 'kategori_log_time' => date('Y-m-d H:i:s'));
 	    $where = array('kategori_id' => $this->input->get('id'));

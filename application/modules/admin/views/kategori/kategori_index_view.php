@@ -43,7 +43,7 @@
                           <td class="text-center"><input type="checkbox" name="id[]"></td>
                           <td>
                             <span class="text-primary"><?php echo $row->kategori_nama ?></span><br>
-                            <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+                           <a href="#edit<?php echo $row->kategori_id ?>" data-toggle="modal" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Edit</a>
                             <a href="<?php echo base_url('admin/C_kategori/delete?id='.$row->kategori_id) ?>" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>
                           </td>
                           <td class="text-center">
@@ -97,7 +97,7 @@
                           <td class="text-center"><input type="checkbox" name="id[]"></td>
                           <td>
                             <span class="text-primary"><?php echo $row->kategori_nama ?></span><br>
-                            <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Edit</a>
+                            <a href="#edit<?php echo $row->kategori_id ?>" data-toggle="modal" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Edit</a>
                             <a href="<?php echo base_url('admin/C_kategori/restore?id='.$row->kategori_id) ?>" class="btn btn-xs btn-success"><i class="fa fa-refresh"></i> Restore</a>
                             <a href="#" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i> Hapus Permanent</a>
                           </td>
@@ -122,29 +122,22 @@
       </div>
     </div>
 
-    <div class="modal fade" id="modal-add">
+    <?php foreach($kategori as $row): ?>
+    <div class="modal fade" id="edit<?php echo $row->kategori_id ?>">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Tambah User</h4>
+            <h4 class="modal-title">Edit <strong><?php echo $row->kategori_nama ?></strong></h4>
           </div>
           <div class="modal-body">
             <div class="row">
               <div class="col-md-12">
-                <form action="" method="">
+                <form action="C_kategori/update" method="post">
                   <div class="form-group">
-                    <input type="text" name="" class="form-control" placeholder="Nama Pengguna">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="" class="form-control" placeholder="User Id">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" name="" class="form-control" placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" name="" class="form-control" placeholder="Confirm Password">
+                    <input type="hidden" name="kategori_id" value="<?php echo $row->kategori_id ?>">
+                    <input type="text" name="kategori_nama" class="form-control" placeholder="Nama Ketegori" value="<?php echo $row->kategori_nama ?>">
                   </div>
                   <div class="form-group">
                     <button type="submit" class="btn btn-sm btn-primary pull-right"><i class="fa fa-save"></i> Simpan</button>
@@ -153,58 +146,12 @@
               </div>
             </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">Close</button>
-          </div>
         </div>
         <!-- /.modal-content -->
       </div>
       <!-- /.modal-dialog -->
     </div>
-
-    <div class="modal fade" id="modal-edituser">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Edit User</h4>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-12">
-                
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="modal fade" id="modal-detailuser">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Detail User</h4>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-12">
-                
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
+  <?php endforeach; ?>
 
   </section>
   <!-- /.content -->

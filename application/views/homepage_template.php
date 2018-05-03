@@ -111,44 +111,6 @@
              <p><strong>Tlogorejo</strong> - Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
           </div>
 
-          <div class="col-lg-4 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <?php $url = $this->uri->uri_string(); if(($url == 'homepage') || ($url == '')){ ?>
-          <li><a href="#intro">Beranda</a></li>
-          <li><a href="#featured-berita">Berita</a></li>
-          <li><a href="#clients">Lembaga</a></li>
-          <!-- <li><a href="#services">Layanan</a></li> -->
-          <li><a href="#portfolio">Monografi</a></li>
-          <li><a href="#dana">Transparasi Dana</a></li>
-          <li><a href="#team">Struktur</a></li>
-          <li><a href="#hukum">Dasa Hukum</a></li>
-        <?php } else if(($url == 'berita')){ ?>
-          <!-- <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li> -->
-          <?php if(!empty($kategori)){ ?>
-            <?php foreach($kategori as $row){ ?>
-            <li><a href="<?php echo site_url('berita/category/'.$row->kategori_slug) ?>"><?php echo $row->kategori_nama ?></a></li>
-            <?php } ?>
-          <?php } else { ?>
-            <li><a href="#"></a></li>
-          <?php } ?>
-        <?php } else if($this->uri->segment(1) == 'lembaga'){ ?>
-          <?php foreach($navigasi as $row): ?>
-          <li><a href="<?php echo site_url('lembaga/r/'.$row->lembaga_slug) ?>"><?php echo $row->lembaga_nama ?></a></li>
-          <?php endforeach; ?>
-        <?php } else { ?>
-          <!-- <li><a href="<?php echo base_url('homepage') ?>">Beranda</a></li> -->
-          <?php if(!empty($kategori)){ ?>
-            <?php foreach($kategori as $row){ ?>
-            <li><a href="<?php echo site_url('berita/category/'.$row->kategori_slug) ?>"><?php echo $row->kategori_nama ?></a></li>
-            <?php } ?>
-          <?php } else { ?>
-            <li><a href="#"></a></li>
-          <?php } ?>
-        <?php } ?>
-            </ul>
-          </div>
-
           <div class="col-lg-4 col-md-6 footer-contact">
             <h4>Kontak Kami</h4>
             <p>
@@ -165,7 +127,17 @@
               <a href="#" class="instagram"><i class="fa fa-instagram"></i></a>
               <a href="#" class="google-plus"><i class="fa fa-google-plus"></i></a>
               <a href="#" class="linkedin"><i class="fa fa-linkedin"></i></a>
+
             </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h4>Peta</h4>
+            <iframe style="width: 100%; height: 100%;" 
+              frameborder="0" style="border:0"
+              src="https://www.google.com/maps/embed/v1/place?key=AIzaSyC914FmbenKdXJx9HXOkDdC_yEBLIhUypI
+                &q=Tlogorejo,+Kepoh+Baru,+Kabupaten+Bojonegoro,+Jawa+Timur" allowfullscreen>
+            </iframe>
 
           </div>
 

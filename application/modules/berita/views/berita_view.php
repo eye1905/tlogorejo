@@ -33,14 +33,19 @@
                           <?php echo $row->artikel_judul ?>
                         </a>
                       </h5>
+                      <div class="desc" style="font-size: 16px; color: #000; margin-bottom: 10px;">
+                        <small>Penulis </small>
+                        <small style="font-weight: bold;"><?php echo $row->artikel_author ?></small>
+                        <small class="grey"><i class="fa fa-clock-o"></i> <?php echo $row->artikel_tanggal ?></small>
+                      </div>
                       <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="padding-right: 0px;">
                           <!-- <img src="<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>" class="thumbnail" alt="..." style="width: 100%; margin-bottom: 1vh;"> -->
                           <img src="<?php echo base_url('assets/blank_example.jpg') ?>" class="thumbnail" alt="..." style="width: 100%; margin-bottom: 1vh;">
                         </div>
                         <div class="col-md-8">
                           <div class="artikel-isi" style="color: #000;">
-                            <?php echo limit_words($row->artikel_isi, 22); echo "..."; ?>
+                            <?php echo limit_words($row->artikel_isi, 22);; ?> ...
                           </div>
                           <div class="row">
                             <div class="col-md-6">
@@ -51,13 +56,8 @@
                       </div>
                       <div class="row">
                         <div class="col-md-12">
-                          <div class="pull-right">
-                            <!-- <?php echo base_url($this->uri->uri_string()) ?> URL share -->
-                            <!-- <div class="fb-like" data-href="https://www.facebook.com" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div> -->
-                            <br>
-
-                            <!-- <small class="text-muted font-italic"><?php echo $row->artikel_tanggal ?> | <?php echo $row->artikel_author ?></small> -->
-                            <small class="tag" style="color: #d3d3d3; background-color: #f3f3f3; padding: 2px 5px 2px 5px; border-radius: 2px; box-shadow: 1px 1px 1px 0px #d3d3d3;">Informasi</small>
+                          <div class="tag pull-right">
+                            <small class="tag" style="color: #f2f2f2; background-color: #808080; padding: 2px 5px 2px 5px; border-radius: 2px; box-shadow: 1px 1px 1px 0px #d3d3d3;">Informasi</small>
                           </div>
                         </div>
                       </div>

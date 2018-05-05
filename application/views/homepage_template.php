@@ -13,10 +13,10 @@
   <meta property="og:title"         content="Desa Tlogorejo" />
   <meta property="og:description"   content="Informasi Website Desa Tlogorejo Terupdate" />
   <meta property="og:image"         content="<?php echo base_url('assets/img/logone.png')?>" />
-  <link rel="icon" type="image/png" href="<?php echo base_url('assets')?>/img/logone.png"/>
+  
   <!-- Favicons -->
-  <!-- <link rel="icon" href="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png" type="image/x-icon" /> -->
-
+  <link rel="icon" type="image/png" href="<?php echo base_url('assets')?>/img/logone.png"/>
+  
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Montserrat:300,400,500,700" rel="stylesheet">
 
@@ -29,6 +29,10 @@
   <link href="<?php echo base_url('assets')?>/lib/ionicons/css/ionicons.min.css" rel="stylesheet">
   <link href="<?php echo base_url('assets')?>/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
   <link href="<?php echo base_url('assets')?>/lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Rotating Card  -->
+  <link href="<?php echo base_url('assets')?>/x-rotating/css/rotating-card.css" rel="stylesheet" />
+
 
   <!-- Main Stylesheet File -->
   <link href="<?php echo base_url('assets')?>/custom/homepage-style.css" rel="stylesheet">
@@ -43,6 +47,10 @@
 </head>
 
 <style type="text/css">
+  .card-container, .front, .back {
+    height: 250px;
+  }
+
   .card .card-title {
     color: #FFF; 
     border-bottom: 2px solid #007bff; 

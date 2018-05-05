@@ -96,3 +96,17 @@
     </div>
   </div>
 </div>
+
+<!-- Gallery -->
+<div class="row" style="margin-bottom: 20px;">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-title">
+        <span>Gallery</span>
+      </div>
+      <div class="card-body">
+        
+      </div>
+    </div>
+  </div>
+</div>

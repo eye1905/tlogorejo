@@ -1,32 +1,6 @@
   <!--==========================
     Intro Section
   ============================-->
-  <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-  <section id="intro">
-      <div class="w3-content w3-display-container" style="margin-top: 60pt; margin-left: 10pt; margin-right: 10pt">
-      
-      <?php
-      foreach ($slider as $key => $value) {
-      ?>
-      <center>
-      <div class="col-lg-12 text-center">
-          <div class="w3-display-container mySlides">
-        <img src="<?php echo base_url('assets')?>/img/slider/thumbnails/<?php echo $value->foto; ?>" class="img-responsive" style="width:160%; margin-right: 20pt">
-        <div class="w3-display-bottomleft w3-large w3-container w3-padding-16 w3-white" style="opacity: 0.8;" >
-          <p style="color: black;"><?php echo $value->deskripsi; ?></p>
-        </div>
-      </div>
-        </div>
-    </center>
-    <?php } ?>
-  </div>
-<button class="w3-button w3-display-left w3-black" onclick="plusDivs(-1)">&#10094;</button>
-<button class="w3-button w3-display-right w3-black" onclick="plusDivs(1)">&#10095;</button>
-
-</div>
-  </section> -->
-
   <section id="intro">
     <div class="intro-container">
       <div id="introCarousel" class="carousel  slide carousel-fade" data-ride="carousel">
@@ -222,7 +196,7 @@
     <!--==========================
       Team Section
     ============================-->
-    <section id="team">
+    <section id="team" class="bg-light">
       <div class="container">
         <div class="section-header wow fadeInUp">
           <h3>Struktur Organisasi Desa Tlogorejo</h3>
@@ -232,9 +206,51 @@
           <div class="col-sm-12">
 
             <p class="text-center">Masih dalam perbaikan</p>
-            <!-- <div id="myDiagramDiv" style="width:120%; height:600px; background-color: #fff; margin-left: -50pt">
-              
-            </div> -->
+            <?php if(FALSE){ ?>
+            <div id="myDiagramDiv" style="width:120%; height:600px; background-color: #fff; margin-left: -50pt">
+            </div>
+            <?php } ?>
+
+            <div class="row">
+              <?php for($i=0; $i<8; $i++){ ?>
+              <div class="col-md-3">
+                <div class="card-container">
+                  <div class="card">
+                    <div class="front">
+                      <div class="cover">
+                         <img src="<?php echo base_url('assets')?>/img/mountains1.jpg"/>
+                      </div>
+                      <div class="user">
+                        <img class="img-circle" src="http://icons.iconarchive.com/icons/graphicloads/flat-finance/256/person-icon.png"/>
+                      </div>
+                      <div class="content">
+                        <div class="main">
+                          <h3 class="name">Inna Corman</h3>
+                          <p class="profession">Product Manager</p>
+                        </div>
+                      </div>
+                    </div> <!-- end front panel -->
+                    <div class="back">
+                      <div class="header">
+                        <h5 class="motto">"To be or not to be, this is my awesome motto!"</h5>
+                      </div>
+                      <div class="content">
+                        <div class="main">
+                          <h4 class="text-center">Job Description</h4>
+                          <div class="social-links text-center">
+                            <a href="http://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                            <a href="http://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                            <a href="http://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                          </div>
+                        </div>
+                      </div>
+                    </div> <!-- end back panel -->
+                  </div> <!-- end card -->
+                </div> <!-- end card-container -->
+              </div>
+              <?php } ?>
+            </div>
+
           </div>
         </div>
         </div>

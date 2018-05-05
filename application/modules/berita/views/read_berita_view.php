@@ -28,12 +28,12 @@
                             <h3><?php echo $row->artikel_judul ?></h3>
                             <div class="desc" style="font-size: 16px;">
                               <small>Penulis </small>
-                              <small style="font-weight: bold;">Desa Tlogorejo</small>
-                              <small class="grey">- 3 Mei 2018</small>
+                              <small style="font-weight: bold;"><?php echo $row->artikel_author ?></small>
+                              <small class="grey"><i class="fa fa-clock-o"></i> <?php echo $row->artikel_tanggal ?></small>
                             </div>
                           </div>
                           <div class="body-artikel">
-                            <div class="thumb col-md-8" style="margin: 0 auto;">
+                            <div class="thumb col-md-5" style="margin: 0 auto;">
                               <img src="<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>" class="thumbnail" alt="..." style="width: 100%; margin-bottom: 1vh;">
                             </div>
                             <div class="content-artikel" style="color: #000;">
@@ -48,10 +48,6 @@
                                 data-href="https://www.facebook.com" 
                                 data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true">
                               </div>
-                            </div>
-                            <div class="pull-right">
-                              <br>
-                              <small class="badge font-italic" style="background-color: #4267b2; color: #fff; font-weight: 600;"><?php echo $row->artikel_tanggal ?> | <?php echo $row->artikel_author ?></small>
                             </div>
                           </div>                          
                         </div>

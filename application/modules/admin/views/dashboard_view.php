@@ -52,7 +52,7 @@
               <div class="inner">
                 <span class="fa fa-calendar"></span>
                 <h4 style="font-weight: bold;">Konten 3</h4>
-                <p><?php echo $aku; ?></p>
+                <p>jkgsdk</p>
                 <a href="" class="btn btn-primary btn-md btn-rounded">Detail</a>
               </div>
             </div>

@@ -16,10 +16,24 @@ class C_lembaga extends MY_Controller {
 		$this->load->model('M_lembaga');
 
 		//validasi jika user belum login
-			if($this->session->userdata('loged_in') != TRUE){
-		     $url = base_url();
-		     redirect($url);
-		}
+		// 	if($this->session->userdata('loged_in') != TRUE){
+		//      $url = base_url();
+		//      redirect($url);
+		// }
+        $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
+
+        $this->lang->load('auth');
+
+        if (!$this->ion_auth->logged_in())
+        {
+            // redirect them to the login page
+            redirect('/', 'refresh');
+        }
+        elseif (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+        {
+            // redirect them to the home page because they must be an administrator to view this
+            return show_error('You must be an administrator to view this page.');
+        }
 	}
 
 	function index() {

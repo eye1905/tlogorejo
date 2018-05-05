@@ -1,3 +1,4 @@
+<?php $user = $this->ion_auth->user()->row(); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -6,44 +7,37 @@
   <title>Admin Dashboard</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/adminlte/bootstrap/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('assets/adminlte/bootstrap/dist/css/bootstrap.min.css') ?>">
   <!-- Font Awesome -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/adminlte/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('assets/adminlte/font-awesome/css/font-awesome.min.css') ?>">
   <!-- Ionicons -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/adminlte/Ionicons/css/ionicons.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('assets/adminlte/Ionicons/css/ionicons.min.css') ?>">
   <!-- Theme style -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/MyStyle.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/MyStyle.min.css') ?>">
 
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/dist/css/skins/skin-black.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/skins/skin-black.min.css') ?>">
   <!-- bootstrap wysihtml5 - text editor -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('assets/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') ?>">
   <!-- DataTables -->
-  <link rel="stylesheet" href="<?php echo base_url() ?>assets/adminlte/datatables.net-bs/css/dataTables.bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo base_url('assets/adminlte/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>">
   <!-- Customize CSS -->
-  <link rel="stylesheet" type="text/css" href="<?php echo base_url() ?>assets/custom/admin-styles.css">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/custom/admin-styles.css') ?>">
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <!-- REQUIRED JS SCRIPTS -->
-  <script src="<?php echo base_url() ?>assets/adminlte/jquery/dist/jquery.min.js"></script>
-  <!-- Bootstrap 3.3.7 -->
-  <script src="<?php echo base_url() ?>assets/adminlte/bootstrap/dist/js/bootstrap.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="<?php echo base_url() ?>assets/dist/js/adminlte.min.js"></script>
-  <!-- CK Editor -->
-  <script src="<?php echo base_url() ?>assets/adminlte/ckeditor/ckeditor.js"></script>
-  <!-- DataTables -->
-  <script src="<?php echo base_url() ?>assets/adminlte/datatables.net/js/jquery.dataTables.min.js"></script>
-  <script src="<?php echo base_url() ?>assets/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
   <!-- jQuery 3 -->
-
-  <meta property="og:url"           content="<?php echo base_url($this->uri->uri_string()) ?>" />
-  <meta property="og:type"          content="website" />
-  <meta property="og:title"         content="Desa Tlogorejo" />
-  <meta property="og:description"   content="Informasi Website Desa Tlogorejo Terupdate" />
-  <meta property="og:image"         content="<?php echo base_url('assets/img/favicon.png')?>" />
-  <link rel="icon" type="image/png" href="<?php echo base_url('assets')?>/img/logone.png"/>
+  <script src="<?php echo base_url('assets/adminlte/jquery/dist/jquery.min.js') ?>"></script>
+  <!-- Bootstrap 3.3.7 -->
+  <script src="<?php echo base_url('assets/adminlte/bootstrap/dist/js/bootstrap.min.js') ?>"></script>
+  <!-- AdminLTE App -->
+  <script src="<?php echo base_url('assets/dist/js/adminlte.min.js') ?>"></script>
+  <!-- CK Editor -->
+  <script src="<?php echo base_url('assets/adminlte/ckeditor/ckeditor.js') ?>"></script>
+  <!-- DataTables -->
+  <script src="<?php echo base_url('assets/adminlte/datatables.net/js/jquery.dataTables.min.js') ?>"></script>
+  <script src="<?php echo base_url('assets/adminlte/datatables.net-bs/js/dataTables.bootstrap.min.js') ?>"></script>
   <!-- Optionally, you can add Slimscroll and FastClick plugins.
        Both of these plugins are recommended to enhance the
        user experience. -->
@@ -57,9 +51,9 @@
   <header class="main-header">
 
     <!-- Logo -->
-    <a href="<?php echo base_url()?>admin" class="logo hidden-xs">
+    <a href="index.html" class="logo hidden-xs">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>J</b>'</span>
+      <span class="logo-mini"><b>SIP</b></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Dashboard</b></span>
     </a>
@@ -74,7 +68,8 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           <!-- Notifications Menu -->
-         <!--  <li class="dropdown notifications-menu">
+          <li class="dropdown notifications-menu">
+            <!-- Menu toggle button -->
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"></i>
               <span class="label label-warning">10</span>
@@ -82,17 +77,19 @@
             <ul class="dropdown-menu">
               <li class="header">You have 10 notifications</li>
               <li>
+                <!-- Inner Menu: contains the notifications -->
                 <ul class="menu">
-                  <li>
+                  <li><!-- start notification -->
                     <a href="#">
                       <i class="fa fa-users text-aqua"></i> 5 new members joined today
                     </a>
                   </li>
+                  <!-- end notification -->
                 </ul>
               </li>
               <li class="footer"><a href="#">View all</a></li>
             </ul>
-          </li> -->
+          </li>
 
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
@@ -101,7 +98,7 @@
               <!-- The user image in the navbar-->
               <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg') ?>" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs" style="color: #0093E1; font-weight: bold;"><?php echo $this->session->userdata('ses_nama') ?></span>
+              <span class="hidden-xs" style="color: #0093E1; font-weight: bold;"><?php echo $user->first_name ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -109,7 +106,7 @@
                 <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
 
                 <p>
-                  <?php echo $this->session->userdata('ses_id') ?>
+                  <?php echo $user->first_name ?>
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -119,7 +116,7 @@
                   <a href="#" class="btn btn-primary btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="<?php echo base_url('admin/logout') ?>" class="btn btn-primary btn-flat">Sign out</a>
+                  <a href="<?php echo site_url('auth/logout') ?>" class="btn btn-primary btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>
@@ -138,8 +135,8 @@
         <li class="header">
           <div class="sidebar-user">
             <div class="pull-left info">
-              <p><?php echo $this->session->userdata('ses_nama') ?></p>
-              <a href="#"><?php echo $this->session->userdata('ses_akses') ?></a>
+              <p><?php echo $user->first_name; ?> <?php echo $user->last_name ?></p>
+              <!-- <a href="#">Super Admin</a> -->
             </div>
           </div>
         </li>
@@ -281,6 +278,7 @@
 
         <li class="<?php if($this->uri->uri_string() == 'admin/C_user') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/C_user"><i class="fa fa-user"></i> <span>Manajemen User</span></a></li>
         <li class="<?php if($this->uri->uri_string() == 'admin/C_setting') { echo 'active'; } ?>"><a href="<?php echo base_url(); ?>admin/C_setting"><i class="fa fa-gears"></i> <span>Setting</span></a></li>
+        
       </ul>
       <!-- /.sidebar-menu -->
     </section>

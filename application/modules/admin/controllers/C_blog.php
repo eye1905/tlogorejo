@@ -127,7 +127,7 @@ class C_blog extends MY_Controller {
                 $slug = url_title($this->input->post('artikel_judul'), 'dash', TRUE);
 
                 $data = array(
-                    'artikel_id' => now(),
+                    // 'artikel_id' => now(),
                 	'artikel_judul' => $this->input->post('artikel_judul'),
                     'artikel_slug' => $slug,
                 	'artikel_isi' => $this->input->post('artikel_isi'),

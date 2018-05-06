@@ -49,9 +49,16 @@ class Admin extends MY_Controller {
  		$this->template->load('admin_template', 'dashboard_view', $data);
     }
 
-	function logout(){
-        $this->session->sess_destroy();
-        $url = base_url('');
-        redirect($url);
+    // log the user out
+    public function logout()
+    {
+        $this->data['title'] = "Logout";
+
+        // log the user out
+        $logout = $this->ion_auth->logout();
+
+        // redirect them to the login page
+        $this->session->set_flashdata('message', $this->ion_auth->messages());
+        redirect('/', 'refresh');
     }
 }

@@ -77,13 +77,13 @@ class C_blog extends MY_Controller {
             $row[] = '<span class="text-primary">'.$field->artikel_judul.'</span><br>
                       <a href="'.base_url('admin/C_blog/edit?id='.$field->artikel_id).'" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i> Edit</a>
                       '.($field->artikel_soft_delete != FALSE ? 
-                        '<a name="id" href="'.base_url('admin/C_blog/restore?id='.$field->artikel_id).'" class="btn btn-xs btn-success"><i class="fa fa-refresh"></i> Restore</a>' 
+                        '<a name="id" href="'.base_url('admin/C_blog/restore?id='.$field->artikel_id).'" class="btn btn-xs btn-success"><i class="fa fa-recycle"></i> Restore</a>' 
                         :
                         '<a name="id" href="'.base_url('admin/C_blog/delete?id='.$field->artikel_id).'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>').'
                       '.($field->artikel_status != FALSE ? 
-                        '<a name="id" href="'.base_url('admin/C_blog/draft?id='.$field->artikel_id).'" class="btn btn-xs btn-default">Draft <i class="fa fa-tag"></i></a>' 
+                        '<a name="id" href="'.base_url('admin/C_blog/draft?id='.$field->artikel_id).'" class="btn btn-xs btn-default"><i class="fa fa-archive"></i> Draft</a>' 
                         :
-                        '<a name="id" href="'.base_url('admin/C_blog/publikasi?id='.$field->artikel_id).'" class="btn btn-xs btn-default">Publikasi <i class="fa fa-tag"></i></a>').'
+                        '<a name="id" href="'.base_url('admin/C_blog/publikasi?id='.$field->artikel_id).'" class="btn btn-xs btn-default"><i class="fa fa-newspaper-o"></i> Publikasi</a>').'
                       ';
 
             $row[] = '<em class="text-warning">'.($field->artikel_status != 1 ? 'Draft' : 'Publikasi').'</em>';
@@ -142,11 +142,13 @@ class C_blog extends MY_Controller {
                 );
 
                 $this->M_blog->save_data('artikel_post', $data);
-                echo "
-                	<script>
-                		alert('Sukses menyimpan artikel!');
-                		window.location.href='".base_url('admin/C_blog')."';
-                	</script>";
+                if($this->db->affected_rows() == TRUE){
+                    echo "
+                        <script>
+                            alert('Sukses menyimpan artikel!');
+                            window.location.href='".base_url('admin/C_blog')."';
+                        </script>";
+                }
             }else{
 	            redirect('admin/C_blog');
 	        }
@@ -191,12 +193,13 @@ class C_blog extends MY_Controller {
                 );
 
                 $this->M_blog->update_data('artikel_post', $where, $data);
-                echo "
-                	<script>
-                		alert('Sukses menyimpan gambar!');
-                		window.location.href='".base_url('admin/C_blog')."';
-                	</script>";
-                // redirect('admin/blog');
+                if($this->db->affected_rows() == TRUE){
+                    echo "
+                        <script>
+                            alert('Sukses menyimpan gambar!');
+                            window.location.href='".base_url('admin/C_blog')."';
+                        </script>";
+                }
 	        }
 	        else{
 	            redirect('admin/C_blog');
@@ -207,9 +210,8 @@ class C_blog extends MY_Controller {
         	echo "
     		<script>
     			alert('Gagal memperbarui gambar!');
-    			window.location.href='".base_url('admin/C_blog/form')."';
+    			window.location.href='".base_url('admin/C_blog')."';
     		</script>";
-            // redirect('admin/blog/form');
         }
     }
 
@@ -231,11 +233,20 @@ class C_blog extends MY_Controller {
     	);
 
     	$this->M_blog->update_data('artikel_post', $where, $data);
-    	echo "
-    		<script>
-    			alert('Sukses mengperbarui artikel!');
-    			window.location.href='".base_url('admin/C_blog')."';
-    		</script>";
+        if($this->db->affected_rows() == TRUE){
+            echo "
+                <script>
+                    alert('Sukses mengperbarui artikel!');
+                    window.location.href='".base_url('admin/C_blog')."';
+                </script>";
+        }
+        else {
+            echo "
+                <script>
+                    alert('Gagal mengperbarui artikel!');
+                    window.location.href='".base_url('admin/C_blog')."';
+                </script>";
+        }
     }
 
     function delete() {
@@ -243,11 +254,14 @@ class C_blog extends MY_Controller {
         $where = array('artikel_id' => $this->input->get('id'));
 
         $this->M_blog->update_data('artikel_post', $where, $data);
-        echo "
-            <script>
-                alert('Sukses menghapus artikel!');
-                window.location.href='".base_url('admin/C_blog')."';
-            </script>";
+        if($this->db->affected_rows() ==  TRUE){
+            $this->session->set_flashdata('message', 'Sukses menghapus data!');
+            redirect('admin/C_blog');
+        }
+        else {
+            $this->session->set_flashdata('message', 'Gagal menghapus data!');
+            redirect('admin/C_blog');
+        }
     }
 
     function restore() {
@@ -255,11 +269,14 @@ class C_blog extends MY_Controller {
         $where = array('artikel_id' => $this->input->get('id'));
 
         $this->M_blog->update_data('artikel_post', $where, $data);
-        echo "
-            <script>
-                alert('Sukses memulihkan artikel!');
-                window.location.href='".base_url('admin/C_blog/recycle_bin')."';
-            </script>";
+        if($this->db->affected_rows() ==  TRUE){
+            $this->session->set_flashdata('message', 'Sukses memulihkan data!');
+            redirect('admin/C_blog');
+        }
+        else {
+            $this->session->set_flashdata('message', 'Gagal memulihkan data!');
+            redirect('admin/C_blog');
+        }
     }
 
     function draft() {
@@ -267,7 +284,14 @@ class C_blog extends MY_Controller {
         $where = array('artikel_id' => $this->input->get('id'));
 
         $this->M_blog->update_data('artikel_post', $where, $data);
-        redirect('admin/C_blog');
+        if($this->db->affected_rows() ==  TRUE){
+            $this->session->set_flashdata('message', 'Merubah ke Draft');
+            redirect('admin/C_blog');
+        }
+        else {
+            $this->session->set_flashdata('message', 'Kesalahan menyimpan data');
+            redirect('admin/C_blog');
+        }
     }
 
     function publikasi() {
@@ -275,19 +299,28 @@ class C_blog extends MY_Controller {
         $where = array('artikel_id' => $this->input->get('id'));
 
         $this->M_blog->update_data('artikel_post', $where, $data);
-        redirect('admin/C_blog');
+        if($this->db->affected_rows() ==  TRUE){
+            $this->session->set_flashdata('message', 'Diplubikasikan');
+            redirect('admin/C_blog');
+        }
+        else {
+            $this->session->set_flashdata('message', 'Kesalahan menyimpan data');
+            redirect('admin/C_blog');
+        }
     }
 
     function delete_permannent() 
     {
     	$where = array('artikel_id' => $this->input->get('id'));
     	$this->M_blog->delete_data('artikel_post', $where);
-    	echo "
-    		<script>
-    			alert('Sukses menghapus artikel!');
-    			window.location.href='".base_url('admin/C_blog')."';
-    		</script>";
-    	// redirect('admin/blog');
+    	if($this->db->affected_rows() ==  TRUE){
+            $this->session->set_flashdata('message', 'Sukses menghapus data!');
+            redirect('admin/C_blog');
+        }
+        else {
+            $this->session->set_flashdata('message', 'Gagal menghapus data!');
+            redirect('admin/C_blog');
+        }
     }
 
     public function multiple_delete()
@@ -298,5 +331,13 @@ class C_blog extends MY_Controller {
     public function multiple_restore()
     {
         $this->M_blog->multi_restore_data();
+    }
+
+    public function query()
+    {
+        $this->M_blog->delete();
+        if($this->db->affected_rows() == TRUE){
+            redirect('admin/C_blog');
+        }
     }
 }

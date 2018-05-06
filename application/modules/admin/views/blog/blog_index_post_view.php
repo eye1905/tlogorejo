@@ -8,6 +8,8 @@
   <!-- Main content -->
   <section class="content">
 
+    <?php $this->load->view('message') ?>
+
     <!-- Default box -->
     <div class="box">
       <div class="box-body">
@@ -97,6 +99,11 @@
       });
 
   });
+
+  $(".alert").fadeIn(1000);
+    setTimeout(function(){
+    $(".alert").hide(); 
+  }, 2000);
 
   function checkAll(ele) {
        var checkboxes = document.getElementsByTagName('input');

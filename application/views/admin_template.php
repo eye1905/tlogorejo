@@ -107,7 +107,7 @@
 
                 <p>
                   <?php echo $user->first_name; ?> <?php echo $user->last_name ?>
-                  <small>Member since Nov. 2012</small>
+                  <small>Member since <?php echo date(DATE_RFC1123, $user->created_on) ?></small>
                 </p>
               </li>
               <!-- Menu Footer-->

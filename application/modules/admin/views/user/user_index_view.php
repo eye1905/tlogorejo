@@ -43,7 +43,7 @@
                     <button class="btn btn-xs btn-primary"><?php echo $group->name ?></button>
                     <?php endforeach?>
                   </td>
-                  <td><?php echo ($user->active) ? anchor("admin/user/deactivate/".$user->id, lang('index_active_link'), "class='badge success'") : anchor("admin/C_user/activate/". $user->id, lang('index_inactive_link'), "class='badge default'");?></td>
+                  <td><?php echo ($user->active) ? anchor("admin/C_user/deactivate/".$user->id, lang('index_active_link'), "class='badge success'") : anchor("admin/C_user/activate/". $user->id, lang('index_inactive_link'), "class='badge default'");?></td>
                   <td>
                     <a href="<?php echo site_url("admin/C_user/edit_user/".$user->id) ?>" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit <?php echo $user->first_name ?>"><i class="fa fa-pencil"></i></a>
                   </td>
@@ -69,7 +69,7 @@
   $('#example1').DataTable({
    'paging'      : true,
    'lengthChange': false,
-   'searching'   : false,
+   'searching'   : true,
    'ordering'    : false,
    'info'        : true,
    'autoWidth'   : false

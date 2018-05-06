@@ -12,17 +12,19 @@ class Auth extends MX_Controller {
 
 		$this->lang->load('auth');
 
-		if ($this->ion_auth->logged_in())
-		{
-			// redirect them to the login page
-			redirect('admin');
-		}
 	}
 
 	// redirect if needed, otherwise display the user list
 	public function index()
 	{
-
+		if (!$this->ion_auth->logged_in())
+		{
+			// redirect them to the login page
+			redirect('auth/login');
+		}
+		else {
+			redirect('admin');	
+		}
 	}
 
 	// log the user in

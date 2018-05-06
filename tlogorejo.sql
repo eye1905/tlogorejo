@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 22, 2018 at 07:48 PM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 5.6.32
+-- Generation Time: 06 Mei 2018 pada 06.53
+-- Versi Server: 10.1.30-MariaDB
+-- PHP Version: 7.2.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `artikel_kategori`
+-- Struktur dari tabel `artikel_kategori`
 --
 
 CREATE TABLE `artikel_kategori` (
@@ -37,21 +37,21 @@ CREATE TABLE `artikel_kategori` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `artikel_kategori`
+-- Dumping data untuk tabel `artikel_kategori`
 --
 
 INSERT INTO `artikel_kategori` (`kategori_id`, `kategori_nama`, `kategori_slug`, `kategori_soft_delete`, `kategori_log_time`) VALUES
-(1, 'Ekonomi & Sosial Budaya', 'ekonomi-sosial-budaya', 0, '2018-04-04 15:20:35'),
-(2, 'Olahraga', 'olahraga', 0, '2018-04-04 15:20:32'),
-(3, 'Peristiwa', 'peristiwa', 0, '2018-04-04 15:20:28'),
+(1, 'Pembinaan Masyarakat', 'pembinaan-masyarakat', 0, '2018-05-03 10:37:05'),
+(2, 'Pemerintah', 'pemerintah', 0, '2018-05-03 10:37:22'),
+(3, 'Kegiatan Desa', 'kegiatan-desa', 0, '2018-05-03 10:37:29'),
 (4, 'Pendidikan', 'pendidikan', 0, '2018-04-05 07:59:10'),
-(5, 'Gaya Hidup', 'gaya-hidup', 0, '2018-04-05 08:05:58'),
+(5, 'Potensi', 'potensi', 0, '2018-05-03 10:37:41'),
 (6, 'lksdnf', 'lksdnf', 1, '2018-04-04 15:28:27');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `artikel_post`
+-- Struktur dari tabel `artikel_post`
 --
 
 CREATE TABLE `artikel_post` (
@@ -70,19 +70,21 @@ CREATE TABLE `artikel_post` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `artikel_post`
+-- Dumping data untuk tabel `artikel_post`
 --
 
 INSERT INTO `artikel_post` (`artikel_id`, `artikel_judul`, `artikel_slug`, `artikel_isi`, `artikel_tanggal`, `artikel_image`, `artikel_author`, `artikel_kategori`, `artikel_status`, `artikel_komentar`, `artikel_soft_delete`, `artikel_log_time`) VALUES
-(14, 'Kecelakaan Beruntun di Bojonegoro, Seorang Pemotor Meninggal Dunia di TKP', 'kecelakaan-beruntun-di-bojonegoro-seorang-pemotor-meninggal-dunia-di-tkp', '<p>Bojonegoro Kota - Kecelakaan beruntun yang mengakibatkan korban jiwa terjadi di Jalan Ahmad Yani turut wilayah Desa Sukorejo Kecamatan Bojonegoro Kota, pada Selasa (13/03/2018) sekira pukul 20.30 WIB tadi malam. Pengendara sepeda motor Yamaha Mio yang hendak menyeberang dengan memotong jalan, disenggol sepeda motor yang tidak diketahui identitasnya, yang berjalan searah di belakangnya sehingga oleng dan selanjsutnya ditabrak oleh sepeda motor Honda Scoopy, yang juga berjalan searah di belakangnya.</p>\r\n\r\n<p>Akibatnya pengendara Yamaha Mio meninggal dunia di lokasi kejadian sedangkan pengendara Honda Scoopy berikut pemboncengnya, mengalami luka-luka dan harus mendapatkan perawatan medis.</p>\r\n\r\n<p>Informasi yang didapat media ini dari &nbsp;Kanit Laka Lntas Sat lantas Polres Bojonegoro, IPDA Mukari, yang terlibat dalam kecelakaan tersebut sepeda motor Yamaha Mio nomor polisi S 4449 CH, yang dikendarai H &nbsp;Subkir (70), warga Desa SarirejoRT 005 rw 002, Kecamatan&nbsp; Balen, dengan sepeda motor Honda Scoopy nomor polisi S 4899 CX, yang dikendarai Misbahul Munir (19), berboncengan dengan Eko Bagus Pambudi (21), keduanya warga Desa Prigi RT 005 RW 001 Kec Kanor Kabupaten Bojonegoro, serta dengan kendaraan sepeda motor yang tidak diketahui identitasnya, karena setelah terjadi senggolan, kendaraan tersebut langsung meninggalkan lokasi kejadian.</p>\r\n\r\n<p>Ipda Mukari menambahkan bahwa berdasarkan hasil olah TKP dan menurut keterangan saksi-saksi, bahwa peristiwa laka lantas tersebut bermula saat sepeda motor Yamaha Mio nomor polisi S 4449 CH, yang dikendari korban, berjalan dari arah timur ke barat dan sesampinya di TKP, berhenti di tepi jalan sebelah kiri atau selatan.</p>\r\n', '14/03/2018', '82188d293163fcc3592712519e4832db.png', 'Admin', '3', 1, 1, 0, '2018-04-11 09:44:34'),
-(15, 'Cara Membuat Slug di Codeigniter', 'cara-membuat-slug-di-codeigniter', '<p>Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident&nbsp;Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>\r\n', '29/03/2018', 'b6b62a0eab0c6f7fa79e5391f02324b0.png', 'Admin', '5', 1, 1, 0, '2018-04-14 23:48:19'),
-(16, 'Tes tes', 'tes-tes', '<p>This is my textarea to be replaced with <strong>CKEditor</strong>.</p>\r\n', '11/04/2018', '1a03fab793c7cc070cc36b353387fbb3.jpg', 'Admin', '2', 1, NULL, 0, '2018-04-14 23:55:20'),
-(17, 'Artikel Ekonomi', 'artikel-ekonomi', '<p>This is my textarea to be replaced with <strong>CKEditor</strong>.</p>\r\n', '11/04/2018', '3d4a552d4c911502d56ac1d05bdfdc12.jpg', 'Abdul Rozak Romadhoni', NULL, 1, NULL, 0, '2018-04-14 23:55:10');
+(14, 'Kecelakaan Beruntun di Bojonegoro, Seorang Pemotor Meninggal Dunia di TKP', 'kecelakaan-beruntun-di-bojonegoro-seorang-pemotor-meninggal-dunia-di-tkp', '<p>Bojonegoro Kota - Kecelakaan beruntun yang mengakibatkan korban jiwa terjadi di Jalan Ahmad Yani turut wilayah Desa Sukorejo Kecamatan Bojonegoro Kota, pada Selasa (13/03/2018) sekira pukul 20.30 WIB tadi malam. Pengendara sepeda motor Yamaha Mio yang hendak menyeberang dengan memotong jalan, disenggol sepeda motor yang tidak diketahui identitasnya, yang berjalan searah di belakangnya sehingga oleng dan selanjsutnya ditabrak oleh sepeda motor Honda Scoopy, yang juga berjalan searah di belakangnya.</p>\r\n\r\n<p>Akibatnya pengendara Yamaha Mio meninggal dunia di lokasi kejadian sedangkan pengendara Honda Scoopy berikut pemboncengnya, mengalami luka-luka dan harus mendapatkan perawatan medis.</p>\r\n\r\n<p>Informasi yang didapat media ini dari &nbsp;Kanit Laka Lntas Sat lantas Polres Bojonegoro, IPDA Mukari, yang terlibat dalam kecelakaan tersebut sepeda motor Yamaha Mio nomor polisi S 4449 CH, yang dikendarai H &nbsp;Subkir (70), warga Desa SarirejoRT 005 rw 002, Kecamatan&nbsp; Balen, dengan sepeda motor Honda Scoopy nomor polisi S 4899 CX, yang dikendarai Misbahul Munir (19), berboncengan dengan Eko Bagus Pambudi (21), keduanya warga Desa Prigi RT 005 RW 001 Kec Kanor Kabupaten Bojonegoro, serta dengan kendaraan sepeda motor yang tidak diketahui identitasnya, karena setelah terjadi senggolan, kendaraan tersebut langsung meninggalkan lokasi kejadian.</p>\r\n\r\n<p>Ipda Mukari menambahkan bahwa berdasarkan hasil olah TKP dan menurut keterangan saksi-saksi, bahwa peristiwa laka lantas tersebut bermula saat sepeda motor Yamaha Mio nomor polisi S 4449 CH, yang dikendari korban, berjalan dari arah timur ke barat dan sesampinya di TKP, berhenti di tepi jalan sebelah kiri atau selatan.</p>\r\n', '14/03/2018', '82188d293163fcc3592712519e4832db.png', 'Admin Tlogorejo', '2', 1, 1, 0, '2018-05-06 11:20:22'),
+(15, 'Cara Membuat Slug di Codeigniter', 'cara-membuat-slug-di-codeigniter', '<p>Bojonegoro Kota - Kecelakaan beruntun yang mengakibatkan korban jiwa terjadi di Jalan Ahmad Yani turut wilayah Desa Sukorejo Kecamatan Bojonegoro Kota, pada Selasa (13/03/2018) sekira pukul 20.30 WIB tadi malam. Pengendara sepeda motor Yamaha Mio yang hendak menyeberang dengan memotong jalan, disenggol sepeda motor yang tidak diketahui identitasnya, yang berjalan searah di belakangnya sehingga oleng dan selanjsutnya ditabrak oleh sepeda motor Honda Scoopy, yang juga berjalan searah di belakangnya.</p>\r\n\r\n<p>Akibatnya pengendara Yamaha Mio meninggal dunia di lokasi kejadian sedangkan pengendara Honda Scoopy berikut pemboncengnya, mengalami luka-luka dan harus mendapatkan perawatan medis.</p>\r\n\r\n<p>Informasi yang didapat media ini dari &nbsp;Kanit Laka Lntas Sat lantas Polres Bojonegoro, IPDA Mukari, yang terlibat dalam kecelakaan tersebut sepeda motor Yamaha Mio nomor polisi S 4449 CH, yang dikendarai H &nbsp;Subkir (70), warga Desa SarirejoRT 005 rw 002, Kecamatan&nbsp; Balen, dengan sepeda motor Honda Scoopy nomor polisi S 4899 CX, yang dikendarai Misbahul Munir (19), berboncengan dengan Eko Bagus Pambudi (21), keduanya warga Desa Prigi RT 005 RW 001 Kec Kanor Kabupaten Bojonegoro, serta dengan kendaraan sepeda motor yang tidak diketahui identitasnya, karena setelah terjadi senggolan, kendaraan tersebut langsung meninggalkan lokasi kejadian.</p>\r\n\r\n<p>Ipda Mukari menambahkan bahwa berdasarkan hasil olah TKP dan menurut keterangan saksi-saksi, bahwa peristiwa laka lantas tersebut bermula saat sepeda motor Yamaha Mio nomor polisi S 4449 CH, yang dikendari korban, berjalan dari arah timur ke barat dan sesampinya di TKP, berhenti di tepi jalan sebelah kiri atau selatan.</p>\r\n', '29/03/2018', 'b6b62a0eab0c6f7fa79e5391f02324b0.png', 'Admin Tlogorejo', '5', 1, 1, 0, '2018-05-06 11:44:18'),
+(16, 'Tes tes', 'tes-tes', '<p>This is my textarea to be replaced with <strong>CKEditor</strong>.</p>\r\n', '11/04/2018', '1a03fab793c7cc070cc36b353387fbb3.jpg', 'Admin Tlogorejo', '2', 1, NULL, 1, '2018-05-06 11:22:20'),
+(17, 'Artikel Ekonomi', 'artikel-ekonomi', '<p>Bojonegoro Kota - Kecelakaan beruntun yang mengakibatkan korban jiwa terjadi di Jalan Ahmad Yani turut wilayah Desa Sukorejo Kecamatan Bojonegoro Kota, pada Selasa (13/03/2018) sekira pukul 20.30 WIB tadi malam. Pengendara sepeda motor Yamaha Mio yang hendak menyeberang dengan memotong jalan, disenggol sepeda motor yang tidak diketahui identitasnya, yang berjalan searah di belakangnya sehingga oleng dan selanjsutnya ditabrak oleh sepeda motor Honda Scoopy, yang juga berjalan searah di belakangnya.</p>\r\n\r\n<p>Akibatnya pengendara Yamaha Mio meninggal dunia di lokasi kejadian sedangkan pengendara Honda Scoopy berikut pemboncengnya, mengalami luka-luka dan harus mendapatkan perawatan medis.</p>\r\n\r\n<p>Informasi yang didapat media ini dari &nbsp;Kanit Laka Lntas Sat lantas Polres Bojonegoro, IPDA Mukari, yang terlibat dalam kecelakaan tersebut sepeda motor Yamaha Mio nomor polisi S 4449 CH, yang dikendarai H &nbsp;Subkir (70), warga Desa SarirejoRT 005 rw 002, Kecamatan&nbsp; Balen, dengan sepeda motor Honda Scoopy nomor polisi S 4899 CX, yang dikendarai Misbahul Munir (19), berboncengan dengan Eko Bagus Pambudi (21), keduanya warga Desa Prigi RT 005 RW 001 Kec Kanor Kabupaten Bojonegoro, serta dengan kendaraan sepeda motor yang tidak diketahui identitasnya, karena setelah terjadi senggolan, kendaraan tersebut langsung meninggalkan lokasi kejadian.</p>\r\n\r\n<p>Ipda Mukari menambahkan bahwa berdasarkan hasil olah TKP dan menurut keterangan saksi-saksi, bahwa peristiwa laka lantas tersebut bermula saat sepeda motor Yamaha Mio nomor polisi S 4449 CH, yang dikendari korban, berjalan dari arah timur ke barat dan sesampinya di TKP, berhenti di tepi jalan sebelah kiri atau selatan.</p>\r\n', '11/04/2018', '3d4a552d4c911502d56ac1d05bdfdc12.jpg', 'Admin Tlogorejo', '2', 1, NULL, 0, '2018-05-06 11:44:23'),
+(0, 'Tlogorejo', 'tlogorejo', '<p>Bojonegoro Kota - Kecelakaan beruntun yang mengakibatkan korban jiwa terjadi di Jalan Ahmad Yani turut wilayah Desa Sukorejo Kecamatan Bojonegoro Kota, pada Selasa (13/03/2018) sekira pukul 20.30 WIB tadi malam. Pengendara sepeda motor Yamaha Mio yang hendak menyeberang dengan memotong jalan, disenggol sepeda motor yang tidak diketahui identitasnya, yang berjalan searah di belakangnya sehingga oleng dan selanjsutnya ditabrak oleh sepeda motor Honda Scoopy, yang juga berjalan searah di belakangnya.</p>\r\n\r\n<p>Akibatnya pengendara Yamaha Mio meninggal dunia di lokasi kejadian sedangkan pengendara Honda Scoopy berikut pemboncengnya, mengalami luka-luka dan harus mendapatkan perawatan medis.</p>\r\n\r\n<p>Informasi yang didapat media ini dari &nbsp;Kanit Laka Lntas Sat lantas Polres Bojonegoro, IPDA Mukari, yang terlibat dalam kecelakaan tersebut sepeda motor Yamaha Mio nomor polisi S 4449 CH, yang dikendarai H &nbsp;Subkir (70), warga Desa SarirejoRT 005 rw 002, Kecamatan&nbsp; Balen, dengan sepeda motor Honda Scoopy nomor polisi S 4899 CX, yang dikendarai Misbahul Munir (19), berboncengan dengan Eko Bagus Pambudi (21), keduanya warga Desa Prigi RT 005 RW 001 Kec Kanor Kabupaten Bojonegoro, serta dengan kendaraan sepeda motor yang tidak diketahui identitasnya, karena setelah terjadi senggolan, kendaraan tersebut langsung meninggalkan lokasi kejadian.</p>\r\n\r\n<p>Ipda Mukari menambahkan bahwa berdasarkan hasil olah TKP dan menurut keterangan saksi-saksi, bahwa peristiwa laka lantas tersebut bermula saat sepeda motor Yamaha Mio nomor polisi S 4449 CH, yang dikendari korban, berjalan dari arah timur ke barat dan sesampinya di TKP, berhenti di tepi jalan sebelah kiri atau selatan.</p>\r\n', '05/05/2018', 'f03e8c4939ef00deee7efc5ae02b3ad9.jpeg', 'Admin Tlogorejo', '3', 1, NULL, 0, '2018-05-06 11:43:58'),
+(1525581567, 'Judul Postingan', 'judul-postingan', '<p>Bojonegoro Kota - Kecelakaan beruntun yang mengakibatkan korban jiwa terjadi di Jalan Ahmad Yani turut wilayah Desa Sukorejo Kecamatan Bojonegoro Kota, pada Selasa (13/03/2018) sekira pukul 20.30 WIB tadi malam. Pengendara sepeda motor Yamaha Mio yang hendak menyeberang dengan memotong jalan, disenggol sepeda motor yang tidak diketahui identitasnya, yang berjalan searah di belakangnya sehingga oleng dan selanjsutnya ditabrak oleh sepeda motor Honda Scoopy, yang juga berjalan searah di belakangnya.</p>\r\n\r\n<p>Akibatnya pengendara Yamaha Mio meninggal dunia di lokasi kejadian sedangkan pengendara Honda Scoopy berikut pemboncengnya, mengalami luka-luka dan harus mendapatkan perawatan medis.</p>\r\n\r\n<p>Informasi yang didapat media ini dari &nbsp;Kanit Laka Lntas Sat lantas Polres Bojonegoro, IPDA Mukari, yang terlibat dalam kecelakaan tersebut sepeda motor Yamaha Mio nomor polisi S 4449 CH, yang dikendarai H &nbsp;Subkir (70), warga Desa SarirejoRT 005 rw 002, Kecamatan&nbsp; Balen, dengan sepeda motor Honda Scoopy nomor polisi S 4899 CX, yang dikendarai Misbahul Munir (19), berboncengan dengan Eko Bagus Pambudi (21), keduanya warga Desa Prigi RT 005 RW 001 Kec Kanor Kabupaten Bojonegoro, serta dengan kendaraan sepeda motor yang tidak diketahui identitasnya, karena setelah terjadi senggolan, kendaraan tersebut langsung meninggalkan lokasi kejadian.</p>\r\n\r\n<p>Ipda Mukari menambahkan bahwa berdasarkan hasil olah TKP dan menurut keterangan saksi-saksi, bahwa peristiwa laka lantas tersebut bermula saat sepeda motor Yamaha Mio nomor polisi S 4449 CH, yang dikendari korban, berjalan dari arah timur ke barat dan sesampinya di TKP, berhenti di tepi jalan sebelah kiri atau selatan.</p>\r\n', '06/05/2018', 'a36c8a83993476035272b2a1f6e87d53.jpeg', 'Admin Tlogorejo', '2', 1, NULL, 0, '2018-05-06 11:44:10');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `dana_masuk`
+-- Struktur dari tabel `dana_masuk`
 --
 
 CREATE TABLE `dana_masuk` (
@@ -96,16 +98,18 @@ CREATE TABLE `dana_masuk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `dana_masuk`
+-- Dumping data untuk tabel `dana_masuk`
 --
 
 INSERT INTO `dana_masuk` (`id`, `id_sumberdana`, `id_user`, `jumlah`, `keterangan`, `soft_delete`, `log_time`) VALUES
-(1, 2, 5, 400000000, 'Dari Penghulu Hilir', '1', '2018-04-22 06:45:45pm');
+(1, 2, 5, 400000000, 'Dari Penghulu Hilir', '1', '2018-04-22 06:45:45pm'),
+(2, 2, 3, 6000, 'gfg', '1', '2018-05-05 11:16:03am'),
+(3, 2, 3, 6000, 'gfg', '1', '2018-05-05 11:15:58am');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `districts`
+-- Struktur dari tabel `districts`
 --
 
 CREATE TABLE `districts` (
@@ -115,7 +119,7 @@ CREATE TABLE `districts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `districts`
+-- Dumping data untuk tabel `districts`
 --
 
 INSERT INTO `districts` (`id`, `regency_id`, `name`) VALUES
@@ -29001,7 +29005,27 @@ INSERT INTO `districts` (`id`, `regency_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `lembaga`
+-- Struktur dari tabel `groups`
+--
+
+CREATE TABLE `groups` (
+  `id` mediumint(8) UNSIGNED NOT NULL,
+  `name` varchar(20) NOT NULL,
+  `description` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `groups`
+--
+
+INSERT INTO `groups` (`id`, `name`, `description`) VALUES
+(1, 'admin', 'Administrator'),
+(2, 'members', 'General User');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `lembaga`
 --
 
 CREATE TABLE `lembaga` (
@@ -29015,7 +29039,7 @@ CREATE TABLE `lembaga` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `lembaga`
+-- Dumping data untuk tabel `lembaga`
 --
 
 INSERT INTO `lembaga` (`lembaga_id`, `lembaga_nama`, `lembaga_slug`, `lembaga_deskripsi`, `lembaga_gambar`, `lembaga_soft_delete`, `lembaga_log_time`) VALUES
@@ -29026,7 +29050,20 @@ INSERT INTO `lembaga` (`lembaga_id`, `lembaga_nama`, `lembaga_slug`, `lembaga_de
 -- --------------------------------------------------------
 
 --
--- Table structure for table `provinces`
+-- Struktur dari tabel `login_attempts`
+--
+
+CREATE TABLE `login_attempts` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `login` varchar(100) NOT NULL,
+  `time` int(11) UNSIGNED DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `provinces`
 --
 
 CREATE TABLE `provinces` (
@@ -29035,7 +29072,7 @@ CREATE TABLE `provinces` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `provinces`
+-- Dumping data untuk tabel `provinces`
 --
 
 INSERT INTO `provinces` (`id`, `name`) VALUES
@@ -29179,7 +29216,7 @@ INSERT INTO `provinces` (`id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `regencies`
+-- Struktur dari tabel `regencies`
 --
 
 CREATE TABLE `regencies` (
@@ -29189,7 +29226,7 @@ CREATE TABLE `regencies` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `regencies`
+-- Dumping data untuk tabel `regencies`
 --
 
 INSERT INTO `regencies` (`id`, `province_id`, `name`) VALUES
@@ -31254,7 +31291,7 @@ INSERT INTO `regencies` (`id`, `province_id`, `name`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `setting`
+-- Struktur dari tabel `setting`
 --
 
 CREATE TABLE `setting` (
@@ -31277,7 +31314,7 @@ CREATE TABLE `setting` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `slider`
+-- Struktur dari tabel `slider`
 --
 
 CREATE TABLE `slider` (
@@ -31290,7 +31327,7 @@ CREATE TABLE `slider` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `slider`
+-- Dumping data untuk tabel `slider`
 --
 
 INSERT INTO `slider` (`id_slider`, `judul`, `deskripsi`, `foto`, `soft_delete`, `log_time`) VALUES
@@ -31300,7 +31337,7 @@ INSERT INTO `slider` (`id_slider`, `judul`, `deskripsi`, `foto`, `soft_delete`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `struktur`
+-- Struktur dari tabel `struktur`
 --
 
 CREATE TABLE `struktur` (
@@ -31314,11 +31351,11 @@ CREATE TABLE `struktur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `struktur`
+-- Dumping data untuk tabel `struktur`
 --
 
 INSERT INTO `struktur` (`id`, `Jabatan`, `nama`, `foto`, `id_role`, `soft_delete`, `log_time`) VALUES
-(1, 'Kepala Desa', 'M. Rizal', '1524293884satu.jpg', 1, '1', '2018-04-21 08:58:04am'),
+(1, 'Kepala Desa', 'Muslim', '1524293884satu.jpg', 1, '1', '2018-04-23 01:44:28pm'),
 (2, 'Sekretaris Desa', 'Eren Yoga Eriyana e', '1524293906cver.jpg', 1, '1', '2018-04-22 03:28:30pm'),
 (3, 'Kaur Umum', 'Eren Yoga Eriyana', '1524293917rozak-3x4-bw.jpg', 2, '1', '2018-04-21 08:58:37am'),
 (4, 'BPD', 'Alfian', '1524293926rozak-3x4-bw.jpg', 1, '1', '2018-04-21 08:58:46am'),
@@ -31333,7 +31370,7 @@ INSERT INTO `struktur` (`id`, `Jabatan`, `nama`, `foto`, `id_role`, `soft_delete
 -- --------------------------------------------------------
 
 --
--- Table structure for table `sumber_dana`
+-- Struktur dari tabel `sumber_dana`
 --
 
 CREATE TABLE `sumber_dana` (
@@ -31344,7 +31381,7 @@ CREATE TABLE `sumber_dana` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `sumber_dana`
+-- Dumping data untuk tabel `sumber_dana`
 --
 
 INSERT INTO `sumber_dana` (`id_sumber`, `nama_sumber`, `soft_delete`, `log_time`) VALUES
@@ -31354,10 +31391,65 @@ INSERT INTO `sumber_dana` (`id_sumber`, `nama_sumber`, `soft_delete`, `log_time`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Struktur dari tabel `users`
 --
 
 CREATE TABLE `users` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `ip_address` varchar(45) NOT NULL,
+  `username` varchar(100) DEFAULT NULL,
+  `password` varchar(255) NOT NULL,
+  `salt` varchar(255) DEFAULT NULL,
+  `email` varchar(254) NOT NULL,
+  `activation_code` varchar(40) DEFAULT NULL,
+  `forgotten_password_code` varchar(40) DEFAULT NULL,
+  `forgotten_password_time` int(11) UNSIGNED DEFAULT NULL,
+  `remember_code` varchar(40) DEFAULT NULL,
+  `created_on` int(11) UNSIGNED NOT NULL,
+  `last_login` int(11) UNSIGNED DEFAULT NULL,
+  `active` tinyint(1) UNSIGNED DEFAULT NULL,
+  `first_name` varchar(50) DEFAULT NULL,
+  `last_name` varchar(50) DEFAULT NULL,
+  `company` varchar(100) DEFAULT NULL,
+  `phone` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `users`
+--
+
+INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
+(1, '127.0.0.1', 'administrator', '$2a$07$SeBknntpZror9uyftVopmu61qg0ms8Qv1yV6FG.kQOSM.9QhmTo36', '', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1525581434, 1, 'Admin', 'istrator', 'ADMIN', '0'),
+(2, '::1', 'abdulrozakramadhoni@gmail.com', '$2y$08$K0EzCbi5lSoMLXogjScsteThfd2kBIz.gGMY/WEArgLjd7G6hYpty', NULL, 'abdulrozakramadhoni@gmail.com', NULL, NULL, NULL, NULL, 1525577938, NULL, 1, 'Abdul Rozak', 'Romadhoni', 'Bappeda', '085235385077');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users_groups`
+--
+
+CREATE TABLE `users_groups` (
+  `id` int(11) UNSIGNED NOT NULL,
+  `user_id` int(11) UNSIGNED NOT NULL,
+  `group_id` mediumint(8) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data untuk tabel `users_groups`
+--
+
+INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
+(1, 1, 1),
+(2, 1, 2),
+(3, 2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `users_old`
+--
+
+CREATE TABLE `users_old` (
   `user_id` varchar(200) NOT NULL,
   `user_nama` varchar(200) NOT NULL,
   `user_password` varchar(200) NOT NULL,
@@ -31367,10 +31459,10 @@ CREATE TABLE `users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Dumping data untuk tabel `users_old`
 --
 
-INSERT INTO `users` (`user_id`, `user_nama`, `user_password`, `user_level`, `user_soft_delete`, `user_log_time`) VALUES
+INSERT INTO `users_old` (`user_id`, `user_nama`, `user_password`, `user_level`, `user_soft_delete`, `user_log_time`) VALUES
 ('admin1', 'Administrator', 'e00cf25ad42683b3df678c61f42c6bda', 1, 0, '2018-04-22 20:37:05'),
 ('alfian', 'Alfian Dwicahya', 'e10adc3949ba59abbe56e057f20f883e', 1, 0, '2018-04-22 20:58:21'),
 ('eye', 'Eren Yoga Eriyana', 'e10adc3949ba59abbe56e057f20f883e', 1, 0, '2018-04-22 20:37:13'),
@@ -31380,7 +31472,7 @@ INSERT INTO `users` (`user_id`, `user_nama`, `user_password`, `user_level`, `use
 -- --------------------------------------------------------
 
 --
--- Table structure for table `villages`
+-- Struktur dari tabel `villages`
 --
 
 CREATE TABLE `villages` (
@@ -31390,7 +31482,7 @@ CREATE TABLE `villages` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
--- Dumping data for table `villages`
+-- Dumping data untuk tabel `villages`
 --
 
 INSERT INTO `villages` (`id`, `district_id`, `name`) VALUES
@@ -88622,10 +88714,22 @@ ALTER TABLE `dana_masuk`
   ADD KEY `id` (`id`);
 
 --
+-- Indexes for table `groups`
+--
+ALTER TABLE `groups`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `lembaga`
 --
 ALTER TABLE `lembaga`
   ADD PRIMARY KEY (`lembaga_id`);
+
+--
+-- Indexes for table `login_attempts`
+--
+ALTER TABLE `login_attempts`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `setting`
@@ -88652,6 +88756,21 @@ ALTER TABLE `sumber_dana`
   ADD KEY `id_sumber` (`id_sumber`);
 
 --
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users_groups`
+--
+ALTER TABLE `users_groups`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `uc_users_groups` (`user_id`,`group_id`),
+  ADD KEY `fk_users_groups_users1_idx` (`user_id`),
+  ADD KEY `fk_users_groups_groups1_idx` (`group_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -88659,13 +88778,25 @@ ALTER TABLE `sumber_dana`
 -- AUTO_INCREMENT for table `dana_masuk`
 --
 ALTER TABLE `dana_masuk`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `groups`
+--
+ALTER TABLE `groups`
+  MODIFY `id` mediumint(8) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lembaga`
 --
 ALTER TABLE `lembaga`
   MODIFY `lembaga_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `login_attempts`
+--
+ALTER TABLE `login_attempts`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `setting`
@@ -88690,6 +88821,29 @@ ALTER TABLE `struktur`
 --
 ALTER TABLE `sumber_dana`
   MODIFY `id_sumber` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `users_groups`
+--
+ALTER TABLE `users_groups`
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `users_groups`
+--
+ALTER TABLE `users_groups`
+  ADD CONSTRAINT `fk_users_groups_groups1` FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
+  ADD CONSTRAINT `fk_users_groups_users1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

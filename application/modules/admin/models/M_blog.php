@@ -17,7 +17,7 @@ class M_blog extends CI_Model {
 		'artikel_judul',
 		'artikel_status'
 	);
-	var $order = array('artikel_judul' => 'asc');
+	var $order = array('artikel_tanggal' => 'asc');
 	
 	function _get_datatables_query($soft_del)
     {

@@ -2,219 +2,63 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      <small><i class="fa fa-users"></i> User Akses</small>
+      <small><i class="fa fa-link"></i> Blank Sample</small>
     </h1>
   </section>
   <!-- Main content -->
   <section class="content">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="box">
-          <div class="nav-tabs-custom">
-            <ul class="nav nav-tabs">
-              <li class="btn-action-bar"><a href="" data-target="#modal-add" data-toggle="modal" class="btn-action-bar-item primary"><i class="fa fa-plus"></i></a></li>
-              <li class="active"><a href="#user-unlock" data-toggle="tab"><i class="fa fa-unlock"></i> User Aktif</a></li>
-              <li><a href="#user-lock" data-toggle="tab"><i class="fa fa-lock"></i> Nonaktif</a></li>
-            </ul>
-            <div class="tab-content">
-              <div class="tab-pane active" id="user-unlock">
-                <section id="user-unlock">
-                  <div class="table-responsive">
-                    <table id="example2" class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th width="5%" class="text-center">
-                            <button class="btn btn-sm btn-default" type="button"><input type="checkbox" name="id[]" onchange="checkAll(this)"></button>
-                          </th>
-                          <th width="60%">
-                            <div class="pull-left">
-                              <div class="btn-group">
-                                <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-trash"></i></button>
-                              </div>
-                            </div>
-                          </th>
-                          <th>Password</th>
-                          <th class="text-center" width="10%">Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <?php if(!empty($user_unlock)) { ?>
-                        <?php foreach ($user_unlock as $row1) { ?>
-                        <tr>
-                          <td class="text-center"><input type="checkbox" name="id[]"></td>
-                          <td>
-                            <span class="text-primary"><?php echo $row1->user_nama ?></span><br>
-                            <a href="#" class="btn btn-xs btn-warning" data-toggle="modal" data-target="#modal-edituser"><i class="fa fa-pencil"></i> Edit</a>
-                            <a href="<?php echo base_url('admin/C_user/lock?id='.$row1->user_id) ?>" class="btn btn-xs btn-danger"><i class="fa fa-lock"></i> Lock</a>
-                            <a href="#" class="btn btn-xs btn-info" data-toggle="modal" data-target="#modal-detailuser"><i class="fa fa-eye"></i> Lihat</a>
-                          </td>
-                          <td class="text-muted"><?php echo $row1->user_password ?></td>
-                          <td class="text-center">
-                            <?php if($row1->user_soft_delete == TRUE) { ?>
-                            <span class="badge danger">Lock</span>
-                            <?php } else { ?>
-                            <span class="badge success">Unlock</span>
-                            <?php } ?>
-                          </td>
-                        </tr> 
-                        <?php } ?>
-                      <?php } ?>
-                        <tr>
-                          <form action="<?php echo site_url('admin/C_user/save') ?>" method="post">
-                          <td></td>
-                          <td>
-                            <input type="text" name="user_nama" class="form-control" placeholder="Nama Pengguna" style="width: 100%; margin-bottom: 1vh;"><br>
-                            <input type="text" name="user_id" class="form-control" placeholder="User Id" style="width: 100%;">
-                          </td>
-                          <td>
-                            <input type="password" name="user_password" class="form-control" placeholder="Password" style="width: 100%; margin-bottom: 1vh;"><br>
-                            <input type="password" name="user_confirm_password" class="form-control" placeholder="Confirm Password" style="width: 100%;">
-                          </td>
-                          <td class="text-center"><button type="submit" class="btn btn-sm btn-primary"><i class="fa fa-save"></i> Simpan</button></td>
-                          </form>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </section>
-              </div>
+    <?php $pesan = $this->session->flashdata('message'); if(!empty($pesan)){ ?>
+    <div class="alert alert-info">
+      <!-- <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> -->
+      <?php echo $pesan ?>
+    </div>
+    <?php } ?>
 
-              <div class="tab-pane" id="user-lock">
-                <section id="user-lock">
-                  <div class="table-responsive">
-                    <table id="example3" class="table table-hover">
-                      <thead>
-                        <tr>
-                          <th width="5%" class="text-center">
-                            <button class="btn btn-sm btn-default" type="button"><input type="checkbox" name="id[]" onchange="checkAll(this)"></button>
-                          </th>
-                          <th>
-                            <div class="pull-left">
-                              <div class="btn-group">
-                                <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-trash"></i></button>
-                              </div>
-                            </div>
-                          </th>
-                          <th width="50%">Password</th>
-                          <th class="text-center" width="15%">Status</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <?php if(!empty($user_lock)) { ?>
-                        <?php foreach ($user_lock as $row2) { ?>
-                        <tr>
-                          <td class="text-center"><input type="checkbox" name="id[]"></td>
-                          <td>
-                            <span class="text-primary"><?php echo $row2->user_nama ?></span><br>
-                            <a href="#" class="btn btn-xs btn-warning"><i class="fa fa-pencil"></i> Edit</a>
-                            <a href="<?php echo base_url('admin/C_user/unlock?id='.$row2->user_id) ?>" class="btn btn-xs btn-success"><i class="fa fa-unlock"></i> Unlock</a>
-                            <a href="#" class="btn btn-xs btn-info"><i class="fa fa-eye"></i> Lihat</a>
-                          </td>
-                          <td>########################################</td>
-                          <td class="text-center">
-                            <?php if($row2->user_soft_delete == TRUE) { ?>
-                            <span class="badge danger">Lock</span>
-                            <?php } else { ?>
-                            <span class="badge success">Unlock</span>
-                            <?php } ?>
-                          </td>
-                        </tr> 
-                        <?php } ?>
-                      <?php } ?>
-                      </tbody>
-                    </table>
-                  </div>
-                </section>
-              </div>
-            </div>
+    <!-- Default box -->
+    <div class="box">
+      <div class="box-body">
+        <div class="row">
+          <div class="col-md-12">
+            <a href="<?php echo site_url('admin/C_user/create_user') ?>" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top" title="Tambah User"><i class="fa fa-plus"></i> Tambah User</a>
+            <table class="table table-hover" id="example1">
+              <thead>
+                <tr>
+                  <th><?php echo lang('index_fname_th');?></th>
+                  <th><?php echo lang('index_lname_th');?></th>
+                  <th><?php echo lang('index_email_th');?></th>
+                  <th><?php echo lang('index_groups_th');?></th>
+                  <th><?php echo lang('index_status_th');?></th>
+                  <th><?php echo lang('index_action_th');?></th>
+                </tr>
+              </thead>
+              <tbody>
+              <?php foreach ($users as $user):?>
+                <tr>
+                  <td><?php echo htmlspecialchars($user->first_name,ENT_QUOTES,'UTF-8');?></td>
+                  <td><?php echo htmlspecialchars($user->last_name,ENT_QUOTES,'UTF-8');?></td>
+                  <td class="text-primary"><?php echo htmlspecialchars($user->email,ENT_QUOTES,'UTF-8');?></td>
+                  <td>
+                    <?php foreach ($user->groups as $group):?>
+                    <!-- <?php echo anchor("auth/edit_group/".$group->id, htmlspecialchars($group->name,ENT_QUOTES,'UTF-8'), "class='btn btn-xs btn-primary'") ;?><br /> -->
+                    <button class="btn btn-xs btn-primary"><?php echo $group->name ?></button>
+                    <?php endforeach?>
+                  </td>
+                  <td><?php echo ($user->active) ? anchor("admin/user/deactivate/".$user->id, lang('index_active_link'), "class='badge success'") : anchor("admin/C_user/activate/". $user->id, lang('index_inactive_link'), "class='badge default'");?></td>
+                  <td>
+                    <a href="<?php echo site_url("admin/C_user/edit_user/".$user->id) ?>" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Edit <?php echo $user->first_name ?>"><i class="fa fa-pencil"></i></a>
+                  </td>
+                </tr>
+              <?php endforeach;?>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
-    </div>
-
-    <div class="modal fade" id="modal-add">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Tambah User</h4>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-12">
-                <form action="" method="">
-                  <div class="form-group">
-                    <input type="text" name="" class="form-control" placeholder="Nama Pengguna">
-                  </div>
-                  <div class="form-group">
-                    <input type="text" name="" class="form-control" placeholder="User Id">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" name="" class="form-control" placeholder="Password">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" name="" class="form-control" placeholder="Confirm Password">
-                  </div>
-                  <div class="form-group">
-                    <button type="submit" class="btn btn-sm btn-primary pull-right"><i class="fa fa-save"></i> Simpan</button>
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-        <!-- /.modal-content -->
-      </div>
-      <!-- /.modal-dialog -->
-    </div>
-
-    <div class="modal fade" id="modal-edituser">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Edit User</h4>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-12">
-                
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">Close</button>
-          </div>
-        </div>
+      <div class="box-footer">
+        Footer
       </div>
     </div>
-
-    <div class="modal fade" id="modal-detailuser">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">Detail User</h4>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-md-12">
-                
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
+    <!-- /.box -->
 
   </section>
   <!-- /.content -->
@@ -222,8 +66,7 @@
 <!-- /.content-wrapper -->
 
 <script type="text/javascript">
-
-  $('#example2').DataTable({
+  $('#example1').DataTable({
    'paging'      : true,
    'lengthChange': false,
    'searching'   : false,
@@ -232,30 +75,13 @@
    'autoWidth'   : false
   });
 
-  $('#example3').DataTable({
-   'paging'      : true,
-   'lengthChange': false,
-   'searching'   : false,
-   'ordering'    : false,
-   'info'        : true,
-   'autoWidth'   : false
-  });
+  $(".alert").fadeIn(1000);
+    setTimeout(function(){
+    $(".alert").hide(); 
+  }, 2000);
+    // $(".alert").fadeOut(2500);
 
-  function checkAll(ele) {
-       var checkboxes = document.getElementsByTagName('input');
-       if (ele.checked) {
-           for (var i = 0; i < checkboxes.length; i++) {
-               if (checkboxes[i].type == 'checkbox') {
-                   checkboxes[i].checked = true;
-               }
-           }
-       } else {
-           for (var i = 0; i < checkboxes.length; i++) {
-               console.log(i)
-               if (checkboxes[i].type == 'checkbox') {
-                   checkboxes[i].checked = false;
-               }
-           }
-       }
-  }
+  $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip(); 
+  });
 </script>

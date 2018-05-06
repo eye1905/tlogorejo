@@ -53,7 +53,7 @@
     <!-- Logo -->
     <a href="index.html" class="logo hidden-xs">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-mini"><b>SIP</b></span>
+      <span class="logo-mini"><b>T</b></span>
       <!-- logo for regular state and mobile devices -->
       <span class="logo-lg"><b>Dashboard</b></span>
     </a>
@@ -98,7 +98,7 @@
               <!-- The user image in the navbar-->
               <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg') ?>" class="user-image" alt="User Image">
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
-              <span class="hidden-xs" style="color: #0093E1; font-weight: bold;"><?php echo $user->first_name ?></span>
+              <span class="hidden-xs" style="color: #0093E1; font-weight: bold;"><?php echo $user->first_name; ?> <?php echo $user->last_name ?></span>
             </a>
             <ul class="dropdown-menu">
               <!-- The user image in the menu -->
@@ -106,7 +106,7 @@
                 <img src="<?php echo base_url('assets/dist/img/user2-160x160.jpg') ?>" class="img-circle" alt="User Image">
 
                 <p>
-                  <?php echo $user->first_name ?>
+                  <?php echo $user->first_name; ?> <?php echo $user->last_name ?>
                   <small>Member since Nov. 2012</small>
                 </p>
               </li>
@@ -135,7 +135,7 @@
         <li class="header">
           <div class="sidebar-user">
             <div class="pull-left info">
-              <p><?php echo $user->first_name; ?> <?php echo $user->last_name ?></p>
+              <p><?php echo $user->first_name; ?></p>
               <!-- <a href="#">Super Admin</a> -->
             </div>
           </div>

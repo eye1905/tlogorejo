@@ -127,12 +127,14 @@ class C_blog extends MY_Controller {
                 $slug = url_title($this->input->post('artikel_judul'), 'dash', TRUE);
 
                 $data = array(
+                    'artikel_id' => now(),
                 	'artikel_judul' => $this->input->post('artikel_judul'),
                     'artikel_slug' => $slug,
                 	'artikel_isi' => $this->input->post('artikel_isi'),
                 	'artikel_tanggal' => date('d/m/Y'),
                 	'artikel_image' => $gbr['file_name'],
-                	'artikel_author' => $this->session->userdata('ses_nama'),
+                    // 'artikel_author' => $this->session->userdata('ses_nama'),
+                	'artikel_author' => 'Admin Tlogorejo',
                 	'artikel_kategori' => $this->input->post('artikel_kategori'),
                     'artikel_status' => 1,
                 	'artikel_soft_delete' => FALSE,
@@ -218,7 +220,7 @@ class C_blog extends MY_Controller {
             'artikel_judul' => $this->input->post('artikel_judul'),
     		'artikel_slug' => $slug,
     		'artikel_isi' => $this->input->post('artikel_isi'),
-            'artikel_author' => 'Admin',
+            'artikel_author' => 'Admin Tlogorejo',
             'artikel_kategori' => $this->input->post('artikel_kategori'),
             'artikel_soft_delete' => FALSE,
             'artikel_log_time' => date('Y-m-d H:i:s'),

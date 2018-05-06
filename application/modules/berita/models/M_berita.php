@@ -15,7 +15,7 @@ class M_berita extends CI_Model
 
 	function get_artikel($slug = FALSE) {
 		if($slug === FALSE) {
-			$query = $this->db->query("SELECT * FROM $this->table WHERE artikel_status = 1 AND artikel_soft_delete = 0");
+			$query = $this->db->query("SELECT * FROM $this->table WHERE artikel_status = 1 AND artikel_soft_delete = 0 ORDER BY artikel_tanggal ASC");
 			return $query->result();
 		}
 
@@ -30,6 +30,7 @@ class M_berita extends CI_Model
 				artikel_kategori.kategori_id = artikel_post.artikel_kategori 
 				WHERE artikel_kategori.kategori_slug = '$slug'
 				AND artikel_status = '1' AND artikel_soft_delete = '0'
+				ORDER BY artikel_tanggal ASC
 				");
 			return $query->result();
 		}

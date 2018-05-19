@@ -2,7 +2,7 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      <small><i class="fa fa-plus"></i> Membuat Postingan</small>
+      <small><i class="fa fa-plus"></i> Tambah Lembaga</small>
     </h1>
   </section>
   <!-- Main content -->
@@ -11,7 +11,7 @@
     <div class="box">
       <div class="box-header with-border">
         <div class="box-title">
-          <a href="<?php echo site_url('admin/C_blog') ?>" class="btn btn-sm btn-default btn-rounded"><i class="fa fa-chevron-left"></i> Kembali</a>
+          <a href="<?php echo site_url('admin/C_lembaga') ?>" class="btn btn-sm btn-default btn-rounded"><i class="fa fa-chevron-left"></i> Kembali</a>
         </div>
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool no-shadow" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -33,14 +33,14 @@
       </div>
       <div class="box-body">
         <div class="row">
-          <form id="formInput" action="<?php echo site_url('admin/C_blog/save') ?>" method="post" enctype="multipart/form-data">
+          <form id="formInput" action="<?php echo site_url('admin/C_lembaga/save') ?>" method="post" enctype="multipart/form-data">
             <div class="col-md-4">
               <div class="form-group">
                 <div class="label-circle">
                   <span class="dot">1</span> <label class="with-padding"> Upload Image</label> <small><em>Ukuran gambar 1 Mb</em></small>
                 </div>
                 <div class="input-group input-file" name="Fichier1">
-                  <input type="file" id="do-upload" name="artikel_image" class="form-control" placeholder='Choose a file...' />
+                  <input type="file" id="do-upload" name="lembaga_gambar" class="form-control" placeholder='Choose a file...' />
                   <span class="input-group-btn">
                    <label for="do-upload" class="btn btn-primary btn-choose" type="button"><i class="fa fa-upload"></i> Browse</label>
                   </span>
@@ -48,20 +48,9 @@
               </div>
               <div class="form-group">
                 <div class="label-circle">
-                  <span class="dot">2</span> <label class="with-padding"> Judul Artikel</label>
+                  <span class="dot">2</span> <label class="with-padding"> Nama Lembaga</label>
                 </div>
-                <input type="text" name="artikel_judul" class="form-control" placeholder="Judul Film" value="Tes Upload">
-              </div>
-              <div class="form-group">
-                <div class="label-circle">
-                  <span class="dot">3</span> <label class="with-padding"> Kategori Artikel</label>
-                </div>
-                <select name="artikel_kategori" class="form-control select2" style="width: 100%;">
-                  <option selected="selected" value="">Pilih Kategori</option>
-                  <?php $no=1; foreach($kategori as $row) { ?>
-                  <option value="<?php echo $row->kategori_id ?>"><?php echo $row->kategori_nama ?></option>
-                  <?php } ?>
-                </select>
+                <input type="text" name="lembaga_nama" class="form-control" placeholder="Nama Lembaga">
               </div>
             </div>
             <div class="col-md-8">
@@ -69,7 +58,7 @@
                 <div class="label-circle">
                   <span class="dot">4</span> <label class="with-padding"> Deskripsi</label>
                 </div>
-                <textarea id="summernote" name="artikel_isi"></textarea>
+                <textarea id="summernote" name="lembaga_deskripsi"></textarea>
               </div>
             </div>
 
@@ -105,4 +94,4 @@
   $(document).ready(function() {
       $('#summernote').summernote();
   });
-</script>
+</script>s

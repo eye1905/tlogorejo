@@ -10,97 +10,122 @@
   <section class="content">
     <!-- Default box -->
     <div class="box">
-      <div class="box-body">
-        <div class="row">
-          <div class="col-md-12">
-            <?php foreach($artikel as $row){ ?>
-            <form class="form-horizontal" action="<?php echo base_url('admin/c_blog/update') ?>" method="post" enctype="multipart/form-data">
-              <div class="form-group">
-                <label class="col-md-1 control-label">Entri</label>
-                <div class="col-md-10">
-                  <input type="hidden" class="form-control" name="artikel_id" value="<?php echo $row->artikel_id ?>">
-                  <input type="hidden" class="form-control" name="artikel_author" value="Abdul Rozak R.">
-                  <input type="text" class="form-control" name="artikel_judul" value="<?php echo $row->artikel_judul ?>" placeholder="Judul postingan" autocomplete="off">
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="exampleInputFile" class="col-md-1 control-label">Gambar</label>
-                <div class="col-md-10">
-                  <button type="button" class="btn btn-sm btn-default" data-toggle="modal" data-target="#modal-default">Ganti Banner</button>
-                  <br>
-                  <?php foreach($kategori as $kat) { ?>
-                    <label class="radio-inline">
-                      <input type="radio" name="artikel_kategori" value="<?php echo $kat->kategori_id ?>"
-                      <?php if($row->artikel_kategori == $kat->kategori_id){ echo 'checked'; } ?>
-                      ><?php echo $kat->kategori_nama ?>
-                    </label>
-                  <?php } ?>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-md-1 hidden-sm"></label>
-                <div class="col-md-10">
-                  <textarea id="ckeditor" name="artikel_isi" rows="10" cols="80">
-                    <?php echo $row->artikel_isi ?>
-                  </textarea>                  
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="col-md-1 control-label hidden-sm"></label>
-                <div class="col-md-10 col-offset-1">
-                  <label class="control-label" style="font-weight: normal;">Memposting sebagai&nbsp;&nbsp;
-                    <span class="text-bold"><?php echo $this->session->userdata('ses_nama') ?></span>
-                  </label>
-                  &nbsp;&nbsp;
-                  <button type="submit" class="btn btn-sm btn-primary">Simpan</button>
-                  &nbsp;&nbsp;
-                  <!-- <button class="btn btn-sm btn-default">Simpan</button> -->
-                </div>
-              </div>
-            </form>
-            <div class="modal fade" id="modal-default">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Form Ganti Foto</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row">
-                      <div class="col-md-6 col-sm-6">
-                        <img src="<?php echo base_url("assets/img/berita/".$row->artikel_image) ?>" class="img-thumbnail">
-                      </div>
-                      <div class="col-md-6 col-sm-6">
-                        <form action="<?php echo base_url('admin/c_blog/change_banner') ?>" method="post" enctype="multipart/form-data">
-                          <div class="form-group">
-                            <input type="hidden" name="artikel_id" value="<?php echo $row->artikel_id ?>">
-                            <input type="file" name="artikel_image">
-                          </div>
-                          <div class="form-group">
-                            <button class="btn btn-sm btn-primary">Simpan Foto</button>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">Close</button>
-                  </div>
-                </div>
-                <!-- /.modal-content -->
-              </div>
-              <!-- /.modal-dialog -->
-            </div>
-            <!-- /.modal -->
-            <?php } ?>
+      <div class="box-header with-border">
+        <div class="box-title">
+          <a href="<?php echo site_url('admin/C_blog') ?>" class="btn btn-sm btn-default btn-rounded"><i class="fa fa-chevron-left"></i> Kembali</a>
+        </div>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool no-shadow" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <div class="btn-group">
+            <button type="button" class="btn btn-box-tool no-shadow dropdown-toggle" data-toggle="dropdown">
+              <i class="fa fa-wrench"></i>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another action</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Separated link</a></li>
+            </ul>
           </div>
+          <button type="button" class="btn btn-box-tool no-shadow" data-widget="remove"><i class="fa fa-times"></i></button>
         </div>
       </div>
-      <!-- /.box-body -->
+      <div class="box-body">
+        <div class="row">
+          <?php foreach($artikel as $post) { ?>
+          <form id="formInput" action="<?php echo site_url('admin/c_blog/update') ?>" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="artikel_id" value="<?php echo $post->artikel_id ?>">
+            <div class="col-md-4">
+              <div class="form-group">
+                <div class="label-circle">
+                  <span class="dot">1</span> <label class="with-padding"> Upload Image</label> <small><em>Ukuran gambar 1 Mb</em></small>
+                </div>
+                <div class="input-group input-file" name="Fichier1">
+                  <input type="file" id="do-upload" name="artikel_image" class="form-control" placeholder='Choose a file...' />
+                  <span class="input-group-btn">
+                   <label for="do-upload" class="btn btn-primary btn-choose" type="button"><i class="fa fa-upload"></i> Browse</label>
+                   <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default"><i class="fa fa-eye"></i></button>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="label-circle">
+                  <span class="dot">2</span> <label class="with-padding"> Judul Artikel</label>
+                </div>
+                <input type="text" name="artikel_judul" class="form-control" placeholder="Judul Film" value="<?php echo $post->artikel_judul ?>">
+              </div>
+              <div class="form-group">
+                <div class="label-circle">
+                  <span class="dot">3</span> <label class="with-padding"> Kategori Artikel</label>
+                </div>
+                <select name="artikel_kategori" class="form-control select2" style="width: 100%;">
+                  <option selected="selected" value="">Pilih Kategori</option>
+                  <?php $no=1; foreach($kategori as $row) { ?>
+                  <option value="<?php echo $row->kategori_id ?>" selected="<?php if($row->kategori_id == $post->artikel_kategori) { echo 'selected'; } ?>"><?php echo $row->kategori_nama ?></option>
+                  <?php } ?>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-8">
+              <div class="form-group">
+                <div class="label-circle">
+                  <span class="dot">4</span> <label class="with-padding"> Deskripsi</label>
+                </div>
+                <textarea id="summernote" name="artikel_isi"><?php echo $post->artikel_isi ?></textarea>
+              </div>
+            </div>
+
+            <!-- Helper Hidden Button -->
+            <input type="submit" name="" id="submit-form" class="hidden">
+            <input type="reset" name="" id="reset-form" class="hidden">
+          </form>
+
+          <div class="modal fade" id="modal-default">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">Form Ganti Foto</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                      <img src="<?php echo base_url("assets/img/berita/".$post->artikel_image) ?>" class="img-thumbnail">
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                      <form action="<?php echo base_url('admin/c_blog/change_banner') ?>" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                          <input type="hidden" name="artikel_id" value="<?php echo $post->artikel_id ?>">
+                          <input type="file" name="artikel_image">
+                        </div>
+                        <div class="form-group">
+                          <button class="btn btn-sm btn-primary">Simpan Foto</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-sm btn-default pull-left" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+              <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+          </div>
+
+          <?php } ?>
+        </div>
+      </div>
+      <div class="box-footer">
+        <div class="pull-left">
+          <label for="reset-form" tabindex="0" class="btn btn-sm btn-warning btn-rounded"><i class="fa fa-refresh"></i> Reset</label>
+          <label for="submit-form" tabindex="0" class="btn btn-sm btn-primary btn-rounded"><i class="fa fa-save"></i> Simpan Data</label>
+        </div>
+      </div>
     </div>
     <!-- /.box -->
   </section>
@@ -114,5 +139,13 @@
 <script type="text/javascript">
   $(function () {
     CKEDITOR.replace('ckeditor')
+  });
+
+  $(document).ready(function(){
+      $('[data-toggle="tooltip"]').tooltip(); 
+  });
+
+  $(document).ready(function() {
+      $('#summernote').summernote();
   });
 </script>

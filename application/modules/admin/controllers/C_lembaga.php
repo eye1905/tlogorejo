@@ -15,11 +15,6 @@ class C_lembaga extends MY_Controller {
 		date_default_timezone_set('Asia/Jakarta');
 		$this->load->model('M_lembaga');
 
-		//validasi jika user belum login
-		// 	if($this->session->userdata('loged_in') != TRUE){
-		//      $url = base_url();
-		//      redirect($url);
-		// }
         $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
         $this->lang->load('auth');
@@ -42,47 +37,21 @@ class C_lembaga extends MY_Controller {
 		$this->template->load('admin_template', 'lembaga/lembaga_index_view', $data);
 	}
 
+    public function recycle_bin() {
+        $data['lembaga'] = $this->M_lembaga->get_data(1);
+        $this->template->load('admin_template', 'lembaga/lembaga_non_view', $data);
+    }
+
+    public function form() {
+        $data = "";
+        $this->template->load('admin_template', 'lembaga/lembaga_add_view', $data);
+    }
+
 	function edit() {
 		$where = array('lembaga_id' => $this->input->get('id'));
 		$data['lembaga'] = $this->M_lembaga->get_lembaga_by_id('lembaga', $where);
 		$this->template->load('admin_template', 'lembaga/lembaga_edit_view', $data);
 	}
-
-	public function get_data_lembaga() {
-        $soft_del = $this->input->post('soft_delete'); // Kondisi tidak terhapus
-        $list = $this->M_lembaga->get_datatables($soft_del);
-        $data = array();
-        $no = $_POST['start'];
-
-        $status = 1;
-
-        foreach ($list as $field) {
-            $no++;
-            $row = array();
-
-            $row[] = '<div class="text-center"><input type="checkbox" name="id[]" value="'.$field->lembaga_id.'"></div>';
-            $row[] = '<span class="text-primary">'.$field->lembaga_nama.'</span><br>
-                      <a href="'.base_url('admin/C_lembaga/edit?id='.$field->lembaga_id).'" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i> Edit</a>
-                      '.($field->lembaga_soft_delete != FALSE ? 
-                        '<a name="id" href="'.base_url('admin/C_lembaga/restore?id='.$field->lembaga_id).'" class="btn btn-xs btn-success"><i class="fa fa-refresh"></i> Restore</a>' 
-                        :
-                        '<a name="id" href="'.base_url('admin/C_lembaga/delete?id='.$field->lembaga_id).'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>').'
-                      ';
-
-            $row[] = '<em class="text-warning">'.($field->lembaga_soft_delete != 1 ? 'Tidak Tampil' : 'Tampil').'</em>';
- 
-            $data[] = $row;
-        }
- 
-        $output = array(
-            "draw" => $_POST['draw'],
-            "recordsTotal" => $this->M_lembaga->count_all(),
-            "recordsFiltered" => $this->M_lembaga->count_filtered($soft_del),
-            "data" => $data,
-        );
-        //output dalam format JSON
-        echo json_encode($output);
-    }
 
     function save() {
     	$config['upload_path'] = FCPATH.'/assets/img/lembaga'; //path folder

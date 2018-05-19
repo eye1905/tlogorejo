@@ -14,11 +14,6 @@ class C_blog extends MY_Controller {
     	$this->load->model('M_kategori');
         date_default_timezone_set('Asia/Jakarta');
 
-        //validasi jika user belum login
-        // if($this->session->userdata('loged_in') != TRUE){
-        //     $url = base_url();
-        //     redirect($url);
-        // }
         $this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
         $this->lang->load('auth');
@@ -73,22 +68,22 @@ class C_blog extends MY_Controller {
             $no++;
             $row = array();
 
-            $row[] = '<div class="text-center"><input type="checkbox" name="id[]" value="'.$field->artikel_id.'"></div>';
-            $row[] = '<span class="text-primary">'.$field->artikel_judul.'</span><br>
-                      <a href="'.base_url('admin/C_blog/edit?id='.$field->artikel_id).'" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i> Edit</a>
-                      '.($field->artikel_soft_delete != FALSE ? 
-                        '<a name="id" href="'.base_url('admin/C_blog/restore?id='.$field->artikel_id).'" class="btn btn-xs btn-success"><i class="fa fa-recycle"></i> Restore</a>' 
-                        :
-                        '<a name="id" href="'.base_url('admin/C_blog/delete?id='.$field->artikel_id).'" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> Hapus</a>').'
-                      '.($field->artikel_status != FALSE ? 
-                        '<a name="id" href="'.base_url('admin/C_blog/draft?id='.$field->artikel_id).'" class="btn btn-xs btn-default"><i class="fa fa-archive"></i> Draft</a>' 
-                        :
-                        '<a name="id" href="'.base_url('admin/C_blog/publikasi?id='.$field->artikel_id).'" class="btn btn-xs btn-default"><i class="fa fa-newspaper-o"></i> Publikasi</a>').'
-                      ';
+            $row[] = '<div class="material-switch"><input id="singleSelect'.$no.'" name="id[]" type="checkbox"/><label for="singleSelect'.$no.'" class="label-primary"></label></div>';
+            $row[] = '<span class="text-primary">'.$field->artikel_judul.'</span>';
 
             $row[] = '<em class="text-warning">'.($field->artikel_status != 1 ? 'Draft' : 'Publikasi').'</em>';
             $row[] = '<span class="text-primary">'.$field->artikel_author.'</span>';
             $row[] = $field->artikel_tanggal;
+            $row[] = '<a href="'.base_url('admin/C_blog/edit?id='.$field->artikel_id).'" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Edit</a>
+                      '.($field->artikel_soft_delete != FALSE ? 
+                        '<a name="id" href="'.base_url('admin/C_blog/restore?id='.$field->artikel_id).'" class="btn btn-xs btn-success"><i class="fa fa-recycle"></i> Restore</a>' 
+                        :
+                        '<a name="id" href="'.base_url('admin/C_blog/delete?id='.$field->artikel_id).'" class="btn btn-xs btn-danger"><i class="fa fa-remove"></i> Hapus</a>').'
+                      '.($field->artikel_status != FALSE ? 
+                        '<a name="id" href="'.base_url('admin/C_blog/draft?id='.$field->artikel_id).'" class="btn btn-xs btn-default"><i class="fa fa-archive"></i> Draft</a>' 
+                        :
+                        '<a name="id" href="'.base_url('admin/C_blog/publikasi?id='.$field->artikel_id).'" class="btn btn-xs btn-default"><i class="fa fa-newspaper-o"></i> Publikasi</a>').'
+                     ';
  
             $data[] = $row;
         }

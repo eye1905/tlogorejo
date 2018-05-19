@@ -2,7 +2,7 @@
 <div class="content-wrapper">
   <section class="content-header">
     <h1>
-      <small><i class="fa fa-pencil"></i> Semua postingan</small>
+      <small><i class="fa fa-pencil"></i> Postingan</small>
     </h1>
   </section>
   <!-- Main content -->
@@ -12,39 +12,37 @@
 
     <!-- Default box -->
     <div class="box">
+      <div class="box-header with-border">
+        <div class="box-title">
+          <a href="<?php echo site_url('admin/C_blog/form') ?>" class="btn btn-sm btn-primary btn-rounded"><i class="fa fa-plus"></i> Tambah Data</a>
+          <a href="<?php echo site_url('admin/C_blog/recycle_bin') ?>" class="btn btn-sm btn-default btn-rounded hidden-xs"><i class="fa fa-trash"></i> Recycle Bin</a>
+        </div>
+        <div class="box-tools pull-right">
+          <button type="button" class="btn btn-box-tool no-shadow" data-widget="collapse"><i class="fa fa-minus"></i>
+          </button>
+          <a href="" class="btn btn-box-tool no-shadow"><i class="fa fa-refresh"></i></a>
+          <button type="button" class="btn btn-box-tool no-shadow" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
+      </div>
       <div class="box-body">
         <div class="row">
-          <div class="col-md-12">
-            <div class="pull-left">
-              <div class="btn-group">
-                <a href="<?php echo site_url('admin/C_blog/form') ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i> Entri Baru</a>
-                <a href="<?php echo site_url('admin/C_blog/recycle_bin') ?>" class="btn btn-sm btn-default"><i class="fa fa-trash"></i> Recycle Bin</a>
-              </div>
-            </div>
-            <br>
-            <br>
-          </div>
           <div class="col-md-12">
             <div class="table-responsive">
               <form action="<?php echo base_url('admin/C_blog/multiple_delete') ?>" method="post">
                 <table class="table table-hover" id="example1">
                   <thead>
                     <tr>
-                      <th width="5%" class="text-center">
-                        <button class="btn btn-sm btn-default" type="button"><input type="checkbox" name="id[]" onchange="checkAll(this)"></button>
-                      </th>
-                      <th>
-                        <div class="pull-left">
-                          <div class="btn-group">
-                            <button class="btn btn-sm btn-default" type="submit"><i class="fa fa-trash"></i></button>
-                            <a href="#" class="btn btn-sm btn-default disabled">Publikasikan</a>
-                            <a href="#" class="btn btn-sm btn-default disabled">Draft</a>
-                          </div>
+                      <th width="5%">
+                        <div class="material-switch">
+                          <input id="multiSelect" name="id[]" type="checkbox" onchange="checkAll(this)"/>
+                          <label for="multiSelect" class="label-primary"></label>
                         </div>
                       </th>
-                      <th width="8%">Status</th>
-                      <th width="10%">Author</th>
-                      <th width="7%">Created at</th>
+                      <th>Judul Artikel</th>
+                      <th>Status</th>
+                      <th>Author</th>
+                      <th>Created at</th>
+                      <th width="20%">Action</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -57,6 +55,9 @@
         </div>
       </div>
       <!-- /.box-body -->
+      <div class="box-footer">
+        Footer
+      </div>
     </div>
     <!-- /.box -->
 
@@ -77,7 +78,7 @@
           "order": [],
           "aoColumnDefs": [{
             'bSortable': false,
-            'aTargets': [ 0, 2, 3, 4 ]
+            'aTargets': [ 0, 2, 3, 4, 5 ]
           }],
            
           "ajax": {

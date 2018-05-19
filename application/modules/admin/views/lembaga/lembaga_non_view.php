@@ -11,8 +11,7 @@
     <div class="box">
       <div class="box-header with-border">
         <div class="box-title">
-          <a href="<?php echo site_url('admin/C_lembaga/form') ?>" class="btn btn-sm btn-primary btn-rounded"><i class="fa fa-plus"></i> Tambah Data</a>
-          <a href="<?php echo site_url('admin/C_lembaga/recycle_bin') ?>" class="btn btn-sm btn-default btn-rounded hidden-xs"><i class="fa fa-trash"></i> Recycle Bin</a>
+          <a href="<?php echo site_url('admin/C_lembaga') ?>" class="btn btn-sm btn-default btn-rounded hidden-xs"><i class="fa fa-chevron-left"></i> Kembali</a>
         </div>
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool no-shadow" data-widget="collapse"><i class="fa fa-minus"></i>
@@ -25,7 +24,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="table-responsive">
-              <form action="<?php echo base_url('admin/C_lembaga/multiple_delete') ?>" method="post">
+              <form action="<?php echo base_url('admin/c_lembaga/multiple_delete') ?>" method="post">
                 <table class="table table-hover" id="example1">
                   <thead>
                     <tr>

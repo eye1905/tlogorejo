@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="<?php echo base_url('assets/adminlte/datatables.net-bs/css/dataTables.bootstrap.min.css') ?>">
   <!-- Customize CSS -->
   <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/custom/admin-styles.css') ?>">
+  <link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/custom/checkbox.css') ?>">
 
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -42,7 +43,38 @@
        Both of these plugins are recommended to enhance the
        user experience. -->
   <!-- script -->
+
+  <!-- include summernote css/js -->
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+
 </head>
+
+<style type="text/css">
+  /* Summer Note Custom */
+  .note-editor.note-frame {
+      border: 1px solid #ccc !important;
+  }
+
+  .panel {
+    border-radius: 0px;
+    box-shadow: none;
+  }
+
+  .panel-default>.panel-heading {
+      color: #333;
+      background-color: #FFF;
+      border-color: #ddd;
+  }
+  .engraved { 
+      background-color: #666666;
+      -webkit-background-clip: text;
+      -moz-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      text-shadow: rgba(245,245,245,0.5) 3px 5px 1px;
+   }
+</style>
 
 <body class="hold-transition skin-black sidebar-mini">
 <div class="wrapper">
@@ -164,7 +196,7 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li class="<?php if($this->uri->uri_string() == 'admin/C_blog') { echo 'active'; } ?>">
+            <li class="<?php if($this->uri->segment(2) == 'C_blog') { echo 'active'; } ?>">
               <a href="<?php echo base_url(); ?>admin/C_blog"><i class="fa fa-circle-o"></i> Artikel</a>
             </li>
             <li>
@@ -178,7 +210,7 @@
           <a href="<?php echo base_url(); ?>admin/C_slider"><i class="fa fa-picture-o"></i> <span>Slider</span></a>
         </li>
         <!-- Menu Lembaga -->
-        <li class="<?php if($this->uri->uri_string() == 'admin/C_lembaga') { echo 'active'; } ?>">
+        <li class="<?php if($this->uri->segment(2) == 'C_lembaga') { echo 'active'; } ?>">
           <a href="<?php echo base_url(); ?>admin/C_lembaga"><i class="fa fa-circle-o"></i> <span>Lembaga</span></a>
         </li>
         <li class="treeview

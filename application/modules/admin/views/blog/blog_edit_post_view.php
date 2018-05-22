@@ -8,6 +8,7 @@
   <!-- Main content -->
   <?php if(!empty($artikel)){ ?>
   <section class="content">
+    <?php $this->load->view('message') ?>
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
@@ -17,18 +18,6 @@
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool no-shadow" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
-          <div class="btn-group">
-            <button type="button" class="btn btn-box-tool no-shadow dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-wrench"></i>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </div>
           <button type="button" class="btn btn-box-tool no-shadow" data-widget="remove"><i class="fa fa-times"></i></button>
         </div>
       </div>
@@ -45,7 +34,8 @@
                 <div class="input-group input-file" name="Fichier1">
                   <input type="file" id="do-upload" name="artikel_image" class="form-control" placeholder='Choose a file...' />
                   <span class="input-group-btn">
-                   <label for="do-upload" class="btn btn-primary btn-choose" type="button"><i class="fa fa-upload"></i> Browse</label>
+                   <!-- <label for="do-upload" class="btn btn-primary btn-choose" type="button"><i class="fa fa-upload"></i> Browse</label> -->
+                   <button type="submit" name="upload" class="btn btn-default"><i class="fa fa-upload"></i></button>
                    <button type="button" class="btn btn-default" data-toggle="modal" data-target="#modal-default"><i class="fa fa-eye"></i></button>
                   </span>
                 </div>
@@ -54,7 +44,7 @@
                 <div class="label-circle">
                   <span class="dot">2</span> <label class="with-padding"> Judul Artikel</label>
                 </div>
-                <input type="text" name="artikel_judul" class="form-control" placeholder="Judul Film" value="<?php echo $post->artikel_judul ?>">
+                <input type="text" name="artikel_judul" class="form-control" placeholder="Judul Artikel" value="<?php echo $post->artikel_judul ?>" autocomplete="off">
               </div>
               <div class="form-group">
                 <div class="label-circle">
@@ -78,7 +68,7 @@
             </div>
 
             <!-- Helper Hidden Button -->
-            <input type="submit" name="" id="submit-form" class="hidden">
+            <input type="submit" name="submit" id="submit-form" class="hidden">
             <input type="reset" name="" id="reset-form" class="hidden">
           </form>
 

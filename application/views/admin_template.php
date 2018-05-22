@@ -180,13 +180,7 @@
         <!-- Menu Blog -->
         <li class="treeview
           <?php  
-            if($this->uri->uri_string() == 'admin/C_blog'){
-              echo 'active';
-            } else if($this->uri->uri_string() == 'admin/C_blog/form'){
-              echo 'active';
-            } else if($this->uri->uri_string() == 'admin/C_blog/edit'){
-              echo 'active';
-            } else if($this->uri->uri_string() == 'admin/C_blog/recycle_bin'){
+            if($this->uri->segment(2) == 'C_blog'){
               echo 'active';
             }
           ?>">
@@ -332,4 +326,11 @@
 <!-- ./wrapper -->
 
 </body>
+
+<script type="text/javascript">
+  $(".alert").fadeIn(1000);
+    setTimeout(function(){
+    $(".alert").hide(); 
+  }, 3000);
+</script>
 </html>

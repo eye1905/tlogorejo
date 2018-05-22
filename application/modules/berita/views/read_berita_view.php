@@ -33,8 +33,8 @@
                             </div>
                           </div>
                           <div class="body-artikel">
-                            <div class="thumb col-md-5" style="margin: 0 auto;">
-                              <img src="<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>" class="thumbnail" alt="..." style="width: 100%; margin-bottom: 1vh;">
+                            <div class="thumb col-md-9" style="margin: 0 auto;">
+                              <img src="<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>" class="img-thumbnail" alt="..." style="margin: 1vh 1vh;">
                             </div>
                             <div class="content-artikel" style="color: #000;">
                               <?php echo $row->artikel_isi ?>

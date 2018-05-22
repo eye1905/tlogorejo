@@ -39,9 +39,12 @@
                         <small class="grey"><i class="fa fa-clock-o"></i> <?php echo $row->artikel_tanggal ?></small>
                       </div>
                       <div class="row">
-                        <div class="col-md-4" style="padding-right: 0px;">
-                          <!-- <img src="<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>" class="thumbnail" alt="..." style="width: 100%; margin-bottom: 1vh;"> -->
-                          <img src="<?php echo base_url('assets/blank_example.jpg') ?>" class="thumbnail" alt="..." style="width: 100%; margin-bottom: 1vh;">
+                        <div class="col-md-4">
+                          <?php if(!$row->artikel_image == NULL) { ?>
+                          <img src="<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>" class="img-thumbnail" alt="<?php echo $row->artikel_judul ?>">
+                          <?php } else { ?>
+                          <img src="<?php echo base_url('assets/blank_example.jpg') ?>" class="img-thumbnail" alt="">
+                          <?php } ?>
                         </div>
                         <div class="col-md-8">
                           <div class="artikel-isi" style="color: #000;">

@@ -83,7 +83,7 @@
         <div class="col-lg-4 box example1" style="background: url('<?php echo base_url('assets')?>/img/berita/1.jpg')">
           <div class="bg-opacity">
             <h4 class="title"><a href=""><?php echo limit_words($row->artikel_judul, 5) ?> ...</a></h4>
-            <p class="description"><?php echo limit_words($row->artikel_isi, 10)?></p>
+            <!-- <?php echo limit_words($row->artikel_isi, 10)?> --> <!-- BUG -->
           </div>
         </div>
         <?php endforeach; ?>

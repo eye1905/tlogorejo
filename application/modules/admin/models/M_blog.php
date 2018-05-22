@@ -17,7 +17,7 @@ class M_blog extends CI_Model {
 		'artikel_judul',
 		'artikel_status'
 	);
-	var $order = array('artikel_tanggal' => 'asc');
+	var $order = array('artikel_tanggal' => 'desc');
 	
 	function _get_datatables_query($soft_del)
     {
@@ -90,6 +90,7 @@ class M_blog extends CI_Model {
     function save_data($table, $data)
     {
         $this->db->insert($table, $data);
+        return $this->db->insert_id();
     }
 
     // Update
@@ -159,5 +160,30 @@ class M_blog extends CI_Model {
                     window.location.href='".base_url('admin/C_blog/recycle_bin')."';
                 </script>";
         }
+    }
+
+    public function create_unique_slug($string, $table, $field, $key=NULL, $value=NULL)
+    {
+        $t =& get_instance();
+        $slug = url_title($string);
+        $slug = strtolower($slug);
+        $i = 0;
+        $params = array ();
+        $params[$field] = $slug;
+     
+        if($key)$params["$key !="] = $value; 
+     
+        while ($t->db->where($params)->get($table)->num_rows())
+        {   
+            if (!preg_match ('/-{1}[0-9]+$/', $slug ))
+                $slug .= '-' . ++$i;
+            else
+                $slug = preg_replace ('/[0-9]+$/', ++$i, $slug );
+             
+            $params [$field] = $slug;
+        }
+
+        var_dump($slug);
+        return $slug;   
     }
 }

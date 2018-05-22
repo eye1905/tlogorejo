@@ -7,27 +7,17 @@
   </section>
   <!-- Main content -->
   <section class="content">
+    <?php $this->load->view('message') ?>
     <!-- Default box -->
     <div class="box">
       <div class="box-header with-border">
         <div class="box-title">
           <a href="<?php echo site_url('admin/C_blog') ?>" class="btn btn-sm btn-default btn-rounded"><i class="fa fa-chevron-left"></i> Kembali</a>
+          <label for="submit-form" tabindex="0" class="btn btn-sm btn-primary btn-rounded"><i class="fa fa-save"></i> Simpan Data</label>
         </div>
         <div class="box-tools pull-right">
           <button type="button" class="btn btn-box-tool no-shadow" data-widget="collapse"><i class="fa fa-minus"></i>
           </button>
-          <div class="btn-group">
-            <button type="button" class="btn btn-box-tool no-shadow dropdown-toggle" data-toggle="dropdown">
-              <i class="fa fa-wrench"></i>
-            </button>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="#">Action</a></li>
-              <li><a href="#">Another action</a></li>
-              <li><a href="#">Something else here</a></li>
-              <li class="divider"></li>
-              <li><a href="#">Separated link</a></li>
-            </ul>
-          </div>
           <button type="button" class="btn btn-box-tool no-shadow" data-widget="remove"><i class="fa fa-times"></i></button>
         </div>
       </div>
@@ -37,7 +27,7 @@
             <div class="col-md-4">
               <div class="form-group">
                 <div class="label-circle">
-                  <span class="dot">1</span> <label class="with-padding"> Upload Image</label> <small><em>Ukuran gambar 1 Mb</em></small>
+                  <span class="dot">1</span> <label class="with-padding"> Upload Image</label> <small><em>Ukuran maks 1 Mb</em></small>
                 </div>
                 <div class="input-group input-file" name="Fichier1">
                   <input type="file" id="do-upload" name="artikel_image" class="form-control" placeholder='Choose a file...' />
@@ -50,7 +40,7 @@
                 <div class="label-circle">
                   <span class="dot">2</span> <label class="with-padding"> Judul Artikel</label>
                 </div>
-                <input type="text" name="artikel_judul" class="form-control" placeholder="Judul Film" value="Tes Upload">
+                <input type="text" name="artikel_judul" class="form-control" placeholder="Judul Artikel" autocomplete="off">
               </div>
               <div class="form-group">
                 <div class="label-circle">
@@ -94,10 +84,6 @@
 <!-- /.content-wrapper -->
 
 <script type="text/javascript">
-  $(function () {
-    CKEDITOR.replace('ckeditor')
-  });
-
   $(document).ready(function(){
       $('[data-toggle="tooltip"]').tooltip(); 
   });

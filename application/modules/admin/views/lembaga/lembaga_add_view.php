@@ -83,10 +83,6 @@
 <!-- /.content-wrapper -->
 
 <script type="text/javascript">
-  $(function () {
-    CKEDITOR.replace('ckeditor')
-  });
-
   $(document).ready(function(){
       $('[data-toggle="tooltip"]').tooltip(); 
   });

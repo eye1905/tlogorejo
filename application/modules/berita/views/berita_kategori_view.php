@@ -32,9 +32,14 @@
                           <?php echo $row->artikel_judul ?>
                         </a>
                       </h5>
+                      <div class="desc" style="font-size: 16px; color: #000; margin-bottom: 10px;">
+                        <small>Penulis </small>
+                        <small style="font-weight: bold;"><?php echo $row->artikel_author ?></small>
+                        <small class="grey"><i class="fa fa-clock-o"></i> <?php echo $row->artikel_tanggal ?></small>
+                      </div>
                       <div class="row">
                         <div class="col-md-4">
-                          <img src="<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>" class="thumbnail" alt="..." style="width: 100%; margin-bottom: 1vh;">
+                          <img src="<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>" class="img-thumbnail" alt="...">
                         </div>
                         <div class="col-md-8">
                           <div class="artikel-isi" style="color: #000;">

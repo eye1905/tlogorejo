@@ -14,7 +14,7 @@
     <div class="box">
       <div class="box-header with-border">
         <div class="box-title">
-          <a href="<?php echo site_url('admin/C_blog/form') ?>" class="btn btn-sm btn-primary btn-rounded"><i class="fa fa-plus"></i> Tambah Data</a>
+          <a href="<?php echo site_url('admin/C_blog/create') ?>" class="btn btn-sm btn-primary btn-rounded"><i class="fa fa-plus"></i> Tambah Data</a>
           <a href="<?php echo site_url('admin/C_blog/recycle_bin') ?>" class="btn btn-sm btn-default btn-rounded hidden-xs"><i class="fa fa-trash"></i> Recycle Bin</a>
         </div>
         <div class="box-tools pull-right">

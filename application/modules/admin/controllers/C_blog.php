@@ -39,7 +39,7 @@ class C_blog extends MY_Controller {
     }
 
 	// form add
-	public function form() {
+	public function create() {
 		$data['kategori'] = $this->M_kategori->get_data(FALSE);
 		$this->template->load('admin_template', 'blog/blog_add_post_view', $data);
 	}
@@ -74,7 +74,7 @@ class C_blog extends MY_Controller {
             $row[] = '<em class="text-warning">'.($field->artikel_status != 1 ? 'Draft' : 'Publikasi').'</em>';
             $row[] = '<span class="text-primary">'.$field->artikel_author.'</span>';
             $row[] = $field->artikel_tanggal;
-            $row[] = '<a href="'.base_url('admin/C_blog/edit?id='.$field->artikel_id).'" class="btn btn-xs btn-primary"><i class="fa fa-edit"></i> Edit</a>
+            $row[] = '<a href="'.base_url('admin/C_blog/edit?id='.$field->artikel_id).'" class="btn btn-xs btn-warning"><i class="fa fa-edit"></i> Edit</a>
                       '.($field->artikel_soft_delete != FALSE ? 
                         '<a name="id" href="'.base_url('admin/C_blog/restore?id='.$field->artikel_id).'" class="btn btn-xs btn-success"><i class="fa fa-recycle"></i> Restore</a>' 
                         :
@@ -98,62 +98,63 @@ class C_blog extends MY_Controller {
         echo json_encode($output);
     }
 
-    function save() {
-    	$config['upload_path'] = FCPATH.'/assets/img/berita'; //path folder
+    public function save() {
+
+    	$config['upload_path'] = FCPATH.'/assets/img/thumbs/';
         $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
-        $config['encrypt_name'] = TRUE; //nama yang terupload nantinya
+        $config['encrypt_name'] = TRUE;
+        $config['max_size'] = 1024;
  
         $this->upload->initialize($config);
-        if(!empty($_FILES['artikel_image']['name'])){
-            if ($this->upload->do_upload('artikel_image')){
-                $gbr = $this->upload->data();
-                //Compress Image
-                $config['image_library']='gd2';
-                $config['source_image']= FCPATH.'/assets/img/upload'.$gbr['file_name'];
-                $config['create_thumb']= FALSE;
-                $config['maintain_ratio']= FALSE;
-                $config['quality']= '60%';
-                // $config['width']= 710;
-                $config['height']= 420;
-                $config['new_image']= FCPATH.'/assets/img/upload'.$gbr['file_name'];
-                $this->load->library('image_lib', $config);
-                $this->image_lib->resize();
+        if ($this->upload->do_upload('artikel_image')){
+            $imgdata = $this->upload->data();
 
-                $slug = url_title($this->input->post('artikel_judul'), 'dash', TRUE);
+            $config['image_library'] = 'gd2';
+            $config['source_image'] = FCPATH.'/assets/img/thumbs/'.$imgdata['file_name'];
+            $config['new_image'] = FCPATH.'/assets/img/berita/'.$imgdata['file_name']; // Copy image to ...
+            $config['create_thumb'] = TRUE;
+            $config['maintain_ratio'] = FALSE;
+            $config['width']       = 400;
+            $config['height']       = 300;
 
+            $this->load->library('image_lib', $config);
+            $this->image_lib->resize();
+
+            $thumbnail = $imgdata['raw_name'].'_thumb'.$imgdata['file_ext'];
+
+            $data = array(
+                'artikel_judul' => $this->input->post('artikel_judul'),
+                'artikel_isi' => $this->input->post('artikel_isi'),
+                'artikel_tanggal' => date('Y-m-d H:i:s'),
+                'artikel_image' => $thumbnail,
+                // 'artikel_author' => $this->session->userdata('ses_nama'),
+                'artikel_author' => 'Admin Tlogorejo',
+                'artikel_kategori' => $this->input->post('artikel_kategori'),
+                'artikel_status' => TRUE,
+                'artikel_soft_delete' => FALSE,
+                'artikel_log_time' => date('Y-m-d H:i:s'),
+            );
+
+            $last_id = $this->M_blog->save_data('artikel_post', $data);
+            $title = $this->input->post('artikel_judul');
+            if($this->db->affected_rows() == TRUE){
+                $slug = $this->M_blog->create_unique_slug($title, 'artikel_post', 'artikel_slug', $last_id, 1);
                 $data = array(
-                    // 'artikel_id' => now(),
-                	'artikel_judul' => $this->input->post('artikel_judul'),
                     'artikel_slug' => $slug,
-                	'artikel_isi' => $this->input->post('artikel_isi'),
-                	'artikel_tanggal' => date('d/m/Y'),
-                	'artikel_image' => $gbr['file_name'],
-                    // 'artikel_author' => $this->session->userdata('ses_nama'),
-                	'artikel_author' => 'Admin Tlogorejo',
-                	'artikel_kategori' => $this->input->post('artikel_kategori'),
-                    'artikel_status' => 1,
-                	'artikel_soft_delete' => FALSE,
-                	'artikel_log_time' => date('Y-m-d H:i:s'),
                 );
+                $where = array('artikel_id' => $last_id);
+                $this->M_blog->update_data('artikel_post', $where, $data);
+                $this->session->set_flashdata('message', 'Berhasil Menyimpan Data!');
+                redirect('admin/C_blog/create');
+            }
+            else {
 
-                $this->M_blog->save_data('artikel_post', $data);
-                if($this->db->affected_rows() == TRUE){
-                    echo "
-                        <script>
-                            alert('Sukses menyimpan artikel!');
-                            window.location.href='".base_url('admin/C_blog')."';
-                        </script>";
-                }
-            }else{
-	            redirect('admin/C_blog');
-	        }
-                      
-        }else{
-        	echo "
-        		<script>
-        			alert('Gagal menambahkan artikel!');
-        			window.location.href='".base_url('admin/C_blog/form')."';
-        		</script>";
+            }
+        }
+        else {
+            $errors = $this->upload->display_errors();
+            $this->session->set_flashdata('message', $errors);
+            redirect('admin/C_blog/create');
         }
     }
 
@@ -211,36 +212,85 @@ class C_blog extends MY_Controller {
     }
 
     function update() {
-        $slug = url_title($this->input->post('artikel_judul'), 'dash', TRUE);
 
-    	$data = array(
-            'artikel_judul' => $this->input->post('artikel_judul'),
-    		'artikel_slug' => $slug,
-    		'artikel_isi' => $this->input->post('artikel_isi'),
-            'artikel_author' => 'Admin Tlogorejo',
-            'artikel_kategori' => $this->input->post('artikel_kategori'),
-            'artikel_soft_delete' => FALSE,
-            'artikel_log_time' => date('Y-m-d H:i:s'),
-    	);
+        $id = $this->input->post('artikel_id');
 
-    	$where = array(
-    		'artikel_id' => $this->input->post('artikel_id')
-    	);
+        if (isset($_POST['upload'])) {
+            $config['upload_path'] = FCPATH.'/assets/img/thumbs/';
+            $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+            $config['encrypt_name'] = TRUE;
+            $config['max_size'] = 1024;
+        
+            $this->upload->initialize($config);
+            if ($this->upload->do_upload('artikel_image')){
+                $imgdata = $this->upload->data();
 
-    	$this->M_blog->update_data('artikel_post', $where, $data);
-        if($this->db->affected_rows() == TRUE){
-            echo "
-                <script>
-                    alert('Sukses mengperbarui artikel!');
-                    window.location.href='".base_url('admin/C_blog')."';
-                </script>";
+                $config['image_library'] = 'gd2';
+                $config['source_image'] = FCPATH.'/assets/img/thumbs/'.$imgdata['file_name'];
+                $config['new_image'] = FCPATH.'/assets/img/berita/'.$imgdata['file_name']; // Copy image to ...
+                $config['create_thumb'] = TRUE;
+                $config['maintain_ratio'] = FALSE;
+                $config['width']       = 400;
+                $config['height']       = 300;
+
+                $this->load->library('image_lib', $config);
+                $this->image_lib->resize();
+
+                $thumbnail = $imgdata['raw_name'].'_thumb'.$imgdata['file_ext'];
+                $data = array(
+                    'artikel_image' => $thumbnail,
+                    'artikel_log_time' => date('Y-m-d H:i:s'),
+                );
+
+                $where = array(
+                    'artikel_id' => $id,
+                );
+
+                $this->M_blog->update_data('artikel_post', $where, $data);
+
+                if($this->db->affected_rows() == TRUE){
+                    $this->session->set_flashdata('message', 'Berhasil Mengupload File!');
+                    redirect('admin/C_blog/edit?id='.$id);
+                }
+                else {
+                    $this->session->set_flashdata('message', 'Gagal Mengupload File!');
+                    redirect('admin/C_blog/edit?id='.$id);
+                }
+            }
+            else {
+                $errors = $this->upload->display_errors();
+                $this->session->set_flashdata('message', $errors);
+                redirect('admin/C_blog/edit?id='.$id);
+            }
         }
-        else {
-            echo "
-                <script>
-                    alert('Gagal mengperbarui artikel!');
-                    window.location.href='".base_url('admin/C_blog')."';
-                </script>";
+
+        if (isset($_POST['submit'])) {
+            $title = $this->input->post('artikel_judul');
+            $slug = $this->M_blog->create_unique_slug($title, 'artikel_post', 'artikel_slug', $id);
+
+            $data = array(
+                'artikel_judul' => $this->input->post('artikel_judul'),
+                'artikel_slug' => $slug,
+                'artikel_isi' => $this->input->post('artikel_isi'),
+                'artikel_author' => 'Admin Tlogorejo',
+                'artikel_kategori' => $this->input->post('artikel_kategori'),
+                'artikel_soft_delete' => FALSE,
+                'artikel_log_time' => date('Y-m-d H:i:s'),
+            );
+
+            $where = array(
+                'artikel_id' => $id,
+            );
+
+            $this->M_blog->update_data('artikel_post', $where, $data);
+            if($this->db->affected_rows() == TRUE){
+                $this->session->set_flashdata('message', 'Berhasil Memperbarui Data!');
+                redirect('admin/C_blog/edit?id='.$id);
+            }
+            else {
+                $this->session->set_flashdata('message', 'Gagal Memperbarui Data!');
+                redirect('admin/C_blog/edit?id='.$id);
+            }  
         }
     }
 
@@ -266,11 +316,11 @@ class C_blog extends MY_Controller {
         $this->M_blog->update_data('artikel_post', $where, $data);
         if($this->db->affected_rows() ==  TRUE){
             $this->session->set_flashdata('message', 'Sukses memulihkan data!');
-            redirect('admin/C_blog');
+            redirect('admin/C_blog/recycle_bin');
         }
         else {
             $this->session->set_flashdata('message', 'Gagal memulihkan data!');
-            redirect('admin/C_blog');
+            redirect('admin/C_blog/recycle_bin');
         }
     }
 
@@ -326,13 +376,5 @@ class C_blog extends MY_Controller {
     public function multiple_restore()
     {
         $this->M_blog->multi_restore_data();
-    }
-
-    public function query()
-    {
-        $this->M_blog->delete();
-        if($this->db->affected_rows() == TRUE){
-            redirect('admin/C_blog');
-        }
     }
 }

@@ -115,50 +115,49 @@ class M_blog extends CI_Model {
     function multi_delete_data() {
         $this->form_validation->set_rules('id[]','id[]','required');
         if ($this->form_validation->run() == FALSE){
-            echo "
-                <script>
-                    alert('Gagal menghapus artikel!');
-                    window.location.href='".base_url('admin/C_blog')."';
-                </script>";
-        } else {
+            $this->session->set_flashdata('message', 'Tidak Ada Data!');
+            redirect('admin/C_blog');
+        } 
+        else {
             $del = $this->input->post('id');
             for ($i=0; $i < count($del) ; $i++) { 
-                // $this->db->where('artikel_id', $del[$i]);
-                // $this->db->delete($this->table);
-                $data = array('artikel_soft_delete' => 0, 'artikel_log_time' => date('Y-m-d H:i:s'));
+                $data = array('artikel_soft_delete' => TRUE, 'artikel_log_time' => date('Y-m-d H:i:s'));
                 $this->db->where('artikel_id', $del[$i]);
                 $this->db->update($this->table, $data);
             }
-            echo "
-                <script>
-                    alert('Sukses menghapus artikel!');
-                    window.location.href='".base_url('admin/C_blog')."';
-                </script>";
+            $rows = count($del);
+            if ($this->db->affected_rows() > 0) {
+                $this->session->set_flashdata('message', 'Berhasil Menghapus '.$rows.' Data!');
+                redirect('admin/C_blog');
+            }
+            else {
+                $this->session->set_flashdata('message', 'Gagal Menghapus '.$rows.' Data!');
+                redirect('admin/C_blog');
+            }
         }
     }
 
     function multi_restore_data() {
         $this->form_validation->set_rules('id[]','id[]','required');
         if ($this->form_validation->run() == FALSE){
-            echo "
-                <script>
-                    alert('Gagal memulihkan artikel!');
-                    window.location.href='".base_url('admin/C_blog/recycle_bin')."';
-                </script>";
+            $this->session->set_flashdata('message', 'Tidak Ada Data!');
+            redirect('admin/C_blog');
         } else {
             $del = $this->input->post('id');
             for ($i=0; $i < count($del) ; $i++) { 
-                // $this->db->where('artikel_id', $del[$i]);
-                // $this->db->delete($this->table);
-                $data = array('artikel_soft_delete' => 1, 'artikel_log_time' => date('Y-m-d H:i:s'));
+                $data = array('artikel_soft_delete' => FALSE, 'artikel_log_time' => date('Y-m-d H:i:s'));
                 $this->db->where('artikel_id', $del[$i]);
                 $this->db->update($this->table, $data);
             }
-            echo "
-                <script>
-                    alert('Sukses memulihkan artikel!');
-                    window.location.href='".base_url('admin/C_blog/recycle_bin')."';
-                </script>";
+            $rows = count($del);
+            if ($this->db->affected_rows() > 0) {
+                $this->session->set_flashdata('message', 'Berhasil Memulihkan '.$rows.' Data!');
+                redirect('admin/C_blog');
+            }
+            else {
+                $this->session->set_flashdata('message', 'Gagal Memulihkan '.$rows.' Data!');
+                redirect('admin/C_blog');
+            }
         }
     }
 

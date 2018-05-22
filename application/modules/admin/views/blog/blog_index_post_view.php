@@ -49,6 +49,7 @@
                     <!-- DataTable ServerSide -->
                   </tbody>
                 </table>
+                <input type="submit" name="" id="multiple_delete" class="hidden">
               </form>
             </div>
           </div>
@@ -56,7 +57,7 @@
       </div>
       <!-- /.box-body -->
       <div class="box-footer">
-        Footer
+        <label type="button" class="btn btn-sm btn-default" for="multiple_delete">Delete All</label>
       </div>
     </div>
     <!-- /.box -->

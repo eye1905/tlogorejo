@@ -68,7 +68,7 @@ class C_blog extends MY_Controller {
             $no++;
             $row = array();
 
-            $row[] = '<div class="material-switch"><input id="singleSelect'.$no.'" name="id[]" type="checkbox"/><label for="singleSelect'.$no.'" class="label-primary"></label></div>';
+            $row[] = '<div class="material-switch"><input id="singleSelect'.$no.'" name="id[]" type="checkbox" value="'.$field->artikel_id.'"/><label for="singleSelect'.$no.'" class="label-primary"></label></div>';
             $row[] = '<span class="text-primary">'.$field->artikel_judul.'</span>';
 
             $row[] = '<em class="text-warning">'.($field->artikel_status != 1 ? 'Draft' : 'Publikasi').'</em>';

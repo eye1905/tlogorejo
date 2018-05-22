@@ -27,7 +27,7 @@
         <div class="row">
           <div class="col-md-12">
             <div class="table-responsive">
-              <form action="<?php echo base_url('admin/C_blog/multiple_delete') ?>" method="post">
+              <form action="<?php echo base_url('admin/C_blog/multiple_restore') ?>" method="post">
                 <table class="table table-hover" id="example1">
                   <thead>
                     <tr>
@@ -48,12 +48,16 @@
                     <!-- DataTable ServerSide -->
                   </tbody>
                 </table>
+                <input type="submit" name="" id="multiple_delete" class="hidden">
               </form>
             </div>
           </div>
         </div>
       </div>
       <!-- /.box-body -->
+      <div class="box-footer">
+        <label type="button" class="btn btn-sm btn-default" for="multiple_delete">Restore All</label>
+      </div>
     </div>
     <!-- /.box -->
 

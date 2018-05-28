@@ -53,6 +53,3 @@ $route['default_controller'] = 'homepage/homepage';
 $route['404_override'] = '';
 $route['login'] = 'auth/login';
 $route['translate_uri_dashes'] = FALSE;
-
-
-$route['berita/:any'] = 'berita/category/:any';

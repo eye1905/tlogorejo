@@ -45,8 +45,8 @@
   <!-- script -->
 
   <!-- include summernote css/js -->
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.css" rel="stylesheet">
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.9/summernote.js"></script>
+  <link href="<?php echo base_url('assets/adminlte/summernote/summernote.css') ?>" rel="stylesheet">
+  <script src="<?php echo base_url('assets/adminlte/summernote/summernote.js') ?>"></script>
 
 </head>
 

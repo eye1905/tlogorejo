@@ -101,7 +101,7 @@ class C_blog extends MY_Controller {
     public function save() {
 
     	$config['upload_path'] = FCPATH.'/assets/img/thumbs/';
-        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp'; //type yang dapat diakses bisa anda sesuaikan
+        $config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
         $config['encrypt_name'] = TRUE;
         $config['max_size'] = 1024;
  

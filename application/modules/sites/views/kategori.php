@@ -1,32 +1,24 @@
-<div class="home" id="home" style="top: -60px;">
+<div class="home" id="home">
 	<!-- Home Slider -->
 	<div class="home_slider_container">
 		<div class="owl-carousel owl-theme home_slider">
 			<!-- Slider Item -->
 			<div class="owl-item">
-				<div class="home_slider_background" style="background-image:url(<?php echo base_url('assets/avision/') ?>images/home_slider.jpg)"></div>
+				<div class="home_slider_background" style="background-image:url('https://wisatabojonegoro.com/wp-content/uploads/2017/05/KGS-252.jpg'); background-position: center center;"></div>
 				<div class="home_slider_content_container">
 					<div class="container">
 						<div class="row">
 							<div class="col">
 								<div class="home_slider_content">
-									<div class="home_slider_item_category trans_200"><a href="category.html" class="trans_200">news</a></div>
 									<div class="home_slider_item_title">
-										<a href="post.html">Launching Website Baru Desa Tlogorejo</a>
-									</div>
-									<div class="home_slider_item_link">
-										<a href="post.html" class="trans_200">Continue Reading
-											<svg version="1.1" id="link_arrow_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-												 width="19px" height="13px" viewBox="0 0 19 13" enable-background="new 0 0 19 13" xml:space="preserve">
-												<polygon fill="#FFFFFF" points="12.475,0 11.061,0 17.081,6.021 0,6.021 0,7.021 17.038,7.021 11.06,13 12.474,13 18.974,6.5 "/>
-											</svg>
-										</a>
+										<a href="post.html">Welcome to Website Desa Tlogorejo</a>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
 			</div>
 
 		</div>
@@ -55,7 +47,7 @@
 </div>
 
 <!-- Page Content -->
-<div class="page_content" id="berita" style="margin-top: -280px; z-index: 90;">
+<div class="page_content" id="berita" style="margin-top: -240px; z-index: 90;">
 	<div class="container">
 		<div class="row row-lg-eq-height">
 			<!-- Main Content -->
@@ -97,7 +89,7 @@
                         					</a>
                         				</div>
 										<p class="card-text">Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened...</p>
-										<small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
+										<small class="post_meta"><a href="#"><?php echo $row->artikel_author ?></a><span><?php echo $row->artikel_tanggal ?></span></small>
 									</div>
 								</div>
 								<?php } ?>

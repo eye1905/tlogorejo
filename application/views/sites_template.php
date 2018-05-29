@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Tlogorejo</title>
+<title>Website Desa Tlogorejo</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Demo project">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="icon" type="image/png" href="<?php echo base_url('assets')?>/img/logone.png"/>
 
 <?php if($this->uri->segment(1) == 'read') { ?>
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('assets/avision/') ?>styles/bootstrap4/bootstrap.min.css">
@@ -43,6 +45,17 @@
 	.footer_content {
 	    text-align: left;
 	    padding-left: 30px;
+	}
+
+	.home_slider_background {
+	    position: absolute;
+	    top: 0;
+	    left: 0;
+	    width: 100%;
+	    height: 73%;
+	    background-repeat: no-repeat;
+	    background-size: cover;
+	    background-position: center top;
 	}
 </style>
 

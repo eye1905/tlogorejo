@@ -52,10 +52,23 @@
 	    top: 0;
 	    left: 0;
 	    width: 100%;
-	    height: 73%;
+	    height: 64%;
 	    background-repeat: no-repeat;
 	    background-size: cover;
 	    background-position: center top;
+	}
+
+	.card-img-top {
+		width: 100%;
+	    height: 12rem; /* vw */
+	    object-fit: cover;
+	}
+
+	.breadcrumb {
+		background-color: #f7f7f7; margin-bottom: 0px; position: absolute; padding: .75rem 0rem; top: 1rem;
+	}
+	a {
+		color: #000;
 	}
 </style>
 

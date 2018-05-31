@@ -8,7 +8,7 @@
 				<div class="home_slider_content_container">
 					<div class="container">
 						<div class="row">
-							<div class="col">
+							<div class="col" style="bottom: 20px;">
 								<div class="home_slider_content">
 									<div class="home_slider_item_title">
 										<a href="post.html">Welcome to Website Desa Tlogorejo</a>
@@ -52,19 +52,27 @@
 		<div class="row row-lg-eq-height">
 			<!-- Main Content -->
 			<div class="col-lg-9">
+				<div>
+					<nav aria-label="breadcrumb">
+					  <ol class="breadcrumb">
+					    <li class="breadcrumb-item"><a href="#">Site</a></li>
+					    <li class="breadcrumb-item active" aria-current="page">Home</li>
+					  </ol>
+					</nav>
+				</div>
 				<div class="main_content">
 					<!-- Blog Section - Don't Miss -->
 					<div class="blog_section">
 						<div class="section_panel d-flex flex-row align-items-center justify-content-start">
 							<div class="section_title">Berita Terbaru</div>
-							<div class="section_tags ml-auto">
+							<div class="section_tags ml-auto" style="margin-right: 20px;">
 								<ul>
 									<li class="active"><a href="category.html">all</a></li>
 								</ul>
 							</div>
 							<div class="section_panel_more">
 								<ul>
-									<li>more
+									<li><span style="position: absolute; bottom: 13px; right: 20px;">kategori</span>
 										<ul>
 											<?php foreach($kategori as $row) { ?>
 											<li><a href="<?php echo base_url(''.$row->kategori_slug) ?>"><?php echo $row->kategori_nama ?></a></li>
@@ -81,8 +89,7 @@
 								<?php foreach ($berita as $row) { ?>
 								<!-- Largest Card With Image -->
 								<div class="card card_largest_with_image grid-item">
-									<div style="height: 220px; background-image: url(<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>); background-size: cover; background-position: center"></div>
-									<!-- <img class="card-img-top" src="<?php echo base_url('assets/avision/') ?>images/post_1.jpg" alt="https://unsplash.com/@cjtagupa"> -->
+									<img class="card-img-top" src="<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>" alt="https://unsplash.com/@cjtagupa">
 									<div class="card-body">
 										<div class="card-title">
 											<a href="<?php echo site_url('read/'.$row->artikel_slug) ?>">
@@ -92,7 +99,7 @@
 										<p class="card-text">Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened...</p>
 
 										<div style="margin-top: 8px;">
-											<a href="post.html" class="trans_200">Selengkapnya
+											<a href="<?php echo site_url('read/'.$row->artikel_slug) ?>" class="trans_200">Selengkapnya
 												<span style="position: absolute; padding-top: 2px; padding-left: 4px;">
 													<svg version="1.1" id="link_arrow_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 														 width="19px" height="13px" viewBox="0 0 19 13" enable-background="new 0 0 19 13" xml:space="preserve">

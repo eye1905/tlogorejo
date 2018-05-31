@@ -140,7 +140,7 @@ class C_blog extends MY_Controller {
             if($this->db->affected_rows() == TRUE){
                 $slug = $this->M_blog->create_unique_slug($title, 'artikel_post', 'artikel_slug', $last_id, 1);
                 $data = array(
-                    'artikel_slug' => $slug,
+                    'artikel_slug' => date('Y-m-d').'-'.$slug,
                 );
                 $where = array('artikel_id' => $last_id);
                 $this->M_blog->update_data('artikel_post', $where, $data);
@@ -270,7 +270,7 @@ class C_blog extends MY_Controller {
 
             $data = array(
                 'artikel_judul' => $this->input->post('artikel_judul'),
-                'artikel_slug' => $slug,
+                'artikel_slug' => date('Y-m-d').'-'.$slug,
                 'artikel_isi' => $this->input->post('artikel_isi'),
                 'artikel_author' => 'Admin Tlogorejo',
                 'artikel_kategori' => $this->input->post('artikel_kategori'),

@@ -86,6 +86,12 @@ class M_blog extends CI_Model {
         return $query;
     }
 
+    // Read
+    function get_data() {
+        $query = $this->db->query("SELECT * FROM post ORDER BY created_at DESC");
+        return $query->result();
+    }
+
     // Insert
     function save_data($table, $data)
     {
@@ -109,6 +115,11 @@ class M_blog extends CI_Model {
 
     function get_artikel_by_id($table, $where) {
         return $this->db->get_where($table, $where)->result();
+    }
+
+    function get_blog_by_id($where) {
+        $query = $this->db->query("SELECT * FROM post WHERE id = '$where'");
+        return $query->result();
     }
 
     // Multi Delete

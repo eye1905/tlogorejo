@@ -21,14 +21,19 @@ class Home extends MY_Controller {
 		if (!empty($slug)) {
 			$data['kategori'] = $this->M_kategori->get_kategori();
 			$berita = $this->M_berita->get_artikel($slug);
-			foreach ($berita as $row) {
-				$data['artikel_judul'] = $row->artikel_judul;
-				$data['artikel_isi'] = $row->artikel_isi;
-				$data['artikel_image'] = $row->artikel_image;
-				$data['artikel_author'] = $row->artikel_author;
-				$data['artikel_tanggal'] = $row->artikel_tanggal;
+			if (!empty($berita)) {
+				foreach ($berita as $row) {
+					$data['artikel_judul'] = $row->judul;
+					$data['artikel_isi'] = $row->konten;
+					$data['artikel_image'] = $row->thumb;
+					$data['artikel_author'] = $row->author;
+					$data['artikel_tanggal'] = $row->created_at;
+				}
+				$this->template->load('sites_template', 'post', $data);
 			}
-			$this->template->load('sites_template', 'post', $data);
+			else {
+				show_error('404');
+			}
 		}
 		else {
 

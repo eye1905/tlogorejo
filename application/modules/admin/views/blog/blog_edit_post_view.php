@@ -52,8 +52,10 @@
                 </div>
                 <select name="artikel_kategori" class="form-control select2" style="width: 100%;">
                   <option selected="selected" value="">Pilih Kategori</option>
-                  <?php $no=1; foreach($kategori as $row) { ?>
-                  <option value="<?php echo $row->kategori_id ?>" selected="<?php if($row->kategori_id == $post->artikel_kategori) { echo 'selected'; } ?>"><?php echo $row->kategori_nama ?></option>
+                  <?php
+                    $kat = $post->artikel_kategori;
+                    $no=1; foreach($kategori as $row) { ?>
+                  <option value="<?php echo $row->kategori_id ?>" <?php echo ($row->kategori_id == $kat) ? 'selected="selected"' : '' ?>><?php echo $row->kategori_nama ?></option>
                   <?php } ?>
                 </select>
               </div>

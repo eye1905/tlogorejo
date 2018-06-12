@@ -157,6 +157,10 @@
 	background-color: #dd4b39 !important;
 	color: #FFF !important;
 }
+.default {
+	background-color: grey !important;
+	color: #FFF !important;
+}
 
 /* Button Action Bar */
 .btn-action-bar {

@@ -7,10 +7,9 @@
 </style>
 <!-- Home -->
 <div class="home">
-	<div class="home_background parallax-window" data-parallax="scroll" data-image-src="<?php echo base_url('assets/avision/') ?>images/post.jpg" data-speed="0.8"></div>
+	<div class="home_background parallax-window" data-parallax="scroll" data-image-src="<?php echo base_url('uploads/berita/'.$artikel_image) ?>" data-speed="0.8"></div>
 	<div class="home_content">
-		<div class="post_category trans_200"><a href="category.html" class="trans_200">sport</a></div>
-		<div class="post_title"><?php echo $artikel_judul ?></div>
+		<div class="post_category trans_200"><a href="category.html" class="trans_200"></a></div>
 	</div>
 </div>
 
@@ -19,12 +18,11 @@
 	<div class="container">
 		<div class="row row-lg-eq-height">
 			<!-- Post Content -->
-
 			<div class="col-lg-9">
 				<div class="post_content">
-
+					<div class="post_title" style="color: #000;"><?php echo $artikel_judul ?></div>
 					<!-- Top Panel -->
-					<div class="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start">
+					<div class="post_panel post_panel_top d-flex flex-row align-items-center justify-content-start" style="margin-top: 0px;">
 						<div class="author_image"><div><img src="<?php echo base_url('assets/avision/') ?>images/author.jpg" alt=""></div></div>
 						<div class="post_meta"><a href="#"><?php echo $artikel_author ?></a><span><?php echo $artikel_tanggal ?></span></div>
 						<div class="post_share ml-sm-auto">
@@ -41,11 +39,15 @@
 
 					<div class="post_body">
 						<figure style="text-align: center; margin: 0px;">
-							<img src="<?php echo base_url('assets/img/berita/'.$artikel_image) ?>" alt="">
+							<div class="row">
+								<div class="col-lg-8">
+									<img src="<?php echo base_url('uploads/berita/'.$artikel_image) ?>" alt="">	
+								</div>
+							</div>
 							<figcaption><?php echo $artikel_judul ?></figcaption>
 						</figure>
 
-						<?php echo $artikel_isi ?>
+						<p class="post_p" style="margin-top: 20px;"><?php echo $artikel_isi ?></p>
 
 						<div class="post_quote">
 							<p class="post_p">Aliquam auctor lacus a dapibus pulvinar. Morbi in elit erat. Quisque et augue nec tortor blandit hendrerit eget sit amet sapien. Curabitur at tincidunt metus, quis porta ex. Duis lacinia metus vel eros cursus pretium eget.</p>
@@ -93,15 +95,6 @@
 							<!-- Small Card With Image -->
 							<div class="card card_small_with_image grid-item">
 								<img class="card-img-top" src="<?php echo base_url('assets/avision/') ?>images/post_2.jpg" alt="https://unsplash.com/@jakobowens1">
-								<div class="card-body">
-									<div class="card-title card-title-small"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
-									<small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>
-								</div>
-							</div>
-
-							<!-- Small Card With Image -->
-							<div class="card card_small_with_image grid-item">
-								<img class="card-img-top" src="<?php echo base_url('assets/avision/') ?>images/post_26.jpg" alt="https://unsplash.com/@jakobowens1">
 								<div class="card-body">
 									<div class="card-title card-title-small"><a href="post.html">How Did van Gogh’s Turbulent Mind Depict One of the Most Complex Concepts in Physics?</a></div>
 									<small class="post_meta"><a href="#">Katy Liu</a><span>Sep 29, 2017 at 9:48 am</span></small>

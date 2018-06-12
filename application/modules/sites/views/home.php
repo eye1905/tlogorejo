@@ -1,3 +1,9 @@
+<style type="text/css">
+	p {
+		color: #F2F2F2 !important;
+	}
+</style>
+
 <div class="home" id="home">
 	<!-- Home Slider -->
 	<div class="home_slider_container">
@@ -75,7 +81,7 @@
 									<li><span style="position: absolute; bottom: 13px; right: 20px;">kategori</span>
 										<ul>
 											<?php foreach($kategori as $row) { ?>
-											<li><a href="<?php echo base_url(''.$row->kategori_slug) ?>"><?php echo $row->kategori_nama ?></a></li>
+											<li><a href="<?php echo base_url(''.$row->slug) ?>"><?php echo $row->kategori ?></a></li>
 											<?php } ?>
 										</ul>
 									</li>
@@ -86,30 +92,24 @@
 							<div class="grid clearfix">
 
 							<?php if (!empty($berita)) { ?>
-								<?php foreach ($berita as $row) { ?>
-								<!-- Largest Card With Image -->
-								<div class="card card_largest_with_image grid-item">
-									<img class="card-img-top" src="<?php echo base_url('assets/img/berita/'.$row->artikel_image) ?>" alt="https://unsplash.com/@cjtagupa">
+								<?php
+
+								function limit_words($string, $word_limit){
+									$words = explode(" ", $string);
+									return implode(" ", array_splice($words, 0, $word_limit));
+								}
+								foreach ($berita as $row) { ?>
+
+								<div class="card card_large_with_background grid-item">
+									<div class="card_background" style="background-image:url(<?php echo base_url('uploads/berita/'.$row->thumb) ?>)"></div>
 									<div class="card-body">
-										<div class="card-title">
-											<a href="<?php echo site_url('read/'.$row->artikel_slug) ?>">
-											<?php echo $row->artikel_judul ?>
-                        					</a>
-                        				</div>
-										<p class="card-text">Pick the yellow peach that looks like a sunset with its red, orange, and pink coat skin, peel it off with your teeth. Sink them into unripened...</p>
+										<div class="card-title"><a href="<?php echo site_url('read/'.$row->slug) ?>"><?php echo $row->judul ?></a></div>
 
-										<div style="margin-top: 8px;">
-											<a href="<?php echo site_url('read/'.$row->artikel_slug) ?>" class="trans_200">Selengkapnya
-												<span style="position: absolute; padding-top: 2px; padding-left: 4px;">
-													<svg version="1.1" id="link_arrow_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-														 width="19px" height="13px" viewBox="0 0 19 13" enable-background="new 0 0 19 13" xml:space="preserve">
-														<polygon fill="#000" points="12.475,0 11.061,0 17.081,6.021 0,6.021 0,7.021 17.038,7.021 11.06,13 12.474,13 18.974,6.5 "/>
-													</svg>
-												</span>
-											</a>
-										</div>
+										<p class="card-text">
+											<?php echo limit_words($row->konten, 16); ?>...
+										</p>
 
-										<small class="post_meta"><a href="#"><?php echo $row->artikel_author ?></a><span>Sep 29, 2017 at 9:48 am</span></small>
+										<small class="post_meta"><a href="#"><?php echo $row->author ?></a><span>Sep 29, 2017 at 9:48 am</span></small>
 									</div>
 								</div>
 								<?php } ?>

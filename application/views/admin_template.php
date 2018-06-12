@@ -177,28 +177,9 @@
           <a href="<?php echo base_url(); ?>admin"><i class="fa fa-home"></i> <span>Beranda</span></a>
         </li>
 
-        <!-- Menu Blog -->
-        <li class="treeview
-          <?php  
-            if($this->uri->segment(2) == 'C_blog'){
-              echo 'active';
-            }
-          ?>">
-          <a href="#"><i class="fa fa-newspaper-o"></i> <span>Berita</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="<?php if($this->uri->segment(2) == 'C_blog') { echo 'active'; } ?>">
-              <a href="<?php echo base_url(); ?>admin/C_blog"><i class="fa fa-circle-o"></i> Artikel</a>
-            </li>
-            <li>
-              <a href="#"><i class="fa fa-comment"></i> Komentar</a>
-            </li>
-          </ul>
+        <li class="<?php if($this->uri->segment(2) == 'blog') { echo 'active'; } ?>">
+          <a href="<?php echo base_url(); ?>admin/blog"><i class="fa fa-newspaper-o"></i> <span>Postingan</span></a>
         </li>
-        <!-- Menu Blog -->
 
         <li class="<?php if($this->uri->uri_string() == 'admin/C_slider') { echo 'active'; } ?>">
           <a href="<?php echo base_url(); ?>admin/C_slider"><i class="fa fa-picture-o"></i> <span>Slider</span></a>

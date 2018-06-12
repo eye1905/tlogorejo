@@ -13,7 +13,8 @@
     <div class="box">
       <div class="box-header with-border">
         <div class="box-title">
-          <a href="<?php echo site_url('admin/C_post/create') ?>" class="btn btn-sm btn-primary btn-rounded"><i class="fa fa-plus"></i> Tambah Data</a>
+          <a href="<?php echo site_url('admin/blog/create_blog') ?>" class="btn btn-sm btn-primary btn-rounded"><i class="fa fa-plus"></i> Buat Postingan</a>
+          <a href="<?php echo site_url('admin/blog/categories') ?>" class="btn btn-sm btn-default btn-rounded"><i class="fa fa-book"></i> Data Kategori</a>
           <a href="" class="btn btn-sm btn-default btn-rounded hidden-xs"><i class="fa fa-refresh"></i> Refresh</a>
 
 
@@ -38,14 +39,15 @@
                         <label for="multiSelect" class="label-primary"></label>
                       </div>
                     </th>
-                    <th>Judul</th>
-                    <th width="17%">Durasi</th>
-                    <!-- <th width="8%">Status</th> -->
+                    <th width="50%">Judul</th>
+                    <th>Dibuat Pada</th>
                     <th>Status</th>
                     <th class="text-center">Action</th>
                   </tr>
                 </thead>
                 <tbody>
+                <?php if(!empty($blog)) { ?>
+                  <?php foreach($blog as $row): ?>
                   <tr>
                     <td style="padding-left: 20px;">
                       <div class="material-switch">
@@ -53,11 +55,24 @@
                         <label for="singleSelect" class="label-primary"></label>
                       </div>
                     </td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    <td><?php echo $row->judul ?></td>
+                    <td><?php echo $row->created_at ?></td>
+                    <td><?php echo ($row->status == TRUE) ? 'Terpost' : 'Draft' ?></td>
+                    <td class="text-center">
+                      <a href="<?php echo site_url('admin/blog/edit_blog/'.$row->id) ?>" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Edit"><i class="fa fa-edit"></i></a>
+                      <?php if($row->status == TRUE) { ?>
+                      <a href="<?php echo site_url('admin/blog/delete_blog/'.$row->id) ?>" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Hapus"><i class="fa fa-remove"></i></a>
+                      <?php } else { ?>
+                      <a href="<?php echo site_url('admin/blog/restore_blog/'.$row->id) ?>" class="btn btn-xs btn-success" data-toggle="tooltip" title="Restore"><i class="fa fa-undo"></i></a>
+                      <?php } ?>
+                    </td>
                   </tr>
+                  <?php endforeach; ?>
+                <?php } else { ?>
+                  <tr>
+                    <td colspan="5" class="text-center">Tidak Ada Data</td>
+                  </tr>
+                <?php } ?>
                 </tbody>
               </table>
             </div>
